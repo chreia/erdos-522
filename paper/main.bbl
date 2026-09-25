@@ -1,0 +1,201 @@
+\begin{thebibliography}{10}
+
+\bibitem{Ahlfors1979}
+Lars~V. Ahlfors.
+\newblock {\em Complex Analysis: An Introduction to the Theory of Analytic
+  Functions of One Complex Variable}.
+\newblock International Series in Pure and Applied Mathematics. McGraw-Hill,
+  New York, third edition, 1979.
+
+\bibitem{Bentkus2005}
+Vidmantas Bentkus.
+\newblock A {Lyapunov}-type bound in {$\mathbb{R}^d$}.
+\newblock {\em Theory of Probability and Its Applications}, 49(2):311--323,
+  2005.
+\newblock
+  \href{https://doi.org/10.1137/S0040585X97981123}{doi:10.1137/S0040585X97981123}.
+
+\bibitem{Erdos522Problem}
+Thomas Bloom.
+\newblock {Erd\H{o}s Problems}: Problem 522.
+\newblock \url{https://www.erdosproblems.com/522}.
+\newblock Accessed September 22, 2026.
+
+\bibitem{LeanFour2021}
+Leonardo de~Moura and Sebastian Ullrich.
+\newblock The {Lean}~4 theorem prover and programming language.
+\newblock In {\em Automated Deduction -- {CADE} 28}, volume 12699 of {\em
+  Lecture Notes in Computer Science}, pages 625--635. Springer, Cham, 2021.
+\newblock
+  \href{https://doi.org/10.1007/978-3-030-79876-5_37}{doi:10.1007/978-3-030-79876-5\_37}.
+
+\bibitem{DevroyeMehrabianReddad2018}
+Luc Devroye, Abbas Mehrabian, and Tommy Reddad.
+\newblock The total variation distance between high-dimensional {Gaussians}
+  with the same mean.
+\newblock \href{https://arxiv.org/abs/1810.08693v7}{arXiv:1810.08693v7}, 2023.
+\newblock First version 2018.
+
+\bibitem{Do2024}
+Yen~Q. Do.
+\newblock A strong law of large numbers for real roots of random polynomials.
+\newblock {\em Annales de l'Institut Henri Poincar{\'e}, Probabilit{\'e}s et
+  Statistiques}, 62(3):2040--2063, 2026.
+\newblock \href{https://doi.org/10.1214/25-AIHP1576}{doi:10.1214/25-AIHP1576}.
+  Consulted version:
+  \href{https://arxiv.org/abs/2403.06353v2}{arXiv:2403.06353v2}.
+
+\bibitem{Hayman1967}
+Walter~K. Hayman.
+\newblock {\em Research Problems in Function Theory}.
+\newblock Athlone Press, London, 1967.
+\newblock Problem 4.15.
+
+\bibitem{HaymanLingham2018}
+Walter~K. Hayman and Eleanor~F. Lingham.
+\newblock {\em Research Problems in Function Theory: Fiftieth Anniversary
+  Edition}.
+\newblock Problem Books in Mathematics. Springer, Cham, 2019.
+\newblock
+  \href{https://doi.org/10.1007/978-3-030-25165-9}{doi:10.1007/978-3-030-25165-9}.
+  Consulted version: draft
+  \href{https://arxiv.org/abs/1809.07200v2}{arXiv:1809.07200v2}, Problem 4.15.
+
+\bibitem{Hoeffding1963}
+Wassily Hoeffding.
+\newblock Probability inequalities for sums of bounded random variables.
+\newblock {\em Journal of the American Statistical Association},
+  58(301):13--30, 1963.
+\newblock
+  \href{https://doi.org/10.1080/01621459.1963.10500830}{doi:10.1080/01621459.1963.10500830}.
+
+\bibitem{IbragimovZaporozhets2013}
+Ildar Ibragimov and Dmitry Zaporozhets.
+\newblock On distribution of zeros of random polynomials in complex plane.
+\newblock In {\em Prokhorov and Contemporary Probability Theory}, volume~33 of
+  {\em Springer Proceedings in Mathematics \& Statistics}, pages 303--323.
+  Springer, Heidelberg, 2013.
+\newblock
+  \href{https://doi.org/10.1007/978-3-642-33549-5_18}{doi:10.1007/978-3-642-33549-5\_18}.
+  Consulted version: \href{https://arxiv.org/abs/1102.3517}{arXiv:1102.3517}.
+
+\bibitem{KabluchkoKhoruzhenkoMarynych2025}
+Zakhar Kabluchko, Boris Khoruzhenko, and Alexander Marynych.
+\newblock On the distribution patterns of zeros for random polynomials with
+  regularly varying coefficients, 2025.
+\newblock Preprint, \href{https://arxiv.org/abs/2511.12302}{arXiv:2511.12302},
+  Theorem 3.1.
+
+\bibitem{Kahane1985}
+Jean-Pierre Kahane.
+\newblock {\em Some Random Series of Functions}, volume~5 of {\em Cambridge
+  Studies in Advanced Mathematics}.
+\newblock Cambridge University Press, Cambridge, second edition, 1985.
+
+\bibitem{FormalCompanion2026}
+Sebastien Kawada.
+\newblock Almost-sure radial laws for nested random polynomials and {Erd\H{o}s}
+  problem \#522: {Lean} formalization.
+\newblock Version 1.0.0, September 2026.
+\newblock \url{https://github.com/chreia/erdos-522}.
+
+\bibitem{Kesten1970}
+Harry Kesten.
+\newblock The limit points of a normalized random walk.
+\newblock {\em The Annals of Mathematical Statistics}, 41(4):1173--1205, 1970.
+\newblock
+  \href{https://doi.org/10.1214/aoms/1177696894}{doi:10.1214/aoms/1177696894}.
+
+\bibitem{LaurentMassart2000}
+B{\'e}atrice Laurent and Pascal Massart.
+\newblock Adaptive estimation of a quadratic functional by model selection.
+\newblock {\em The Annals of Statistics}, 28(5):1302--1338, 2000.
+\newblock
+  \href{https://doi.org/10.1214/aos/1015957395}{doi:10.1214/aos/1015957395}.
+
+\bibitem{NNS2013}
+Fedor Nazarov, Alon Nishry, and Mikhail Sodin.
+\newblock Log-integrability of {Rademacher} {Fourier} series, with applications
+  to random analytic functions.
+\newblock {\em Algebra i Analiz}, 25(3):147--184, 2013.
+\newblock English version: \emph{St. Petersburg Mathematical Journal},
+  25(3):467--494, 2014,
+  \href{https://doi.org/10.1090/S1061-0022-2014-01300-3}{doi:10.1090/S1061-0022-2014-01300-3}.
+  Consulted version:
+  \href{https://arxiv.org/abs/1301.0529v1}{arXiv:1301.0529v1}, Corollary 1.2.
+
+\bibitem{Raic2019}
+Martin Rai\v{c}.
+\newblock A multivariate {Berry--Esseen} theorem with explicit constants.
+\newblock {\em Bernoulli}, 25(4A):2824--2853, 2019.
+\newblock \href{https://doi.org/10.3150/18-BEJ1072}{doi:10.3150/18-BEJ1072}.
+  Consulted version:
+  \href{https://arxiv.org/abs/1802.06475v4}{arXiv:1802.06475v4}, Theorem 1.1.
+
+\bibitem{RasmussenWilliams2006}
+Carl~Edward Rasmussen and Christopher K.~I. Williams.
+\newblock {\em Gaussian Processes for Machine Learning}.
+\newblock Adaptive Computation and Machine Learning. MIT Press, Cambridge, MA,
+  2006.
+\newblock \href{http://gaussianprocess.org/gpml/}{gaussianprocess.org/gpml}.
+
+\bibitem{RudelsonVershynin2013}
+Mark Rudelson and Roman Vershynin.
+\newblock {Hanson--Wright} inequality and sub-gaussian concentration.
+\newblock {\em Electronic Communications in Probability}, 18(82):1--9, 2013.
+\newblock
+  \href{https://doi.org/10.1214/ECP.v18-2865}{doi:10.1214/ECP.v18-2865}.
+  Consulted version:
+  \href{https://arxiv.org/abs/1306.2872v3}{arXiv:1306.2872v3}, Theorem 1.1.
+
+\bibitem{TaoVu2015}
+Terence Tao and Van Vu.
+\newblock Local universality of zeroes of random polynomials.
+\newblock {\em International Mathematics Research Notices},
+  2015(13):5053--5139, 2015.
+\newblock \href{https://doi.org/10.1093/imrn/rnu084}{doi:10.1093/imrn/rnu084}.
+  Consulted version: \href{https://arxiv.org/abs/1307.4357}{arXiv:1307.4357}.
+
+\bibitem{Mathlib2020}
+{The mathlib Community}.
+\newblock The {Lean} mathematical library.
+\newblock In {\em Proceedings of the 9th {ACM} {SIGPLAN} International
+  Conference on Certified Programs and Proofs ({CPP} 2020)}, pages 367--381.
+  ACM, New York, 2020.
+\newblock
+  \href{https://doi.org/10.1145/3372885.3373824}{doi:10.1145/3372885.3373824}.
+
+\bibitem{Titchmarsh1939}
+E.~C. Titchmarsh.
+\newblock {\em The Theory of Functions}.
+\newblock Oxford University Press, second edition, 1939.
+
+\bibitem{Tsybakov2009}
+Alexandre~B. Tsybakov.
+\newblock {\em Introduction to Nonparametric Estimation}.
+\newblock Springer Series in Statistics. Springer, New York, 2009.
+\newblock \href{https://doi.org/10.1007/b13794}{doi:10.1007/b13794}.
+
+\bibitem{Yakir2022}
+Oren Yakir.
+\newblock Approximately half of the roots of a random {Littlewood} polynomial
+  are inside the disk.
+\newblock {\em Studia Mathematica}, 261(2):227--240, 2021.
+\newblock
+  \href{https://doi.org/10.4064/sm201117-28-1}{doi:10.4064/sm201117-28-1}.
+  Consulted version:
+  \href{https://arxiv.org/abs/2011.06234v2}{arXiv:2011.06234v2}.
+
+\bibitem{ProbabilityApproximationLean}
+Asher Yan.
+\newblock {ProbabilityApproximation}.
+\newblock \url{https://github.com/Polarnova/ProbabilityApproximation}.
+\newblock Release v0.9.6.
+
+\bibitem{SLTLean}
+Yuanhe Zhang, Jason~D. Lee, Fanghui Liu, et~al.
+\newblock {SLT}: {Statistical Learning Theory in Lean} 4.
+\newblock \url{https://github.com/YuanheZ/lean-stat-learning-theory}.
+\newblock Revision 482a1a5.
+
+\end{thebibliography}

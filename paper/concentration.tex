@@ -1,0 +1,576 @@
+\section[Logarithmic concentration for polynomials with random signs]{Logarithmic concentration for polynomials\\with random signs}
+\label{sec:concentration}\label{sec:layer2}
+
+We now estimate $J_N(r)-\log\sigma_N(r)$ for the polynomials with random
+signs. Let $X_r(\theta)=f_N(re^{i\theta})/\sigma_N(r)$, so that
+$J_N(r)-\log\sigma_N(r)=\int\log|X_r|\dd\mu$.
+Recall that $G$ has density $\pi^{-1}e^{-|z|^2}$ on $\mathbb C$.
+We fix $K\ge2$ before letting $N$ tend to infinity.
+Exact bounds and sufficient degree thresholds are collected in
+Appendix~\ref{sec:constants}.
+
+\begin{theorem}[Concentration of the angular logarithm]
+\label{thm:sign-logarithms}
+Fix $K\ge2$. For all sufficiently large $N$, uniformly for
+$r\in[1-K/N,1+K/N]$,
+\begin{align}
+ &\Prob\!\left\{
+ |J_N(r)-\log\sigma_N(r)+\gamma/2|
+       >C(K)N^{-1/32}(\log N)^7\right\}\nonumber\\
+ &\qquad\le C(K)N^{-3/8}+N^{-12}
+                 +C(K)N^{-7/16}(\log N)^{-12}.
+ \label{eq:sign-log-concentration}
+\end{align}
+\end{theorem}
+
+Here the constants and the degree threshold depend only on $K$.
+In particular, these probabilities are summable along $N=j^8$, since there
+$N^{-3/8}=j^{-3}$ and $N^{-7/16}=j^{-7/2}$.
+
+Theorem~\ref{thm:sign-logarithms} provides, at every radius of the
+annulus $[1-K/N,1+K/N]$, the logarithmic bounds that
+Lemmas~\ref{lem:annular-mass} and~\ref{lem:thin-band} require
+(Corollary~\ref{cor:radial-probability}).
+We prove Theorem~\ref{thm:sign-logarithms} at the end of
+Section~\ref{sec:log-integrability}.
+In Section~\ref{sec:h1-rademacher} we use one- and two-point Gaussian
+approximations to control the occupation of small disks by $X_r$, and in
+Section~\ref{sec:log-integrability} we use the logarithmic integrability of
+Nazarov--Nishry--Sodin to control the contribution near zero.
+
+Figure~\ref{fig:angular-logarithm} illustrates the theorem for one nested sequence.
+
+\input{figures/angular-logarithm}
+
+\subsection{One- and two-point bounds}
+\label{sec:h1-rademacher}
+We show that, for radii $r,s\in[1-K/N,1+K/N]$ and for angles $\theta,\phi$
+outside small exceptional sets, the probabilities that $X_r(\theta)$ lies
+in a disk centered at $0$ and that $(X_r(\theta),X_s(\phi))$ lies in a
+product of two such disks differ by $O_K(N^{-1/2})$ from those for one and
+for two independent copies of $G$. Summation by parts shows that the
+covariance matrices are close to $\tfrac12I$, Rai\v{c}'s theorem and an
+interpolation of densities compare the laws with that of $G$, and we then
+deduce bounds for the mean and the variance of the angular occupation of
+a disk.
+
+By the definition of $X_r$,
+\[
+ \begin{pmatrix}\Re X_r(\theta)\\ \Im X_r(\theta)\end{pmatrix}
+ =\sum_{k=0}^N\epsilon_k\frac{r^k}{\sigma_N(r)}
+ \begin{pmatrix}\cos(k\theta)\\ \sin(k\theta)\end{pmatrix}.
+\]
+Since the signs are independent with mean zero and variance one, the
+covariance matrix of $(\Re X_r(\theta),\Im X_r(\theta))$ is given by
+\[
+ V(r,\theta)=\frac1{\sigma_N(r)^2}\sum_{k=0}^Nr^{2k}
+ \begin{pmatrix}
+ \cos^2(k\theta)&\cos(k\theta)\sin(k\theta)\\
+ \cos(k\theta)\sin(k\theta)&\sin^2(k\theta)
+ \end{pmatrix}.
+\]
+For two points, the covariance matrix of
+$(\Re X_r(\theta),\Im X_r(\theta),\Re X_s(\phi),\Im X_s(\phi))$ is the
+$4\times4$ matrix
+\[
+ \begin{pmatrix}
+ V(r,\theta)&V(r,s,\theta,\phi)\\
+ V(r,s,\theta,\phi)^T&V(s,\phi)
+ \end{pmatrix},
+\]
+where
+\[
+ V(r,s,\theta,\phi)=\frac1{\sigma_N(r)\sigma_N(s)}\sum_{k=0}^N(rs)^k
+ \begin{pmatrix}
+ \cos(k\theta)\cos(k\phi)&\cos(k\theta)\sin(k\phi)\\
+ \sin(k\theta)\cos(k\phi)&\sin(k\theta)\sin(k\phi)
+ \end{pmatrix},
+\]
+so that $V(r,\theta)=V(r,r,\theta,\theta)$.
+By the product-to-sum identities with $x,y\in\{k\theta,k\phi\}$, and
+since $\sigma_N(r)^2=\sum_{k=0}^Nr^{2k}$, we get
+\begin{align*}
+ V(r,\theta)&=\frac12I_2+\frac1{2\sigma_N(r)^2}\sum_{k=0}^Nr^{2k}
+ \begin{pmatrix}
+ \cos(2k\theta)&\sin(2k\theta)\\
+ \sin(2k\theta)&-\cos(2k\theta)
+ \end{pmatrix},\\
+ V(r,s,\theta,\phi)&=\frac1{2\sigma_N(r)\sigma_N(s)}\sum_{k=0}^N(rs)^k\\
+ &\quad\times
+ \begin{pmatrix}
+ \cos(k(\theta-\phi))+\cos(k(\theta+\phi))&
+ \sin(k(\theta+\phi))-\sin(k(\theta-\phi))\\
+ \sin(k(\theta+\phi))+\sin(k(\theta-\phi))&
+ \cos(k(\theta-\phi))-\cos(k(\theta+\phi))
+ \end{pmatrix}.
+\end{align*}
+The oscillatory sums in these blocks, in the angles $2\theta$, $2\phi$,
+$\theta-\phi$ and $\theta+\phi$, are small unless one of these angles is
+close to $2\pi\mathbb Z$, and we remove the angles where this happens.
+
+For one point, we remove the set
+$\operatorname{dist}(\theta,\pi\mathbb Z)<N^{-1/2}$, two arcs of length
+$2N^{-1/2}$ centered at $0$ and $\pi$, of normalized measure
+$4N^{-1/2}/(2\pi)=2N^{-1/2}/\pi\le2N^{-1/2}$. Every retained angle
+satisfies
+$\operatorname{dist}(2\theta,2\pi\mathbb Z)=2\operatorname{dist}(\theta,\pi\mathbb Z)\ge2N^{-1/2}$.
+For two points, we remove this set in each coordinate, together with the
+sets $\operatorname{dist}(\theta-\phi,2\pi\mathbb Z)<N^{-1/2}$ and
+$\operatorname{dist}(\theta+\phi,2\pi\mathbb Z)<N^{-1/2}$. For fixed
+$\phi$ each of the last two defines an arc of $\theta$ of normalized length
+$N^{-1/2}/\pi$, so that in the angular square the union of all the
+removed sets has measure at most
+$2N^{-1/2}+2N^{-1/2}+2N^{-1/2}/\pi\le10N^{-1/2}$.
+
+The entries of these matrices are real and imaginary parts of weighted
+exponential sums, which we bound at the retained angles by summation by
+parts.
+Let $r,s\in[1-K/N,1+K/N]$, $N\ge2K$ and $\beta\in\{0,1,2\}$, and for
+$\operatorname{dist}(\psi,2\pi\mathbb Z)>0$ set
+\[
+ b_k=(rs)^k(k/N)^\beta,\qquad S_\ell(\psi)=\sum_{k=0}^\ell e^{ik\psi},
+\]
+where $(k/N)^0=1$, including $k=0$, and $S_{-1}(\psi)=0$.
+Summing the geometric series, and since
+$|1-e^{i\psi}|=2|\sin(\psi/2)|\ge2\operatorname{dist}(\psi,2\pi\mathbb Z)/\pi$,
+we get
+\[
+ S_\ell(\psi)=\frac{1-e^{i(\ell+1)\psi}}{1-e^{i\psi}},\qquad
+ |S_\ell(\psi)|\le\frac2{|1-e^{i\psi}|}
+ \le\frac\pi{\operatorname{dist}(\psi,2\pi\mathbb Z)}.
+\]
+Summation by parts yields
+\[
+ \sum_{k=0}^Nb_ke^{ik\psi}
+ =\sum_{k=0}^Nb_k\bigl(S_k(\psi)-S_{k-1}(\psi)\bigr)
+ =b_NS_N(\psi)+\sum_{k=0}^{N-1}(b_k-b_{k+1})S_k(\psi).
+\]
+For $\beta=0$ the weights are geometric. For $\beta>0$ we have $b_0=0$
+and $b_{k+1}/b_k=(rs)(1+1/k)^\beta$ for $k\ge1$, and these ratios are
+nonincreasing, which implies that the weights first increase and then
+decrease, with either part possibly empty.
+Let $b_*=\max_{k\le N}b_k$. Since $b_k\le(rs)^k\le\max(1,rs)^N$ with
+$rs\le(1+K/N)^2$, and since the variation of weights that first increase
+and then decrease is the rise from $b_0$ to $b_*$ plus the fall from
+$b_*$ to $b_N$, we have
+\begin{align*}
+ b_*&\le(1+K/N)^{2N}\le e^{2K},\\
+ \sum_{k=0}^{N-1}|b_{k+1}-b_k|&=2b_*-b_0-b_N,\\
+ b_N+\sum_{k=0}^{N-1}|b_{k+1}-b_k|
+ &\le b_0+b_N+2b_*\le4e^{2K}.
+\end{align*}
+Consequently, since $4\pi\le10e^{2K}$ for $K\ge2$,
+\begin{equation}
+ \begin{aligned}
+ \left|N^{-1}\sum_{k=0}^N(rs)^k(k/N)^\beta e^{ik\psi}\right|
+ &\le\frac\pi{N\operatorname{dist}(\psi,2\pi\mathbb Z)}
+       \left(b_N+\sum_{k=0}^{N-1}|b_{k+1}-b_k|\right)\\
+ &\le\frac{4\pi e^{2K}}{N\operatorname{dist}(\psi,2\pi\mathbb Z)}
+ \le\frac{10e^{4K}}{N\operatorname{dist}(\psi,2\pi\mathbb Z)}.
+ \end{aligned}                                      \label{eq:layer2-abel}
+\end{equation}
+We keep the larger constant $10e^{4K}$, from which the later bounds are
+computed.
+
+If $N\ge2K$ and $r\in[1-K/N,1+K/N]$, then, since $K/N\le1/2$ and
+$\log(1-x)\ge-2x$ for $0\le x\le1/2$, each term of $\sigma_N(r)^2$
+satisfies
+$e^{-4K}\le(1-K/N)^{2N}\le r^{2k}\le(1+K/N)^{2N}\le e^{2K}$,
+$0\le k\le N$. Summing these $N+1$ terms, we get the radial bounds
+\begin{equation}
+ Ne^{-4K}\le(N+1)e^{-4K}\le\sigma_N(r)^2\le(N+1)e^{2K}\le2Ne^{2K}.
+ \label{eq:radial-bounds}
+\end{equation}
+
+At the retained angles, every entry of $V(r,\theta)-\tfrac12I_2$ is
+$N/(2\sigma_N(r)^2)$ times the real or the imaginary part of the sum in
+\eqref{eq:layer2-abel} with $s=r$, $\beta=0$ and $\psi=2\theta$, and
+every entry of $V(r,s,\theta,\phi)$ is $N/(2\sigma_N(r)\sigma_N(s))$
+times the real or the imaginary part of that sum with $\beta=0$ and
+$\psi=\theta-\phi$, plus or minus that of the same sum with
+$\psi=\theta+\phi$.
+By \eqref{eq:layer2-abel}, the lower bound in \eqref{eq:radial-bounds} and
+the retained distances, these entries are at most, in absolute value,
+\begin{equation}
+ \begin{aligned}
+ \frac N{2\sigma_N(r)^2}
+ \left|\frac1N\sum_{k=0}^Nr^{2k}e^{2ik\theta}\right|
+ &\le\frac{e^{4K}}2\cdot\frac{10e^{4K}}{N\cdot2N^{-1/2}}
+ \le10e^{8K}N^{-1/2},\\
+ \frac N{2\sigma_N(r)\sigma_N(s)}\sum_{\pm}
+ \left|\frac1N\sum_{k=0}^N(rs)^ke^{ik(\theta\pm\phi)}\right|
+ &\le\frac{e^{4K}}2\cdot2\cdot\frac{10e^{4K}}{N\cdot N^{-1/2}}
+ =10e^{8K}N^{-1/2}.
+ \end{aligned}\label{eq:covariance-entries}
+\end{equation}
+The first bound also holds for the entries of $V(s,\phi)-\tfrac12I_2$.
+Since the operator norm of a $d\times d$ matrix is at most $d$ times its
+largest entry in absolute value, it follows that, at the retained
+angles, $V(r,\theta)-\tfrac12I_2$ and the $4\times4$ covariance matrix
+minus $\tfrac12I_4$ have operator norm at most $40e^{8K}N^{-1/2}$.
+In particular, for all sufficiently large $N$, depending only on $K$,
+every eigenvalue lies in $[1/4,3/4]$.
+
+Rai\v{c}'s theorem \cite[Theorem 1.1]{Raic2019} applies to independent
+centered real vectors with total covariance $I_d$, and it states that, for
+a measurable convex set $D$,
+\[
+ \left|\Prob\!\left(\sum_kY_k\in D\right)-\Prob(G_d\in D)\right|
+ \le(42d^{1/4}+16)\sum_k\mathbb E\|Y_k\|^3,
+\]
+where $G_d$ is standard Gaussian in $\mathbb R^d$. More generally, for a
+covariance matrix $\Sigma$ we write $G_\Sigma$ for a centered Gaussian vector
+with covariance $\Sigma$, so that $G_d=G_{I_d}$. Distances and entropies
+between such vectors are those of their laws.
+For two values, the deterministic summands and their covariance are
+\[
+ u_k=\begin{pmatrix}
+ r^k\cos(k\theta)/\sigma_N(r)\\r^k\sin(k\theta)/\sigma_N(r)\\
+ s^k\cos(k\phi)/\sigma_N(s)\\s^k\sin(k\phi)/\sigma_N(s)
+ \end{pmatrix},\qquad
+ \Sigma=\sum_{k=0}^Nu_ku_k^T,
+\]
+so that $\sum_{k=0}^N\epsilon_ku_k$ is the column vector
+$(\Re X_r(\theta),\Im X_r(\theta),\Re X_s(\phi),\Im X_s(\phi))^T$ and
+$\Sigma$ is its covariance matrix, the $4\times4$ matrix above.
+Let $Y_k=\epsilon_k\Sigma^{-1/2}u_k$.
+Since the signs are independent and centered, with $\mathbb E\epsilon_k^2=1$,
+and $\|Y_k\|\le\|\Sigma^{-1/2}\|\|u_k\|\le2\|u_k\|$, because every
+eigenvalue of $\Sigma$ is at least $1/4$, we have, by
+$r^{2k},s^{2k}\le e^{2K}$ and the lower bound in \eqref{eq:radial-bounds},
+\begin{align*}
+ \sum_{k=0}^N\mathbb E[Y_kY_k^T]
+ &=\Sigma^{-1/2}\left(\sum_{k=0}^Nu_ku_k^T\right)\Sigma^{-1/2}
+ =I_4,\\
+ \|u_k\|^2
+ &=\frac{r^{2k}}{\sigma_N(r)^2}+\frac{s^{2k}}{\sigma_N(s)^2}
+ \le\frac{2e^{6K}}N,\\
+ \sum_{k=0}^N\mathbb E\|Y_k\|^3
+ &\le(N+1)\left(\frac{2\sqrt2e^{3K}}{\sqrt N}\right)^3
+ \le32\sqrt2\,e^{9K}N^{-1/2}
+ <46e^{9K}N^{-1/2}.
+\end{align*}
+For one point, we use only the first two coordinates, with
+$\Sigma=V(r,\theta)$, and we obtain the smaller bound
+\[
+ \|u_k\|^2=\frac{r^{2k}}{\sigma_N(r)^2}\le\frac{e^{6K}}N,\qquad
+ \sum_{k=0}^N\mathbb E\|Y_k\|^3
+ \le(N+1)\left(\frac{2e^{3K}}{\sqrt N}\right)^3
+ \le16e^{9K}N^{-1/2}.
+\]
+Disks and products of disks, and their images under whitening, are
+measurable and convex.
+
+To compare the resulting Gaussian with the law of $G_{I_d/2}$, let
+$\Delta=\Sigma-\tfrac12I_d$, where $d=2$ or $4$, so that
+$\|\Delta\|\le40e^{8K}N^{-1/2}$ by the operator norm bound above.
+Let $p_\lambda$ be the centered Gaussian density with covariance $\Sigma_\lambda=\tfrac12I_d+\lambda\Delta$,
+$0\le\lambda\le1$.
+Then every $\Sigma_\lambda$ has eigenvalues in $[1/4,3/4]$, since
+$\|\lambda\Delta\|\le\|\Delta\|\le1/4$ for all sufficiently large $N$.
+Differentiating the density and integrating, we obtain
+\begin{align}
+ \partial_\lambda p_\lambda(x)
+ &=\frac{p_\lambda(x)}2\left\{
+   x^T\Sigma_\lambda^{-1}\Delta\Sigma_\lambda^{-1}x-\operatorname{tr}(\Sigma_\lambda^{-1}\Delta)
+   \right\},\nonumber\\
+ \int_{\mathbb R^d}|\partial_\lambda p_\lambda(x)|\dd x
+ &=\frac12\,\mathbb E\bigl|G_d^T\Sigma_\lambda^{-1/2}\Delta\Sigma_\lambda^{-1/2}G_d
+   -\operatorname{tr}(\Sigma_\lambda^{-1/2}\Delta\Sigma_\lambda^{-1/2})\bigr|\nonumber\\
+ &\le d\|\Sigma_\lambda^{-1/2}\Delta\Sigma_\lambda^{-1/2}\|
+ \le4d\|\Delta\|,\nonumber\\
+ \operatorname{TV}\bigl(G_\Sigma,G_{I_d/2}\bigr)
+ &\le\frac12\int_0^1\int_{\mathbb R^d}|\partial_\lambda p_\lambda(x)|\dd x\dd\lambda
+ \le2d\|\Delta\|
+ \le320e^{8K}N^{-1/2}.\label{eq:tv-circular}
+\end{align}
+The first line follows from
+$\partial_\lambda\log\det\Sigma_\lambda=\operatorname{tr}(\Sigma_\lambda^{-1}\Delta)$
+and
+$\partial_\lambda\Sigma_\lambda^{-1}=-\Sigma_\lambda^{-1}\Delta\Sigma_\lambda^{-1}$,
+and the second from the change of variables
+$x\mapsto\Sigma_\lambda^{-1/2}x$, which carries the law with density
+$p_\lambda$ to that of $G_d$.
+In an orthonormal eigenbasis of the symmetric matrix
+$\Sigma_\lambda^{-1/2}\Delta\Sigma_\lambda^{-1/2}$, whose $d$ eigenvalues
+are at most its norm in absolute value, the squared coordinates of $G_d$
+have mean one, so that the quadratic form and the trace have mean
+absolute value at most $d$ times the norm. The last line follows from
+$p_1-p_0=\int_0^1\partial_\lambda p_\lambda\dd\lambda$, since the
+total variation distance is half the $L^1$ distance between the densities.
+
+Let $F_G(t)=\Prob(|G|\le t)=1-e^{-t^2}$.
+For $t,t'\ge0$, let $D$ be the product of disks
+$\{x\in\mathbb R^4:x_1^2+x_2^2\le t^2,\ x_3^2+x_4^2\le t'^2\}$ when $d=4$,
+and the disk $\{x\in\mathbb R^2:x_1^2+x_2^2\le t^2\}$ when $d=2$.
+Since $\sum_k\epsilon_ku_k=\Sigma^{1/2}\sum_kY_k$ and $\Sigma^{1/2}G_d$
+has the law of $G_\Sigma$, we have
+$\Prob(\sum_k\epsilon_ku_k\in D)=\Prob(\sum_kY_k\in\Sigma^{-1/2}D)$ and
+$\Prob(G_\Sigma\in D)=\Prob(G_d\in\Sigma^{-1/2}D)$, so that, by Rai\v{c}'s
+theorem with the third-moment bounds above and by \eqref{eq:tv-circular},
+for retained angles and pairs,
+\begin{align}
+ &\bigl|\Prob\bigl(\textstyle\sum_k\epsilon_ku_k\in D\bigr)-\Prob(G_{I_d/2}\in D)\bigr|
+ \nonumber\\
+ &\qquad\le\bigl|\Prob\bigl(\textstyle\sum_kY_k\in\Sigma^{-1/2}D\bigr)
+     -\Prob(G_d\in\Sigma^{-1/2}D)\bigr|
+ +\bigl|\Prob(G_\Sigma\in D)-\Prob(G_{I_d/2}\in D)\bigr|
+ \nonumber\\
+ &\qquad\le(42d^{1/4}+16)\cdot46e^{9K}N^{-1/2}+320e^{8K}N^{-1/2}
+ \le C(K)N^{-1/2}.\label{eq:point-bounds}
+\end{align}
+For $d=4$ the left-hand side is
+$|\Prob(|X_r(\theta)|\le t,|X_s(\phi)|\le t')-F_G(t)F_G(t')|$, since the
+two coordinate pairs of $G_{I_4/2}$ are independent copies of $G$, and
+for $d=2$ it is $|\Prob(|X_r(\theta)|\le t)-F_G(t)|$.
+
+Let $A_t=\mu\{\theta:|X_r(\theta)|\le t\}$ be the angular occupation.
+By Tonelli's theorem,
+\begin{align*}
+ \mathbb EA_t&=\int\Prob(|X_r(\theta)|\le t)\dd\mu(\theta),\\
+ \mathbb EA_t^2&=\int\!\!\int
+   \Prob(|X_r(\theta)|\le t,|X_r(\phi)|\le t)\dd\mu(\theta)\dd\mu(\phi).
+\end{align*}
+On the removed sets, of measures at most $2N^{-1/2}$ and $10N^{-1/2}$, the
+integrands differ from $F_G(t)$ and $F_G(t)^2$ by at most one, and on the
+retained angles and pairs we use \eqref{eq:point-bounds}, with $s=r$ and
+$t'=t$ for the pairs.
+Hence, uniformly for $t\ge0$, since $0\le\mathbb EA_t+F_G(t)\le2$,
+\begin{align}
+ |\mathbb EA_t-F_G(t)|&\le2N^{-1/2}+C(K)N^{-1/2}\le C(K)N^{-1/2},\nonumber\\
+ |\mathbb EA_t^2-F_G(t)^2|&\le10N^{-1/2}+C(K)N^{-1/2}\le C(K)N^{-1/2},\nonumber\\
+ \operatorname{Var}(A_t)
+ &=\mathbb EA_t^2-F_G(t)^2-(\mathbb EA_t-F_G(t))(\mathbb EA_t+F_G(t))
+ \nonumber\\
+ &\le|\mathbb EA_t^2-F_G(t)^2|
+       +|\mathbb EA_t-F_G(t)|\,|\mathbb EA_t+F_G(t)|
+ \le C(K)N^{-1/2}.\label{eq:occupation-bounds}
+\end{align}
+The two-point argument also permits different radii and different disk
+thresholds.
+
+\subsection{Logarithmic integrability and angular energy}\label{sec:log-integrability}
+The normalized Fourier coefficients satisfy
+$\sum_{k=0}^N|r^k/\sigma_N(r)|^2=1$.
+By Corollary~1.2 of Nazarov--Nishry--Sodin \cite{NNS2013}, which uses
+normalization in $L^2(\Omega\times\mathbb T)$, we have
+\begin{equation}
+ \mathbb E\int |\log|X_r||^p\dd\mu\le(C_*p)^{6p},\qquad p\ge1,
+                                                        \label{eq:layer2-nns}
+\end{equation}
+where $C_*\ge1$ is an absolute constant, which does not depend on the
+normalized coefficients.
+Here zeros on the circle give only integrable logarithmic singularities.
+By Parseval's identity, the angular energy satisfies, for every choice of
+signs,
+\begin{equation}
+ \int|X_r|^2\dd\mu=\frac1{\sigma_N(r)^2}\sum_{k=0}^N\epsilon_k^2r^{2k}=1.
+                                                        \label{eq:layer2-energy}
+\end{equation}
+
+We clip the logarithm at $\pm T$, control the mean and the variance of
+the clipped integral by the occupation bounds, and control the two tails
+by the logarithmic moments and the angular energy outside exceptional
+events.
+Table~\ref{tab:clipping-level} lists the three quantities that depend on
+the clipping level $T$ and what each requires at $T=c\log N$.
+\begin{table}[ht]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Quantity & Bound & At $T=c\log N$ & Requirement\\
+\midrule
+Gaussian mass of $\{|z|\le e^{-T}\}$ & $F_G(e^{-T})\le e^{-2T}$ & $N^{-2c}$ & tends to zero\\
+Chebyshev bound for $A_{e^{-T}}$ & $C(K)N^{-1/2}e^{4T}$ & $C(K)N^{4c-1/2}$ & summable in $j$\\
+Lower tail ($e^{-2T}\ge N^{-1/2}$) & order $(\log N)^7e^{-T}$ & $(\log N)^7N^{-c}$ & tends to zero\\
+\bottomrule
+\end{tabular}
+\caption{The quantities in the clipping argument of
+Lemma~\ref{lem:clipping} that depend on the clipping level $T=c\log N$,
+for signs, where $H=C(K)$.
+The third column holds for the last row when $c\le1/4$. At $N=j^8$ the
+second is $C(K)j^{32c-4}$, which is summable when $32c-4<-1$, that is,
+$c<3/32$.}
+\label{tab:clipping-level}
+\end{table}
+The first and the last quantities tend to zero for every $c>0$, so that
+any $c$ in $(0,3/32)$ would do, and we take $c=1/32$, which makes the
+lower tail $(\log N)^7N^{-1/32}$, the error term of
+Theorem~\ref{thm:sign-logarithms}.
+Then $T=(\log N)/32$, so that $e^{-2T}=N^{-1/16}\ge N^{-1/2}$,
+$e^{-T}=N^{-1/32}$ and $N^{-1/2}e^{4T}=N^{-3/8}$, which is $j^{-3}$ at
+$N=j^8$.
+We state the argument for coefficients that need not be signs, since
+Section~\ref{sec:layer2-models} applies it to other coefficient
+distributions.
+
+Theorem~\ref{thm:T1}, which we apply below, uses two facts about the
+standard complex Gaussian variable $G$. For every $T\ge0$, since
+$F_G(e^{-\tau})\le e^{-2\tau}$ and
+$\Prob(|G|>e^\tau)\le e^{-2\tau}\mathbb E|G|^2=e^{-2\tau}$,
+\begin{equation}
+ \int_T^\infty\Prob(|G|<e^{-\tau})\dd\tau\le\tfrac12e^{-2T},\qquad
+ \int_T^\infty\Prob(|G|>e^\tau)\dd\tau\le\tfrac12e^{-2T}.
+ \label{eq:gaussian-log-tails}
+\end{equation}
+Since $|G|^2$ has the exponential distribution with mean one, the
+classical integral for Euler's constant gives
+\begin{equation}
+ \mathbb E\log|G|=\frac12\,\mathbb E\log(|G|^2)
+ =\frac12\int_0^\infty e^{-y}\log y\dd y
+ =-\frac\gamma2.
+ \label{eq:euler-centering}
+\end{equation}
+
+\begin{lemma}[Clipping]\label{lem:clipping}
+Let $N\ge e$ and $r>0$, and let $X_r$ and $A_t$ be defined as above for a
+random polynomial $f_N$ whose coefficients need not be signs.
+Let $H\ge0$, $C>0$ and $B_E>0$ be constants and $E$ an event such that,
+for all $t\ge0$ and $p\ge1$,
+\begin{gather*}
+ |\mathbb EA_t-F_G(t)|\le HN^{-1/2},\qquad
+ \operatorname{Var}(A_t)\le HN^{-1/2},\\
+ \int_E\int|\log|X_r||^p\dd\mu\dd\Prob\le(Cp)^{6p},
+\end{gather*}
+and $\int|X_r|^2\dd\mu\le B_E$ on $E$. Let $T=(\log N)/32$ and
+\begin{align*}
+ \varepsilon&=N^{-1/32}(\log N)^7+2HTN^{-1/2}\\
+ &\quad+(4eC)^6\sqrt{2+H}\,N^{-1/32}(\log N)^7+(B_E/2+1)N^{-1/16}\\
+ &\le\bigl(2+2H+(4eC)^6\sqrt{2+H}+B_E/2\bigr)N^{-1/32}(\log N)^7.
+\end{align*}
+Then
+\[
+ \Prob\{|J_N(r)-\log\sigma_N(r)+\gamma/2|>\varepsilon\}
+ \le HN^{-3/8}+N^{-12}+\frac H{256}N^{-7/16}(\log N)^{-12}
+ +\Prob(E^c).
+\]
+\end{lemma}
+
+\begin{proof}
+This is Theorem~\ref{thm:T1} in the variant form given at the end of its
+statement, with $X=X_r$,
+$d_1=v=HN^{-1/2}$, $\beta=6$, $E_H=E$, $T=(\log N)/32$,
+$u=N^{-1/32}(\log N)^7$, $b=N^{-1/16}$, $q=\lceil\log N\rceil$ and
+$\lambda=(2e\log N/q)^6\log N$. Its hypotheses hold, since the
+occupation bounds of the lemma are the bounds on $\mathbb EA_t$ and
+$\operatorname{Var}(A_t)$ of that form, the moment bound of the lemma
+is \eqref{eq:event-log-moment-bound} with $E_H=E$ and $\beta=6$, and
+$\int|X_r|^2\dd\mu\le B_E$ on $E$.
+For $N\ge e$ we have $\log N\le q\le\log N+1\le2\log N$, so that
+$\lambda\ge e^6\log N>1$,
+\[
+ \lambda(2Cq)^6
+ =\Bigl(\frac{2e\log N}q\Bigr)^6(\log N)(2Cq)^6
+ =(4eC)^6(\log N)^7
+\]
+and
+\[
+ \lambda^{-2q}
+ =\left[\left(\frac q{2e\log N}\right)^{12}(\log N)^{-2}\right]^q
+ \le\bigl[e^{-12}(\log N)^{-2}\bigr]^q
+ \le N^{-12},
+\]
+where the last two steps use $q\le2\log N$, $\log N\ge1$ and
+$q\ge\log N$. By the first identity, the Markov event for $U$ in the
+proof of Theorem~\ref{thm:T1} is $E\cap\{U>(4eC)^{12}(\log N)^{14}\}$,
+where $U=\int|\log|X_r||^2\dd\mu$.
+Since $e^{-2T}=N^{-1/16}$ and $N^{-1/2}\le N^{-1/16}$,
+\[
+ \sqrt{e^{-2T}+d_1+b}=\sqrt{2N^{-1/16}+HN^{-1/2}}
+ \le\sqrt{2+H}\,N^{-1/32},
+\]
+so that the error $\eta_{\log}$ of \eqref{eq:T1-error} is at most
+$\varepsilon$. The first three terms of \eqref{eq:T1-failure} are
+$v/b^2=HN^{-1/2}N^{1/8}=HN^{-3/8}$, $\lambda^{-2q}\le N^{-12}$ and
+$4T^2v/u^2=4HT^2N^{-7/16}(\log N)^{-14}=(H/256)N^{-7/16}(\log N)^{-12}$,
+since $4T^2=(\log N)^2/256$, and $p_E+p_H$ is replaced by $\Prob(E^c)$.
+Since $J_N(r)-\log\sigma_N(r)=\int\log|X_r|\dd\mu$ and
+$\mathbb E\log|G|=-\gamma/2$ by \eqref{eq:euler-centering}, this is the
+bound of the lemma. The bound on $\varepsilon$ in the statement uses
+$TN^{-1/2}\le N^{-1/32}(\log N)^7$ and
+$N^{-1/16}\le N^{-1/32}(\log N)^7$ for $N\ge e$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sign-logarithms}]
+By \eqref{eq:occupation-bounds}, \eqref{eq:layer2-nns} and
+\eqref{eq:layer2-energy}, Lemma~\ref{lem:clipping} applies with $H$ the
+constant $C(K)$ of \eqref{eq:occupation-bounds}, $C=C_*$, $E=\Omega$ and
+$B_E=1$.
+Since $C_*$ is an absolute constant, its error $\varepsilon$ is at most
+$C(K)N^{-1/32}(\log N)^7$, and, since $\Prob(E^c)=0$, its probability
+bound is at most the right-hand side of
+\eqref{eq:sign-log-concentration}.
+All constants above depend only on $K$, and all bounds hold uniformly
+for $r\in[1-K/N,1+K/N]$.
+\end{proof}
+
+\subsection{Radial mass and thin bands with high probability}
+
+\begin{corollary}[Annular mass and thin bands]\label{cor:radial-probability}
+Fix $K\ge2$ and $0<\kappa\le1/64$, and take $N$ sufficiently large.
+Outside four events, each of probability at most the right-hand side of
+\eqref{eq:sign-log-concentration},
+\begin{equation}
+ \frac{\#\{\alpha:||\alpha|-1|>K/N\}}N
+ \le\frac{2\log2}{K}+C(K)N^{-1/32}(\log N)^7.
+                                                        \label{eq:sign-annular-mass}
+\end{equation}
+Outside five further events of the same kind, for
+$q=-1,0,1$,
+\begin{equation}
+ \left|\frac{\nu_N(1+qN^{-1-\kappa})}N-\frac12\right|
+ \le2N^{-\kappa}+C(K)N^{\kappa-1/32}(\log N)^7.
+                                                        \label{eq:sign-thin-band}
+\end{equation}
+\end{corollary}
+
+By Theorem~\ref{thm:sign-logarithms}, the sum of the probabilities of
+these nine exceptional events is summable at $N=j^8$.
+
+\begin{proof}
+We apply the deterministic Lemmas~\ref{lem:annular-mass}
+and~\ref{lem:thin-band} outside the exceptional events of
+Theorem~\ref{thm:sign-logarithms}, at the radii that these lemmas use.
+Their polynomial hypothesis holds, since $f_N(0)=\epsilon_0\ne0$.
+
+The four radii $r_i=1+x_i/N$ of Lemma~\ref{lem:annular-mass} lie in
+$[1-K/N,1+K/N]$, and hence, by Theorem~\ref{thm:sign-logarithms}, the
+first hypothesis of Lemma~\ref{lem:annular-mass} holds outside the four
+logarithmic exceptional events, with $\varepsilon=C(K)N^{-1/32}(\log N)^7$.
+By Lemma~\ref{lem:profile-rate}, which applies since $|x_i|\le K$ and
+$N\ge2K$, the second hypothesis holds with
+$D=K^2+e^{4K}/2$, and $\varepsilon+D/N\le K/8$ for all sufficiently large $N$.
+Therefore Lemma~\ref{lem:annular-mass} and
+$1/N\le N^{-1/32}(\log N)^7$ for $N\ge3$ yield
+\begin{align*}
+ \frac{\#\{\alpha:||\alpha|-1|>K/N\}}N
+ &\le\frac{2\log2}K+\frac8K\Big(C(K)N^{-1/32}(\log N)^7
+       +\frac{K^2+e^{4K}/2}N\Big)\\
+ &\le\frac{2\log2}K+\frac8K\Big(C(K)+K^2+\frac{e^{4K}}2\Big)
+       N^{-1/32}(\log N)^7\\
+ &\le\frac{2\log2}{K}+C(K)N^{-1/32}(\log N)^7,
+\end{align*}
+which is \eqref{eq:sign-annular-mass}.
+
+The five radii $1+qN^{-1-\kappa}$, $q=-2,\dots,2$, satisfy
+$|qN^{-1-\kappa}|\le2N^{-1-\kappa}\le K/N$, since $N^{-\kappa}\le1$ and
+$K\ge2$, so that they lie in the same annulus.
+Outside the five logarithmic exceptional events at these radii, the
+hypothesis of Lemma~\ref{lem:thin-band} holds with
+$\varepsilon=C(K)N^{-1/32}(\log N)^7$, and hence the lemma, which applies
+for $N\ge4$, bounds the left-hand side of \eqref{eq:sign-thin-band} by
+$2N^{-\kappa}+4C(K)N^{-1/32}(\log N)^7N^{\kappa}
+=2N^{-\kappa}+4C(K)N^{\kappa-1/32}(\log N)^7$.
+Both terms tend to zero, since $\kappa\le1/64<1/32$.
+\end{proof}
+
+Figure~\ref{fig:annulus} compares the fraction of roots outside the
+annulus with $2\log2/K$, the part of \eqref{eq:sign-annular-mass} that
+does not tend to zero.
+Panel (a) also shows the limit $1-\{\Phi(K)-\Phi(-K)\}$ of the fraction,
+and panel (b) shows $K$ times its difference from this limit, with
+pointwise 95\% bootstrap bands, both over 77 sequences.
+
+\input{figures/annulus}

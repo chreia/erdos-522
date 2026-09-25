@@ -1,0 +1,72 @@
+{
+  "canvas": "Uncropped, exactly 5.8 inches wide; include at full text width.",
+  "data_sha256": {
+    "data/annulus.csv": "477de875acc459f7d298a43250c217aa3aaa7bddbbf71f33bffe0e8c0346cd59",
+    "data/blob.csv": "f5c05de548c71599f8bc5d640df83d896dd904fec165829e43a0a3e8666dfb00",
+    "data/bootstrap-fits.json": "21838d6882ae2bf8544169e974a854e2d53a210e516ea48b236335f434fd5126",
+    "data/diagnostic-scaling.csv": "972b9762cfd8dad0c2f2872d2745bcd9998132819a098cdfec3f3bfb1cd65d01",
+    "data/logarithmic-means.csv": "8f577f0092bb0cfdeb969cfb7352cf819638fb653459ea0e68e1b85690dcb807",
+    "data/occupation-means.csv": "11ada42a24f4d65bb977e80577d5f8ab6505709a1e67d73f977c3f2f74ca8275",
+    "data/radial-profile.csv": "6cdde55c9cff38cc1f3de6419f8c9e5fbe401d71a2c6a276f3c5532e21cafe10",
+    "data/residuals-by-degree.csv": "59a613c0832670376cb79c30333107de96c379122e557e1e978a7119545fdc40",
+    "data/sequence-statistics.npz": "ab45586b684180a02ad27936d6fbbbf6aa3dd91ecb82ae334b6b7c2eacb43ad9",
+    "data/small-derivative-supplement.csv": "da08936ad3c2ab83b0c393a2b2905834d42811d22864e28b40cf0bc4e3e8a670",
+    "data/small-derivative.csv": "2c70996ba3feeb48e4b9a1cd295c8b1e0b841c207e387b91ecc2bcdebfbe28ca",
+    "matching.npz": "b83dbe87b0b9a4830947acaa823dda9331040463270bd89ab0bad09abcca2431",
+    "metadata.json": "092f4a709c3ed67039290b9b4000ca6a1b484d0b215e52a7df47cdfa6f50e11e"
+  },
+  "figures": {
+    "annulus": {
+      "height_inches": 3.2,
+      "text_sizes_pt": [
+        9.0,
+        10.0
+      ],
+      "width_inches": 5.8
+    },
+    "radial-profile": {
+      "height_inches": 6.6,
+      "text_sizes_pt": [
+        9.0,
+        10.0
+      ],
+      "width_inches": 5.8
+    },
+    "root-matching": {
+      "height_inches": 3.5,
+      "text_sizes_pt": [
+        9.0,
+        9.5,
+        10.0
+      ],
+      "width_inches": 5.8
+    },
+    "small-derivative": {
+      "height_inches": 3.3,
+      "text_sizes_pt": [
+        9.0,
+        10.0
+      ],
+      "width_inches": 5.8
+    }
+  },
+  "font_family": "STIXGeneral",
+  "math_scripts": "Mathematical subscripts and superscripts use the font's normal reduced size.",
+  "mathtext_fontset": "stix",
+  "matplotlib_version": "3.11.1",
+  "outputs_sha256": {
+    "annulus.pdf": "8f8acf3091589377fabb1384eeb6aba6dad4533e6986c0bb38e4a43f9ac6c008",
+    "annulus.svg": "0640ff3a8a5f896374ff15af5af93100cc308e348fd850424ffdd922e0279b4a",
+    "radial-profile.pdf": "13c53009ac17c2fa896970b7299242d0856f6d74e44c142520850227c4ef8f86",
+    "radial-profile.svg": "effed7d4008e4544108fa5628cc267a8308c39526ae3a64ea80f217bc60fc1a4",
+    "root-matching.pdf": "ea29de7032b886294c8958d4191c1721dc0dfa693169b2ae9d30d937d7fc26f8",
+    "root-matching.svg": "43340231d0244f612eb60f72c7e3cd858f213f2aba502ad68a310c9973674dd9",
+    "small-derivative.pdf": "755e3126575ece954026b4552cb0bf6d9097ce91082a56ccb4b5a77fb5198084",
+    "small-derivative.svg": "672886f0bd2565d93ce26bf12c1b7a42967bd34d480c604d34359882b28c176b"
+  },
+  "source_sha256": "353cf5bd69832d1abb1ba4f8f689a63fb05e23e563f1351100e03376d30de626",
+  "text_size_range_pt": [
+    9,
+    10
+  ]
+}

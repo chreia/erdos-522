@@ -1,0 +1,19 @@
+# Modified in 2026 by Sebastien Kawada: ported to Lean v4.34.0 and Mathlib 5ed2965.
+name = "ProbabilityApproximation"
+version = "0.9.7"
+defaultTargets = ["ProbabilityApproximation"]
+releaseRepo = "https://github.com/Polarnova/ProbabilityApproximation"
+preferReleaseBuild = false
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.34.0"
+
+[[lean_lib]]
+name = "ProbabilityApproximation"

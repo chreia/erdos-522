@@ -1,0 +1,1062 @@
+\section{General concentration and counting estimates}
+\label{sec:general-estimates}\label{sec:layer1}
+
+Let $(a_k)_{k\geq0}$ be a sequence of random complex coefficients on one
+probability space, and put
+\[
+ f_N(z)=\sum_{k=0}^N a_kz^k.
+\]
+The same coefficient sequence is used for all degrees, and in particular
+$\deg f_N\leq N$ when $f_N$ is nonzero.
+Let $\sigma_N(r)>0$ be deterministic, and write
+\[
+ J_N(r)=\int_{\mathbb T}\log|f_N(re^{i\theta})|\dd\mu(\theta),
+\]
+where $\mu$ is the normalized angular measure. Deterministic counting
+statements concern nonzero polynomials, and in probabilistic
+applications we include the case of an identically zero polynomial in an
+explicit exceptional event.
+
+\subsection{Angular occupation and logarithmic integrals}
+
+\begin{namedhypothesis}[One- and two-point occupation bounds]\phantomsection\label{hyp:occupation}
+For fixed $N,r$, we set
+\[
+ X(\theta)=\frac{f_N(re^{i\theta})}{\sigma_N(r)}.
+\]
+Let $G$ have density $\pi^{-1}e^{-|z|^2}$ on $\C$. We set
+\[
+ F_G(t)=\Prob(|G|\leq t)=1-e^{-t^2}.
+\]
+There are measurable exceptional sets
+$E_1\subset\mathbb T$, $E_2\subset\mathbb T^2$ with
+$\mu(E_1)\leq\eta_1$, $(\mu\otimes\mu)(E_2)\leq\eta_2$, such that, for
+all $s,t\geq0$,
+\[
+ \left|\Prob(|X(\theta)|\leq t)-F_G(t)\right|\leq\delta_1
+       \quad(\theta\notin E_1),
+\]
+\[
+ \left|\Prob(|X(\theta)|\leq s,|X(\phi)|\leq t)-F_G(s)F_G(t)\right|
+       \leq\delta_2\quad((\theta,\phi)\notin E_2).
+\]
+\end{namedhypothesis}
+In the two-point bound we compare with a pair of independent standard
+complex Gaussians, and if the normal approximation yields a correlated
+Gaussian pair, then $\delta_2$ includes the error of the comparison with
+this independent pair.
+
+\begin{namedhypothesis}[Logarithmic moments and energy]\phantomsection\label{hyp:logenergy}
+For fixed constants $C>0$, $\beta>0$, and for all real $p>1$,
+\begin{equation}
+ \E\int_{\mathbb T}|\log|X(\theta)||^p\dd\mu(\theta)
+       \leq(Cp)^{\beta p}. \label{eq:log-moment-bound}
+\end{equation}
+We will also use the following eventwise bound on an event
+$E_H$ with $\Prob(E_H^c)\leq p_H$:
+\begin{equation}
+ \E\left[\boldsymbol1_{E_H}
+       \int_{\mathbb T}|\log|X(\theta)||^p\dd\mu(\theta)\right]
+       \leq(Cp)^{\beta p}\qquad(p>1). \label{eq:event-log-moment-bound}
+\end{equation}
+Here the expectation is the integral over $E_H$. We evaluate the
+integrand only on that event. This also defines the eventwise bound when the angular
+integral is infinite on $E_H^c$.
+The exact angular energy identity is
+\begin{equation}
+ \int_{\mathbb T}|X(\theta)|^2\dd\mu(\theta)=1
+       \quad\hbox{almost surely}. \label{eq:exact-angular-energy}
+\end{equation}
+The upper-energy probability bound is
+\begin{equation}
+ \Prob\left(\int_{\mathbb T}|X(\theta)|^2\dd\mu(\theta)>B_E\right)
+       \leq p_E \qquad(B_E>0). \label{eq:angular-energy-tail}
+\end{equation}
+\end{namedhypothesis}
+The full bound \eqref{eq:log-moment-bound} is the case
+$E_H=\Omega$ and $p_H=0$ of \eqref{eq:event-log-moment-bound}.
+We use the tail form \eqref{eq:angular-energy-tail} when the coefficient
+moduli are random, and under \eqref{eq:exact-angular-energy} we can take
+$B_E=1$, $p_E=0$.
+For the coefficient distributions of Sections~\ref{sec:concentration}
+and~\ref{sec:layer2-models}, these logarithmic bounds hold for every
+$p\ge1$ (see \eqref{eq:layer2-nns}, \eqref{eq:layer2-gaussianlog} and
+Proposition~\ref{prop:coefficient-transfer}), but in the proof of
+Theorem~\ref{thm:T1} we use them only for $p=2q\ge2$.
+
+\begin{theorem}[Logarithmic integral concentration]\label{thm:T1}
+Assume the \hyperref[hyp:occupation]{one- and two-point occupation bounds},
+the eventwise logarithmic bound \eqref{eq:event-log-moment-bound},
+and the energy bound \eqref{eq:angular-energy-tail}. We set
+\[
+ d_1=\delta_1+\eta_1,\qquad d_2=\delta_2+\eta_2,
+ \qquad v=d_2+2d_1.
+\]
+For all $T>0$, $u>0$, $b>0$, $q\geq1$, and $\lambda>1$, we set
+\begin{align}
+ \eta_{\log}={}&u+2Td_1+\lambda(2Cq)^\beta
+        \sqrt{e^{-2T}+d_1+b}
+        +(B_E/2+1)e^{-2T}, \label{eq:T1-error}\\
+ p_{\rm fail}={}&v/b^2+\lambda^{-2q}+4T^2v/u^2+p_E+p_H. \label{eq:T1-failure}
+\end{align}
+Then
+\[
+ \Prob\left(\left|J_N(r)-\log\sigma_N(r)
+                   -\E\log|G|\right|>\eta_{\log}\right)\leq p_{\rm fail},
+ \qquad \E\log|G|=-\gamma/2.
+\]
+The same conclusion holds if, in place of the occupation bounds,
+$|\E A_t-F_G(t)|\leq d_1$ and $\operatorname{Var}(A_t)\leq v$ for all
+$t\geq0$ and some $d_1,v\geq0$, where
+$A_t=\mu\{\theta:|X(\theta)|\leq t\}$. If moreover
+$\int_{\mathbb T}|X|^2\dd\mu\leq B_E$ on $E_H$, then $p_E+p_H$ in
+\eqref{eq:T1-failure} may be replaced by $\Prob(E_H^c)$.
+\end{theorem}
+
+\begin{proof}
+The idea is to clip the logarithm at $\pm T$, to estimate the mean and
+the variance of the clipped integral by the occupation bounds, and to
+control the lower tail that the clipping removes by the logarithmic
+moments and the occupation bound at $e^{-T}$, and the upper tail by the
+energy bound. Table~\ref{tab:T1-events} lists the five exceptional events,
+one for each term of \eqref{eq:T1-failure}.
+
+We set
+$A_t=\int_{\mathbb T}\boldsymbol1_{\{|X(\theta)|\leq t\}}\dd\mu(\theta)$.
+By Tonelli's theorem, we have
+\begin{align*}
+ \E A_t
+ &=\int_{\mathbb T}\Prob(|X(\theta)|\leq t)\dd\mu(\theta),\\
+ \E A_t^2
+ &=\E\int_{\mathbb T^2}
+      \boldsymbol1_{\{|X(\theta)|\leq t\}}
+      \boldsymbol1_{\{|X(\phi)|\leq t\}}\dd\mu(\theta)\dd\mu(\phi)\\
+ &=\int_{\mathbb T^2}
+      \Prob(|X(\theta)|\leq t,|X(\phi)|\leq t)
+         \dd\mu(\theta)\dd\mu(\phi).
+\end{align*}
+By these identities and the
+\hyperref[hyp:occupation]{one- and two-point occupation bounds}, with $s=t$
+in the second, and since the probabilities and $F_G(t)$ lie in $[0,1]$, we
+have, for every $t\geq0$,
+\begin{align*}
+ |\E A_t-F_G(t)|
+ &=\left|\int_{\mathbb T}\bigl(\Prob(|X(\theta)|\leq t)-F_G(t)\bigr)
+       \dd\mu(\theta)\right|\\
+ &\leq\int_{\mathbb T\setminus E_1}\delta_1\dd\mu
+       +\int_{E_1}1\dd\mu
+ \leq\delta_1+\mu(E_1)
+ \leq d_1,\\
+ |\E A_t^2-F_G(t)^2|
+ &=\left|\int_{\mathbb T^2}\bigl(\Prob(|X(\theta)|\leq t,|X(\phi)|\leq t)
+       -F_G(t)^2\bigr)\dd(\mu\otimes\mu)\right|\\
+ &\leq\int_{\mathbb T^2\setminus E_2}\delta_2\dd(\mu\otimes\mu)
+       +\int_{E_2}1\dd(\mu\otimes\mu)
+ \leq\delta_2+(\mu\otimes\mu)(E_2)
+ \leq d_2.
+\end{align*}
+Since both $\E A_t$ and $F_G(t)$ belong to $[0,1]$, we have
+\begin{gather*}
+ |(\E A_t)^2-F_G(t)^2|
+ =|\E A_t-F_G(t)|\,|\E A_t+F_G(t)|
+ \leq2d_1,\\
+ \operatorname{Var}(A_t)
+ =\E A_t^2-(\E A_t)^2
+ \leq|\E A_t^2-F_G(t)^2|+|(\E A_t)^2-F_G(t)^2|
+ \leq d_2+2d_1
+ =v.
+\end{gather*}
+From here on, the occupation bounds enter only through the bounds
+$|\E A_t-F_G(t)|\leq d_1$ and $\operatorname{Var}(A_t)\leq v$, which
+proves the first variant in the statement.
+
+Since $F_G(e^{-T})=1-\exp(-e^{-2T})\leq e^{-2T}$, taking $t=e^{-T}$ in
+these bounds and applying Chebyshev's inequality, we obtain
+\begin{align*}
+ \E A_{e^{-T}}
+ &\leq F_G(e^{-T})+d_1
+ \leq e^{-2T}+d_1,\\
+ \Prob(A_{e^{-T}}>e^{-2T}+d_1+b)
+ &\leq\Prob(A_{e^{-T}}-\E A_{e^{-T}}>b)
+ \leq\frac{\operatorname{Var}(A_{e^{-T}})}{b^2}
+ \leq\frac v{b^2}.
+\end{align*}
+We call the event $\{A_{e^{-T}}>e^{-2T}+d_1+b\}$ the Chebyshev event for
+$A_{e^{-T}}$.
+
+On $E_H$, we set
+$U=\int_{\mathbb T}|\log|X(\theta)||^2\dd\mu(\theta)$.
+By Jensen's inequality and \eqref{eq:event-log-moment-bound} with $p=2q$,
+we have
+\begin{align*}
+ U^q
+ &=\left(\int_{\mathbb T}|\log|X(\theta)||^2\dd\mu(\theta)\right)^q
+ \leq\int_{\mathbb T}|\log|X(\theta)||^{2q}\dd\mu(\theta),\\
+ \E[\boldsymbol1_{E_H}U^q]
+ &\leq\E\left[\boldsymbol1_{E_H}
+       \int_{\mathbb T}|\log|X(\theta)||^{2q}\dd\mu(\theta)\right]
+ \leq(2Cq)^{2\beta q}.
+\end{align*}
+Applying Markov's inequality to $U^q$ on $E_H$, we get
+\[
+ \Prob\{\omega\in E_H:U>\lambda^2(2Cq)^{2\beta}\}
+ \leq\frac{\E[\boldsymbol1_{E_H}U^q]}
+              {\lambda^{2q}(2Cq)^{2\beta q}}
+ \leq\frac{(2Cq)^{2\beta q}}{\lambda^{2q}(2Cq)^{2\beta q}}
+ =\lambda^{-2q}.
+\]
+We call the event on the left the Markov event for $U$.
+
+We now truncate the logarithm and set
+$\ell_T(z)=\max(-T,\min(T,\log|z|))$ and
+$L_T=\int_{\mathbb T}\ell_T(X)\dd\mu$.
+For every $z\in\C$, including $z=0$, we have the layer-cake identity
+\[
+ \ell_T(z)=T-\int_{-T}^T\boldsymbol1_{\{|z|\leq e^\tau\}}\dd\tau,
+\]
+since the set of $\tau\in[-T,T]$ with $|z|\leq e^\tau$ is
+$[\max(-T,\log|z|),T]$ if $\log|z|\leq T$ (with $\log0=-\infty$), and is
+empty otherwise.
+By the layer-cake identity at $z=X(\theta)$ and at $z=G$, Tonelli's
+theorem and $\Prob(|G|\leq e^\tau)=F_G(e^\tau)$, we have
+\begin{align*}
+ L_T
+ &=\int_{\mathbb T}\left(T-\int_{-T}^T
+         \boldsymbol1_{\{|X(\theta)|\leq e^\tau\}}\dd\tau\right)\dd\mu(\theta)
+ =T-\int_{-T}^T A_{e^\tau}\dd\tau,\\
+ \E L_T-\E\ell_T(G)
+ &=\int_{-T}^T\bigl(F_G(e^\tau)-\E A_{e^\tau}\bigr)\dd\tau,\\
+ L_T-\E L_T
+ &=-\int_{-T}^T(A_{e^\tau}-\E A_{e^\tau})\dd\tau.
+\end{align*}
+By these identities, the bounds $|\E A_t-F_G(t)|\leq d_1$ and
+$\operatorname{Var}(A_t)\leq v$, and the Cauchy--Schwarz inequality, we
+have
+\begin{align*}
+ |\E L_T-\E\ell_T(G)|
+ &\leq\int_{-T}^T|\E A_{e^\tau}-F_G(e^\tau)|\dd\tau
+ \leq2Td_1,\\
+ |\operatorname{Cov}(A_{e^\tau},A_{e^{\tau'}})|
+ &\leq\sqrt{\operatorname{Var}(A_{e^\tau})\operatorname{Var}(A_{e^{\tau'}})}
+ \leq v,
+\end{align*}
+and hence, by Fubini's theorem, which applies since
+$|A_{e^\tau}-\E A_{e^\tau}|\leq1$,
+\begin{align*}
+ &\operatorname{Var}(L_T)
+ =\E\left(\int_{-T}^T(A_{e^\tau}-\E A_{e^\tau})\dd\tau\right)^2\\
+ &\quad=\int_{-T}^T\int_{-T}^T
+       \E[(A_{e^\tau}-\E A_{e^\tau})(A_{e^{\tau'}}-\E A_{e^{\tau'}})]
+       \dd\tau\dd\tau'\\
+ &\quad=\int_{-T}^T\int_{-T}^T
+       \operatorname{Cov}(A_{e^\tau},A_{e^{\tau'}})\dd\tau\dd\tau'
+ \leq\int_{-T}^T\int_{-T}^T
+       |\operatorname{Cov}(A_{e^\tau},A_{e^{\tau'}})|\dd\tau\dd\tau'
+ \leq4T^2v.
+\end{align*}
+Applying Chebyshev's inequality again, we get
+\[
+ \Prob(|L_T-\E L_T|>u)
+ \leq\frac{\operatorname{Var}(L_T)}{u^2}
+ \leq\frac{4T^2v}{u^2}.
+\]
+We call the event on the left the Chebyshev event for $L_T$.
+
+On $E_H$, outside the Chebyshev event for $A_{e^{-T}}$ and the Markov
+event for $U$, by the Cauchy--Schwarz inequality we bound the negative
+truncation error by
+\begin{align*}
+ \int_{\{|X|<e^{-T}\}}(-\log|X|-T)\dd\mu
+ &\leq\int_{\{|X|<e^{-T}\}}|\log|X||\dd\mu\\
+ &\leq\left(\int_{\mathbb T}|\log|X||^2\dd\mu\right)^{1/2}
+       \left(\int_{\mathbb T}
+         \boldsymbol1_{\{|X|<e^{-T}\}}\dd\mu\right)^{1/2}\\
+ &\leq\sqrt{UA_{e^{-T}}}
+ \leq\lambda(2Cq)^\beta\sqrt{e^{-2T}+d_1+b}.
+\end{align*}
+On the energy event $\{\int_{\mathbb T}|X|^2\dd\mu\leq B_E\}$, by
+Tonelli's theorem applied to
+$(y-T)_+=\int_T^\infty\boldsymbol1_{\{y>\tau\}}\dd\tau$ at $y=\log|X|$
+and by Markov's inequality for $\mu$, we bound the positive truncation
+error by
+\begin{align*}
+ \int_{\{|X|>e^T\}}(\log|X|-T)\dd\mu
+ &=\int_T^\infty\mu\{|X|>e^\tau\}\dd\tau
+ \leq\int_T^\infty e^{-2\tau}\Bigl(\int_{\mathbb T}|X|^2\dd\mu\Bigr)\dd\tau\\
+ &\leq\int_T^\infty B_E e^{-2\tau}\dd\tau
+ =\frac{B_E}2e^{-2T}.
+\end{align*}
+For the Gaussian tails,
+$\int_T^\infty\Prob(|G|<e^{-\tau})\dd\tau$ and
+$\int_T^\infty\Prob(|G|>e^\tau)\dd\tau$ are at most
+$\frac12e^{-2T}$ by \eqref{eq:gaussian-log-tails}.
+On $E_H$, outside the Markov event for $U$, the integral
+$\int_{\mathbb T}\log|X|\dd\mu$ is finite, since
+$\int_{\mathbb T}|\log|X||^2\dd\mu=U\leq\lambda^2(2Cq)^{2\beta}$. Since
+\[
+ |\ell_T(z)-\log|z||=(-\log|z|-T)_++(\log|z|-T)_+,
+\]
+on $E_H$ and on the energy event, outside the Chebyshev event for
+$A_{e^{-T}}$ and the Markov event for $U$, it follows from the layer-cake
+identity, the two truncation bounds and the two Gaussian tail bounds that
+\begin{align*}
+ \left|\int_{\mathbb T}\log|X|\dd\mu-L_T\right|
+ &\leq\int_{\mathbb T}|\log|X|-\ell_T(X)|\dd\mu\\
+ &=\int_{\{|X|<e^{-T}\}}(-\log|X|-T)\dd\mu
+      +\int_{\{|X|>e^T\}}(\log|X|-T)\dd\mu\\
+ &\leq\lambda(2Cq)^\beta\sqrt{e^{-2T}+d_1+b}+\frac{B_E}2e^{-2T},\\
+ |\E\ell_T(G)-\E\log|G||
+ &\leq\E|\ell_T(G)-\log|G||
+ =\E(-\log|G|-T)_++\E(\log|G|-T)_+\\
+ &=\int_T^\infty\Prob(|G|<e^{-\tau})\dd\tau
+       +\int_T^\infty\Prob(|G|>e^\tau)\dd\tau
+ \leq e^{-2T}.
+\end{align*}
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+Exceptional event & Defined by & Probability at most\\
+\midrule
+Chebyshev event for $A_{e^{-T}}$ & $A_{e^{-T}}>e^{-2T}+d_1+b$ & $v/b^2$\\
+Markov event for $U$ & $\omega\in E_H$, $U>\lambda^2(2Cq)^{2\beta}$
+ & $\lambda^{-2q}$\\
+Chebyshev event for $L_T$ & $|L_T-\E L_T|>u$ & $4T^2v/u^2$\\
+Complement of the energy event & $\int_{\mathbb T}|X|^2\dd\mu>B_E$
+ & $p_E$\\
+Complement of $E_H$ & & $p_H$\\
+\bottomrule
+\end{tabular}
+\caption{The exceptional events in the proof of Theorem~\ref{thm:T1}.
+The sum of the bounds on their probabilities is
+\eqref{eq:T1-failure}.}
+\label{tab:T1-events}
+\end{table}
+Finally, $J_N(r)-\log\sigma_N(r)=\int\log|X|\dd\mu$, and outside the five
+exceptional events of Table~\ref{tab:T1-events}, by the previous display
+and the bounds on $|L_T-\E L_T|$ and $|\E L_T-\E\ell_T(G)|$, we have
+\begin{align*}
+ &\left|\int\log|X|\dd\mu-\E\log|G|\right|
+ \leq\left|\int\log|X|\dd\mu-L_T\right|
+       +|L_T-\E L_T|\\
+ &\qquad+|\E L_T-\E\ell_T(G)|
+       +|\E\ell_T(G)-\E\log|G||\\
+ &\qquad\leq\lambda(2Cq)^\beta\sqrt{e^{-2T}+d_1+b}+\frac{B_E}2e^{-2T}
+       +u+2Td_1+e^{-2T}
+ =\eta_{\log}.
+\end{align*}
+Under \eqref{eq:exact-angular-energy} and \eqref{eq:log-moment-bound} the
+last two events are absent. If $\int_{\mathbb T}|X|^2\dd\mu\leq B_E$ on $E_H$,
+then the complement of the energy event is contained in $E_H^c$, so that
+the last two events have probability at most $\Prob(E_H^c)$ together,
+which proves the second variant in the statement. By \eqref{eq:event-log-moment-bound},
+the logarithmic integral is finite almost surely on $E_H$, even for
+polynomials with roots on the integration circle.
+Since $|G|^2$ has the exponential distribution with mean one,
+\eqref{eq:euler-centering} gives $\E\log|G|=-\gamma/2$.
+\end{proof}
+
+\begin{remark}[Polynomial choices of parameters]\label{rem:T1-powers}
+If $d_1\leq D N^{-a}$ and $v\leq V N^{-a}$, choose
+$T=t\log N$, $b=N^{-2t}$, $u=N^{-w}$, and $q=c\log N\geq1$.
+Under \eqref{eq:log-moment-bound} and \eqref{eq:exact-angular-energy},
+we may take $p_H=0$, $B_E=1$ and $p_E=0$. With $\lambda=e$, so that
+$\lambda(2Cq)^\beta=e(2Cc\log N)^\beta$, the terms of
+\eqref{eq:T1-error} and \eqref{eq:T1-failure}, other than $u=N^{-w}$ and
+$p_E=p_H=0$, satisfy
+\begin{align*}
+ 2Td_1&\leq2t(\log N)DN^{-a},\qquad
+ (B_E/2+1)e^{-2T}=\tfrac32N^{-2t},\\
+ e^{-2T}+d_1+b&\leq N^{-2t}+DN^{-a}+N^{-2t}=2N^{-2t}+DN^{-a},\\
+ v/b^2&\leq VN^{-a}/N^{-4t}=VN^{4t-a},\qquad
+ \lambda^{-2q}=e^{-2c\log N}=N^{-2c},\\
+ 4T^2v/u^2&\leq4t^2(\log N)^2VN^{-a}/N^{-2w}=4t^2V(\log N)^2N^{2w-a}.
+\end{align*}
+By substituting these bounds, we get
+\[
+ \eta_{\log}\leq N^{-w}+2tD(\log N)N^{-a}
+  +e(2Cc\log N)^\beta\sqrt{2N^{-2t}+DN^{-a}}
+  +\tfrac32N^{-2t},
+\]
+\[
+ p_{\rm fail}\leq VN^{4t-a}+N^{-2c}
+       +4t^2V(\log N)^2N^{2w-a}.
+\]
+The failure terms tend to zero when $4t<a$ and $2w<a$.
+For $N=j^s$, the three failure terms are
+\[
+ Vj^{-s(a-4t)},\qquad j^{-2cs},\qquad
+ 4t^2Vs^2(\log j)^2j^{-s(a-2w)},
+\]
+and they are summable if
+\[
+ s(a-4t)>1,\qquad 2cs>1,\qquad s(a-2w)>1.
+\]
+In particular, take $a=1/2$, $t=w=1/32$, $c=6$, $\beta=6$ and $s=8$.
+Then $s(a-4t)=8(\frac12-\frac18)=3$, $2cs=2\cdot6\cdot8=96$ and
+$s(a-2w)=8(\frac12-\frac1{16})=\frac72$ all exceed one, and for $N\geq e$,
+\begin{align*}
+ \eta_{\log}
+ &\leq N^{-1/32}+\frac D{16}(\log N)N^{-1/2}
+  +e(12C\log N)^6\sqrt{2N^{-1/16}+DN^{-1/2}}
+  +\tfrac32N^{-1/16}\\
+ &\leq\Bigl(\frac52+\frac D{16}+e(12C)^6\sqrt{2+D}\Bigr)
+       N^{-1/32}(\log N)^6,
+\end{align*}
+by the bound on $\eta_{\log}$ above with $2tD=D/16$, $2Cc=12C$,
+$2t=1/16$ and $w=1/32$, and by $\log N\geq1$ and
+$N^{-1/2}\leq N^{-1/16}\leq N^{-1/32}$.
+So we get an error bounded by the above constant times
+$N^{-1/32}(\log N)^6$ and a summable failure on $j^8$. For large enough
+degree the error is at most $N^{-1/32}(\log N)^7$, with a deterministic
+threshold depending on the fixed constant: it suffices that $\log N$ is at
+least the above constant. We use the moments of the angular
+logarithmic norm in \eqref{eq:log-moment-bound}.
+The proof of Lemma~\ref{lem:clipping} takes instead
+$u=N^{-1/32}(\log N)^7$, $q=\lceil\log N\rceil$ and
+$\lambda=(2e\log N/q)^6\log N\ge e^6\log N$,
+for which $\lambda(2Cq)^6=(4eC)^6(\log N)^7$ and
+$\lambda^{-2q}\le N^{-12}$. The choice $q=6\log N$, $\lambda=e$ above
+gives the same failure bound $N^{-2c}=N^{-12}$ with
+$\lambda(2Cq)^6=e(12C\log N)^6$. The extra factor $\log N$ in $\lambda$
+is the difference between the exponents $7$ and $6$.
+\end{remark}
+
+\subsection{A local radial secant estimate}
+
+\begin{lemma}[Local approximation of radial counts]\label{lem:local-radial-secant}
+Let $f_N$ be a nonzero polynomial of degree at most $N$, and let
+$\sigma_N(r)>0$ be deterministic. Suppose that the function $F_N(x)$,
+equal to $\log\sigma_N(1+x/N)$ minus a centering independent of $x$,
+satisfies $|F_N(x)-F(x)|\leq\varepsilon$ on $[-K,K]$.
+Suppose also $|F'|\leq B_F$ and
+$|F'(x)-F'(y)|\leq M_F|x-y|$ there.
+Suppose the three logarithmic deviations
+\[
+ \left|J_N(1+y/N)-\log\sigma_N(1+y/N)-\E\log|G|\right|,
+ \qquad y=x-h,x,x+h,
+\]
+are at most $\eta_{\log}$ outside their respective exceptional events.
+If $h>0$ and $|x|+h\leq K<N$, then outside the union of those three events,
+\begin{equation}
+ \left|\frac{\nu_N(1+x/N)}N-F'(x)\right|
+ \leq\frac{M_Fh}{2}+\frac{B_FK}{N}
+       +\frac{2(\eta_{\log}+\varepsilon)(1+K/N)}h. \label{eq:T2-moving}
+\end{equation}
+In particular an
+error $\eta_{\log}+\varepsilon\leq N^{-1/32}(\log N)^7$, with $h=N^{-\kappa}$,
+$0<\kappa\leq1/64$, gives convergence to $F'(0)$ uniformly for
+deterministic $|x|\leq h$.
+\end{lemma}
+
+\begin{proof}
+By Jensen's formula, $\nu_N(r)/N$ lies between two secant slopes of
+$J_N$ in the variable $N\log\rho$, one on each side of $r$, and the idea
+is to replace $J_N$ by $F$ at the three probe points, up to a constant
+which cancels, and then to compare the secant slopes of $F$ with $F'(x)$.
+This leads to three errors, which come from the curvature of $F$, the
+change of the denominators, and the deviations of $J_N$ from $F$ at the
+probe points.
+
+Let $r=1+x/N$ and set
+\[
+ d_-=N\log\frac{r}{r-h/N},\qquad
+ d_+=N\log\frac{r+h/N}{r}.
+\]
+Since $|x|+h\leq K<N$, we have $r-h/N=1+(x-h)/N\geq1-K/N>0$.
+By the integral form \eqref{eq:jensen-integral} of Jensen's formula,
+in which $\nu_N$ counts the roots in the closed disk, and since $\nu_N$ is
+nondecreasing, we have
+\begin{align*}
+ J_N(r)-J_N(r-h/N)
+ &=\int_{r-h/N}^r\frac{\nu_N(\rho)}\rho\dd\rho
+ \leq\nu_N(r)\log\frac r{r-h/N}
+ =\frac{\nu_N(r)d_-}N,\\
+ J_N(r+h/N)-J_N(r)
+ &=\int_r^{r+h/N}\frac{\nu_N(\rho)}\rho\dd\rho
+ \geq\nu_N(r)\log\frac{r+h/N}r
+ =\frac{\nu_N(r)d_+}N.
+\end{align*}
+Dividing by $d_\pm>0$, we obtain the Jensen bounds
+\[
+ \frac{J_N(r)-J_N(r-h/N)}{d_-}
+ \leq\frac{\nu_N(r)}N
+ \leq\frac{J_N(r+h/N)-J_N(r)}{d_+}.
+\]
+Since $N\log(1+u/N)$ has derivative $1/(1+u/N)$ in $u$, we have
+\begin{align*}
+ d_-&=N\log(1+x/N)-N\log\bigl(1+(x-h)/N\bigr)
+ =\int_{x-h}^x\frac{\mathrm du}{1+u/N},\\
+ d_+&=N\log\bigl(1+(x+h)/N\bigr)-N\log(1+x/N)
+ =\int_x^{x+h}\frac{\mathrm du}{1+u/N}.
+\end{align*}
+Since $|x|+h\leq K<N$, every $u\in[x-h,x+h]$ satisfies
+$0<1-K/N\leq1+u/N\leq1+K/N$, and taking reciprocals and integrating over
+an interval of length $h$, we obtain
+\begin{gather*}
+ \frac1{1+K/N}\leq\frac1{1+u/N}\leq\frac1{1-K/N},\qquad
+ \frac h{1+K/N}\leq d_\pm\leq\frac h{1-K/N},\\
+ 1-\frac KN\leq\frac h{d_\pm}\leq1+\frac KN,\qquad
+ \left|\frac h{d_\pm}-1\right|\leq\frac KN.
+\end{gather*}
+
+Since $F'$ is Lipschitz on $[-K,K]$, which contains $x\pm t$ for
+$0\leq t\leq h$, for the ordinary secants we have
+\begin{align*}
+ \left|\frac{F(x+h)-F(x)}h-F'(x)\right|
+ &=\left|\frac1h\int_0^h\bigl(F'(x+t)-F'(x)\bigr)\dd t\right|\\
+ &\leq\frac1h\int_0^h M_Ft\dd t
+ =\frac{M_Fh}2,\\
+ \left|\frac{F(x)-F(x-h)}h-F'(x)\right|
+ &=\left|\frac1h\int_0^h\bigl(F'(x-t)-F'(x)\bigr)\dd t\right|\\
+ &\leq\frac1h\int_0^h M_Ft\dd t
+ =\frac{M_Fh}2.
+\end{align*}
+Each ordinary secant has absolute value at most $B_F$, since it is the
+mean of $F'$ over an interval in $[-K,K]$.
+Replacing its denominator $h$ by $d_\pm$ multiplies it by $h/d_\pm$, and
+\begin{align*}
+ \left|\frac{F(x+h)-F(x)}{d_+}-\frac{F(x+h)-F(x)}h\right|
+ &=\left|\frac{F(x+h)-F(x)}h\right|\,\left|\frac h{d_+}-1\right|\\
+ &\leq B_F\left|\frac h{d_+}-1\right|
+ \leq\frac{B_FK}N,\\
+ \left|\frac{F(x)-F(x-h)}{d_-}-\frac{F(x)-F(x-h)}h\right|
+ &=\left|\frac{F(x)-F(x-h)}h\right|\,\left|\frac h{d_-}-1\right|\\
+ &\leq B_F\left|\frac h{d_-}-1\right|
+ \leq\frac{B_FK}N.
+\end{align*}
+Let $c$ be the centering, so that $F_N(x)=\log\sigma_N(1+x/N)-c$.
+For $y=x-h,x,x+h$, which lie in $[-K,K]$, we have
+\begin{align*}
+ &J_N(1+y/N)-\E\log|G|-c-F(y)\\
+ &\quad=\bigl\{J_N(1+y/N)-\log\sigma_N(1+y/N)-\E\log|G|\bigr\}
+        +\bigl\{F_N(y)-F(y)\bigr\}.
+\end{align*}
+The constant $\E\log|G|+c$ does not depend on $y$, so that it cancels from
+each secant, and outside the exceptional event at $y$ the first brace is
+at most $\eta_{\log}$ in absolute value and the second is at most
+$\varepsilon$. Since
+$r\pm h/N=1+(x\pm h)/N$, by subtracting the identity at two neighboring
+probe points we obtain
+\begin{align*}
+ \bigl|J_N(r+h/N)-J_N(r)-\bigl(F(x+h)-F(x)\bigr)\bigr|
+ &\leq2(\eta_{\log}+\varepsilon),\\
+ \bigl|J_N(r)-J_N(r-h/N)-\bigl(F(x)-F(x-h)\bigr)\bigr|
+ &\leq2(\eta_{\log}+\varepsilon).
+\end{align*}
+By the lower bound $d_\pm\geq h/(1+K/N)$, the secant error is therefore at
+most $2(\eta_{\log}+\varepsilon)/d_\pm\leq2(\eta_{\log}+\varepsilon)(1+K/N)/h$.
+Adding the three errors to the Jensen bounds, we obtain
+\begin{align*}
+ \frac{\nu_N(r)}N
+ &\leq\frac{J_N(r+h/N)-J_N(r)}{d_+}
+ \leq\frac{F(x+h)-F(x)}{d_+}+\frac{2(\eta_{\log}+\varepsilon)(1+K/N)}h\\
+ &\leq\frac{F(x+h)-F(x)}h+\frac{B_FK}N
+      +\frac{2(\eta_{\log}+\varepsilon)(1+K/N)}h\\
+ &\leq F'(x)+\frac{M_Fh}2+\frac{B_FK}N
+      +\frac{2(\eta_{\log}+\varepsilon)(1+K/N)}h,\\
+ \frac{\nu_N(r)}N
+ &\geq\frac{J_N(r)-J_N(r-h/N)}{d_-}
+ \geq\frac{F(x)-F(x-h)}{d_-}-\frac{2(\eta_{\log}+\varepsilon)(1+K/N)}h\\
+ &\geq\frac{F(x)-F(x-h)}h-\frac{B_FK}N
+      -\frac{2(\eta_{\log}+\varepsilon)(1+K/N)}h\\
+ &\geq F'(x)-\frac{M_Fh}2-\frac{B_FK}N
+      -\frac{2(\eta_{\log}+\varepsilon)(1+K/N)}h,
+\end{align*}
+which together give \eqref{eq:T2-moving}.
+The Jensen bounds include roots on the counting circle.
+Since the three exceptional events may be arbitrarily dependent, we add
+their three probabilities.
+To prove the last assertion, let $|x|\leq h=N^{-\kappa}$ and let $N$ be so
+large that $2h\leq K$, so that $|x|+h\leq K$. Since
+$|F'(x)-F'(0)|\leq M_F|x|\leq M_Fh$, it follows from
+\eqref{eq:T2-moving} and $\eta_{\log}+\varepsilon\leq N^{-1/32}(\log N)^7$
+that
+\begin{align*}
+ \left|\frac{\nu_N(1+x/N)}N-F'(0)\right|
+ &\leq\left|\frac{\nu_N(1+x/N)}N-F'(x)\right|+|F'(x)-F'(0)|\\
+ &\leq\frac{M_Fh}{2}+\frac{B_FK}{N}
+       +\frac{2(\eta_{\log}+\varepsilon)(1+K/N)}h+M_Fh\\
+ &=\frac{3M_F}{2}N^{-\kappa}+\frac{B_FK}{N}
+       +2\Bigl(1+\frac KN\Bigr)(\eta_{\log}+\varepsilon)N^{\kappa}\\
+ &\leq\frac{3M_F}{2}N^{-\kappa}+\frac{B_FK}{N}
+       +2\Bigl(1+\frac KN\Bigr)N^{\kappa-1/32}(\log N)^7,
+\end{align*}
+which tends to zero since $\kappa\leq1/64<1/32$.
+\end{proof}
+
+\subsection{A second-moment bound for small-derivative roots}
+
+\begin{namedhypothesis}[Mesh and local multiplicity]\phantomsection\label{hyp:mesh}
+Let $\mathcal A$ be an annulus contained in $\{|z|\leq R\}$ and let
+$z_1,\ldots,z_m$ be retained mesh points.  Apart from at most $b_0$
+roots in explicitly excluded sectors, every root of $f_N$ in $\mathcal A$
+is within distance $\tau$ of a retained point. The segment between them
+lies in a specified domain $D$, and $|z_i|\leq R$.
+Except on events of probabilities at most $p_2$ and $p_0$, respectively,
+\[
+ \sup_D|f_N''|\leq M_2,
+ \qquad\hbox{each mesh cell contains at most $q_0$ roots.}
+\]
+The probability $p_0$ also
+includes failure of the sector bound.
+\end{namedhypothesis}
+For the cell bound we can use a disk count, provided that each cell lies
+in one of the disks of a local count such as
+Lemma~\ref{lem:local-counts-general}.
+
+\begin{namedhypothesis}[Jet approximation]\phantomsection\label{hyp:jets}
+We write the pair
+\[
+ W(z_i)=(W_0(z_i),W_1(z_i))=(f_N(z_i)/\sqrt N,z_if_N'(z_i)/N^{3/2})
+\]
+as a real four-vector.
+For every retained $i$ there is a mean-zero Gaussian four-vector
+$H_i=((H_i)_0,(H_i)_1)$, written as a pair like $W(z_i)$,
+with covariance least eigenvalue at least $\lambda>0$.  For the
+product-of-disks event
+$E_i=\{|W_0(z_i)|\leq u,|W_1(z_i)|\leq v_0\}$, put
+$g_i=\Prob(|(H_i)_0|\leq u,|(H_i)_1|\leq v_0)$ and assume
+\[
+ |\Prob(E_i)-g_i|\leq\delta.
+\]
+All but at most $b_*m^2$ \emph{ordered} pairs $(i,j)$ additionally obey
+\[
+ |\Prob(E_i\cap E_j)-g_i g_j|\leq\delta_*+\chi.
+\]
+\end{namedhypothesis}
+For example, the pair estimate can be obtained by an eight-dimensional
+Gaussian approximation with error $\delta_*$, followed by a comparison
+with the independent marginal Gaussians with total variation error
+$\chi$. We include in the exceptional count the ordinary and conjugate
+angular diagonals, the radial duplicates, and $i=j$, unless they satisfy
+the above pair estimate.
+
+\begin{theorem}[Annular small-derivative count]\label{thm:T3}
+Assume the \hyperref[hyp:mesh]{mesh and local multiplicity} bounds and the
+\hyperref[hyp:jets]{jet approximation}, and denote by $B_N$ the number of
+roots in $\mathcal A$ satisfying $|f_N'(\alpha)|<N^{3/2}/L$.
+In the jet hypothesis use
+\[
+ u=\frac{N^{3/2}\tau/L+M_2\tau^2/2}{\sqrt N},\qquad
+ v_0=\frac{R(N^{3/2}/L+M_2\tau)}{N^{3/2}}.
+\]
+We set
+\[
+ \mu_* =m\left(\frac{u^2v_0^2}{4\lambda^2}+\delta\right),
+ \qquad V_*=b_*+\delta_*+\chi+2\delta.
+\]
+For every $t>0$,
+\begin{equation}
+ \Prob\{B_N>b_0+q_0(\mu_*+t)\}
+       \leq p_0+p_2+\frac{m^2V_*}{t^2}. \label{eq:T3-general}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The idea is to detect each counted root outside the excluded sectors at
+its assigned mesh point, where both components of $W$ are small, and to
+bound the number of mesh points with small $W$ by its mean and its
+variance, which the jet approximation controls. We then bound $B_N$ by
+Chebyshev's inequality and the cell bound.
+
+Let $\alpha$ be a root in $B_N$ outside the excluded sectors, and let
+$z_i$ be its assigned mesh point. On the derivative event
+$\{\sup_D|f_N''|\leq M_2\}$, since $f_N(\alpha)=0$,
+$|f_N'(\alpha)|<N^{3/2}/L$, $|z_i-\alpha|\leq\tau$, and the segment
+$[\alpha,z_i]$ lies in $D$ by the
+\hyperref[hyp:mesh]{mesh and local multiplicity} bounds, it follows from
+Taylor's theorem with integral remainder along the segment that
+\begin{align*}
+ |f_N(z_i)|
+ &=\left|f_N'(\alpha)(z_i-\alpha)
+   +\int_{[\alpha,z_i]}(z_i-\zeta)f_N''(\zeta)\dd\zeta\right|\\
+ &\leq |f_N'(\alpha)|\,|z_i-\alpha|+\frac{M_2}2|z_i-\alpha|^2
+ \leq\frac{N^{3/2}\tau}{L}+\frac{M_2\tau^2}2,\\
+ |f_N'(z_i)|
+ &=\left|f_N'(\alpha)+\int_{[\alpha,z_i]}f_N''(\zeta)\dd\zeta\right|
+ \leq|f_N'(\alpha)|+M_2|z_i-\alpha|
+ \leq\frac{N^{3/2}}L+M_2\tau.
+\end{align*}
+Since $|z_i|\leq R$, dividing by the normalizations in $W(z_i)$ we
+obtain
+\[
+ \frac{|f_N(z_i)|}{\sqrt N}
+ \leq\frac{N^{3/2}\tau/L+M_2\tau^2/2}{\sqrt N}
+ =u,\qquad
+ \frac{|z_if_N'(z_i)|}{N^{3/2}}
+ \leq\frac{R(N^{3/2}/L+M_2\tau)}{N^{3/2}}
+ =v_0,
+\]
+so that the event $E_i$ occurs at every assigned point.
+
+We set $Z=\sum_{i=1}^m\boldsymbol1_{E_i}$.
+Let $\Sigma_i$ be the covariance matrix of $H_i$, whose eigenvalues are at
+least $\lambda$, so that it has determinant at least $\lambda^4$. Hence
+the density of $H_i$ is bounded by $(2\pi)^{-2}\lambda^{-2}$, since at
+every $y\in\mathbb R^4$ it satisfies
+\[
+ (2\pi)^{-2}(\det\Sigma_i)^{-1/2}
+   \exp\bigl(-\tfrac12\langle\Sigma_i^{-1}y,y\rangle\bigr)
+ \leq(2\pi)^{-2}(\det\Sigma_i)^{-1/2}
+ \leq(2\pi)^{-2}\lambda^{-2}.
+\]
+Since the product of the two complex disks has four-dimensional volume
+$\pi^2u^2v_0^2$, by the \hyperref[hyp:jets]{jet approximation} we have
+\begin{align*}
+ g_i
+ &\leq(2\pi)^{-2}\lambda^{-2}\,\pi^2u^2v_0^2
+ =\frac{u^2v_0^2}{4\lambda^2},\\
+ \E Z
+ &=\sum_{i=1}^m\Prob(E_i)
+ \leq\sum_{i=1}^m(g_i+\delta)
+ \leq m\left(\frac{u^2v_0^2}{4\lambda^2}+\delta\right)
+ =\mu_*.
+\end{align*}
+
+For an admissible ordered pair $(i,j)$, that is, one that obeys the pair
+estimate of the jet approximation, since $\Prob(E_i),g_j\leq1$ we have
+\begin{align*}
+ |\Prob(E_i)\Prob(E_j)-g_ig_j|
+ &=\bigl|\Prob(E_i)\bigl(\Prob(E_j)-g_j\bigr)
+       +g_j\bigl(\Prob(E_i)-g_i\bigr)\bigr|\\
+ &\leq\Prob(E_i)|\Prob(E_j)-g_j|
+       +g_j|\Prob(E_i)-g_i|
+ \leq2\delta,\\
+ |\operatorname{Cov}(\boldsymbol1_{E_i},\boldsymbol1_{E_j})|
+ &=|\Prob(E_i\cap E_j)-\Prob(E_i)\Prob(E_j)|\\
+ &\leq|\Prob(E_i\cap E_j)-g_ig_j|+|g_ig_j-\Prob(E_i)\Prob(E_j)|
+ \leq\delta_*+\chi+2\delta.
+\end{align*}
+On each of the at most $b_*m^2$ exceptional pairs we use the bound one,
+and summing over all $m^2$ ordered pairs, including the diagonal, we
+obtain
+\begin{align*}
+ \operatorname{Var}Z
+ &=\sum_{i,j=1}^m
+       \operatorname{Cov}(\boldsymbol1_{E_i},\boldsymbol1_{E_j})
+ \leq\sum_{i,j=1}^m
+       |\operatorname{Cov}(\boldsymbol1_{E_i},\boldsymbol1_{E_j})|\\
+ &\leq b_*m^2+m^2(\delta_*+\chi+2\delta)
+ =m^2V_*.
+\end{align*}
+Since $\E Z\leq\mu_*$, Chebyshev's inequality yields
+\[
+ \Prob(Z>\mu_*+t)
+ \leq\Prob(Z-\E Z>t)
+ \leq\frac{\operatorname{Var}Z}{t^2}
+ \leq\frac{m^2V_*}{t^2}.
+\]
+
+On the two geometric good events, each cell receives at most $q_0$
+roots, and the excluded sectors contain at most $b_0$ roots. On these
+events and on the derivative event, by the first part of the proof every
+counted root outside the excluded sectors is assigned to a retained point
+$z_i$ at which $E_i$ occurs, and the cell bound of the
+\hyperref[hyp:mesh]{mesh hypothesis}, applied to the cell of $z_i$, which
+contains the roots assigned to $z_i$, shows that at most $q_0$ roots are
+assigned to each such point. Hence $B_N\leq b_0+q_0Z$, so that
+$B_N>b_0+q_0(\mu_*+t)$ implies $Z>\mu_*+t$ outside the geometric and
+derivative exceptional events, and
+\[
+ \Prob\{B_N>b_0+q_0(\mu_*+t)\}
+ \leq p_0+p_2+\Prob(Z>\mu_*+t)
+ \leq p_0+p_2+\frac{m^2V_*}{t^2}.
+\]
+\end{proof}
+
+\begin{corollary}[Polynomial parameters for the mesh bound]\label{cor:T3-powers}
+Suppose the following bounds hold with fixed positive constants:
+\begin{align*}
+ &R\leq2,\qquad A\geq S,\qquad \tau=(ANL\sqrt{\log N})^{-1},\\
+ &M_2=SN^{5/2}\sqrt{\log N},\qquad
+ m\leq DNL^2\log N,\qquad q_0\leq C_0\log N.
+\end{align*}
+\[
+ \delta\leq D_0N^{-\beta_1},\qquad
+ V_*\leq VN^{-\beta},\qquad L=N^\ell.
+\]
+Then
+\begin{equation}
+ \mu_*\leq\frac{9D}{A^2\lambda^2}NL^{-4}
+           +DD_0N^{1-\beta_1}L^2\log N. \label{eq:T3-mean}
+\end{equation}
+For a chosen $d>0$, impose the explicit deterministic thresholds
+\[
+ b_0\leq\tfrac12N^{1-d},\qquad
+ C_0\log N\left[\frac{9D}{A^2\lambda^2}NL^{-4}
+           +DD_0N^{1-\beta_1}L^2\log N\right]
+       \leq\tfrac14N^{1-d}.
+\]
+Then
+\begin{equation}
+ \Prob(B_N>N^{1-d})
+ \leq p_0+p_2+16C_0^2D^2V
+         N^{-\beta+4\ell+2d}(\log N)^4. \label{eq:T3-power}
+\end{equation}
+The mean thresholds are eventual if
+$d<4\ell$, $d<\beta_1-2\ell$, and $b_0=o(N^{1-d})$.
+The last failure term is summable on $N=j^s$ whenever
+\[
+ s(\beta-4\ell-2d)>1.
+\]
+In particular $\beta=\beta_1=1/2$, $\ell=1/64$, $d=1/32$
+give $B_N\leq N^{31/32}$.  The probability of the exceptional event, in
+addition to $p_0+p_2$, is at most
+\[
+ 16C_0^2D^2VN^{-3/8}(\log N)^4.
+\]
+\end{corollary}
+
+\begin{proof}
+We first substitute the parameters into the definitions of $u$, $v_0$
+and $\mu_*$ in Theorem~\ref{thm:T3}, and then apply this theorem with a
+deviation $t$ such that $b_0+q_0(\mu_*+t)\leq N^{1-d}$.
+
+With the chosen parameters, and since $S\leq A$ and $R\leq2$, we have
+\begin{align*}
+ \frac{N^{3/2}\tau}L
+ &=\frac{N^{1/2}}{AL^2\sqrt{\log N}},\qquad
+ \frac{M_2\tau^2}2
+ =\frac{SN^{1/2}}{2A^2L^2\sqrt{\log N}},\\
+ u
+ &=\left(\frac1A+\frac{S}{2A^2}\right)
+                 L^{-2}(\log N)^{-1/2}
+ \leq\frac3{2A}L^{-2}(\log N)^{-1/2},\\
+ M_2\tau
+ &=\frac SA\cdot\frac{N^{3/2}}L,\qquad
+ v_0
+ =\frac RL\left(1+\frac SA\right)
+ \leq\frac4L,\\
+ \frac{u^2v_0^2}{4\lambda^2}
+ &\leq\frac1{4\lambda^2}
+       \frac9{4A^2L^4\log N}\frac{16}{L^2}
+ =\frac9{A^2\lambda^2}\frac{L^{-6}}{\log N}.
+\end{align*}
+Using also $m\leq DNL^2\log N$ and $\delta\leq D_0N^{-\beta_1}$, we have
+\[
+ \mu_*
+ \leq DNL^2\log N
+      \left(\frac9{A^2\lambda^2}\frac{L^{-6}}{\log N}
+                   +D_0N^{-\beta_1}\right)
+ =\frac{9D}{A^2\lambda^2}NL^{-4}
+      +DD_0N^{1-\beta_1}L^2\log N.
+\]
+This proves \eqref{eq:T3-mean}.
+
+We now choose the deviation $t$ in Theorem~\ref{thm:T3}. The
+event $\{B_N>N^{1-d}\}$ is contained in the event of
+\eqref{eq:T3-general} when $b_0+q_0(\mu_*+t)\leq N^{1-d}$. Since the
+probability bound $m^2V_*/t^2$ decreases in $t$, we take the largest $t$
+with $C_0t\log N\leq\frac14N^{1-d}$,
+\[
+ t=\frac{N^{1-d}}{4C_0\log N}.
+\]
+By the two deterministic thresholds, the mean bound \eqref{eq:T3-mean}
+with $q_0\leq C_0\log N$, and this choice of $t$, we have
+\begin{align*}
+ b_0+q_0(\mu_*+t)
+ &=b_0+q_0\mu_*+q_0t\\
+ &\leq\frac12N^{1-d}
+   +C_0\log N\left[\frac{9D}{A^2\lambda^2}NL^{-4}
+           +DD_0N^{1-\beta_1}L^2\log N\right]\\
+ &\quad+C_0t\log N
+ \leq\frac12N^{1-d}+\frac14N^{1-d}+\frac14N^{1-d}
+ =N^{1-d}.
+\end{align*}
+Hence, by \eqref{eq:T3-general}, $m\leq DNL^2\log N$,
+$V_*\leq VN^{-\beta}$ and $L=N^\ell$, we have
+\begin{align*}
+ \Prob(B_N>N^{1-d})
+ &\leq\Prob\{B_N>b_0+q_0(\mu_*+t)\}
+ \leq p_0+p_2+\frac{m^2V_*}{t^2},\\
+ \frac{m^2V_*}{t^2}
+ &\leq D^2N^2L^4(\log N)^2\,VN^{-\beta}
+           \frac{16C_0^2(\log N)^2}{N^{2-2d}}\\
+ &=16C_0^2D^2VN^{-\beta}L^4N^{2d}(\log N)^4
+ =16C_0^2D^2V N^{-\beta+4\ell+2d}(\log N)^4.
+\end{align*}
+We have thus proved \eqref{eq:T3-power}.
+With $L=N^\ell$, the left-hand side of the second threshold equals
+\begin{align*}
+ &\frac{9C_0D}{A^2\lambda^2}N^{1-4\ell}\log N
+ +C_0DD_0N^{1-\beta_1+2\ell}(\log N)^2\\
+ &\qquad=\frac14N^{1-d}\left(\frac{36C_0D}{A^2\lambda^2}N^{d-4\ell}\log N
+ +4C_0DD_0N^{d-\beta_1+2\ell}(\log N)^2\right).
+\end{align*}
+When $d<4\ell$ and $d<\beta_1-2\ell$, the factor in parentheses tends to
+zero, and so the second threshold holds for all large $N$. The first
+threshold holds for all large $N$ when $b_0=o(N^{1-d})$. With $N=j^s$,
+the last failure term equals
+$16C_0^2D^2Vj^{-s(\beta-4\ell-2d)}(s\log j)^4$, which is summable when
+$s(\beta-4\ell-2d)>1$.
+For the particular powers of the corollary, $4\ell=2d=1/16$, and the
+three exponents, the conditions $d<4\ell$ and $d<\beta_1-2\ell$, and the
+summability at $N=j^8$ read
+\begin{gather*}
+ 1-4\ell=\frac{15}{16},\qquad
+ 1-\beta_1+2\ell=\frac{17}{32},\qquad
+ -\beta+4\ell+2d=-\frac38,\\
+ 4\ell=\frac1{16}>\frac1{32}=d,\qquad
+ \beta_1-2\ell=\frac{15}{32}>d,\qquad
+ 8(\beta-4\ell-2d)=3>1.
+\end{gather*}
+Since $1-d=31/32$, once the two thresholds hold, we obtain
+$B_N\leq N^{31/32}$ outside an event of probability at most
+$p_0+p_2+16C_0^2D^2VN^{-3/8}(\log N)^4$.
+\end{proof}
+
+\subsection[From a sparse subsequence of degrees to the full sequence]{From a sparse subsequence of degrees\\to the full sequence}
+
+\begin{theorem}[Sparse-to-dense convergence]\label{thm:T5}
+Let $s\geq1$ be fixed, $n_j=\lfloor j^s\rfloor$, and let $(X_n)$
+be real random variables on a common probability space.  Suppose
+$X_{n_j}/n_j\to c$ almost surely.  If there are deterministic
+$\varepsilon_j\to0$ and events
+$E_j$ such that
+\[
+ \sum_j\Prob(E_j)<\infty,\qquad
+ \max_{n_j\leq n<n_{j+1}}|X_n-X_{n_j}|
+       \leq\varepsilon_j n_j\quad\hbox{on }E_j^c,
+\]
+then $X_n/n\to c$ almost surely.
+\end{theorem}
+The numbers $\varepsilon_j$ need not be monotone.
+In particular, the case $c=1/2$ yields the strong law needed for the
+unweighted Rademacher model.
+
+\begin{proof}
+We compare each degree $n$ of the block $n_j\leq n<n_{j+1}$ with $n_j$,
+and use the Borel--Cantelli lemma to discard the events $E_j$.
+For every $J$, by the union bound we have
+\[
+ \Prob\Big(\bigcup_{j\geq J}E_j\Big)\leq\sum_{j\geq J}\Prob(E_j)\longrightarrow0
+\]
+as $J\to\infty$, since the series converges.
+It follows that almost surely only finitely many $E_j$ occur, which is the
+Borel--Cantelli lemma.
+For $n_j\leq n<n_{j+1}$ we write
+\[
+ \frac{X_n}{n}-c
+ =\frac{n_j}{n}\left(\frac{X_{n_j}}{n_j}-c\right)
+   +\frac{X_n-X_{n_j}}n+c\left(\frac{n_j}n-1\right).
+\]
+Outside $E_j$, by the block bound $|X_n-X_{n_j}|\leq\varepsilon_jn_j$, it
+follows that
+\begin{align*}
+ \left|\frac{X_n}{n}-c\right|
+ &\leq\frac{n_j}{n}\left|\frac{X_{n_j}}{n_j}-c\right|
+      +\frac{|X_n-X_{n_j}|}n+|c|\left|\frac{n_j}n-1\right|\\
+ &\leq\frac{n_j}{n}\left|\frac{X_{n_j}}{n_j}-c\right|
+      +\frac{\varepsilon_jn_j}n+|c|\frac{n-n_j}n\\
+ &\leq\frac{n_j}{n}\left|\frac{X_{n_j}}{n_j}-c\right|
+      +\varepsilon_j+|c|\frac{n_{j+1}-n_j}{n_j},
+\end{align*}
+where the last step uses $\varepsilon_j\geq0$, which holds on $E_j^c$
+since there $0\leq|X_n-X_{n_j}|\leq\varepsilon_jn_j$.
+Since $j^s-1<n_j\leq j^s$ for every $j$, we have, for $j\geq2$,
+\[
+ \frac{n_{j+1}}{n_j}
+ <\frac{(j+1)^s}{j^s-1}
+ =\frac{(1+1/j)^s}{1-j^{-s}}
+ \longrightarrow1.
+\]
+Since also $n_{j+1}\geq n_j$, it follows that $n_{j+1}/n_j\to1$, and
+hence the last ratio, which equals $n_{j+1}/n_j-1$, tends to zero.
+As $n\to\infty$, the index $j$ with $n_j\leq n<n_{j+1}$ tends to
+infinity. Almost surely, $X_{n_j}/n_j\to c$ and $E_j$ occurs for only
+finitely many $j$, and then the three terms of the last bound tend
+to zero, the first since $n_j/n\leq1$ and the second since
+$\varepsilon_j\to0$.
+This proves the assertion.
+\end{proof}
+
+\subsection{Deterministic choice of a vanishing block envelope}
+
+\begin{lemma}[Deterministic diagonalization]\label{lem:deterministic-diagonalization}
+Let $s\geq1$, $n_j=\lfloor j^s\rfloor$, and let $(X_n)$ be real
+random variables on a common probability space.
+Suppose that for each positive integer $k$,
+\[
+ \Prob\left\{\max_{n_j\leq n<n_{j+1}}
+ \frac{|X_n-X_{n_j}|}{n_j}>a_k+b_k(j)\right\}\leq p_k(j),
+\]
+where $a_k\to0$, $b_k(j)\to0$ for fixed $k$, and
+$\sum_jp_k(j)<\infty$ for fixed $k$.  Then there are deterministic
+numbers $\varepsilon_j\to0$ and events $E_j$ with
+$\sum_j\Prob(E_j)<\infty$ such that
+\[
+ \max_{n_j\leq n<n_{j+1}}\frac{|X_n-X_{n_j}|}{n_j}\leq\varepsilon_j
+ \quad\hbox{on }E_j^c.
+\]
+
+In particular, if $X_{n_j}/n_j\to c$ almost surely, then
+$X_n/n\to c$ almost surely.
+\end{lemma}
+
+\begin{proof}
+The idea is to let the index $k$ grow slowly with $j$, along a
+deterministic diagonal $k(j)\to\infty$ chosen so that the probabilities
+of the exceptional events along the diagonal are still summable, and then
+to apply Theorem~\ref{thm:T5}.
+Choose increasing deterministic integers
+$J_k$, with $J_k\geq k$ and $J_k>J_{k-1}$, such that for all
+$j\geq J_k$ we have $b_k(j)\leq1/k$ and
+$\sum_{j\geq J_k}p_k(j)\leq2^{-k}$, which is possible since $b_k(j)\to0$
+and $\sum_jp_k(j)<\infty$.
+Choosing the least admissible integer makes each $J_k$ deterministic,
+and this definition does not require a numerical bound for $J_k$.
+For $j\geq J_1$, we set
+\[
+ k(j)=\max\{k:J_k\leq j\},\qquad
+ \varepsilon_j=a_{k(j)}+\frac1{k(j)}.
+\]
+Since $J_k\geq k$ and the $J_k$ increase strictly, $k(j)$ is finite
+and tends to infinity, and therefore $\varepsilon_j\to0$. Let $E_j$ be
+the event that the normalized block increment exceeds $\varepsilon_j$,
+and for $j<J_1$ take $E_j=\Omega$ and choose $\varepsilon_j$ arbitrarily.
+For $j\geq J_1$ we have $J_{k(j)}\leq j$, hence $b_{k(j)}(j)\leq1/k(j)$
+and $\varepsilon_j\geq a_{k(j)}+b_{k(j)}(j)$. By the hypothesis with
+$k=k(j)$ we therefore have $\Prob(E_j)\leq p_{k(j)}(j)$, and these bounds
+satisfy
+\[
+ \sum_{j\geq J_1}p_{k(j)}(j)
+ \leq\sum_{k\geq1}\sum_{j\geq J_k}p_k(j)
+ \leq\sum_{k\geq1}2^{-k}
+ =1,
+\]
+where the first step holds since each $j\geq J_1$ contributes the single
+nonnegative term $p_{k(j)}(j)$, with $j\geq J_{k(j)}$, which appears in the
+inner sum for $k=k(j)$.
+Since only finitely many $j<J_1$ remain, it follows that
+$\sum_j\Prob(E_j)<\infty$.
+Finitely many initial degrees do not affect the limit, and the final
+assertion follows from Theorem~\ref{thm:T5}.
+The conclusion holds for arbitrary dependence between degrees,
+blocks, and exceptional events.
+\end{proof}
+
+\subsection{The mean for coefficients in \texorpdfstring{$\{0,1\}$}{\{0,1\}}}
+\begin{remark}[The mean for coefficients in $\{0,1\}$]\label{rem:mean-newman}
+Let $K\ge2$, $N\ge2K$, $|r-1|\le K/N$ and
+$\operatorname{dist}(\theta,2\pi\mathbb Z)>0$, let
+$\sigma_N(r)^2=\sum_{k=0}^Nr^{2k}$, as in Section~\ref{sec:radial}, and let
+$D_N(z)=\sum_{k=0}^Nz^k$. Then
+\[
+ \frac{|D_N(re^{i\theta})|}{\sigma_N(r)}
+ \le\frac{10e^{4K}}{\sqrt N\operatorname{dist}(\theta,2\pi\mathbb Z)}.
+\]
+Indeed, $D_N(re^{i\theta})=\{1-(re^{i\theta})^{N+1}\}/(1-re^{i\theta})$.
+For the numerator, $r\le1+K/N$ gives
+$|1-(re^{i\theta})^{N+1}|\le1+(1+K/N)^{N+1}\le1+e^{2K}\le2e^{2K}$.
+For the denominator,
+$|1-re^{i\theta}|^2=(1-r)^2+4r\sin^2(\theta/2)\ge4r\sin^2(\theta/2)$,
+and $r\ge1-K/N\ge1/2$ together with
+$|\sin(\theta/2)|\ge\operatorname{dist}(\theta,2\pi\mathbb Z)/\pi$, by the
+concavity of the sine on $[0,\pi/2]$, gives
+$|1-re^{i\theta}|\ge(\sqrt2/\pi)\operatorname{dist}(\theta,2\pi\mathbb Z)$.
+For the normalization, every term of $\sigma_N(r)^2$ is at least $(1-K/N)^{2N}\ge e^{-4K}$, by $\log(1-u)\ge-2u$ for
+$0\le u\le1/2$, so that $\sigma_N(r)\ge\sqrt Ne^{-2K}$.
+Combining the three bounds and $\sqrt2\pi<10$ gives the claim.
+\end{remark}

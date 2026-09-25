@@ -1,0 +1,289 @@
+{
+  "status": "complete",
+  "seed": 522000,
+  "degrees": [
+    1000,
+    1210,
+    1421
+  ],
+  "base_degree": 1000,
+  "block_length": 421,
+  "offsets": [
+    0,
+    210,
+    421
+  ],
+  "generator": "numpy.random.Generator(numpy.random.PCG64(seed)).choice(np.array([-1,1],dtype=np.int8),125001)",
+  "coefficient_encoding": "Ascending coefficients, signed int8, C-contiguous bytes.",
+  "coefficient_sha256": "44a38c9ed170948014e0fec70ce1fc7f0870158fa9fc37afeae7b06aba744dc3",
+  "prefix_sha256": {
+    "1000": "f396e43fa659dd31dbbf53bd230265a0e9ac5c8249e20bccba24673cde403dcf",
+    "1210": "c93b108d2be5b1a76c203b3311a2d42d2b35e09595cedb02e9d3da3e2404dd3b",
+    "1421": "442197693f7cf8bf7fe326708b697a750e7ad304522d4aa30a8e7b1661ee8acb"
+  },
+  "versions": {
+    "python": "3.14.6",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "mpmath": "1.3.0"
+  },
+  "solver": "scipy.linalg.companion (descending coefficients), explicit matrix_balance (permute and scale), scipy.linalg.eigvals",
+  "refinement": "At most three polynomial/reciprocal Newton updates, accepted only when the normalized residual decreases. Archived base coordinates never changed.",
+  "residual_definition": "abs(P(z))/sum_k abs(c_k)*abs(z)**k; reciprocal evaluation for abs(z)>1",
+  "independent_residual_check": {
+    "library": "mpmath",
+    "decimal_digits": 60,
+    "scope": "Every root at every retained degree, evaluated at exact stored binary coordinates."
+  },
+  "residual_acceptance_threshold": 1e-10,
+  "root_multiplicity_convention": "One entry per computed root, including multiplicities. Integer synthetic division identifies exact +/-1 roots for closed-disk counts.",
+  "matching_interpretation": "Empirical minimum-total-Euclidean-distance rectangular injections from the archived base roots. Not certified Rouche correspondences or actual root trajectories.",
+  "checks": {
+    "1000": {
+      "source": "original archive coordinates, bit-for-bit",
+      "original_checks": {
+        "max_normalized_residual": 1.6046592177723584e-15,
+        "max_newton_move": 4.841645002635292e-10,
+        "sum_roots_error": 5.685425984875427e-14,
+        "log_product_modulus_error": 7.105427357601002e-15,
+        "root_count": 1000
+      },
+      "root_count": 1000,
+      "max_normalized_residual": 3.580704702088057e-15,
+      "max_independent_mp_normalized_residual": 3.1697275728963237e-15,
+      "closed_disk_count": {
+        "nominal_closed": 491,
+        "lower": 491,
+        "upper": 491,
+        "unresolved_band": 0,
+        "exact_pm1_multiplicity": {
+          "-1": 0,
+          "1": 0
+        },
+        "tolerance": 1e-09,
+        "meaning": "Numerical tolerance sensitivity interval, not a certified enclosure."
+      },
+      "count_interval_matches_saved_full_block": true,
+      "sum_roots_error": 5.685425984875427e-14,
+      "log_product_modulus_error": 7.271960811294775e-15
+    },
+    "1210": {
+      "source": "new balanced companion eigensolve",
+      "balancing_min_scale": 1.0,
+      "balancing_max_scale": 8.0,
+      "balancing_permuted_indices": 0,
+      "eigenvalue_max_normalized_residual_before_refinement": 3.36794507347774e-13,
+      "max_accepted_newton_move": 2.5236523414339796e-14,
+      "root_count": 1210,
+      "max_normalized_residual": 5.221773471095895e-15,
+      "max_independent_mp_normalized_residual": 3.823362723656509e-15,
+      "closed_disk_count": {
+        "nominal_closed": 601,
+        "lower": 601,
+        "upper": 601,
+        "unresolved_band": 0,
+        "exact_pm1_multiplicity": {
+          "-1": 0,
+          "1": 0
+        },
+        "tolerance": 1e-09,
+        "meaning": "Numerical tolerance sensitivity interval, not a certified enclosure."
+      },
+      "count_interval_matches_saved_full_block": true,
+      "sum_roots_error": 1.4217791915866692e-15,
+      "log_product_modulus_error": 1.1102230246251565e-15
+    },
+    "1421": {
+      "source": "new balanced companion eigensolve",
+      "balancing_min_scale": 1.0,
+      "balancing_max_scale": 8.0,
+      "balancing_permuted_indices": 0,
+      "eigenvalue_max_normalized_residual_before_refinement": 4.073275340754668e-13,
+      "max_accepted_newton_move": 2.5968066706936047e-14,
+      "root_count": 1421,
+      "max_normalized_residual": 4.802779243024223e-15,
+      "max_independent_mp_normalized_residual": 4.316916240938239e-15,
+      "closed_disk_count": {
+        "nominal_closed": 695,
+        "lower": 695,
+        "upper": 695,
+        "unresolved_band": 0,
+        "exact_pm1_multiplicity": {
+          "-1": 0,
+          "1": 0
+        },
+        "tolerance": 1e-09,
+        "meaning": "Numerical tolerance sensitivity interval, not a certified enclosure."
+      },
+      "count_interval_matches_saved_full_block": true,
+      "sum_roots_error": 7.160723346098895e-15,
+      "log_product_modulus_error": 8.659739592076221e-15
+    }
+  },
+  "assignments": {
+    "1210": {
+      "method": "scipy.optimize.linear_sum_assignment on Euclidean distance, rectangular 1000 by target_degree",
+      "source_indices": "Original z1000 archive order, unchanged.",
+      "sum_distance": 3.4105388629406583,
+      "max_distance": 0.48348869422054397,
+      "median_distance": 0.0009000643511251974,
+      "unassigned_target_roots": 210
+    },
+    "1421": {
+      "method": "scipy.optimize.linear_sum_assignment on Euclidean distance, rectangular 1000 by target_degree",
+      "source_indices": "Original z1000 archive order, unchanged.",
+      "sum_distance": 3.4458275152721614,
+      "max_distance": 0.4422900446555182,
+      "median_distance": 0.0010110320290010924,
+      "unassigned_target_roots": 421
+    }
+  },
+  "completed_block_count_path": {
+    "source": "exact small-block counts recorded with the base computation",
+    "degrees": [
+      1000,
+      1421
+    ],
+    "number_of_degrees": 422,
+    "maximum_recorded_normalized_residual": 2.5207096150678314e-15,
+    "new_coordinate_solves": [
+      1210,
+      1421
+    ]
+  },
+  "data_sha256": "b83dbe87b0b9a4830947acaa823dda9331040463270bd89ab0bad09abcca2431",
+  "array_schema": {
+    "coefficients": {
+      "shape": [
+        125001
+      ],
+      "dtype": "int8"
+    },
+    "degrees": {
+      "shape": [
+        3
+      ],
+      "dtype": "int64"
+    },
+    "z1000": {
+      "shape": [
+        1000
+      ],
+      "dtype": "complex128"
+    },
+    "block_degrees": {
+      "shape": [
+        422
+      ],
+      "dtype": "int64"
+    },
+    "block_closed_count_lower": {
+      "shape": [
+        422
+      ],
+      "dtype": "int64"
+    },
+    "block_closed_count_upper": {
+      "shape": [
+        422
+      ],
+      "dtype": "int64"
+    },
+    "block_raw_modulus_count": {
+      "shape": [
+        422
+      ],
+      "dtype": "int64"
+    },
+    "block_recorded_max_residual": {
+      "shape": [
+        422
+      ],
+      "dtype": "float64"
+    },
+    "residual1000": {
+      "shape": [
+        1000
+      ],
+      "dtype": "float64"
+    },
+    "mp_residual1000": {
+      "shape": [
+        1000
+      ],
+      "dtype": "float64"
+    },
+    "z1210": {
+      "shape": [
+        1210
+      ],
+      "dtype": "complex128"
+    },
+    "newton_move1210": {
+      "shape": [
+        1210
+      ],
+      "dtype": "float64"
+    },
+    "residual1210": {
+      "shape": [
+        1210
+      ],
+      "dtype": "float64"
+    },
+    "mp_residual1210": {
+      "shape": [
+        1210
+      ],
+      "dtype": "float64"
+    },
+    "z1421": {
+      "shape": [
+        1421
+      ],
+      "dtype": "complex128"
+    },
+    "newton_move1421": {
+      "shape": [
+        1421
+      ],
+      "dtype": "float64"
+    },
+    "residual1421": {
+      "shape": [
+        1421
+      ],
+      "dtype": "float64"
+    },
+    "mp_residual1421": {
+      "shape": [
+        1421
+      ],
+      "dtype": "float64"
+    },
+    "injection1210": {
+      "shape": [
+        1000
+      ],
+      "dtype": "int64"
+    },
+    "distance1210": {
+      "shape": [
+        1000
+      ],
+      "dtype": "float64"
+    },
+    "injection1421": {
+      "shape": [
+        1000
+      ],
+      "dtype": "int64"
+    },
+    "distance1421": {
+      "shape": [
+        1000
+      ],
+      "dtype": "float64"
+    }
+  }
+}

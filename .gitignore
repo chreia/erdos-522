@@ -1,0 +1,4 @@
+# Paper build, Python caches, and the SVG copies that numerics/publication/render.py also writes
+paper/build/
+__pycache__/
+numerics/publication/figures/*.svg

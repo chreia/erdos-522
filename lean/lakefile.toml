@@ -1,0 +1,26 @@
+name = "Erdos522"
+version = "1.0.0"
+license = "Apache-2.0"
+defaultTargets = ["Erdos522"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+warningAsError = true
+
+[[require]]
+name = "ProbabilityApproximation"
+path = "vendor/ProbabilityApproximation"
+
+[[require]]
+name = "SLT"
+path = "vendor/SLT"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "5ed2965256430c3649e86755f9576b54eca72435"
+
+[[lean_lib]]
+name = "Erdos522"
+roots = ["Erdos522", "Erdos522.All"]

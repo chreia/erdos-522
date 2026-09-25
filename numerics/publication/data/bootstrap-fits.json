@@ -1,0 +1,512 @@
+{
+  "annular_L_N1000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -2.4077475292955954,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -2.314038546207521,
+    "upper": -2.223637710823037,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "annular_L_N10000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -2.3329372323842756,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -2.303280360026196,
+    "upper": -2.2748772669487938,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "annular_L_N100000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -2.300854991439261,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -2.292946740348291,
+    "upper": -2.2848119622953384,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "annular_L_N3000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -2.301857869122914,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -2.259349441877168,
+    "upper": -2.2217728197417594,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "annular_L_N30000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -2.315888011333099,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -2.2979546770049297,
+    "upper": -2.282006040696535,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "annular_N_L16": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.9667061462614871,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": 1.000341241275219,
+    "upper": 1.0370103045011707,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "annular_N_L2": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.9978070925051632,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": 0.9993555693391929,
+    "upper": 1.001028843631823,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "annular_N_L4": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.9961618186436751,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": 0.9998356149504022,
+    "upper": 1.0032452431331946,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "annular_N_L8": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.9880018154453267,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": 0.9982138077352833,
+    "upper": 1.0084635579980425,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "endpoint": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.8727157565576606,
+    "note": "Four larger-degree endpoints only, common complete sequences. This is not a full-block maximum; uncentered changes include degree drift.",
+    "retained_draws": 2000,
+    "slope": 0.8777114208469186,
+    "upper": 0.8829212072280506,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "endpoint_centered": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.36361506269220784,
+    "note": "Four larger-degree endpoints only, common complete sequences. This is not a full-block maximum; uncentered changes include degree drift.",
+    "retained_draws": 2000,
+    "slope": 0.4601935207721886,
+    "upper": 0.5593803575867817,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_L_N1000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -0.7016686918825448,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -0.694173656407067,
+    "upper": -0.6866258745499029,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_L_N10000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -0.6911090269564037,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -0.6883656668419825,
+    "upper": -0.6855241834164484,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_L_N100000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -0.687771973879945,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -0.6869765195917313,
+    "upper": -0.6861768068519597,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_L_N3000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -0.6914366414726049,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -0.6872330434431828,
+    "upper": -0.6829870665090118,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_L_N30000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -0.6894117771638334,
+    "note": "Primary L=2,4,8,16, no angular excision; all five degrees use the same 77 sequences.",
+    "retained_draws": 2000,
+    "slope": -0.6881419077393619,
+    "upper": -0.6868521526029733,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_N_L16": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.999253005505427,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": 1.0021490614332957,
+    "upper": 1.0050867722346488,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_N_L2": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.9989807211545643,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": 0.9996862712515256,
+    "upper": 1.00041817010224,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_N_L4": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.9988094570623675,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": 1.000150678047971,
+    "upper": 1.0013889073888071,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "global_N_L8": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": 0.9984230492514881,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": 1.0008081979720131,
+    "upper": 1.0031467723158567,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x-16": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.1273999668397314,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -1.0628848619530789,
+    "upper": -0.9944571433449252,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x-2": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.058639527428227,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.982791423457781,
+    "upper": -0.9120920997468692,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x-32": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.1049396824812705,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -1.0343620912144202,
+    "upper": -0.9639498435556362,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x-4": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0479139781364109,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9703076078171754,
+    "upper": -0.8965338327885894,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x-8": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0541915277228995,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9756705983038352,
+    "upper": -0.8999940494587996,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x0": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0506726094630003,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9745946712969674,
+    "upper": -0.9017809432770724,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x16": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0806003257467347,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -1.0106727086535914,
+    "upper": -0.9384247794769099,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x2": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0130529360066258,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.954593558698905,
+    "upper": -0.8949906469918907,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x32": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0761375865044729,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9951805469407632,
+    "upper": -0.9082813062851368,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x4": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0326603385764397,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9572502189674006,
+    "upper": -0.8803999128714526,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_coarse_x8": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0625389166930506,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9902112106937493,
+    "upper": -0.9226001888132578,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x-16": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.127408288220691,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -1.0628918705100234,
+    "upper": -0.9944611572988449,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x-2": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.058603105917285,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9826868227054557,
+    "upper": -0.9120523907436275,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x-32": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.1049378590167722,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -1.0343639140759866,
+    "upper": -0.9639585858244364,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x-4": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0481561702201567,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9704159368743717,
+    "upper": -0.8965647793445356,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x-8": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0542028857955035,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9756819114115837,
+    "upper": -0.900062042942897,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x0": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0516786195277057,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9753887931428344,
+    "upper": -0.9028820911548371,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x16": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0806374640359753,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -1.0107216697819243,
+    "upper": -0.9384703771201598,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x2": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0138447911780422,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9549993836436561,
+    "upper": -0.8954409024462072,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x32": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0760873581337183,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9951469590896515,
+    "upper": -0.9082738232301217,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x4": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.033277517760405,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.957658627759712,
+    "upper": -0.8810048346512821,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "log_mean_square_dense_x8": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0625430226503563,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9902299342269328,
+    "upper": -0.9226100788745829,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "occupation_variance_coarse_t0.25": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0199580475684715,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9478184791836077,
+    "upper": -0.8797077010047528,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "occupation_variance_coarse_t0.5": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0243677017978892,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9504686583478251,
+    "upper": -0.8815198306567792,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "occupation_variance_coarse_t1": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.1319953223948074,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -1.0553071184937033,
+    "upper": -0.9823400040025942,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "occupation_variance_coarse_t2": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0606899351743537,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9880787953385965,
+    "upper": -0.9185864019489596,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "occupation_variance_dense_t0.25": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.022091956578241,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9483453030078032,
+    "upper": -0.8785620363356401,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "occupation_variance_dense_t0.5": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.02546940242865,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9516204706380232,
+    "upper": -0.8833618677737398,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "occupation_variance_dense_t1": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.129665203361859,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -1.0527919850516858,
+    "upper": -0.980201018309027,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "occupation_variance_dense_t2": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": false,
+    "lower": -1.0608944837873353,
+    "note": "",
+    "retained_draws": 2000,
+    "slope": -0.9888561274235009,
+    "upper": -0.9190881264966725,
+    "zero_or_nonfinite_omissions": 0
+  },
+  "supplementary_L_16_128_N100000": {
+    "bootstrap_draws": 2000,
+    "interval_conditional_on_positive_statistics": true,
+    "lower": -4.475974322954397,
+    "note": "Supplementary only: K=2 annulus, excises distance <=N^-1/2 from 0 or pi. Intervals may omit zero-count bootstrap draws. Not the primary L=2,4,8,16 fit.",
+    "retained_draws": 1904,
+    "slope": -3.852004412804177,
+    "upper": -3.4496358512121854,
+    "zero_or_nonfinite_omissions": 96
+  }
+}

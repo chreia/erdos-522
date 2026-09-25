@@ -1,0 +1,27 @@
+Erdős Problem #522: Lean formalization
+Copyright 2026 Sebastien Kawada
+
+This product is licensed under the Apache License, Version 2.0. It includes
+the following software by other authors, each licensed under the Apache
+License, Version 2.0, and ported to Lean 4.34 for this formalization:
+
+  ProbabilityApproximation, by Asher Yan
+  https://github.com/Polarnova/ProbabilityApproximation
+  upstream release v0.9.6, revision c89fba908a33ba741836407f43c67609e2d05279
+  in lean/vendor/ProbabilityApproximation
+
+  SLT (Statistical Learning Theory in Lean 4), by Yuanhe Zhang, Jason D. Lee,
+  Fanghui Liu and contributors
+  https://github.com/YuanheZ/lean-stat-learning-theory
+  upstream revision 482a1a56daf792b33afe8cf7f07f127dc0af8640
+  in lean/vendor/SLT
+
+It also includes a file adapted from:
+
+  hex-roots-mathlib, Copyright 2026 Lean FRO, LLC, by Kim Morrison
+  https://github.com/leanprover/hex-roots-mathlib
+  commit 9bcfb127d85e33c877d3e68d19385b115d7d45b9
+  in lean/Erdos522/Stability/PolynomialRouche.lean
+  (license in lean/third_party/hex-roots-mathlib/LICENSE)
+
+Each of these files keeps its original copyright notice.

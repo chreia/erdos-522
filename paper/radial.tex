@@ -1,0 +1,289 @@
+\section{Jensen's formula and the variance profile}\label{sec:radial}
+
+We first consider the polynomials $f_N(z)=\sum_{k=0}^N\epsilon_kz^k$ with
+random signs. Recall that $\mathrm d\mu(\theta)=\mathrm d\theta/(2\pi)$, and set
+\[
+ \sigma_N(r)^2=\sum_{k=0}^Nr^{2k},\qquad
+ J_N(r)=\int_{\mathbb T}\log|f_N(re^{i\theta})|\dd\mu(\theta).
+\]
+The results of this section are deterministic: they hold for every
+nonzero polynomial $f_N$ of degree at most $N$, and the randomness of the
+coefficients enters only through the concentration estimates of
+Section~\ref{sec:concentration}.
+We write $\gamma$ for Euler's constant.
+
+\begin{lemma}[Four-radius bound for radial mass]\label{thm:T2}
+Let $f_N$ be a nonzero polynomial of degree at most $N$, and fix $K>0$,
+$N>K$. We set
+\[
+ (x_1,x_2,x_3,x_4)=(-K,-K/2,K/2,K),\qquad r_i=1+x_i/N.
+\]
+Let $\sigma_N(r)>0$ be a normalization, and suppose that at each of these
+four radii
+\begin{equation}
+ \left|J_N(r_i)-\log\sigma_N(r_i)+\gamma/2\right|\leq\varepsilon_i,
+ \qquad i=1,2,3,4. \label{eq:four-radius-log-errors}
+\end{equation}
+Then
+\begin{align}
+ \frac{\#\{\alpha:f_N(\alpha)=0,\ ||\alpha|-1|>K/N\}}N
+ &\leq\frac{\deg f_N}N\nonumber\\
+ &\quad+\frac{\log\sigma_N(r_2)-\log\sigma_N(r_1)+\varepsilon_1+\varepsilon_2}{N\log(r_2/r_1)}\nonumber\\
+ &\quad-\frac{\log\sigma_N(r_4)-\log\sigma_N(r_3)-\varepsilon_3-\varepsilon_4}{N\log(r_4/r_3)}.\label{eq:T2-exact}
+\end{align}
+In particular, suppose that along a sequence of degrees $\deg f_N/N\to1$, that
+the errors $\varepsilon_i$ tend to zero, and that $\log\sigma_N(1+x/N)$,
+minus a deterministic centering that may depend on $N$ but not on $x$,
+converges to $F(x)$ uniformly on $[-K,K]$.
+Then the limiting upper bound for
+$\#\{\alpha:f_N(\alpha)=0,\ ||\alpha|-1|>K/N\}/N$ is
+\begin{equation}
+ 1+\frac2K\{F(-K/2)-F(-K)-F(K)+F(K/2)\}. \label{eq:T2-limit}
+\end{equation}
+\end{lemma}
+
+Here the centering $-\gamma/2$ is $\E\log|G|$, where $G$ has density
+$\pi^{-1}e^{-|z|^2}$ on $\C$, and it is the same at all four radii.
+If the four bounds \eqref{eq:four-radius-log-errors} hold outside four
+exceptional events, then \eqref{eq:T2-exact} holds outside their union,
+whose probability is at most the sum of their probabilities.
+The limiting bound \eqref{eq:T2-limit} holds for every sample sequence on
+which the four bounds hold for all sufficiently large degrees.
+
+\begin{proof}
+We will bound the numbers of roots in $\{|z|<r_1\}$ and in
+$\{|z|>r_4\}$ in terms of the slopes of two secants of the convex function
+$t\mapsto J_N(e^t)$, and then replace $J_N$ by $\log\sigma_N$ using
+\eqref{eq:four-radius-log-errors}.
+We write $f_N(z)=a\prod_{j=1}^{\deg f_N}(z-\alpha_j)$.
+By Jensen's formula \cite[\S3.61]{Titchmarsh1939} for one factor,
+$\int_{\mathbb T}\log|e^te^{i\theta}-\alpha|\dd\mu(\theta)=\max(t,\log|\alpha|)$
+for $\alpha\ne0$, and the integral is $t$ for $\alpha=0$, so that
+\[
+ J_N(e^t)=\log|a|+\sum_{j=1}^{\deg f_N}\max(t,\log|\alpha_j|),
+ \qquad t\in\mathbb R,
+\]
+where a term with $\alpha_j=0$ is read as $t$. Since the term of
+$\alpha_j$ has right derivative $1$ in $t$ if $|\alpha_j|\le e^t$, and $0$
+otherwise, the function $t\mapsto J_N(e^t)$ is convex, and its right
+derivative is $\nu_N(e^t)$.
+Since this function is also piecewise linear, it is the integral of its
+right derivative, and after the substitution $r=e^s$ we obtain
+\begin{equation}
+ J_N(e^{t'})-J_N(e^t)=\int_t^{t'}\nu_N(e^s)\dd s
+ =\int_{e^t}^{e^{t'}}\frac{\nu_N(r)}r\dd r,\qquad t<t'.
+ \label{eq:jensen-integral}
+\end{equation}
+
+Since $N>K$, we have $0<r_1<r_2<r_3<r_4$, and since $\nu_N$ is
+nondecreasing, \eqref{eq:jensen-integral} gives
+\begin{align*}
+ \nu_N(r_1)
+ &\leq\frac1{\log(r_2/r_1)}\int_{r_1}^{r_2}\frac{\nu_N(r)}r\dd r
+ =\frac{J_N(r_2)-J_N(r_1)}{\log(r_2/r_1)},\\
+ \frac{J_N(r_4)-J_N(r_3)}{\log(r_4/r_3)}
+ &=\frac1{\log(r_4/r_3)}\int_{r_3}^{r_4}\frac{\nu_N(r)}r\dd r
+ \leq\nu_N(r_4).
+\end{align*}
+By \eqref{eq:four-radius-log-errors}, in which $\gamma/2$ cancels in
+differences, we have
+\begin{align*}
+ J_N(r_2)-J_N(r_1)
+ &\leq\log\sigma_N(r_2)-\log\sigma_N(r_1)+\varepsilon_1+\varepsilon_2,\\
+ J_N(r_4)-J_N(r_3)
+ &\geq\log\sigma_N(r_4)-\log\sigma_N(r_3)-\varepsilon_3-\varepsilon_4.
+\end{align*}
+
+Let $m$ be the number of roots with $||\alpha|-1|>K/N$.
+There are at most $\nu_N(r_1)$ roots in the inner tail $\{|z|<r_1\}$ and
+exactly $\deg f_N-\nu_N(r_4)$ roots in the outer tail
+$\{|z|>r_4\}$, and hence, by the last two displays,
+\begin{align*}
+ \frac mN
+ &\leq\frac{\nu_N(r_1)}N+\frac{\deg f_N-\nu_N(r_4)}N
+ \leq\frac{\deg f_N}N
+   +\frac{J_N(r_2)-J_N(r_1)}{N\log(r_2/r_1)}
+   -\frac{J_N(r_4)-J_N(r_3)}{N\log(r_4/r_3)}\\
+ &\leq\frac{\deg f_N}N
+   +\frac{\log\sigma_N(r_2)-\log\sigma_N(r_1)+\varepsilon_1+\varepsilon_2}{N\log(r_2/r_1)}\\
+ &\quad-\frac{\log\sigma_N(r_4)-\log\sigma_N(r_3)-\varepsilon_3-\varepsilon_4}{N\log(r_4/r_3)}.
+\end{align*}
+This proves \eqref{eq:T2-exact}.
+
+For the limit, let $c$ be the deterministic centering of the hypothesis,
+which does not depend on $x$, and let $F_N(x)=\log\sigma_N(1+x/N)-c$, so
+that $\log\sigma_N(r_i)=F_N(x_i)+c$. We have
+\begin{align*}
+ N\log(r_2/r_1)&=\int_{-K}^{-K/2}\frac{\mathrm dx}{1+x/N}\longrightarrow K/2,\\
+ N\log(r_4/r_3)&=\int_{K/2}^{K}\frac{\mathrm dx}{1+x/N}\longrightarrow K/2.
+\end{align*}
+Since $c$ cancels in the differences, the right-hand side of
+\eqref{eq:T2-exact} is the expression in the first line below, and since
+$\deg f_N/N\to1$, $\varepsilon_i\to0$ and $F_N(x_i)\to F(x_i)$, we
+obtain
+\begin{align*}
+ &\frac{\deg f_N}N
+   +\frac{F_N(-K/2)-F_N(-K)+\varepsilon_1+\varepsilon_2}{N\log(r_2/r_1)}
+ -\frac{F_N(K)-F_N(K/2)-\varepsilon_3-\varepsilon_4}{N\log(r_4/r_3)}\\
+ &\qquad\longrightarrow1+\frac{F(-K/2)-F(-K)}{K/2}-\frac{F(K)-F(K/2)}{K/2}\\
+ &\qquad=1+\frac2K\{F(-K/2)-F(-K)-F(K)+F(K/2)\},
+\end{align*}
+so that the limit superior of $m/N$ is at most \eqref{eq:T2-limit}.
+\end{proof}
+
+Figure~\ref{fig:jensen-secants} shows these secants for one sequence at $N=10^5$.
+
+\input{figures/jensen-secants}
+
+\begin{proposition}[The unweighted logarithmic variance profile]\label{prop:profiles}
+For the normalization $\sigma_N(r)^2=\sum_{k=0}^Nr^{2k}$ of this section,
+\[
+ \log\sigma_N(1+x/N)-\tfrac12\log N\longrightarrow
+ F(x):=\frac12\log\int_0^1e^{2xt}\dd t
+\]
+uniformly on compact intervals of $x$. The profile satisfies
+\[
+ F'(x)=\Phi(x),\qquad F(x)=x+F(-x),\qquad F'(0)=\tfrac12.
+\]
+The bound in \eqref{eq:T2-limit} is
+\[
+ \frac2K\log\frac{2}{1+e^{-K}}\leq\frac{2\log2}{K}.
+\]
+\end{proposition}
+
+\begin{proof}
+We first compare each term $(1+x/N)^{2k}$ of $\sigma_N(1+x/N)^2$ with
+$e^{2xk/N}$, which turns $\sigma_N(1+x/N)^2/N$ into a Riemann sum for
+$\int_0^1e^{2xt}\dd t$, and then derive the identities for $F$ and the
+value of \eqref{eq:T2-limit} from this integral.
+
+For $|x|\leq K$, $N\geq2K$ and $0\leq k\leq N$, expanding the logarithm
+in its power series and using $|x/N|\le K/N\le1/2$, we obtain
+\begin{align*}
+ &\left|2k\log(1+x/N)-2xk/N\right|
+ =2k\left|-\frac12\Big(\frac xN\Big)^2+\frac13\Big(\frac xN\Big)^3-\cdots\right|\\
+ &\qquad\le k\Big(\frac xN\Big)^2\Big(1+\Big|\frac xN\Big|+\Big(\frac xN\Big)^2+\cdots\Big)
+ =\frac{k(x/N)^2}{1-|x/N|}\le2k\Big(\frac xN\Big)^2\le2K^2/N.
+\end{align*}
+Exponentiating, we get
+\begin{equation}
+ e^{-2K^2/N}\leq
+ \frac{(1+x/N)^{2k}}{e^{2xk/N}}\leq e^{2K^2/N}.
+ \label{eq:profile-comparison}
+\end{equation}
+
+Since $(x,t)\mapsto e^{2xt}$ is uniformly continuous on
+$[-K,K]\times[0,1]$ and the term $k=0$ is $1/N$, the Riemann sums
+$\frac1N\sum_{k=0}^Ne^{2xk/N}$ converge to $\int_0^1e^{2xt}\dd t$
+uniformly for $|x|\leq K$. Multiplying \eqref{eq:profile-comparison} by
+$e^{2xk/N}/N$ and summing over $0\le k\le N$, we see that
+$\sigma_N(1+x/N)^2/N=\frac1N\sum_{k=0}^N(1+x/N)^{2k}$ lies between
+$e^{-2K^2/N}$ and $e^{2K^2/N}$ times the Riemann sum, so that it has the
+same limit. Since this limit is at least $e^{-2K}$ and the logarithm is
+uniformly continuous on $[e^{-2K}/2,\infty)$, we obtain, uniformly for
+$|x|\le K$,
+\[
+ \log\sigma_N(1+x/N)-\tfrac12\log N
+ =\frac12\log\frac{\sigma_N(1+x/N)^2}N
+ \longrightarrow\frac12\log\int_0^1e^{2xt}\dd t
+ =F(x).
+\]
+
+Differentiating the positive integral under the integral sign, we have
+\[
+ F'(x)=\frac12\,\frac{\int_0^12te^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}
+ =\frac{\int_0^1t e^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}
+ =\Phi(x),
+\]
+and in particular $F'(0)=\int_0^1t\dd t=\frac12$.
+The change of variables $t\mapsto1-t$ gives the symmetry
+\[
+ F(x)=\frac12\log\int_0^1e^{2x(1-t)}\dd t
+ =\frac12\log\Big(e^{2x}\int_0^1e^{-2xt}\dd t\Big)
+ =x+F(-x).
+\]
+By integration we also obtain
+\begin{align*}
+ F(-K/2)-F(-K)
+ &=\frac12\log\frac{\int_0^1e^{-Kt}\dd t}{\int_0^1e^{-2Kt}\dd t}
+ =\frac12\log\frac{(1-e^{-K})/K}{(1-e^{-2K})/(2K)}\\
+ &=\frac12\log\frac{2(1-e^{-K})}{(1-e^{-K})(1+e^{-K})}
+ =\frac12\log\frac2{1+e^{-K}}.
+\end{align*}
+Using $F(x)=x+F(-x)$ at $x=K$ and $x=K/2$ in \eqref{eq:T2-limit}, we get
+\begin{align*}
+ &1+\frac2K\{F(-K/2)-F(-K)-F(K)+F(K/2)\}\\
+ &\qquad=1+\frac2K\Big\{F(-K/2)-F(-K)-\big(K+F(-K)\big)
+   +\Big(\frac K2+F(-K/2)\Big)\Big\}\\
+ &\qquad=\frac4K\{F(-K/2)-F(-K)\}
+ =\frac2K\log\frac2{1+e^{-K}}
+ \leq\frac{2\log2}{K}.
+\end{align*}
+\end{proof}
+
+This proof also yields a rate of convergence in the profile limit.
+
+\begin{lemma}[Rate in the variance profile]\label{lem:profile-rate}
+For $K>0$, $N\ge2K$ and $|x|\le K$,
+\[
+ \left|\log\sigma_N(1+x/N)-\tfrac12\log N-F(x)\right|
+ \le\frac{K^2+e^{4K}/2}{N}.
+\]
+\end{lemma}
+
+\begin{proof}
+We use \eqref{eq:profile-comparison} to compare
+$\sigma_N(1+x/N)^2/N$ with a Riemann sum of $e^{2xt}$, and the
+monotonicity of $t\mapsto e^{2xt}$ to compare the Riemann sum with the
+integral.
+Let
+\[
+ S_N(x)=\frac1N\sum_{k=0}^Ne^{2xk/N},\qquad
+ I(x)=\int_0^1e^{2xt}\dd t,
+\]
+so that $F=\frac12\log I$.
+Multiplying \eqref{eq:profile-comparison} by $e^{2xk/N}/N$ and summing
+over $0\le k\le N$, we get
+$e^{-2K^2/N}S_N(x)\le\sigma_N(1+x/N)^2/N\le e^{2K^2/N}S_N(x)$, and hence
+\[
+ \left|\log\frac{\sigma_N(1+x/N)^2}N-\log S_N(x)\right|\le\frac{2K^2}N.
+\]
+The function $g(t)=e^{2xt}$ is nondecreasing on $[0,1]$ for $x\ge0$ and
+nonincreasing for $x\le0$, so that $I(x)$ lies between the Riemann sums
+$\frac1N\sum_{k=0}^{N-1}g(k/N)$ and $\frac1N\sum_{k=1}^Ng(k/N)$, in the
+order that gives
+\begin{align*}
+ I(x)&\le\frac1N\sum_{k=1}^Ng(k/N)\le S_N(x)
+ =\frac1N\sum_{k=0}^{N-1}g(k/N)+\frac{g(1)}N\le I(x)+\frac{g(1)}N,
+ \qquad x\ge0,\\
+ I(x)&\le\frac1N\sum_{k=0}^{N-1}g(k/N)\le S_N(x)
+ =\frac1N\sum_{k=1}^Ng(k/N)+\frac{g(0)}N\le I(x)+\frac{g(0)}N,
+ \qquad x\le0.
+\end{align*}
+In either case, since $g(0)=1$ and $g(1)=e^{2x}\le e^{2K}$,
+\[
+ I(x)\le S_N(x)\le I(x)+\frac{\max(g(0),g(1))}N\le I(x)+\frac{e^{2K}}N.
+\]
+For $|x|\le K$ we also have $I(x)\ge e^{-2K}$, since $e^{2xt}\ge e^{-2K}$
+for $0\le t\le1$.
+By the mean value theorem, $|\log a-\log b|\le|a-b|/\min(a,b)$ for
+$a,b>0$, and hence
+\[
+ 0\le\log S_N(x)-\log I(x)\le\frac{e^{2K}/N}{e^{-2K}}=\frac{e^{4K}}N.
+\]
+Combining the two estimates, we obtain
+\begin{align*}
+ &\left|\log\sigma_N(1+x/N)-\tfrac12\log N-F(x)\right|
+ =\tfrac12\left|\log\frac{\sigma_N(1+x/N)^2}N-\log I(x)\right|\\
+ &\qquad\le\tfrac12\left|\log\frac{\sigma_N(1+x/N)^2}N-\log S_N(x)\right|
+   +\tfrac12\bigl|\log S_N(x)-\log I(x)\bigr|\\
+ &\qquad\le\tfrac12\left(\frac{2K^2}N+\frac{e^{4K}}N\right)
+ =\frac{K^2+e^{4K}/2}{N}.
+\end{align*}
+\end{proof}
+
+Figure~\ref{fig:tilted-mean} shows $\Phi(x)$ as the mean of $t$ under
+the limit, in $t=k/N$, of the tilted coefficient mass
+$Nr^{2k}/\sigma_N(r)^2$ at $r=1+x/N$.
+
+\afterpage{\input{figures/tilted-mean}}

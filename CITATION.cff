@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Almost-Sure Radial Laws for Nested Random Polynomials and Erdős Problem #522"
+version: 1.0.0
+date-released: 2026-09-25
+# The code is under Apache 2.0. The paper (Erdos522.pdf, paper/) is under CC BY 4.0; see README.md.
+license: Apache-2.0
+repository-code: "https://github.com/chreia/erdos-522"
+authors:
+  - family-names: Kawada
+    given-names: Sebastien
+    affiliation: "MIT CSAIL"
+    email: kawada@csail.mit.edu
+abstract: >-
+  We prove that the random Littlewood polynomials
+  f_n(z) = ε_0 + ε_1 z + ... + ε_n z^n, built from one sequence of independent
+  random signs, almost surely have n/2 + o(n) zeros in the closed unit disk,
+  which resolves Erdős Problem #522. We prove an almost-sure radial law for the
+  zeros at the scale 1/n around the unit circle, the same laws for Steinhaus,
+  standard real and complex Gaussian, and nondegenerate bounded centrally symmetric
+  coefficients, and the almost-sure bound n/2 + O(n/log n) for random signs.
+  All main results have been formally verified in Lean 4 with Mathlib.
+keywords:
+  - random polynomials
+  - Littlewood polynomials
+  - zeros of random polynomials
+  - almost sure convergence
+  - Erdős problems
+  - formal verification
+  - Lean
+preferred-citation:
+  type: generic
+  title: "Almost-Sure Radial Laws for Nested Random Polynomials and Erdős Problem #522"
+  authors:
+    - family-names: Kawada
+      given-names: Sebastien
+      affiliation: "MIT CSAIL"
+  year: 2026
+  month: 9
+  url: "https://github.com/chreia/erdos-522"

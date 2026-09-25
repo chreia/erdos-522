@@ -1,0 +1,26 @@
+name: Lean
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and check axioms
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the formalization
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean
+          build-args: --wfail
+          test: false
+          lint: false
+
+      - name: Check the axioms of the main theorems
+        working-directory: lean
+        run: lake env lean checks/MainTheorems.lean
