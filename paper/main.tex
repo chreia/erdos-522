@@ -66,23 +66,24 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Let $(a_k)_{k\ge0}$ be independent Rademacher random variables and let
-$f_n(z)=\sum_{k=0}^n a_k z^k$. Erd\H{o}s asked in 1961 whether, almost surely, these
-random Littlewood polynomials have $n/2+o(n)$ zeros in the closed unit disk, counted
-with multiplicity, as $n\to\infty$. Here, we answer this question, Erd\H{o}s Problem
-\#522, in the affirmative. In fact, we prove that, almost surely,
-$\frac1n\#\{z:f_n(z)=0,\ |z|\le 1+x/n\}$ converges, at the natural scale $1/n$ around
-the unit circle, uniformly on compact subsets of $\mathbb{R}$ to
-$\frac12(1+\coth x-1/x)$, interpreted as $1/2$ when $x=0$. The same unit-disk and
-radial laws hold when the coefficients are independent and identically distributed
-with the Steinhaus distribution, the standard real Gaussian, the standard complex
-Gaussian, or any nondegenerate distribution which is bounded and centrally symmetric.
-For Rademacher coefficients we also prove the stronger almost sure bound
-$\#\{z:f_n(z)=0,\ |z|\le 1\}=n/2+O(n/\log n)$. Since different degrees share their
-coefficients, we first prove the result along a subsequence of degrees, and then fill
-in the other degrees with Rouch\'e's theorem, once we show that few zeros near the
-unit circle have a small derivative. All main results have been formally verified in
-Lean.
+Let $\epsilon_0,\epsilon_1,\dots$ be independent random signs, each equal to
+$\pm1$ with probability $1/2$, and let $f_n(z)=\sum_{k=0}^n\epsilon_k z^k$.
+Erd\H{o}s asked in 1961 whether, almost surely, these random Littlewood
+polynomials have $n/2+o(n)$ zeros in the closed unit disk, counted with
+multiplicity. We answer this question, Erd\H{o}s Problem \#522, in the
+affirmative. In fact, we prove that, almost surely,
+$\frac1n\#\{z: f_n(z)=0,\ |z|\le 1+x/n\}$ converges uniformly on compact
+subsets of $\mathbb{R}$ to $\frac12(1+\coth x-1/x)$, interpreted as $1/2$
+when $x=0$. The same unit-disk and radial laws hold when the coefficients
+are independent and identically distributed with the Steinhaus
+distribution, the standard real Gaussian, the standard complex Gaussian, or
+any nondegenerate bounded centrally symmetric distribution. For random
+signs we also prove the almost-sure bound
+$\#\{z: f_n(z)=0,\ |z|\le 1\}=n/2+O(n/\log n)$. Since different degrees
+share their coefficients, we first prove the result along a subsequence of
+degrees, and then fill in the other degrees with Rouch\'e's theorem, once
+we show that few zeros near the unit circle have a small derivative. All
+main results have been formally verified in Lean.
 \end{abstract}
 \begin{quotation}\footnotesize\noindent
 \emph{2020 Mathematics Subject Classification.} Primary 60F15, 30C15;
@@ -163,10 +164,16 @@ For Rademacher coefficients, in the notation of Erd\H{o}s problem
 \#522~\cite{Erdos522Problem}, where $R_n=\nu_n(1)$ is the number of roots
 in the closed unit disk, Corollary~\ref{thm:stronglaw} states that
 $R_n/(n/2)\to1$ almost surely.
-For these coefficients we first prove Corollary~\ref{thm:stronglaw} directly in
-Section~\ref{sec:unit-circle}, and then we prove
-Theorem~\ref{thm:radial-profile} in Section~\ref{sec:moving-radii} by the
-same construction.
+For these coefficients we prove Theorem~\ref{thm:radial-profile} in
+Section~\ref{sec:layer3}, and Corollary~\ref{thm:stronglaw} is its case
+$x=0$.
+
+For coefficients in $\{0,1\}$, the polynomial $f_n$ has the nonzero mean
+$D_n/2$, where $D_n(z)=\sum_{k=0}^nz^k$; by Remark~\ref{rem:mean-newman},
+its normalized size $|D_n(z)|/\sigma_n(|z|)$, where
+$\sigma_n(r)^2=\sum_{k=0}^nr^{2k}$, is $O(n^{-1/2})$ for
+$\bigl||z|-1\bigr|\le K/n$, with $K$ fixed, at angles bounded away
+from $0$.
 
 For Rademacher coefficients we also obtain a rate of convergence in the
 unit disk.
@@ -177,7 +184,7 @@ coefficients,
 \[
  \limsup_{n\to\infty}(\log n)
        \left|\frac{\nu_n(1)}n-\frac12\right|
-       \le 2000\log2\qquad\hbox{almost surely}.
+       \le 128\qquad\hbox{almost surely}.
 \]
 \end{theorem}
 
@@ -208,126 +215,122 @@ consecutive degrees by root matching under the appended coefficient tail.
 
 \paragraph{Conventions.}
 Sections~\ref{sec:radial}--\ref{sec:layer3} treat Rademacher
-coefficients, which we write $\epsilon_k$, and
-Section~\ref{sec:layer2-models} treats the other distributions, whose
-coefficients we write $\xi_k$.
-In $\nu_n(r)$ the disk is closed, and the denominator in every limit is
-the nominal degree $n$.
-For a coefficient distribution with an atom at zero,
-$\nu_n=0$ whenever $f_n$ is identically zero.
+coefficients, written $\epsilon_k$, and Section~\ref{sec:layer2-models}
+the other distributions, written $\xi_k$.
+In $\nu_n(r)$ the disk is closed, the denominator in every limit is the
+nominal degree $n$, and $\nu_n=0$ whenever $f_n$ is identically zero.
 The radii $1+x/n$ with $|x|\le A$ are positive once $n>A$, and only
 sufficiently large $n$ are used when $x<0$.
-We write $C(K)$ for a positive constant depending only on the parameter
-$K$, which may increase from one estimate to the next, and $\log$ for the
-natural logarithm.
 Whenever $j$ indexes blocks of degrees, $N=j^8$ is the first degree of the
-block $j^8\le n<(j+1)^8$, except in the proof of
-Proposition~\ref{prop:sparse-exponents}, where $N=\lfloor j^q\rfloor$.
-We call these first degrees the sparse subsequence of degrees.
-We write $\mu$ for the normalized arc measure $\mathrm d\theta/(2\pi)$ on the
-circle $\mathbb T$ of angles $\theta$.
+block $j^8\le n<(j+1)^8$ (in the proof of
+Proposition~\ref{prop:sparse-exponents}, $N=\lfloor j^q\rfloor$), and
+these first degrees form the sparse subsequence of degrees.
+We write $\mu$ for the normalized arc measure $\mathrm d\theta/(2\pi)$ on
+the circle $\mathbb T$ of angles $\theta$, and $\log$ for the natural
+logarithm. For constants:
+\begin{itemize}
+\item a named constant, such as $H_K$, $\mathcal B_K$ or $S_K$, is fixed once
+defined, and Appendix~\ref{sec:constants} lists all of them;
+\item $C_*$ and $c_{\rm HW}$ are the absolute constants of
+Nazarov--Nishry--Sodin~\cite{NNS2013} and of
+Rudelson--Vershynin~\cite{RudelsonVershynin2013};
+\item $C(K)$ is a positive constant that depends only on $K$ (and, in
+Section~\ref{sec:layer2-models}, on the coefficient distribution), not
+on $N$, the radius, the angle or the coefficients; each $C(K)$ is used
+once and may change between estimates, and $C(K,B)$ may also depend on
+$B$;
+\item $O_K(f(N))$ means at most $C(K)f(N)$ for all large $N$;
+\item Section~\ref{sec:log-rate} uses only named constants.
+\end{itemize}
 
 
 \subsection*{The proof}
 The main difficulty is to pass from the sparse subsequence of degrees to
 every degree, which requires control of root movement under every partial
-appended tail.
-We first show that most roots lie in a narrow annulus, and then control
-the roots at which the derivative is small.
-Figure~\ref{fig:proof-map} shows how these steps depend on one another.
+appended tail. We show that most roots lie in a narrow annulus, and then
+control the roots at which the derivative is small.
+Figure~\ref{fig:proof-map} shows how the steps depend on one another.
 
 We first estimate the angular average of the logarithm of the normalized
-polynomial (Theorem~\ref{thm:sign-logarithms}).
-For this we use one-point and two-point Gaussian approximations to the
-occupation of small disks by that polynomial.
-Logarithmic integrability controls the contribution near zero.
-Along the sparse subsequence of degrees, the resulting probability bounds
-are summable.
-By Jensen's formula at four radii (Lemmas~\ref{thm:T2}
-and~\ref{lem:annular-mass}, and Corollary~\ref{cor:radial-probability}) we
-get
+polynomial (Theorem~\ref{thm:sign-logarithms}), using one- and two-point
+Gaussian approximations to the occupation of small disks, and logarithmic
+integrability near zero. The probability bounds are summable along the
+sparse subsequence of degrees. Jensen's formula at four radii
+(Lemmas~\ref{thm:T2} and~\ref{lem:annular-mass}, and
+Corollary~\ref{cor:radial-probability}) then gives
 \[
  \frac1N\#\{\alpha:f_N(\alpha)=0,\ ||\alpha|-1|>K/N\}
  \le\frac{2\log2}{K}+o(1),
 \]
 so that $K$ controls the fraction of roots outside the annulus.
 
-For each root in this annulus with small derivative there is a nearby
-mesh point at which the polynomial and its derivative are both small.
-We bound the first two moments of the number of these mesh points
-through the covariance matrices of the corresponding real random
-vectors, which have four coordinates for one mesh point and eight for a
-pair.
-To bound the number of roots assigned to one mesh point, we use
-Hanson--Wright concentration for arc energy and Jensen's formula.
-By Lemma~\ref{lem:small-derivatives}, outside a summable exceptional
-event there are at most $N^{31/32}$ annular roots with
-$|f_N'(\alpha)|<N^{3/2-1/64}$.
+Near each annular root with small derivative there is a mesh point at
+which the polynomial and its derivative are both small. We bound the
+first two moments of the number of such mesh points through covariance
+matrices of four real coordinates for one point and eight for a pair,
+and the number of roots per mesh point by Hanson--Wright concentration
+and Jensen's formula. By Lemma~\ref{lem:small-derivatives}, outside a
+summable exceptional event at most $C(K)N^{15/16}\log N$ annular roots
+have $|f_N'(\alpha)|<N^{3/2-1/64}$.
 
-We localize each remaining root by a Taylor expansion
-(Lemma~\ref{lem:isolation-interface}).
-A common regular sublevel of $|f_N|$ then yields disjoint domains, each
-of which contains one root.
-We compare every degree $n$ of a block $j^8\le n<(j+1)^8$ with its
-first degree $N=j^8$.
-By a maximal bound on every appended tail (Lemma~\ref{lem:tails}), the
-hypothesis of Rouch\'e's theorem holds on the boundary of each selected
-domain.
-The tail amplitude controls the localization radius.
-The exponent eight ensures that the probability bounds are summable and
-that the localization radius is smaller than the half-width of the thin
-band.
+A Taylor expansion (Lemma~\ref{lem:isolation-interface}) localizes each
+remaining root: disks of a common small radius about these roots are
+pairwise disjoint, each with exactly one root. We compare every degree
+$n$ of a block $j^8\le n<(j+1)^8$ with its first degree $N=j^8$. A
+maximal bound on every appended tail (Lemma~\ref{lem:tails}) gives the
+hypothesis of Rouch\'e's theorem on the boundary of each selected disk,
+and the tail amplitude sets the localization radius. The exponent eight
+makes the probability bounds summable and the localization radius
+smaller than the half-width of the thin band.
 
 By root matching (Theorem~\ref{thm:T4}) we have
 \[
  |\nu_n(1)-\nu_N(1)|\le c_N+U_N+(\deg f_n-\deg f_N),
 \]
-where $c_N$ is the number of selected domains whose closures meet the
+where $c_N$ is the number of selected disks whose closures meet the
 unit circle and $U_N$ is the number of unselected roots.
-Through the thin bands of Lemma~\ref{lem:thin-band}, the same
-logarithmic concentration estimate shows that the normalized count of the
-roots in the crossing domains tends to zero, since these roots lie in a
-thinner annulus.
-The unselected roots contribute at most $2\log2/K+o_K(1)$ to the
-normalized count.
-For each fixed $K$ the probabilities of the exceptional events are
-summable over the blocks, so that by the Borel--Cantelli lemma these
-bounds hold for all large blocks on an event $\Omega_K$ of probability
-one.
-Finally, we let $K$ tend to infinity on $\bigcap_{K\ge2}\Omega_K$, which
-yields the limit along all degrees on the original probability space.
+The crossing disks have their roots in a thinner annulus, so the local
+radial secants of Lemma~\ref{lem:local-radial-secant} and the same
+concentration estimate show that $c_N/N\to0$. At the radius $1+x/n$ the
+argument is the same, with the probes about $1+x/N$ and a band that also
+contains the circles $|z|=1+x/n$ of the block. The unselected roots
+contribute at most $2\log2/K+o_K(1)$. For fixed $K$ the exceptional
+probabilities are summable over the blocks, so by the Borel--Cantelli
+lemma these bounds hold for all large blocks on an event $\Omega_K$ of
+probability one, and we let $K\to\infty$ on $\bigcap_{K\ge2}\Omega_K$,
+on the original probability space.
 
-In the probabilistic estimates we use Rai\v{c}'s convex-set normal
+The probabilistic estimates use Rai\v{c}'s convex-set normal
 approximation~\cite{Raic2019}, the logarithmic integrability of
 Nazarov--Nishry--Sodin~\cite{NNS2013}, and the Hanson--Wright
-inequality~\cite{RudelsonVershynin2013}.
-We compute the constants and their dependence on the annular width in
-Appendix~\ref{sec:constants}.
+inequality~\cite{RudelsonVershynin2013}. Appendix~\ref{sec:constants}
+computes the constants and their dependence on the annular width.
 
 The Lean formalization~\cite{FormalCompanion2026} proves the unit-disk
 and radial laws on the shared coefficient space.
 Appendix~\ref{sec:formalization} describes the theorem correspondence.
 \afterpage{\input{figures/proof-map}}
 
-\subsection*{Organization}
-In Section~\ref{sec:radial} we apply Jensen's formula to radial counts and
-compute the variance profile, and in Section~\ref{sec:concentration} we
-prove logarithmic concentration for signs.
-Section~\ref{sec:local-roots} contains the local-count, derivative, and
-maximal-tail estimates.
-We prove root matching in Section~\ref{sec:matching}, and then
-Corollary~\ref{thm:stronglaw} and Theorem~\ref{thm:radial-profile} in
-Section~\ref{sec:layer3}.
-In Section~\ref{sec:layer2-models} we treat the other coefficient
-distributions and prove Theorem~\ref{thm:radial-profile} and
-Corollary~\ref{thm:stronglaw} for them.
-The rate, the choice of the sparse subsequence of degrees, nearby circles,
-and weighted variance profiles follow in Section~\ref{sec:extensions}.
-Section~\ref{sec:open-problems} collects open problems, and
-Section~\ref{sec:numerics} reports numerical observations.
-In Appendix~\ref{sec:general-estimates} we collect the general forms of
-the concentration, mesh, and diagonalization estimates.
-
+\subsection*{Reader's guide}
+Sections~\ref{sec:radial}--\ref{sec:layer3} prove
+Theorem~\ref{thm:radial-profile} and Corollary~\ref{thm:stronglaw} for
+signs. Section~\ref{sec:radial} turns root counts into the angular
+logarithm by Jensen's formula, Section~\ref{sec:concentration} proves its
+concentration, Section~\ref{sec:local-roots} bounds local counts, small
+derivatives and appended tails, Section~\ref{sec:matching} matches roots
+by Rouch\'e's theorem, and Section~\ref{sec:layer3} assembles the proof,
+with its parameters in Table~\ref{tab:unit-conditions}.
+Section~\ref{sec:layer2-models} states five hypotheses (H1)--(H5) under
+which that proof applies and verifies them for the other distributions.
+Section~\ref{sec:extensions} proves Theorem~\ref{thm:log-rate} and further
+refinements, Section~\ref{sec:open-problems} poses open problems, and
+Section~\ref{sec:numerics} describes the computations behind the figures.
+Appendices~\ref{sec:constants}, \ref{sec:general-estimates}
+and~\ref{sec:formalization} give the explicit constants, the general
+forms of the probabilistic estimates, and the Lean correspondence.
+For Erd\H{o}s \#522 alone, Sections~\ref{sec:radial}--\ref{sec:layer3} at
+$x=0$ suffice, with the general estimates of
+Appendix~\ref{sec:general-estimates}.
 
 \input{radial}
 \input{radial-estimates}
@@ -348,7 +351,7 @@ the concentration, mesh, and diagonalization estimates.
 \input{formalization}
 
 \section*{Acknowledgments}
-The author thanks Manolis Kellis for support and guidance. The author acknowledges the MIT Office of Research Computing and Data for providing high performance computing resources that have contributed to the research results reported within this paper. Cartographer-1, an AI system developed in the Kellis lab at MIT, was used in proof development. AI assistants were also used in the Lean formalization and in manuscript preparation.
+The author thanks Manolis Kellis and the Kellis Lab at MIT CSAIL for their support and guidance throughout this project, and the MIT Office of Research Computing and Data for providing high-performance computing resources that contributed to the results reported here. Mantis Cartographer-1, an AI system developed by the author in the Kellis Lab, assisted with the Lean formalization and helped with the mathematical arguments and the preparation of the manuscript. The system is built for work across scientific domains, including biology and mathematics.
 
 \bibliographystyle{plain}
 \begingroup

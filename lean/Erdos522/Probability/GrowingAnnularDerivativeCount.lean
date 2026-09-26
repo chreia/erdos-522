@@ -10,9 +10,10 @@ import Erdos522.Probability.GrowingAnnularLogarithmicConcentration
 /-!
 # Small-derivative roots on a logarithmically growing annulus
 
-The finite mesh theorem and its scalar thresholds give a summable exceptional
-probability even when the annular width grows. The resulting almost-sure
-count retains the original derivative and root-count powers.
+The finite mesh theorem at the count threshold `N / (log N)^2` and its scalar
+thresholds give a summable exceptional probability even when the annular
+width grows. The resulting almost-sure count retains the original derivative
+power and the count threshold `N / (log N)^2`.
 -/
 
 noncomputable section
@@ -29,8 +30,8 @@ theorem eventually_growing_annular_derivative_scalar_bounds {C : ℝ} (hC : 0 < 
       annularJetProbabilityBound N C K (derivativeMeshValueThreshold N S L) (3 / L) ≤ 1 ∧
       (Fintype.card (AnnularMeshIndex N K (derivativeMeshSpacing N S L)) : ℝ) *
         annularJetProbabilityBound N C K (derivativeMeshValueThreshold N S L) (3 / L) ≤
-        (N : ℝ) ^ (31 / 32 : ℝ) / (4 * LocalZeroCount.localCountConstant (K + 2) * Real.log N) ∧
-      40 * annularLocalMultiplicityBound N (K + 2) * Real.sqrt N ≤ (N : ℝ) ^ (31 / 32 : ℝ) / 2 := by
+        logarithmicCountThreshold N / (4 * LocalZeroCount.localCountConstant (K + 2) * Real.log N) ∧
+      40 * annularLocalMultiplicityBound N (K + 2) * Real.sqrt N ≤ logarithmicCountThreshold N / 2 := by
   filter_upwards [eventually_ge_atTop 2,
     (tendsto_growing_annular_jet_probability hC).eventually_lt_const (by norm_num : (0 : ℝ) < 1),
     (tendsto_growing_annular_mean_ratio hC).eventually_lt_const (by norm_num : (0 : ℝ) < 1),
@@ -46,7 +47,9 @@ theorem eventually_growing_annular_derivative_scalar_bounds {C : ℝ} (hC : 0 < 
     positivity
   have hn : (1 : ℝ) < N := by exact_mod_cast (show 1 < N by omega)
   have hlog : 0 < Real.log N := Real.log_pos hn
-  have hpow : 0 < (N : ℝ) ^ (31 / 32 : ℝ) := Real.rpow_pos_of_pos (by linarith) _
+  have hpow : 0 < logarithmicCountThreshold N := by
+    unfold logarithmicCountThreshold
+    positivity
   have hL : 1 ≤ (N : ℝ) ^ (1 / 64 : ℝ) := Real.one_le_rpow hn.le (by norm_num)
   have hprob : 0 ≤ annularJetProbabilityBound N C K
       (derivativeMeshValueThreshold N S ((N : ℝ) ^ (1 / 64 : ℝ)))
@@ -70,13 +73,13 @@ theorem eventually_growing_annular_derivative_scalar_bounds {C : ℝ} (hC : 0 < 
 /-- Direct use of the finite mesh theorem gives the complete growing-width failure bound. -/
 theorem eventually_growing_annular_derivative_probability :
     ∃ C : ℝ, 0 < C ∧ ∀ᶠ N : ℕ in atTop,
-      (LogMoments.signMeasure N).real {ω | (N : ℝ) ^ (31 / 32 : ℝ) <
+      (LogMoments.signMeasure N).real {ω | logarithmicCountThreshold N <
         (annularSmallDerivativeZeroCount (rademacherPolynomial N ω) N (logarithmicAnnularWidth N)
           ((N : ℝ) ^ (1 / 64 : ℝ)) : ℝ)} ≤
       1 / (N : ℝ) ^ 3 + 1 / (N : ℝ) ^ 10 +
         annularSmallDerivativeFailureConstant C (logarithmicAnnularWidth N) (logarithmicAnnularWidth N + 2) *
-          (N : ℝ) ^ (-3 / 8 : ℝ) * (Real.log N) ^ 4 := by
-  obtain ⟨C₁, C₂, hC₁, hC₂, hprob⟩ := exists_annular_small_derivative_failure_constants
+          (N : ℝ) ^ (-7 / 16 : ℝ) * (Real.log N) ^ 8 := by
+  obtain ⟨C₁, C₂, hC₁, hC₂, hprob⟩ := exists_annular_small_derivative_logarithmic_failure_constants
   refine ⟨C₂, hC₂, ?_⟩
   have hwidth : Tendsto (fun N : ℕ => ArcEnergy.arcScale * Real.log N / N) atTop (𝓝 0) := by
     simpa only [pow_one, Real.rpow_one, mul_zero, mul_div_assoc] using
@@ -93,15 +96,15 @@ theorem eventually_growing_annular_derivative_probability :
     (logarithmicAnnularWidth_nonneg N) hN.2.2.1 ((div_lt_one hn).mp hratio).le
     le_rfl hwidthN.le hN.2.2.2 hscalar.1 hscalar.2.1 hscalar.2.2
 
-/-- On every sufficiently sparse rounded power schedule, only `N^(31/32)`
+/-- On every sufficiently sparse rounded power schedule, only `N / (log N)^2`
 roots in the growing annulus have derivative below `N^(3/2)/N^(1/64)`, almost surely. -/
-theorem ae_eventually_growing_annular_derivative_count {q : ℝ} (hq : 500 / 181 < q) :
+theorem ae_eventually_growing_annular_derivative_count {q : ℝ} (hq : 128 / 43 < q) :
     ∀ᵐ ω ∂rademacherSequenceMeasure, ∀ᶠ j : ℕ in atTop,
       let N := realPowerDegree q j
       (annularSmallDerivativeZeroCount (rademacherPolynomial N (rademacherPrefix N ω)) N
-        (logarithmicAnnularWidth N) ((N : ℝ) ^ (1 / 64 : ℝ)) : ℝ) ≤ (N : ℝ) ^ (31 / 32 : ℝ) := by
+        (logarithmicAnnularWidth N) ((N : ℝ) ^ (1 / 64 : ℝ)) : ℝ) ≤ logarithmicCountThreshold N := by
   obtain ⟨C, hC, hbound⟩ := eventually_growing_annular_derivative_probability
-  let E (N : ℕ) : Set (LogMoments.SignVector N) := {v | (N : ℝ) ^ (31 / 32 : ℝ) <
+  let E (N : ℕ) : Set (LogMoments.SignVector N) := {v | logarithmicCountThreshold N <
     (annularSmallDerivativeZeroCount (rademacherPolynomial N v) N (logarithmicAnnularWidth N)
       ((N : ℝ) ^ (1 / 64 : ℝ)) : ℝ)}
   have hq0 : 0 < q := by linarith

@@ -22,7 +22,7 @@ open scoped Topology
 namespace Erdos522
 
 /-- The growing annulus gives a simultaneous block matching inequality, with
-at most `N^(31/32)` unmatched roots of small derivative. -/
+at most `N / (log N)^2` unmatched roots of small derivative. -/
 theorem ae_eventually_growing_annular_block_count_bound :
     ∀ᵐ ω ∂rademacherSequenceMeasure, ∀ᶠ j : ℕ in atTop,
       let N := realPowerDegree 8 j
@@ -33,7 +33,7 @@ theorem ae_eventually_growing_annular_block_count_bound :
         (Nat.dist (closedZeroCount
           (rademacherPolynomial (N + m) (rademacherPrefix (N + m) ω)) r) (closedZeroCount P r) : ℝ) ≤
           (closedZeroCount P (r + w) - closedZeroCount P (r - w) : ℕ) +
-            (zeroCountIn P {z | |‖z‖ - 1| ≤ K / N}ᶜ : ℝ) + (N : ℝ) ^ (31 / 32 : ℝ) + m := by
+            (zeroCountIn P {z | |‖z‖ - 1| ≤ K / N}ᶜ : ℝ) + logarithmicCountThreshold N + m := by
   have hK : ∀ᶠ N : ℕ in atTop, 0 ≤ logarithmicAnnularWidth N ∧ logarithmicAnnularWidth N + 1 ≤ N :=
     eventually_logarithmicAnnularWidth_add_one_le_degree.mono
       (fun N hN => ⟨logarithmicAnnularWidth_nonneg N, hN⟩)
@@ -82,7 +82,7 @@ theorem ae_eventually_growing_annular_block_count_bound :
     exact_mod_cast hmatch
   change (Nat.dist (closedZeroCount Q r) (closedZeroCount P r) : ℝ) ≤
     (closedZeroCount P (r + radialMatchingWindow N) - closedZeroCount P (r - radialMatchingWindow N) : ℕ) +
-      (zeroCountIn P {z | |‖z‖ - 1| ≤ K / N}ᶜ : ℝ) + (N : ℝ) ^ (31 / 32 : ℝ) + m
+      (zeroCountIn P {z | |‖z‖ - 1| ≤ K / N}ᶜ : ℝ) + logarithmicCountThreshold N + m
   linarith
 
 end Erdos522

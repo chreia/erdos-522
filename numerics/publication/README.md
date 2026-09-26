@@ -1,15 +1,15 @@
 # Numerical figures and tables
 
-This folder reproduces the numerical figures (Figures 6, 7, 9 and 10) and Tables 8 and 9 of the paper from summary data. Their methods are described in Section 10. The computations illustrate the theorems. No proof uses them.
+This folder reproduces the numerical figures (Figures 6, 7, 9 and 10) and Table 9 of the paper from summary data, and records the fitted slopes of Section 10 in `STATISTICS.md`. Their methods are described in Section 10. The computations illustrate the theorems. No proof uses them.
 
 | Paper | Output | Source data |
 |---|---|---|
 | Figure 6 | `figures/annulus.pdf` | `data/annulus.csv` |
-| Figure 7 | `figures/small-derivative.pdf` | `data/small-derivative.csv`, `data/bootstrap-fits.json` |
+| Figure 7 | `figures/small-derivative.pdf` | `data/small-derivative.csv` |
 | Figure 9 | `figures/root-matching.pdf` | `matching.npz` |
 | Figure 10 | `figures/radial-profile.pdf` | `data/radial-profile.csv`, `data/sequence-statistics.npz` |
-| Table 8 | `degree_coverage` in `metadata.json` | `data/sequence-statistics.npz` |
-| Table 9 | `data/bootstrap-fits.json` | `data/sequence-statistics.npz` |
+| Table 9 | `degree_coverage` in `metadata.json` | `data/sequence-statistics.npz` |
+| `STATISTICS.md` | log–log fits, from `data/bootstrap-fits.json` | `data/sequence-statistics.npz` |
 
 ## Commands
 
@@ -34,12 +34,13 @@ python3 numerics/publication/render.py    # figures and rendering.json
 
 - **Roots.** The roots at the five base degrees 1,000, 3,000, 10,000, 30,000 and 100,000 were computed with MPSolve and three Newton refinements. The completed base samples number 92, 92, 92, 91 and 77. Every completed sample is retained, independently of its root counts.
 - **Counts.** Root counts keep multiplicities. Exact roots at ±1 count at radius one. Other roots within `1e-9` of the unit circle get separate lower and upper counts, and `metadata.json` records the resulting sensitivity. These intervals are not certified enclosures.
-- **Residuals.** The normalized residual is `|f_N(z)| / sum_k |z|^k`. Its maximum at each base degree is in Table 8, and `data/residuals-by-degree.csv` gives it for every degree. That file is output of the root computations, and neither script regenerates it.
+- **Residuals.** The normalized residual is `|f_N(z)| / sum_k |z|^k`. Section 10 states that it is below `3e-14` at every degree, and `data/residuals-by-degree.csv` gives its maximum at every degree. That file is output of the root computations, and neither script regenerates it.
 - **Uncertainty.** Bootstrap draws resample whole coefficient sequences, so all degrees and radii of a sequence stay together. Bands are pointwise 95% percentile intervals.
 - **Root matching.** `matching.npz` holds the roots of one sequence at degrees 1,000, 1,210 and 1,421, and the counts at all 422 degrees of that block. The links in Figure 9 are minimum-distance assignments. They are empirical and do not certify an analytic matching. `matching.json` describes the arrays and the residual checks.
 
 ## Files
 
+- `STATISTICS.md`: the log–log fits and the comparison of each statistic with its reference curve, cited in Section 10.
 - `prepare.py`: bootstrap summaries, plotted tables and `metadata.json`.
 - `render.py`: vector figures from the plotted data.
 - `metadata.json`: seeds, cohorts, normalizations, sample coverage and figure inputs.

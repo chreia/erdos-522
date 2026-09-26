@@ -1,15 +1,17 @@
 \section{Finite constants}\label{sec:constants}\label{app:coefficient-finite}
-In this appendix we collect the constants and the sufficient degree
-thresholds used above.
+The main text writes most constants as $C(K)$ or $O_K(\cdot)$. Here we
+make them explicit: each is an absolute number times a power of $K+1$
+and a factor $e^{bK}$, which gives explicit degree thresholds and lets
+Section~\ref{sec:log-rate} take the width $K$ of order $\log N$.
 Let $C_*$ be the positive universal constant in
 Nazarov--Nishry--Sodin, Corollary~1.2, and let $c_{\rm HW}>0$ be the
 constant in Rudelson--Vershynin, Theorem~1.1.
 We keep the dependence on both constants in all the bounds below.
 We choose, for fixed parameters, the least index beyond which every
 displayed inequality holds, so that all degree cutoffs are deterministic.
-Each subsection below corresponds to one result of the main text, and
-Table~\ref{tab:const-summary} lists its degree thresholds and its
-exceptional probability.
+Table~\ref{tab:const-summary} lists the degree thresholds and the
+exceptional probability of each result of the main text, and
+Table~\ref{tab:named-constants} lists the named constants.
 
 \begin{table}[!ht]
 \centering
@@ -19,61 +21,177 @@ exceptional probability.
 >{\raggedright\arraybackslash}p{0.46\textwidth}
 >{\raggedright\arraybackslash}p{0.3\textwidth}@{}}
 \toprule
-Subsection & Degree thresholds & Exceptional probability\\
+Result & Degree thresholds & Exceptional probability\\
 \midrule
 \ref{app:const-profile}, Lemma~\ref{lem:profile-rate}
  & $N\ge2K$ & none\\
 \ref{app:const-log}, Theorem~\ref{thm:sign-logarithms}
- & $K\ge2$ and $N\ge H_K^4$, uniformly for $r\in[1-K/N,1+K/N]$
+ & $K\ge2$ and $N\ge(160e^{8K})^2$, uniformly for $r\in[1-K/N,1+K/N]$
  & $p_K^*(N)$\\
 \ref{app:const-radial}, Corollary~\ref{cor:radial-probability}
- & those of \ref{app:const-log}, $N\ge2K$, $N\ge2(1+2K)e^{4K}$ and
- $\varepsilon_K^*(N)+D_K/N\le K/16$
+ & those of \ref{app:const-log} and $N\ge2K$
  & $4p_K^*(N)$ for \eqref{eq:layer2-radial}, $5p_K^*(N)$ for
  \eqref{eq:radial-count-near-unit}, $5p_2^*(N)$ for its form at $K=2$\\
-\ref{app:const-local}, Lemma~\ref{lem:local-counts}
+Lemma~\ref{lem:local-counts}
  & $t_N\le1$ and $N\ge e$ & $N^{-3}$\\
-\ref{app:const-second-derivative}, Lemma~\ref{lem:second-derivative}
+Lemma~\ref{lem:second-derivative}
  & $N\ge\max\{2,(K+1)/3\}$ & $N^{-10}$\\
 \ref{app:const-small-derivatives}, Lemma~\ref{lem:small-derivatives}
- & $N\ge\lceil e^{X_0}\rceil$, and those of \ref{app:const-local} and
- \ref{app:const-localization}
+ & $N\ge(6400e^{8K})^2$, and those of Lemma~\ref{lem:local-counts}
+ and \eqref{eq:localization-thresholds}
  & the right-hand side of \eqref{eq:layer2-bad}\\
-\ref{app:const-tails}, Lemma~\ref{lem:tails}
+Lemma~\ref{lem:tails}
  & $j\ge60$ and $N\ge\max\{4,K\}$ & $N^{-10}$\\
-\ref{app:const-localization}, Lemma~\ref{lem:isolation-interface}
- & $2aL/N^{3/2}\le1/N$ and $4S_KaL^2N^{-1/2}\sqrt{\log N}\le1$ & none\\
-\ref{app:block-bounds}, Section~\ref{sec:unit-circle}
- & those of \ref{app:const-log}--\ref{app:const-localization} at the
+Lemma~\ref{lem:isolation-interface}
+ & $4aL/N^{3/2}\le1/N$ and $4S_KaL^2N^{-1/2}\sqrt{\log N}\le1$,
+ that is, \eqref{eq:localization-thresholds} & none\\
+\ref{app:block-bounds}, Section~\ref{sec:layer3}
+ & $R\ge|x|+2$, $K\ge R$, $N\ge2R$ and $N\ge(160e^{8R})^2$, which implies
+ $N>R$, those of the second to eighth rows at the
  width $K$, where Lemma~\ref{lem:tails} enters with $K+2$ in place of
- $K$ (so that $N\ge\max\{4,K+2\}$), those of \ref{app:const-radial} at
- $K=2$, and $j\ge60$
- & \eqref{eq:block-failure}, with $R=2$\\
-\ref{app:const-moving-radii}, Section~\ref{sec:moving-radii}
- & $R\ge|x|+3$, $K\ge R$, $N\ge2R$ and $N\ge H_R^4$, which implies $N>R$,
- and those of \ref{app:block-bounds}
- & $5p_R^*(N)$ for \eqref{eq:E1-local}, and \eqref{eq:block-failure}\\
+ $K$ (so that $N\ge\max\{4,K+2\}$), and $j\ge60$
+ & \eqref{eq:block-failure}, with $R=2$ and $x=0$ for
+ Corollary~\ref{thm:stronglaw}\\
 \ref{app:growing-annulus}, Section~\ref{sec:log-rate}
  & the conditions of Table~\ref{tab:growing-annulus}, $j\ge60$, $K\ge2$,
  $A\log N/N\le1$ and $N\ge K+2$
- & \eqref{eq:block-failure}, with $K=K_N$ and $R=2$\\
+ & \eqref{eq:block-failure}, with $K=K_N$, $R=2$ and $x=0$\\
 \ref{app:const-nearby}, Corollary~\ref{cor:crossings}
  & $0<\kappa_*<\min(\kappa,1/64)$ and
  $N^{-1-\kappa}+2a/d_0<N^{-1-\kappa_*}$
- & \eqref{eq:block-failure}, with $R=2$\\
+ & \eqref{eq:block-failure}, with $R=2$ and the thin-band events of
+ \ref{app:const-radial}\\
 \bottomrule
 \end{tabular}
 \caption{The degree thresholds and exceptional probabilities of the
-subsections of Appendix~\ref{sec:constants}, with the result of the main
-text that each one treats. For other coefficient distributions,
-Section~\ref{sec:model-constants} enlarges the constants and adds
-exceptional probabilities.}
+results of the main text, with the subsection of
+Appendix~\ref{sec:constants}, where there is one, that treats each. For other coefficient
+distributions, Section~\ref{sec:model-constants} enlarges the constants
+and adds exceptional probabilities.}
 \label{tab:const-summary}
 \end{table}
 
+In Table~\ref{tab:named-constants}, $A$, $C_1(K)$, $S_K$ and $\lambda_K$
+are the constants of Lemmas~\ref{lem:local-counts}
+and~\ref{lem:second-derivative} and of \eqref{eq:jet-eigenvalue}, where
+$S_K$ is written $C(K)$ and $\lambda_K$ is written $\lambda$.
+The law constants $A_B$, $C_B$, $C_{1,G}$ and $C_{1,B}$ are in
+Tables~\ref{tab:law-steinhaus}--\ref{tab:law-bounded}, and $A(B,\eta)$
+and $C_1(K,B,\eta)$ in Lemma~\ref{lem:local-counts-general}.
+The symbols $A$, $C_0$ and $D_0$ in Corollary~\ref{cor:T3-powers}, $B_0$
+in Section~\ref{sec:layer2-models}, and $E_1,E_2$ in
+Appendix~\ref{sec:general-estimates} have other meanings.
+\begin{table}[p]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{The named constants. Each is at most $C_0(K+1)^pe^{bK}$ with the
+listed $(C_0,p,b)$, and the absolute constants have $p=b=0$.}
+\label{tab:named-constants}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.1\textwidth}
+>{\raggedright\arraybackslash}p{0.27\textwidth}
+>{\raggedright\arraybackslash}p{0.13\textwidth}
+>{\raggedright\arraybackslash}p{0.14\textwidth}
+>{\raggedright\arraybackslash}p{0.28\textwidth}@{}}
+\toprule
+Constant & Value & $(C_0,p,b)$ & Defined & Used\\
+\midrule
+$D_K$ & $10(K+1)^2e^{4K}$, and $D_2=90e^8$ & $(10,2,4)$
+ & \ref{app:const-profile}
+ & \ref{app:const-radial}, \ref{app:block-bounds},
+ \ref{app:growing-annulus}, \ref{sec:log-rate},
+ Table~\ref{tab:rate-width}\\
+$H_K$ & $10^8e^{20(K+1)}$, and $H_2=10^8e^{60}$ & $(H_0,0,20)$
+ & \ref{app:const-log}
+ & \ref{app:const-radial}, \ref{sec:model-constants},
+ \ref{app:growing-annulus}, Table~\ref{tab:rate-width}\\
+$C_1(K)$ & $(4A+4K+4)/\log2$, and $C_1(K+2)=(4A+4K+12)/\log2$
+ & $(C_{10},1,0)$ for $C_1(K+2)$
+ & Lemma~\ref{lem:local-counts}
+ & \ref{sec:derivative-detection}, \ref{sec:layer2-models},
+ \ref{sec:log-rate}, \ref{app:const-small-derivatives},
+ \ref{sec:model-constants}, \ref{app:growing-annulus}\\
+$S_K$ & $100e^{K+4}$ & $(S_0,0,1)$
+ & Lemma~\ref{lem:second-derivative}
+ & \ref{app:const-small-derivatives}, \ref{app:block-bounds},
+ \ref{sec:model-constants}, \ref{app:growing-annulus}\\
+$\lambda_K$ & $e^{-4K}/80$ & $(1/80,0,-4)$
+ & \eqref{eq:jet-eigenvalue}
+ & \ref{app:const-small-derivatives}, \ref{sec:model-constants},
+ \ref{app:growing-annulus}\\
+$D'_K$ & $2^{18}(K+1)S_K^2$ & $(D_0,1,2)$
+ & \ref{app:const-small-derivatives}
+ & \ref{sec:model-constants}, \ref{app:growing-annulus},
+ Proposition~\ref{prop:sparse-exponents}\\
+$\mathcal B_K$ & $2000e^{3K}(2/\lambda_K)^{3/2}$ & $(B_0,0,9)$
+ & \ref{app:const-small-derivatives}
+ & \ref{sec:model-constants}, \ref{app:growing-annulus},
+ Proposition~\ref{prop:sparse-exponents}\\
+$\mathcal T_K$ & $80e^{4K}/\lambda_K=6400e^{8K}$ & $(6400,0,8)$
+ & \ref{app:const-small-derivatives}
+ & \ref{sec:model-constants}, \ref{app:growing-annulus},
+ Proposition~\ref{prop:sparse-exponents}\\
+$V_K$ & $50+3\mathcal B_K+\mathcal T_K$ & $(V_0,0,9)$
+ & \ref{app:const-small-derivatives}
+ & \ref{sec:model-constants}, \ref{app:growing-annulus}\\
+$c_K$ & $9/(1024S_K^2\lambda_K^2)$ & $(Q_0,0,6)$
+ & \ref{app:const-small-derivatives}
+ & \ref{sec:model-constants}, \ref{app:growing-annulus}\\
+$C_K$ & $V_K(D'_K)^2$ & $(C_{\rm bad},2,13)$
+ & \ref{app:const-small-derivatives}
+ & \eqref{eq:layer2-bad}, \eqref{eq:block-failure},
+ \ref{app:growing-annulus}, \ref{sec:log-rate},
+ Table~\ref{tab:rate-width}\\
+$Z_K$ & $C_1(K+2)(1+D'_Kc_K)$ & $(Z_0,2,8)$
+ & \ref{app:const-small-derivatives}
+ & \eqref{eq:layer2-bad}, \ref{app:block-bounds},
+ \ref{app:growing-annulus}, \ref{sec:log-rate},
+ Table~\ref{tab:rate-width}\\
+$Z'_K$ & $C_1(K+2)(40+D'_K\mathcal B_K)$ & $(Z'_0,2,11)$
+ & \ref{app:const-small-derivatives}
+ & \eqref{eq:layer2-bad}, \ref{app:block-bounds},
+ \ref{app:growing-annulus}, \ref{sec:log-rate},
+ Table~\ref{tab:rate-width}\\
+\midrule
+$C_*$ & constant of \eqref{eq:layer2-nns}, $C_*\ge1$ &
+ & \eqref{eq:layer2-nns}
+ & \ref{app:const-log}, $E_1$, $E_2$, \ref{sec:model-constants}\\
+$c_{\rm HW}$ & constant of \eqref{eq:HW-signs} &
+ & \eqref{eq:HW-signs} & $A$, \ref{sec:model-constants}\\
+$A$ & $\max(1,1024\pi/c_{\rm HW})$ &
+ & Lemma~\ref{lem:local-counts}
+ & $C_1(K)$, $C_{10}$, \ref{sec:log-rate}, \ref{app:growing-annulus}\\
+$E_1$ & $\frac52+2e^{1/2}(4eC_*)^6$ &
+ & \eqref{eq:layer2-log-split} & $E_0$\\
+$E_2$ & $\frac1{16}+e^{1/2}(4eC_*)^6$ &
+ & \eqref{eq:layer2-log-split} & $E_0$\\
+$H_0$ & $10^8e^{20}$ & & \ref{app:growing-annulus}
+ & $E_0$, \eqref{eq:E2-majorants}, \ref{sec:log-rate}\\
+$S_0$ & $100e^4$ & & \ref{app:growing-annulus}
+ & $D_0$, $Q_0$, Table~\ref{tab:growing-annulus}, \ref{sec:log-rate}\\
+$D_0$ & $2^{18}S_0^2$ & & \ref{app:growing-annulus}
+ & $C_{\rm bad}$, $Z_0$, $Z'_0$\\
+$B_0$ & $2000\cdot160^{3/2}$ & & \ref{app:growing-annulus}
+ & $V_0$, $Z'_0$\\
+$V_0$ & $50+3B_0+6400$ & & \ref{app:growing-annulus} & $C_{\rm bad}$\\
+$Q_0$ & $9\cdot80^2/(1024S_0^2)$ & & \ref{app:growing-annulus} & $Z_0$\\
+$C_{10}$ & $(4A+12)/\log2$ & & \ref{app:growing-annulus}
+ & $Z_0$, $Z'_0$\\
+$C_{\rm bad}$ & $V_0D_0^2$ & & \ref{app:growing-annulus}
+ & \eqref{eq:E2-majorants}, \ref{sec:log-rate}\\
+$Z_0$ & $C_{10}(1+D_0Q_0)$ & & \ref{app:growing-annulus}
+ & \eqref{eq:E2-majorants}, \ref{sec:log-rate}\\
+$Z'_0$ & $C_{10}(40+D_0B_0)$ & & \ref{app:growing-annulus}
+ & \eqref{eq:E2-majorants}, \ref{sec:log-rate}\\
+$E_0$ & $E_1+E_2H_0$ & & \ref{app:growing-annulus}
+ & \eqref{eq:E2-majorants}, \ref{sec:log-rate}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{The variance profile}\label{app:const-profile}
-We begin with the constant of Lemma~\ref{lem:profile-rate}, and set, for
-an integer $K\ge2$,
+For the constant of Lemma~\ref{lem:profile-rate} we set, for an integer
+$K\ge2$,
 \[
  D_K=10(K+1)^2e^{4K}.
 \]
@@ -87,54 +205,23 @@ $1\le9(K+1)^2$ give
 \end{align*}
 
 \subsection{Concentration of the angular logarithm}\label{app:const-log}
-We now turn to the constants of Theorem~\ref{thm:sign-logarithms}.
-The one- and two-point bounds of its proof lead to the occupation
-constant $H_K$, and the clipped integral and its tails lead to the
-logarithmic error $\varepsilon_K^*(N)$ and the exceptional probability
-$p_K^*(N)$.
+The one- and two-point bounds give the occupation constant $H_K$ of
+Theorem~\ref{thm:sign-logarithms}, and Lemma~\ref{lem:clipping} gives
+its error $\varepsilon_K^*(N)$ and exceptional probability $p_K^*(N)$.
 Let $K\ge2$ be an integer, set
 \[
  H_K=10^8e^{20(K+1)},
 \]
 and recall that $T=(\log N)/32$ is the clipping level of
 Lemma~\ref{lem:clipping}.
-In the proof of Theorem~\ref{thm:sign-logarithms}, $N$ is taken large in
-the three places of Table~\ref{tab:log-thresholds}. Each condition there is a lower bound on
-$N$ that holds at $N=H_K^4=10^{32}e^{80(K+1)}$, so that the degree
-threshold $N\ge H_K^4$ covers all three.
+The proof of Theorem~\ref{thm:sign-logarithms} uses $N\ge2K$, in
+\eqref{eq:layer2-abel} and \eqref{eq:radial-bounds}, $N\ge(160e^{8K})^2$,
+so that $40e^{8K}N^{-1/2}\le1/4$ for the covariance matrices of
+Section~\ref{sec:h1-rademacher}, and $N\ge e$, in
+Lemma~\ref{lem:clipping}. All three hold for $N\ge(160e^{8K})^2$,
+since $(160e^{8K})^2=25600e^{16K}$ exceeds $2K$ and $e$.
 
-\begin{table}[!htbp]
-\centering
-\small
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.5\textwidth}l
->{\raggedright\arraybackslash}p{0.22\textwidth}@{}}
-\toprule
-Use in the proof of Theorem~\ref{thm:sign-logarithms} & Condition
- & At $N=H_K^4$\\
-\midrule
-The summation by parts \eqref{eq:layer2-abel} and the radial bounds
- \eqref{eq:radial-bounds}
- & $N\ge2K$ & $2K\le e^{2K}<H_K^4$\\
-The eigenvalues of the covariance matrices $\Sigma$ of
- Section~\ref{sec:h1-rademacher} and of the matrices between $\Sigma$
- and $\tfrac12I_d$ lie in $[1/4,3/4]$ once
- $\|\Sigma-\tfrac12I_d\|\le1/4$, and this norm is at most
- $40e^{8K}N^{-1/2}$
- & $N\ge(160e^{8K})^2$ & $(160e^{8K})^2=25600e^{16K}<H_K^4$\\
-$q\le2\log N$ for $q=\lceil\log N\rceil$,
- $TN^{-1/2}\le N^{-1/32}(\log N)^7$ and
- $N^{-1/16}\le N^{-1/32}(\log N)^7$, in Lemma~\ref{lem:clipping}
- & $N\ge e$ & $e<10^{32}<H_K^4$\\
-\bottomrule
-\end{tabular}
-\caption{The three places where $N$ is taken large in the proof of
-Theorem~\ref{thm:sign-logarithms}. The second condition is
-$40e^{8K}N^{-1/2}\le1/4$, and the last column uses $y\le e^y$,
-$2K<80(K+1)$, $25600<10^{32}$ and $16K<80(K+1)$.}
-\label{tab:log-thresholds}
-\end{table}
-
-Let $K\ge2$, $N\ge H_K^4$ and $r\in[1-K/N,1+K/N]$.
+Let $K\ge2$, $N\ge(160e^{8K})^2$ and $r\in[1-K/N,1+K/N]$.
 In \eqref{eq:point-bounds}, the line before the last is $N^{-1/2}$ times
 $(42d^{1/4}+16)\cdot46e^{9K}+320e^{8K}$, where the dimension is
 $d\in\{2,4\}$, so that $d^{1/4}\le4^{1/4}$. Since
@@ -147,19 +234,16 @@ $320e^{-2}<44$, we have
  &<3469e^{9K}+44e^{9K}<4000e^{9K}.
 \end{align*}
 Hence the one- and two-point differences in \eqref{eq:point-bounds} are
-at most $4000e^{9K}N^{-1/2}$ on the retained angles and pairs.
-On the removed sets, whose measures are at most $2N^{-1/2}$ and
-$10N^{-1/2}$, the integrands of $\mathbb EA_t$ and $\mathbb EA_t^2$ differ
-from $F_G(t)$ and $F_G(t)^2$ by at most one. As in the first and third
-lines of \eqref{eq:occupation-bounds}, we get, uniformly for $t\ge0$,
+at most $4000e^{9K}N^{-1/2}$ on the retained angles and pairs. As in
+\eqref{eq:occupation-bounds}, where the removed sets have measures at
+most $2N^{-1/2}$ and $10N^{-1/2}$, we get, uniformly for $t\ge0$,
 \[
  |\mathbb EA_t-F_G(t)|\le(2+4000e^{9K})N^{-1/2},\qquad
  |\mathbb EA_t^2-F_G(t)^2|\le(10+4000e^{9K})N^{-1/2}.
 \]
 Since $12000e^{9K}+14\le12014e^{9K}<10^8e^{20(K+1)}=H_K$ and
-$F_G(t)=1-e^{-t^2}$, it follows from these bounds, the identity
-$\operatorname{Var}(A_t)=\mathbb EA_t^2-F_G(t)^2-(\mathbb EA_t-F_G(t))(\mathbb EA_t+F_G(t))$
-in \eqref{eq:occupation-bounds} and $0\le\mathbb EA_t+F_G(t)\le2$ that
+$F_G(t)=1-e^{-t^2}$, these bounds, the variance identity of
+\eqref{eq:occupation-bounds} and $0\le\mathbb EA_t+F_G(t)\le2$ give
 \begin{align}
  |\mathbb EA_t-(1-e^{-t^2})|&\le(2+4000e^{9K})N^{-1/2}
  \le H_KN^{-1/2},\nonumber\\
@@ -169,91 +253,55 @@ in \eqref{eq:occupation-bounds} and $0\le\mathbb EA_t+F_G(t)\le2$ that
  &=(14+12000e^{9K})N^{-1/2}\le H_KN^{-1/2}.
  \label{eq:layer2-occupation}
 \end{align}
-This two-point estimate also permits different radii and thresholds.
-We take the deviation for the truncated logarithmic integral, that is,
-the parameter $u$ of Theorem~\ref{thm:T1}, to be $N^{-1/32}(\log N)^7$,
-and we set
+We take the deviation for the truncated logarithmic integral, the
+parameter $u$ of Theorem~\ref{thm:T1}, to be $N^{-1/16}(\log N)^7$, and
+we set
 \begin{align*}
- \varepsilon_K^*(N)&=N^{-1/32}(\log N)^7+2H_KTN^{-1/2}\\
- &\quad+(4eC_*)^6\sqrt{2+H_K}\,N^{-1/32}(\log N)^7+\tfrac32N^{-1/16},\\
+ \varepsilon_K^*(N)&=N^{-1/16}(\log N)^7+2H_KTN^{-1/2}\\
+ &\quad+e^{1/2}(4eC_*)^6(2N^{-1/16}+H_KN^{-1/2})(\log N)^7+\tfrac32N^{-1/16},\\
  p_K^*(N)&=H_KN^{-3/8}+N^{-12}
- +4H_KT^2N^{-7/16}(\log N)^{-14}.
+ +4H_KT^2N^{-3/8}(\log N)^{-14}.
 \end{align*}
 Then
 \begin{equation}
  \begin{gathered}
  \Prob\{|J_N(r)-\log\sigma_N(r)+\gamma/2|>\varepsilon_K^*(N)\}
  \le p_K^*(N),\\
- \varepsilon_K^*(N)=O_K(N^{-1/32}(\log N)^7).
+ \varepsilon_K^*(N)=O_K(N^{-1/16}(\log N)^7).
  \end{gathered}
                                                         \label{eq:layer2-log}
 \end{equation}
-Table~\ref{tab:log-terms} lists the source of each term of
-$\varepsilon_K^*(N)$ and of $p_K^*(N)$.
-
-\begin{table}[!htbp]
-\centering
-\small
-\begin{tabular}{@{}ll@{}}
-\toprule
-Source & Term\\
-\midrule
-\multicolumn{2}{@{}l}{\emph{Logarithmic error $\varepsilon_K^*(N)$}}\\
-Deviation of the truncated logarithmic integral & $N^{-1/32}(\log N)^7$\\
-Bias in the truncated expectation & $2H_KTN^{-1/2}$\\
-Lower logarithmic tail & $(4eC_*)^6\sqrt{2+H_K}\,N^{-1/32}(\log N)^7$\\
-Upper logarithmic tail and the two Gaussian tails & $\tfrac32N^{-1/16}$\\
-\midrule
-\multicolumn{2}{@{}l}{\emph{Exceptional probability $p_K^*(N)$}}\\
-Small-value occupation & $H_KN^{-3/8}$\\
-Angular logarithmic $L^2$ norm & $N^{-12}$\\
-Deviation of the truncated logarithmic integral
- & $4H_KT^2N^{-7/16}(\log N)^{-14}$\\
-\bottomrule
-\end{tabular}
-\caption{The terms of the logarithmic error and of the exceptional
-probability in \eqref{eq:layer2-log}.}
-\label{tab:log-terms}
-\end{table}
-
 The first line of \eqref{eq:layer2-log} is Lemma~\ref{lem:clipping} with
-$H=H_K$, $C=C_*$, $E=\Omega$ and $B_E=1$, which applies for $N\ge H_K^4$
-by \eqref{eq:layer2-occupation}, \eqref{eq:layer2-nns} and
-\eqref{eq:layer2-energy}. Its error is $\varepsilon_K^*(N)$, since
+$H=H_K$, $C=C_*$, $E=\Omega$ and $B_E=1$, which applies for
+$N\ge(160e^{8K})^2$ by \eqref{eq:layer2-occupation}, \eqref{eq:layer2-nns}
+and \eqref{eq:layer2-energy}. Its error is $\varepsilon_K^*(N)$, since
 $B_E/2+1=\tfrac32$, and its probability bound is $p_K^*(N)$, since
 $4T^2=(\log N)^2/256$.
-In its proof, $\Prob\{U>(4eC_*)^{12}(\log N)^{14}\}\le N^{-12}$ for
-$U=\int|\log|X_r||^2\dd\mu$, and outside this event
-$\sqrt U\le(4eC_*)^6(\log N)^7$, which is the square-root threshold in
-Theorem~\ref{thm:T1}.
-For the second line of \eqref{eq:layer2-log}, we have
-$2H_KTN^{-1/2}=(H_K/16)N^{-1/2}\log N$, and, for $N\ge e$,
-$N^{-1/2}\log N\le N^{-1/32}(\log N)^7$ and
-$N^{-1/16}\le N^{-1/32}(\log N)^7$, so that
-\[
- \varepsilon_K^*(N)
- \le\Bigl(1+\frac{H_K}{16}+(4eC_*)^6\sqrt{2+H_K}+\frac32\Bigr)
-      N^{-1/32}(\log N)^7,
-\]
-whose constant depends only on $K$, since $C_*$ is an absolute constant.
+The second line follows from the bound on the error in
+Lemma~\ref{lem:clipping}, which at $C=C_*$ and $B_E=1$ reads
+\begin{equation}
+ \varepsilon_K^*(N)\le E_1N^{-1/16}(\log N)^7+E_2H_KN^{-1/2}(\log N)^7,
+ \qquad
+ \begin{aligned}
+ E_1&=\tfrac52+2e^{1/2}(4eC_*)^6,\\
+ E_2&=\tfrac1{16}+e^{1/2}(4eC_*)^6,
+ \end{aligned}
+ \label{eq:layer2-log-split}
+\end{equation}
+where $E_1$ and $E_2$ are absolute constants, since $C_*$ is. Only the
+second term depends on $K$, and it carries the factor $N^{-1/2}$.
 
 \subsection{Annular mass and thin bands}\label{app:const-radial}
 Next we compute the constants of
 Corollary~\ref{cor:radial-probability}.
-The four radii $1-K/N$, $1-K/(2N)$, $1+K/(2N)$ and $1+K/N$ are $1+x/N$
-with $|x|\le K$, and they lie in $[1-K/N,1+K/N]$. Hence their variance
-errors are at most $D_K/N$ for $N\ge2K$, by
+As in its proof, the four secant radii $1\pm K/N$ and $1\pm K/(2N)$ lie
+in $[1-K/N,1+K/N]$. Hence
+their variance errors are at most $D_K/N$ for $N\ge2K$, by
 Section~\ref{app:const-profile}, and each logarithmic error is at most
-$\varepsilon_K^*(N)$, outside probability $p_K^*(N)$, for $N\ge H_K^4$,
-by \eqref{eq:layer2-log}.
-For the fixed-width radial tail we require
-\[
- N\ge2K,\qquad N\ge2(1+2K)e^{4K},\qquad
- \varepsilon_K^*(N)+D_K/N\le K/16.
-\]
-The last condition implies the hypothesis $\varepsilon+D/N\le K/8$ of
-Lemma~\ref{lem:annular-mass}, with $\varepsilon=\varepsilon_K^*(N)$ and
-$D=D_K$. Since $f_N(0)=\epsilon_0\ne0$, this lemma applies outside the
+$\varepsilon_K^*(N)$, outside probability $p_K^*(N)$, for
+$N\ge(160e^{8K})^2$, by \eqref{eq:layer2-log}.
+Lemma~\ref{lem:annular-mass} at $\eta=1/2$, with
+$\varepsilon=\varepsilon_K^*(N)$ and $D=D_K$, then applies outside the
 four logarithmic exceptional events, whose union has probability at most
 $4p_K^*(N)$, and gives
 \begin{equation}
@@ -263,92 +311,43 @@ $4p_K^*(N)$, and gives
 \end{equation}
 
 We use all five radii $1+qN^{-1-\kappa}$, $q=-2,\dots,2$, for
-$0<\kappa\le1/64$. They lie in the annulus of
-Theorem~\ref{thm:sign-logarithms}, since
-$|qN^{-1-\kappa}|\le2N^{-1-\kappa}\le2/N\le K/N$, and $N\ge H_K^4$
-implies the condition $N\ge4$ of Lemma~\ref{lem:thin-band}, since
-$H_K^4>10^{32}$. By that lemma with $\varepsilon=\varepsilon_K^*(N)$,
-whose hypothesis holds outside the five events of \eqref{eq:layer2-log}
-at these radii, for $q=-1,0,1$ the same sample satisfies
+$0<\kappa\le1/64$, and $N\ge(160e^{8K})^2$ implies the condition $N\ge4$
+of Lemma~\ref{lem:thin-band}. By that lemma with
+$\varepsilon=\varepsilon_K^*(N)$, whose hypothesis holds outside the five
+events of \eqref{eq:layer2-log} at these radii, for $q=-1,0,1$ the same
+sample satisfies
 \begin{equation}
  \left|\frac{\nu_N(1+qN^{-1-\kappa})}N-\frac12\right|
  \le2N^{-\kappa}+4\varepsilon_K^*(N)N^\kappa
  \label{eq:radial-count-near-unit}
 \end{equation}
 outside a union of probability at most $5p_K^*(N)$.
-These errors tend to zero, since $\kappa>0$ and
-$4\varepsilon_K^*(N)N^\kappa=O_K(N^{\kappa-1/32}(\log N)^7)$
-by \eqref{eq:layer2-log}, with $\kappa\le1/64<1/32$. The probabilities of
-the exceptional events are summable along $N=j^8$, since
-$4T^2(\log N)^{-14}=(\log N)^{-12}/256\le1$ for $N\ge e$, so that the
-three terms of $p_K^*(j^8)$ are at most $H_Kj^{-3}$, $j^{-96}$ and
-$H_Kj^{-7/2}$.
+The probabilities of the exceptional events are summable along $N=j^8$,
+since $4T^2(\log N)^{-14}=(\log N)^{-12}/256\le1$ for $N\ge e$, so that
+the three terms of $p_K^*(j^8)$ are at most $H_Kj^{-3}$, $j^{-96}$ and
+$H_Kj^{-3}$.
 
 At $K=2$ we have $H_2=10^8e^{20(2+1)}=10^8e^{60}$, and
 $\varepsilon_2^*(N)$ and $p_2^*(N)$ are $\varepsilon_K^*(N)$ and
 $p_K^*(N)$ with $10^8e^{60}$ in place of $H_K$, with the degree
-threshold $N\ge H_2^4=10^{32}e^{240}$. Since the five radii lie in
+threshold $N\ge(160e^{16})^2$. Since the five radii lie in
 $[1-2/N,1+2/N]$, \eqref{eq:radial-count-near-unit} holds at $K=2$, with
 $\varepsilon_2^*(N)$, outside probability $5p_2^*(N)$.
-This form, with $\kappa=1/64$, is used in Step~3 of
-Section~\ref{sec:unit-circle}.
-
-\subsection{Local zero counts}\label{app:const-local}
-In this subsection we compute the constant of Lemma~\ref{lem:local-counts}.
-For the local root counts we set
-\[
- A=\max(1,1024\pi/c_{\rm HW}),\qquad t_N=A\log N/N,\qquad
- C_1(K)=\frac{4A+4K+4}{\log2},
-\]
-and we require $t_N\le1$ and $N\ge e$.
-The proof of Lemma~\ref{lem:local-counts} applies
-Lemma~\ref{lem:local-counts-general} with $a_k=1$, $B=1$ and $\eta=1$,
-at which its constants $A(1,1)$, $t_N(1,1)$ and $C_1(K,1,1)$ are these.
-In the proof of Lemma~\ref{lem:local-counts-general} at these values,
-the $\lceil2\pi/t_N\rceil$ arcs have radian length $2t_N$
-and normalized measure $t_N/\pi$, since $t_N\le1<\pi$. By the trace
-identity of that proof and $Nt_N=A\log N$, the Gram matrix of each arc
-satisfies $\operatorname{tr}A_I=(N+1)t_N/\pi\ge(A/\pi)\log N$, and since
-$\|A_I\|_{\rm HS}^2\le\operatorname{tr}A_I$ and $\|A_I\|\le1$, the minimum
-in the Hanson--Wright inequality at half the trace, with sub-Gaussian
-norm bound two, is at least $\operatorname{tr}A_I/64$. Since
-$A\ge1024\pi/c_{\rm HW}$, we have
-$c_{\rm HW}\operatorname{tr}A_I/64\ge c_{\rm HW}A\log N/(64\pi)\ge16\log N$,
-which gives the bound $2N^{-16}$ for each arc and, over at most $8N$
-arcs, $16N^{-15}\le N^{-3}$ for $N\ge2$.
-In Jensen's formula, the inner and outer radii are
-$R=(2K+1)/N+2t_N$ and $2R$, so that $2NR=4K+2+4A\log N$, and the Jensen
-bound of that proof is $C_1(K)\log N$, since $1+(4K+3)+4A=4A+4K+4$.
-We use $\log N\ge1$ in the bound on the number of arcs and in the last
-step of the Jensen bound.
-With $K+2$ in place of $K$,
-\[
- C_1(K+2)=\frac{4A+4K+12}{\log2}.
-\]
-We conclude that the simultaneous local bound is $C_1(K)\log N$ in every
-closed disk $\{z:|z-z_0|\le2K/N\}$ with $||z_0|-1|\le1/N$.
-
-\subsection{The second derivative}\label{app:const-second-derivative}
-Next we consider the constant of Lemma~\ref{lem:second-derivative}.
-We set $S_K=100e^{K+4}$, which is the constant of that lemma, so that,
-for $N\ge\max\{2,(K+1)/3\}$, the second derivative satisfies
-\begin{equation}
- \sup_{|z|\le1+(K+1)/N}|f_N''(z)|
- \le S_KN^{5/2}\sqrt{\log N}
- \label{eq:layer2-fpp}
-\end{equation}
-outside probability $N^{-10}$.
-This degree threshold is the range of Lemma~\ref{lem:second-derivative}:
-in its proof, $N\ge(K+1)/3$ keeps the sample circle of radius
-$1+(K+1)/N$ inside $|z|\le4$, and $N\ge2$ ensures the interpolation bound
-and the union bound $(2N^3)(4N^{-100})\le N^{-10}$.
+This form is used in the proof of Corollary~\ref{cor:crossings}.
 
 \subsection{Few small derivatives}\label{app:const-small-derivatives}
 We now compute the constants of Lemma~\ref{lem:small-derivatives},
 following its proof at the annular width $K$, with the local-count and
 tail lemmas at the width $K+2$.
-With $S_K$ as in Section~\ref{app:const-second-derivative} and
-$C_1(K+2)$ as in Section~\ref{app:const-local}, we set
+
+Let $S_K=100e^{K+4}$ be the constant of
+Lemma~\ref{lem:second-derivative}, so that
+\eqref{eq:sign-second-derivative} holds with $C(K)=S_K$, and let
+\[
+ C_1(K+2)=\frac{4A+4K+12}{\log2}
+\]
+be the constant $C_1(K)$ of Lemma~\ref{lem:local-counts} at the width
+$K+2$. We set
 \begin{align*}
  \lambda_K&=e^{-4K}/80,&
  D'_K&=2^{18}(K+1)S_K^2,\\
@@ -356,7 +355,9 @@ $C_1(K+2)$ as in Section~\ref{app:const-local}, we set
  \mathcal T_K&=80e^{4K}/\lambda_K,\\
  V_K&=50+3\mathcal B_K+\mathcal T_K,&
  c_K&=\frac9{1024S_K^2\lambda_K^2},\\
- C_K&=16C_1(K+2)^2V_K(D'_K)^2.
+ C_K&=V_K(D'_K)^2,&
+ Z_K&=C_1(K+2)(1+D'_Kc_K),\\
+ & & Z'_K&=C_1(K+2)(40+D'_K\mathcal B_K).
 \end{align*}
 Here $\mathcal B_K$ is the Rai\v{c} bound in the proof of
 Lemma~\ref{lem:small-derivatives}, which bounds the normal-approximation
@@ -364,7 +365,7 @@ error and the one-point error, and $\mathcal T_K$ bounds the Gaussian
 comparison error.
 
 In that proof, the mesh constant must be at most $1/(2S_K)$ for the
-Taylor bounds and at most one for the mesh count. Both conditions hold
+bounds \eqref{eq:annular-mesh-test} and at most one for the mesh count. Both conditions hold
 for the value $1/(64S_K)$, since $S_K\cdot1/(64S_K)=1/64\le1/2$ and
 $S_K\ge1$. With $L=N^{1/64}$, let
 \[
@@ -382,7 +383,7 @@ satisfies
 \end{align*}
 Since $Nh=1/(64S_KL\sqrt{\log N})$,
 $N^2h^2\sqrt{\log N}=1/(4096S_K^2L^2\sqrt{\log N})$ and
-$1/64+1/8192<1/16$, in the two Taylor chains of that proof, with
+$1/64+1/8192<1/16$, in \eqref{eq:annular-mesh-test}, with
 $C(K)=S_K$ and the mesh constant $1/(64S_K)$, we have
 \[
  \frac{Nh}L+\frac{S_K}2N^2h^2\sqrt{\log N}
@@ -390,310 +391,141 @@ $C(K)=S_K$ and the mesh constant $1/(64S_K)$, we have
  \le\frac1{16S_KL^2\sqrt{\log N}},
 \]
 and $2(1+S_K/(64S_K))/L=2(1+1/64)/L=65/(32L)<3/L$.
-It follows that a retained mesh point detecting a small-derivative zero
-satisfies
+It follows that the thresholds of Theorem~\ref{thm:T3} at $\tau=h$,
+$R=2$ and $M_2=S_KN^{5/2}\sqrt{\log N}$ satisfy
 \begin{equation}
- |f_N(z)|/\sqrt N\le u=(16S_K)^{-1}L^{-2}(\log N)^{-1/2},
- \qquad |zf_N'(z)|/N^{3/2}\le v=3/L.
+ u\le(16S_K)^{-1}L^{-2}(\log N)^{-1/2},
+ \qquad v_0\le3/L.
  \label{eq:layer2-meshtest}
 \end{equation}
-Table~\ref{tab:mesh-conditions} lists the degree conditions of that
-proof. By Section~\ref{app:const-log} and $H_K^4>10^{32}$, the first
-four hold for $N\ge H_K^4$, and the norm bounds of the last two, from
-which the covariance lower bounds follow, each hold if and only if
-$N^{1/2}\ge6400e^{8K}$, as shown in the proof of
-Lemma~\ref{lem:small-derivatives}. We therefore require
+The proof of Lemma~\ref{lem:small-derivatives} uses $N\ge2K$ (in
+\eqref{eq:layer2-abel} and for the radial weights), $N\ge K$ (for
+$|z|\le2$), $N\ge4$ (for the retained angles on each row), $N\ge e$ (for
+$h\le1/N$) and $N^{1/2}\ge6400e^{8K}$ (for the covariance lower bounds
+$\lambda_K$ in dimension four and $\lambda_K/2$ in dimension eight).
+Since $6400^2e^{16K}$ exceeds $2K$, $4$ and $e$, all of these hold if
 \[
- N\ge H_K^4,\qquad N\ge(6400e^{8K})^2.
+ N\ge(6400e^{8K})^2.
 \]
 
-\begin{table}[!htbp]
-\centering
-\small
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.66\textwidth}l@{}}
-\toprule
-Use in the proof of Lemma~\ref{lem:small-derivatives} & Condition\\
-\midrule
-\eqref{eq:layer2-abel} and the radial weights & $N\ge2K$\\
-The bound $|z|\le2$ & $N\ge K$\\
-The retained angles on each row & $N\ge4$\\
-$h\le1/N$ & $N\ge e$\\
-Covariance lower bound $\lambda_K$ in dimension four
- \eqref{eq:jet-eigenvalue}, from $20e^{4K}N^{-1/2}\le e^{-4K}/320$
- & $N^{1/2}\ge6400e^{8K}$\\
-Covariance lower bound $\lambda_K/2$ in dimension eight, from
- $40e^{4K}N^{-1/2}\le\lambda_K/2$
- & $N^{1/2}\ge6400e^{8K}$\\
-\bottomrule
-\end{tabular}
-\caption{The degree conditions in the proof of
-Lemma~\ref{lem:small-derivatives}.}
-\label{tab:mesh-conditions}
-\end{table}
-
-Since $u^2=(16S_K)^{-2}L^{-4}(\log N)^{-1}$ and $v^2=9L^{-2}$ by
-\eqref{eq:layer2-meshtest}, the bound on the Gaussian probability of the
-product of two disks in that proof is
+By the proof of Lemma~\ref{lem:small-derivatives},
+Theorem~\ref{thm:T3} applies with these thresholds, with $p_2=N^{-10}$,
+$q_0=C_1(K+2)\log N$, $b_0=40C_1(K+2)\sqrt N\log N$ and $p_0=N^{-3}$, and
+with $\lambda=\lambda_K$, $\delta=\delta_*=\mathcal B_KN^{-1/2}$,
+$\chi=\mathcal T_KN^{-1/2}$ and $b_*=10N^{-1/2}$.
+Since $u^2\le(16S_K)^{-2}L^{-4}(\log N)^{-1}$ and $v_0^2\le9L^{-2}$ by
+\eqref{eq:layer2-meshtest}, we have
 \[
- \frac{u^2v^2}{4\lambda_K^2}
- =\frac1{4\lambda_K^2}\cdot\frac9{256S_K^2}\cdot\frac{L^{-6}}{\log N}
- =\frac9{4\cdot256S_K^2\lambda_K^2}\cdot\frac{L^{-6}}{\log N}
- =\frac{c_KL^{-6}}{\log N}.
+ \frac{u^2v_0^2}{4\lambda_K^2}
+ \le\frac1{4\lambda_K^2}\cdot\frac9{256S_K^2}\cdot\frac{L^{-6}}{\log N}
+ =\frac{c_KL^{-6}}{\log N},
 \]
-Hence the line
-$u^2v^2/(4\lambda^2)+2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}$ of
-\eqref{eq:annular-jet-small-ball}, which follows from the Gaussian volume
-and Rai\v{c} bounds, gives at $\lambda=\lambda_K$ the one-point
-probability
+so that the line
+$u^2v_0^2/(4\lambda^2)+2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}$ of
+\eqref{eq:annular-jet-small-ball} gives at $\lambda=\lambda_K$ the
+one-point probability
 \begin{equation}
  c_KL^{-6}/\log N+\mathcal B_KN^{-1/2}.
  \label{eq:layer2-smallball}
 \end{equation}
-For a retained separated pair, write $I_z$ and $I_w$ for the indicators
-of the test \eqref{eq:layer2-meshtest} at the two points. By the
-covariance chain in the proof of Lemma~\ref{lem:small-derivatives}, whose
-three terms are the eight-dimensional Rai\v{c} bound, the total variation
-bound \eqref{eq:jet-tv} and twice the four-dimensional Rai\v{c} bound,
-\[
- |\operatorname{Cov}(I_z,I_w)|
- \le\mathcal B_KN^{-1/2}+\frac{80e^{4K}}{\lambda_K\sqrt N}
-       +2\mathcal B_KN^{-1/2}
- =(3\mathcal B_K+\mathcal T_K)N^{-1/2}.
-\]
-By that proof, at most $10mN^{-1/2}$ partners of each mesh point belong
-to the removed bands.
-Let $Z$ be the number of successful tests. Summing
-\eqref{eq:layer2-smallball} over the at most $m$ retained mesh points,
-and bounding each of the at most $m\cdot10mN^{-1/2}$ ordered pairs in the
-removed bands by one and each other pair by the covariance bound, we get,
-by the bound on $m$,
-\begin{align}
- \mathbb EZ
- &\le m\Bigl\{\frac{c_KL^{-6}}{\log N}+\mathcal B_KN^{-1/2}\Bigr\}
- \le D'_K\{c_KNL^{-4}+\mathcal B_KN^{1/2}L^2\log N\},
- \nonumber\\
- \operatorname{Var}Z
- &\le10m^2N^{-1/2}+(3\mathcal B_K+\mathcal T_K)m^2N^{-1/2}
- \le V_Km^2N^{-1/2}\nonumber\\
- &\le V_K(D'_K)^2N^{3/2}L^4(\log N)^2.
- \label{eq:layer2-Z}
-\end{align}
-
-In the proof of Lemma~\ref{lem:small-derivatives}, the number
-$B_{K,N}$ of roots in $||z|-1|\le K/N$ whose derivatives have modulus
-less than $N^{3/2}/L$ satisfies
-$B_{K,N}\le C_1(K+2)(\log N)Z+40C_1(K+2)\sqrt N\log N$, where the second
-term bounds the roots in the at most $40\sqrt N$ disks of the
-real-sector cover, and $Z$ is compared with the level
-$Q=N^{31/32}/(2C_1(K+2)\log N)$ by Chebyshev's inequality at half this
-level, which requires $\mathbb EZ$ to be at most half of it.
-We therefore impose the mean and excluded-sector thresholds
-\begin{gather*}
- D'_K\{c_KNL^{-4}+\mathcal B_KN^{1/2}L^2\log N\}
- \le\frac{N^{31/32}}{4C_1(K+2)\log N},\\
- 40C_1(K+2)\sqrt N\log N\le N^{31/32}/2.
-\end{gather*}
-Then $\mathbb EZ\le Q/2$ by \eqref{eq:layer2-Z}, and the disk cover
-assigns at most $N^{31/32}/2$ roots to the sectors, so that
-$B_{K,N}>N^{31/32}$ forces $Z>Q$.
-Since $L^4=N^{1/16}$ and $Q^2=N^{31/16}/(4C_1(K+2)^2(\log N)^2)$,
-\eqref{eq:layer2-Z} and $3/2+1/16-31/16=-3/8$ give
-\begin{align*}
- \Prob\{Z>Q\}
- &\le\Prob\{|Z-\mathbb EZ|\ge Q/2\}\le\frac{4\operatorname{Var}Z}{Q^2}\\
- &\le\frac{4V_K(D'_K)^2N^{3/2}L^4(\log N)^2\cdot4C_1(K+2)^2(\log N)^2}
-          {N^{31/16}}\\
- &=16C_1(K+2)^2V_K(D'_K)^2N^{3/2+1/16-31/16}(\log N)^4
- =C_KN^{-3/8}(\log N)^4.
-\end{align*}
-Since $B_{K,N}>N^{31/32}$ implies $Z>Q$ on the local-count event of
-Section~\ref{app:const-local} and the derivative event of
-Section~\ref{app:const-second-derivative}, it follows that
+For a retained separated pair, the covariance of the two indicators in
+the proof of Theorem~\ref{thm:T3} is at most
+$\delta_*+\chi+2\delta=(3\mathcal B_K+\mathcal T_K)N^{-1/2}$, and
+$V_*=(10+3\mathcal B_K+\mathcal T_K)N^{-1/2}\le V_KN^{-1/2}$. Hence, by
+\eqref{eq:layer2-smallball} and the bound on $m$,
 \begin{equation}
- \Prob\{B_{K,N}>N^{31/32}\}
- \le N^{-3}+N^{-10}+C_KN^{-3/8}(\log N)^4.
+ \mu_*\le D'_K\{c_KNL^{-4}+\mathcal B_KN^{1/2}L^2\log N\},\qquad
+ m^2V_*\le V_K(D'_K)^2N^{3/2}L^4(\log N)^2.
+ \label{eq:layer2-Z}
+\end{equation}
+We take $t=NL^{-4}$ in \eqref{eq:T3-general}. By \eqref{eq:layer2-Z}
+and $\sqrt N\le N^{1/2}L^2\log N$ for $N\ge e$, we keep the terms with
+$NL^{-4}$ apart from those with $N^{1/2}L^2$:
+\begin{align*}
+ b_0+q_0(\mu_*+t)
+ &\le C_1(K+2)(\log N)\bigl[40\sqrt N+NL^{-4}\\
+ &\qquad+D'_K\{c_KNL^{-4}+\mathcal B_KN^{1/2}L^2\log N\}\bigr]\\
+ &\le Z_KNL^{-4}\log N+Z'_KN^{1/2}L^2(\log N)^2.
+\end{align*}
+Since $t^2=N^2L^{-8}$ and $L^{12}=N^{3/16}$, \eqref{eq:layer2-Z} gives
+\[
+ \frac{m^2V_*}{t^2}
+ \le V_K(D'_K)^2N^{-1/2}L^{12}(\log N)^2
+ =C_KN^{-5/16}(\log N)^2,
+\]
+and hence, by \eqref{eq:T3-general}, with $p_0=N^{-3}$ the probability
+of the exceptional local-count event of Lemma~\ref{lem:local-counts} and
+$p_2=N^{-10}$ that of the derivative event of
+Lemma~\ref{lem:second-derivative},
+\begin{equation}
+ \begin{aligned}
+ &\Prob\{B_{K,N}>Z_KNL^{-4}\log N+Z'_KN^{1/2}L^2(\log N)^2\}\\
+ &\qquad\le N^{-3}+N^{-10}+C_KN^{-5/16}(\log N)^2.
+ \end{aligned}
  \label{eq:layer2-bad}
 \end{equation}
 In this union, the local and derivative events are counted once.
+Since $NL^{-4}=N^{15/16}$, $N^{1/2}L^2=N^{17/32}$ and
+$N^{17/32}\log N\le N^{15/16}$, the count $B_{K,N}$ is at most
+$Z_KN^{15/16}\log N+Z'_KN^{17/32}(\log N)^2\le(Z_K+Z'_K)N^{15/16}\log N$
+outside this union. The constant $Z_K$ of the leading term grows like
+$(K+1)^2e^{8K}$, and $Z'_K$ like $(K+1)^2e^{11K}$
+(Table~\ref{tab:named-constants}). No further threshold on $N$ is
+needed here beyond $N\ge(6400e^{8K})^2$ above, the
+local-count thresholds $t_N\le1$ and $N\ge e$ of
+Lemma~\ref{lem:local-counts}, and the localization thresholds
+\eqref{eq:localization-thresholds}.
 
-\paragraph{A closed-form mesh threshold.}
-Let $A,\beta>0$ and $p\in\mathbb N$, and define
-\[
- \Psi(A,\beta,p)=\max\{0,(2/\beta)\log[A(2p/\beta)^p]\}.
-\]
-Then, for $x\ge\Psi(A,\beta,p)$,
-\[
- x^p\le(2p/\beta)^pe^{\beta x/2},\qquad
- Ax^p\le A(2p/\beta)^pe^{\beta x/2}\le e^{\beta x}.
-\]
-The first inequality holds for every $x\ge0$, since with $y=\beta x/2$
-it reads $y^p\le p^pe^y$, which follows by raising $y/p\le e^{y/p}$ to
-the power $p$, and the last holds since $x\ge\Psi(A,\beta,p)$ implies
-$A(2p/\beta)^p\le e^{\beta x/2}$.
-With $x=\log N$, the two mean terms, each compared with half of the mean
-bound, and the sector count satisfy, by $L=N^{1/64}$ and
-$1-1/16-31/32=-1/32$, $1/2+1/32-31/32=-7/16$ and $1/2-31/32=-15/32$,
-\begin{align*}
- \frac{D'_Kc_KNL^{-4}}{N^{31/32}/(8C_1(K+2)\log N)}
- &=8C_1(K+2)D'_Kc_K\,x\,e^{-x/32},\\
- \frac{D'_K\mathcal B_KN^{1/2}L^2\log N}{N^{31/32}/(8C_1(K+2)\log N)}
- &=8C_1(K+2)D'_K\mathcal B_K\,x^2e^{-7x/16},\\
- \frac{40C_1(K+2)\sqrt N\log N}{N^{31/32}/2}
- &=80C_1(K+2)\,x\,e^{-15x/32}.
-\end{align*}
-By the bound $Ax^p\le e^{\beta x}$, each right-hand side is at most one
-when $x$ is at least the corresponding value of $\Psi$ in the last three
-entries of
-\begin{align*}
- X_0=\max\{&\log16,\log(2(K+1)),4\log H_K,
-                2\log(6400e^{8K}),\\
- &\Psi(8C_1(K+2)D'_Kc_K,1/32,1),
-  \Psi(8C_1(K+2)D'_K\mathcal B_K,7/16,2),\\
- &\Psi(80C_1(K+2),15/32,1)\}.
-\end{align*}
-Hence $N\ge\lceil e^{X_0}\rceil$ implies the mesh mean and sector
-thresholds, and the first four entries of $X_0$ ensure that $N\ge16$,
-$N\ge2(K+1)$, $N\ge H_K^4$ and $N\ge(6400e^{8K})^2$.
-We also impose the local-count thresholds $t_N\le1$ and $N\ge e$ of
-Section~\ref{app:const-local} and the localization thresholds
-$2a/d_0\le1/N$ and $4S_KaL^2N^{-1/2}\sqrt{\log N}\le1$ of
-Section~\ref{app:const-localization}.
-
-\subsection{Appended tails}\label{app:const-tails}
-Next we turn to the constants of Lemma~\ref{lem:tails}, for its
-parameter $K$, at the degrees $N=j^8$ of Section~\ref{sec:layer3}, with
-$j\ge60$ and $m_{\max}=m_j$, where $m_j=(j+1)^8-j^8$ as there.
-In that lemma, the radius and the amplitude are
-\[
- \rho=1+K/N,\qquad a(K)=15e^{2K}\sqrt{m_j\log N},
-\]
-where we write $a(K)$ for the amplitude at the width $K$, since the later
-subsections use it at the width $K+2$.
-By \eqref{eq:unit-block-length}, $m_j\le9N^{7/8}=9N/j\le N$, so that
-$1\le m_{\max}\le N$, as Lemma~\ref{lem:tails} requires, and
-$a(K)\le15e^{2K}\sqrt{9N^{7/8}\log N}=45e^{2K}N^{7/16}\sqrt{\log N}$.
-That lemma also requires $N\ge\max\{4,K\}$, and its single exceptional
-event, of probability at most $N^{-10}$, controls every degree in the
-block.
-
-\subsection{Localization}\label{app:const-localization}
-We next consider the constants of
-Lemma~\ref{lem:isolation-interface} at the parameters of Step~1 of
-Section~\ref{sec:unit-circle}, at the width $K$. Recall that there
-$a=a(K+2)=15e^{2(K+2)}\sqrt{m_j\log N}$ is the amplitude of
-Section~\ref{app:const-tails} with $K+2$ in place of $K$,
-$M_2=S_KN^{5/2}\sqrt{\log N}$ by \eqref{eq:layer2-fpp}, and
-$d_0=N^{3/2}/L$.
-For a good annular zero, it is sufficient that
-\[
- 2aL/N^{3/2}\le1/N,\qquad4S_KaL^2N^{-1/2}\sqrt{\log N}\le1.
-\]
-These are the conditions $2a/d_0\le1/N$ and $4M_2a\le d_0^2$ of Step~1,
-since $2a/d_0=2aL/N^{3/2}$ and
-$4M_2a/d_0^2=4S_KN^{5/2}\sqrt{\log N}\,aL^2/N^3
-=4S_KaL^2N^{-1/2}\sqrt{\log N}$.
-As in the proof of Lemma~\ref{lem:isolation-interface}, on the
-localization circle $|z-\alpha|=2a/d_0$ the Taylor remainder is at most
-$\tfrac12M_2(2a/d_0)^2=2M_2a^2/d_0^2\le a/2$, since $4M_2a\le d_0^2$, and
-the linear term has modulus $|f_N'(\alpha)|\cdot2a/d_0\ge2a$, since
-$|f_N'(\alpha)|\ge d_0$.
-
-\subsection{The unit circle}\label{app:block-bounds}
-In this subsection we write out in finite form the bounds of the proof in
-Section~\ref{sec:unit-circle}.
-Recall that $N=j^8$, $m_j=(j+1)^8-j^8$ and $L=N^{1/64}$.
-Fix integers $K,R\ge2$, and let $H_R$, $D_R$, $\varepsilon_R^*(N)$ and
-$p_R^*(N)$ be $H_K$, $D_K$, $\varepsilon_K^*(N)$ and $p_K^*(N)$ at the
-width $R$, with the degree threshold $N\ge H_R^4$.
+\subsection{The radial law}\label{app:block-bounds}\label{app:const-moving-radii}
+In this subsection we write out in finite form the bounds of the proof of
+Theorem~\ref{thm:radial-profile} in Section~\ref{sec:layer3}, and hence
+of Corollary~\ref{thm:stronglaw}, which is its case $x=0$ with $R=2$.
+Recall that $N=j^8$, $m_j=(j+1)^8-j^8$, $L=N^{1/64}$, $h=N^{-1/64}$ and
+$r_N=1+x/N$.
+Fix $x$ and integers $R\ge|x|+2$ and $K\ge R$, and let $H_R$, $D_R$,
+$\varepsilon_R^*(N)$ and $p_R^*(N)$ be $H_K$, $D_K$, $\varepsilon_K^*(N)$
+and $p_K^*(N)$ at the width $R$, with the degree threshold
+$N\ge(160e^{8R})^2$.
 At $R=2$ these are $\varepsilon_2^*(N)$ and $p_2^*(N)$ of
 Section~\ref{app:const-radial}.
+
+Let $a=15e^{2(K+2)}\sqrt{m_j\log N}$ be the tail amplitude of Step~1 of
+Section~\ref{sec:layer3}, that is, that of Lemma~\ref{lem:tails} at the
+width $K+2$ with $m_{\max}=m_j$. With $M_2=S_KN^{5/2}\sqrt{\log N}$ by
+\eqref{eq:sign-second-derivative} and $d_0=N^{3/2}/L$, the localization
+conditions $4a/d_0\le1/N$ and $4M_2a\le d_0^2$ of
+Table~\ref{tab:unit-conditions} read
+\begin{equation}
+ 4aL/N^{3/2}\le1/N,\qquad4S_KaL^2N^{-1/2}\sqrt{\log N}\le1,
+ \label{eq:localization-thresholds}
+\end{equation}
+since
+\[
+ \frac{4a}{d_0}=\frac{4aL}{N^{3/2}},\qquad
+ \frac{4M_2a}{d_0^2}=\frac{4S_KN^{5/2}\sqrt{\log N}\,aL^2}{N^3}
+ =4S_KaL^2N^{-1/2}\sqrt{\log N}.
+\]
+The second condition implies the first: it gives
+$a\le N^{15/32}/(4S_K\sqrt{\log N})$, and then $d_0=N^{95/64}$ gives
+$4a/d_0\le N^{-65/64}/(S_K\sqrt{\log N})<1/N$.
+
 By the first line of the bound on $U_N$ in Step~3 of
-Section~\ref{sec:unit-circle}, by \eqref{eq:layer2-radial}, multiplied by
-$N$, and since $B_{K,N}\le N^{31/32}$ outside the event of
-\eqref{eq:layer2-bad}, on the radial and derivative events the number
-$U_N$ of unselected roots in the matching construction satisfies
+Section~\ref{sec:layer3}, by \eqref{eq:layer2-radial}, multiplied by
+$N$, and by \eqref{eq:layer2-bad}, on the radial and derivative events the
+number $U_N$ of unselected roots satisfies
 \begin{align}
  U_N&\le\#\{\alpha:f_N(\alpha)=0,\ ||\alpha|-1|>K/N\}+B_{K,N}\nonumber\\
- &\le N^{31/32}
- +N\left[\frac{2\log2}{K}+\frac8K\{\varepsilon_K^*(N)+D_K/N\}\right].
+ &\le Z_KN^{15/16}\log N+Z'_KN^{17/32}(\log N)^2\nonumber\\
+ &\quad+N\left[\frac{2\log2}{K}+\frac8K\{\varepsilon_K^*(N)+D_K/N\}\right].
  \label{eq:block-unselected}
 \end{align}
-Every selected domain meeting the unit circle has its root in the strict
-band $1-N^{-65/64}<|\alpha|<1+N^{-65/64}$. Indeed, as in Step~3 of
-Section~\ref{sec:unit-circle}, such a root lies within $2a/d_0$ of the
-unit circle, and $2a/d_0<N^{-65/64}$, since $d_0=N^{3/2}/L$, $L=N^{1/64}$
-and $65/64+1/64-3/2=-15/32$, and since
-$a\le N^{15/32}/(4S_K\sqrt{\log N})$ by the condition
-$4S_KaL^2N^{-1/2}\sqrt{\log N}\le1$ of
-Section~\ref{app:const-localization} with $L^2=N^{1/32}$, so that
-\[
- N^{65/64}\cdot\frac{2a}{d_0}
- =2aN^{-15/32}
- \le\frac1{2S_K\sqrt{\log N}}<1.
-\]
-By the five-radius estimate of Section~\ref{app:const-radial} at $K=2$,
-with $\kappa=1/64$, in the cases $q=0$ and $q=\pm1$, and by the crossing
-bound \eqref{eq:unit-crossings-centered}, which relies on the strict band
-above, we have
-\begin{align}
- \left|\frac{\nu_N(1)}N-\frac12\right|
- &\le2N^{-1/64}+4\varepsilon_2^*(N)N^{1/64},\nonumber\\
- \frac{c_N}{N}
- &\le2\bigl(2N^{-1/64}+4\varepsilon_2^*(N)N^{1/64}\bigr)
- =4N^{-1/64}+8\varepsilon_2^*(N)N^{1/64}.\label{eq:block-center-crossings}
-\end{align}
 
-Collecting the exceptional probabilities, we find that the common
-exceptional event has probability at most
-\begin{equation}
- 4p_K^*(N)+5p_R^*(N)+N^{-3}+2N^{-10}
-                 +C_KN^{-3/8}(\log N)^4.\label{eq:block-failure}
-\end{equation}
-This union consists of the four radial logarithmic events, used by the
-radial secants, the five local logarithmic events, used by the sparse
-estimate, and the local-count, derivative, maximal-tail and
-mesh-concentration events. The shared local-count and derivative events
-are counted once each, and a single maximal-tail event controls every
-degree in the block. For the unit-disk argument we take $R=2$.
-Table~\ref{tab:probability-budget} lists the individual exceptional
-probabilities in \eqref{eq:block-failure} and their size at $N=j^8$. For
-every fixed $K,R$, the series of \eqref{eq:block-failure} over $N=j^8$ is
-finite, since every exponent of $j$ in the last column of the table is
-less than $-1$, with $H_R$ in place of $H_K$ for the terms of $p_R^*(N)$.
-
-\begin{table}[!htbp]
-\centering
-\setlength{\tabcolsep}{4.5pt}
-\begin{tabular}{lll}
-\toprule
-Event & Failure at $N$ & At $N=j^8$, ignoring constants\\
-\midrule
-Radial occupation & $H_KN^{-3/8}$ & $j^{-3}$\\
-Logarithmic norm & $N^{-12}$ & $j^{-96}$\\
-Clipped integral & $4H_KT^2N^{-7/16}(\log N)^{-14}$ & $j^{-7/2}(\log j)^{-12}$\\
-Annular bad roots & $C_KN^{-3/8}(\log N)^4$ & $j^{-3}(\log j)^4$\\
-Local zero count & $N^{-3}$ & $j^{-24}$\\
-Derivative supremum & $N^{-10}$ & $j^{-80}$\\
-Block tail & $N^{-10}$ & $j^{-80}$\\
-\bottomrule
-\end{tabular}
-\caption{Exceptional probabilities at degree $N$ for fixed $K$, and their
-size at $N=j^8$, ignoring constants.}
-\label{tab:probability-budget}
-\end{table}
-
-\subsection{Moving radii}\label{app:const-moving-radii}
-We now do the same for the bounds of the proof in
-Section~\ref{sec:moving-radii}, with $H_R$, $D_R$, $\varepsilon_R^*(N)$
-and $p_R^*(N)$ as in Section~\ref{app:block-bounds}.
-For the moving radius, fix $x$ and an integer $R\ge|x|+3$, and recall
-from Section~\ref{sec:moving-radii} that $h=N^{-1/64}$ and $r_N=1+x/N$.
 We apply the logarithmic estimates at $x+qh$, $q=-2,\dots,2$, and
-Lemma~\ref{lem:local-radial-secant} at $x+qh$, with $R$ in place of $K$,
-logarithmic error $\eta_{\log}=\varepsilon_R^*(N)$, profile error
-$\varepsilon=D_R/N$, $F'=\Phi$, $M_F=1/2$ and $B_F=1$, since
-$0\le\Phi\le1$ and $0\le\Phi'=2\operatorname{Var}_x(t)\le1/2$ by
-Section~\ref{sec:moving-radii}, which also implies that
+Lemma~\ref{lem:local-radial-secant} at $x+qh$, $q=-1,0,1$, with $R$ in
+place of $K$, logarithmic error $\eta_{\log}=\varepsilon_R^*(N)$, profile
+error $\varepsilon=D_R/N$, $F'=\Phi$, $M_F=1/2$ and $B_F=1$, since
+$0\le\Phi\le1$ and $0\le\Phi'=2\operatorname{Var}_x(t)\le1/2$ by Step~4
+of Section~\ref{sec:layer3}, which also implies that
 $|\Phi(x+qh)-\Phi(x)|\le|q|h/2$. For $N\ge2R$ we get
 \[
  \left|\frac{\nu_N(r_N+qh/N)}N-\Phi(x)\right|
@@ -709,62 +541,147 @@ Since $|q|h/2+h/4\le2h$ for $|q|\le1$ and $2(1+R/N)\le4$, we obtain
  \end{aligned}\label{eq:E1-local}
 \end{equation}
 Here the exceptional probability is at most $5p_R^*(N)$, and
-$\delta_R^*(N)\to0$.
+$\delta_R^*(N)\to0$. For Corollary~\ref{thm:stronglaw}, at $x=0$ and
+$R=2$, this reads
+\begin{equation}
+ \begin{aligned}
+ \left|\frac{\nu_N(1+qN^{-65/64})}N-\frac12\right|
+ &\le\delta_2^*(N),\qquad q=-1,0,1,\\
+ \delta_2^*(N)&=2N^{-1/64}+\frac2N
+ +4\Bigl(\varepsilon_2^*(N)+\frac{D_2}N\Bigr)N^{1/64}.
+ \end{aligned}
+ \label{eq:block-center-crossings}
+\end{equation}
+
 By \eqref{eq:E1-local} with $q=\pm1$, as in \eqref{eq:moving-band}, the
 strict band $||\alpha|-r_N|<h/N$ contains at most $2\delta_R^*(N)N$
 roots.
-This band contains the root of every selected domain whose closure meets
+This band contains the root of every selected disk whose closure meets
 the closed annulus between the circles of radii $r_N$ and $1+x/n$, for
-$N\le n\le N+m_j$, once $2a/d_0+|x|m_j/N^2<h/N$, as in
-Section~\ref{sec:moving-radii}. At the width $K\ge R$ this follows from
-the thresholds. Indeed, by $N/h=N^{65/64}$, the bound on
-$N^{65/64}\cdot2a/d_0$ in Section~\ref{app:block-bounds} and
+$N\le n\le N+m_j$, once $2a/d_0+|x|m_j/N^2<h/N$, as in Step~4 of
+Section~\ref{sec:layer3}. At the width $K\ge R$ this follows from the
+thresholds. Indeed, since $d_0=N^{3/2}/L=N^{95/64}$, and
+$a\le N^{15/32}/(4S_K\sqrt{\log N})$ by the second condition of
+\eqref{eq:localization-thresholds} with $L^2=N^{1/32}$, we have
+\[
+ N^{65/64}\cdot\frac{2a}{d_0}=2aN^{-15/32}
+ \le\frac1{2S_K\sqrt{\log N}}<\frac12,
+\]
+since $S_K\sqrt{\log N}>1$, and hence, by $N/h=N^{65/64}$ and
 \eqref{eq:unit-block-length},
 \begin{align*}
  \frac Nh\Bigl(\frac{2a}{d_0}+\frac{|x|m_j}{N^2}\Bigr)
  &=N^{65/64}\cdot\frac{2a}{d_0}+|x|m_jN^{-63/64}\\
- &\le\frac1{2S_K\sqrt{\log N}}+9|x|N^{-7/64}<\frac12+\frac12=1,
+ &<\frac12+9|x|N^{-7/64}\le\frac12+\frac12=1,
 \end{align*}
-since $S_K\sqrt{\log N}>1$ and
-$18|x|<18R<10^{3.5}e^{8.75(R+1)}=H_R^{7/16}\le N^{7/64}$, by $|x|<R$,
-$18R<e^{8.75(R+1)}$, $(10^8)^{7/16}=10^{3.5}$, $20\cdot7/16=8.75$ and
-$N\ge H_R^4$.
-Therefore the number $c(r_N,1+x/n)$ of these domains is at most
-$2\delta_R^*(N)N$, and the matching bound of
-Section~\ref{sec:moving-radii} becomes
+since
+$18|x|<18R<3e^{7R/4}<160^{7/32}e^{7R/4}\le N^{7/64}$, by $|x|<R$,
+$18R<3e^{7R/4}$ for $R\ge2$, $160^{7/32}>3$ and $N\ge(160e^{8R})^2$.
+Therefore the number $c(r_N,1+x/n)$ of these disks is at most
+$2\delta_R^*(N)N$, and the matching bound of Step~5 of
+Section~\ref{sec:layer3} becomes
 $|\nu_n(1+x/n)-\nu_N(r_N)|\le2\delta_R^*(N)N+U_N+m_j$.
-The chain of that proof that splits $\nu_n(1+x/n)/n-\Phi(x)$ into three
-terms, with $\delta_R^*(N)$ in place of $\varepsilon_N$, then gives
+The chain \eqref{eq:unit-block}, with $\delta_R^*(N)$ in place of
+$\varepsilon_N$, then gives
 \[
  \left|\frac{\nu_n(1+x/n)}n-\Phi(x)\right|
  \le3\delta_R^*(N)+\frac{U_N}N+\frac{2m_j}{N},
  \qquad N\le n\le N+m_j.
 \]
-Here \eqref{eq:block-unselected} and \eqref{eq:block-failure} apply with
-$K\ge R$.
+
+Collecting the exceptional probabilities, we find that the common
+exceptional event $E_{K,R,x,j}$ has probability at most
+\begin{equation}
+ 4p_K^*(N)+5p_R^*(N)+N^{-3}+2N^{-10}
+                 +C_KN^{-5/16}(\log N)^2.\label{eq:block-failure}
+\end{equation}
+This union consists of the four radial logarithmic events, used for
+$U_N$, the five probe events at the width $R$, used in
+\eqref{eq:E1-local}, and the local-count, derivative, mesh-deviation and
+maximal-tail events. The shared local-count and derivative events are
+counted once each, and a single maximal-tail event controls every degree
+in the block. For Corollary~\ref{thm:stronglaw} we take $x=0$ and $R=2$.
+For every fixed $K,R$, the series of \eqref{eq:block-failure} over
+$N=j^8$ is finite, since its terms are, up to constants, the
+probabilities of Table~\ref{tab:unit-events}, where $p_K^*(N)$ and
+$p_R^*(N)$ are explicit forms of $\Pi_K(N)$ and $\Pi_R(N)$, and every
+exponent of $j$ in the last column of that table is less than $-1$.
 
 \subsection{Other coefficient distributions}\label{sec:model-constants}
-This subsection contains the constants of
-Proposition~\ref{prop:coefficient-transfer}, which are used in the proofs
-of Theorem~\ref{thm:radial-profile} and Corollary~\ref{thm:stronglaw}
-for the other distributions.
-We recompute, for each coefficient distribution, the constants of the
-sign case from the inputs that depend on the distribution: its
-logarithmic-moment constant, its energy bound, its local-count constant
-and, for unbounded coefficients, an envelope on their size.
-For Steinhaus coefficients, we use the same constants as for Rademacher
-coefficients, since the amplitudes have modulus one, so that conditional
-signs yield the same $C_*$ and $C_1(K+2)$.
+This subsection gives the constants with which the other distributions
+satisfy (H1)--(H5) in Proposition~\ref{prop:coefficient-transfer}, as
+used in the proof of Theorem~\ref{thm:radial-profile} and
+Corollary~\ref{thm:stronglaw} for these distributions at the end of
+Section~\ref{sec:layer2-models}.
+For each distribution we recompute the constants of the sign case from
+the inputs that depend on it: its logarithmic-moment constant, its energy
+bound, its local-count constant and, for unbounded coefficients, an
+envelope on their size.
+Tables~\ref{tab:law-steinhaus}, \ref{tab:law-gaussian}
+and~\ref{tab:law-bounded} list these constants.
 
-\paragraph{Real Gaussian coefficients.}
-We use
-\[
- (C,\beta)=(16,1),\qquad B_E=2,\qquad
- p_E=\exp[-3N/(32e^{6K})].
-\]
-These choices are valid, since $(16p)^p\le(16p)^{6p}$ for $p\ge1$, so that,
-by \eqref{eq:layer2-gaussianlog}, the logarithmic moments satisfy
-\eqref{eq:layer2-nns} with $16$ in place of $C_*$.
+\begin{table}[!ht]
+\centering
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Input & Value\\
+\midrule
+Logarithmic moments $(C,\beta)$ & $(C_*,6)$\\
+Energy & $E=\Omega$, $B_E=1$, $p_E=0$\\
+Occupation constant & $H_K$\\
+Local count & $C_1(K+2)$, exceptional probability $N^{-3}$\\
+All other constants and thresholds & those of the sign case\\
+\bottomrule
+\end{tabular}
+\caption{Constants for Steinhaus coefficients.}
+\label{tab:law-steinhaus}
+\end{table}
+
+\paragraph{Steinhaus coefficients.}
+These coefficients have the constants of the sign case
+(Table~\ref{tab:law-steinhaus}), since their amplitudes have modulus
+one, so that conditional signs yield the same $C_*$ and $C_1(K+2)$.
+
+\begin{table}[!ht]
+\centering
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}
+>{\raggedright\arraybackslash}p{0.69\textwidth}@{}}
+\toprule
+Input & Value\\
+\midrule
+Logarithmic moments $(C,\beta)$ & $(16,6)$\\
+Energy & $E=\{V\le B_E\}$, $B_E=2$,
+ $p_E=\exp[-3N/(32e^{6K})]$\\
+Occupation constant & $H_K$\\
+Local count & $C_{1,G}(K+2)=C_1(K+2)+2/\log2
+ =(4A+4(K+2)+6)/\log2=(4A+4K+14)/\log2$,
+ exceptional probability $N^{-3}+\exp[-3(N+1)/32]$\\
+Small derivatives & $Z_{K,G}=C_{1,G}(K+2)(1+D'_Kc_K)$,
+ $Z'_{K,G}=C_{1,G}(K+2)(40+D'_K\mathcal B_K)$; $D'_K$, $c_K$,
+ $\mathcal B_K$, $V_K$ and $C_K=V_K(D'_K)^2$ unchanged\\
+Derivative and tails & amplitudes of the sign case,
+ $\lceil N^4\rceil\le2N^4$ boundary samples, on the envelope event
+ $\max_{k\le2N}|g_k|\le N$ of probability at least
+ $1-2(2N+1)e^{-N^2/2}$\\
+Thresholds & $N\ge(160e^{8K})^2$, $N\ge e^2$, $\rho\le2$, and those of
+ the sign case\\
+\bottomrule
+\end{tabular}
+\caption{Constants for standard real and complex Gaussian coefficients.}
+\label{tab:law-gaussian}
+\end{table}
+
+\paragraph{Real and complex Gaussian coefficients.}
+By the proof of Proposition~\ref{prop:coefficient-transfer}, with
+Lemma~\ref{lem:local-counts-gauss} for the local count, standard complex
+Gaussian coefficients have the constants of the real ones
+(Table~\ref{tab:law-gaussian}).
+
+The choice $(C,\beta)=(16,6)$ is valid, since $(16p)^p\le(16p)^{6p}$ for
+$p\ge1$, so that, by \eqref{eq:layer2-gaussianlog}, the logarithmic
+moments satisfy \eqref{eq:layer2-nns} with $16$ in place of $C_*$.
 In the proof of Proposition~\ref{prop:coefficient-transfer}, the Gaussian
 occupation constants $2+320e^{8K}$ and $14+960e^{8K}$ are at most $H_K$,
 since $2+320e^{8K}<14+960e^{8K}\le974e^{9K}<10^8e^{20(K+1)}=H_K$, so that
@@ -773,13 +690,17 @@ Hence Lemma~\ref{lem:clipping} applies with $H=H_K$, $C=16$,
 $E=\{V\le B_E\}$ and $B_E=2$, where $V=\int|X_r|^2\dd\mu$ as in
 Proposition~\ref{prop:coefficient-transfer}, and $\Prob(E^c)\le p_E$ by
 \eqref{eq:layer2-gaussianenergy}.
-Since $4e\cdot16=64e$, $B_E/2+1=2$ and $4T^2=(\log N)^2/256$, it gives,
-for $N\ge H_K^4$ and $r\in[1-K/N,1+K/N]$,
+
+This is the computation of Section~\ref{app:const-log} with $C_*$
+replaced by $16$, $B_E=1$ by $2$ and the term $p_E$ added: since
+$4e\cdot16=64e$, $B_E/2+1=2$ and $4T^2=(\log N)^2/256$, it gives, for
+$N\ge(160e^{8K})^2$ and $r\in[1-K/N,1+K/N]$,
 \begin{align*}
  &\Prob\bigl\{|J_N(r)-\log\sigma_N(r)+\gamma/2|
- >N^{-1/32}(\log N)^7+2H_KTN^{-1/2}\\
- &\qquad\quad+(64e)^6\sqrt{2+H_K}\,N^{-1/32}(\log N)^7+2N^{-1/16}\bigr\}\\
- &\quad\le H_KN^{-3/8}+N^{-12}+4H_KT^2N^{-7/16}(\log N)^{-14}+p_E.
+ >N^{-1/16}(\log N)^7+2H_KTN^{-1/2}\\
+ &\qquad\quad+e^{1/2}(64e)^6(2N^{-1/16}+H_KN^{-1/2})(\log N)^7+2N^{-1/16}\bigr\}\\
+ &\quad\le H_KN^{-3/8}+N^{-12}
+ +\frac{H_K}{256}N^{-3/8}(\log N)^{-12}+p_E.
 \end{align*}
 For these coefficients, the error and the probability on the two sides of
 this display replace $\varepsilon_K^*(N)$ and $p_K^*(N)$ at each radius in
@@ -788,106 +709,87 @@ this display replace $\varepsilon_K^*(N)$ and $p_K^*(N)$ at each radius in
 \eqref{eq:block-failure} and \eqref{eq:E1-local}, and in the radial
 thresholds of Section~\ref{app:const-radial}.
 
-We use the same derivative and tail amplitudes, with
-$\lceil N^4\rceil\le2N^4$ boundary samples.
-On the coefficient envelope $\max_{k\le2N}|g_k|\le N$, the
-third-derivative bound in the proof of Lemma~\ref{lem:second-derivative}
-gains a factor $N$, and the distance to the nearest sample loses one:
-\[
- \sup_{|z|\le1+(K+1)/N}|f_N'''(z)|\le e^{K+1}N^5,\qquad
- \frac{4\pi}{N^4}\cdot e^{K+1}N^5=4\pi e^{K+1}N.
-\]
-Here the first bound is the bound $e^{K+1}N^4$ of that proof with the
-extra factor $|g_k|\le N$ in each term, and $4\pi/N^4$ bounds the arc
-length from a point of the circle to its nearest sample, since the
-circle has length at most $8\pi$ and carries $\lceil N^4\rceil$ equally
-spaced samples. Thus the interpolation error is again $4\pi e^{K+1}N$.
-The scalar Gaussian tails bound the exceptional probability of each
-sample at half the threshold by $4N^{-100}$, and the union bound over the
-samples yields $(2N^4)(4N^{-100})=8N^{-96}\le N^{-10}$.
-The common coefficient-envelope event costs at most
-$\Prob\{\max_{k\le2N}|g_k|>N\}\le2(2N+1)e^{-N^2/2}$, by the union bound
-over the $2N+1$ coefficients and $\Prob\{|g_k|>N\}\le2e^{-N^2/2}$.
-For the local counts we use the constant of
-Lemma~\ref{lem:local-counts-gauss} with $K+2$ in place of $K$,
-\[
- C_{1,G}(K+2)=C_1(K+2)+2/\log2=\frac{4A+4(K+2)+6}{\log2}
- =\frac{4A+4K+14}{\log2},
-\]
-and the local-count exceptional probability is
-$N^{-3}+\exp[-3(N+1)/32]$.
-We replace $C_1(K+2)$ by $C_{1,G}(K+2)$ in the mean and sector conditions
-of Section~\ref{app:const-small-derivatives}, in $X_0$ and in the
-Chebyshev bound there, whose constants $D'_K$, $c_K$, $\mathcal B_K$ and
-$V_K$ are unchanged. On the common coefficient-envelope event, the
-small-derivative exceptional probability, which replaces the right-hand
-side of \eqref{eq:layer2-bad}, is then
-\[
- N^{-3}+\exp[-3(N+1)/32]+N^{-10}
- +16C_{1,G}(K+2)^2V_K(D'_K)^2N^{-3/8}(\log N)^4.
-\]
-For interpolation we impose $N\ge e^2$ and $\rho\le2$.
-These imply the conditions $N\ge4$ and $\rho\le2$ of the interpolation
-step in the proof of Lemma~\ref{lem:tails}, and that step has the same
-error here, since the tail derivatives gain the factor $N$ and the sample
-spacing loses it.
-We use at most $2N^5$ prefix/sample pairs, and under the tail threshold
-the union bound over these pairs yields
-$(2N^5)(4N^{-25})=8N^{-20}\le N^{-10}$.
+The bounds of Lemmas~\ref{lem:second-derivative} and~\ref{lem:tails} keep
+the amplitudes of the sign case on the envelope event, by the proof of
+Proposition~\ref{prop:coefficient-transfer}: with $\lceil N^4\rceil$
+samples in place of $\lceil N^3\rceil$, the derivative bounds gain the
+factor $N$ and the sample spacing loses it.
+The thresholds $N\ge e^2$ and $\rho\le2$ imply the conditions $N\ge4$ and
+$\rho\le2$ of the interpolation step in the proof of Lemma~\ref{lem:tails}.
+In $Z_K$ and $Z'_K$ we replace $C_1(K+2)$ by $C_{1,G}(K+2)$, while the
+other constants of Section~\ref{app:const-small-derivatives} remain upper
+bounds, since the normal approximation is exact. On the common
+coefficient-envelope event, the bound \eqref{eq:layer2-bad} is then
+replaced by
+\begin{multline*}
+ \Prob\{B_{K,N}>Z_{K,G}NL^{-4}\log N+Z'_{K,G}N^{1/2}L^2(\log N)^2\}\\
+ \le N^{-3}+\exp[-3(N+1)/32]+N^{-10}+C_KN^{-5/16}(\log N)^2.
+\end{multline*}
 All other exceptional probabilities are those of the sign case.
 
-\paragraph{Standard complex Gaussian coefficients.}
-By the proof of Proposition~\ref{prop:coefficient-transfer}, with
-Lemma~\ref{lem:local-counts-gauss} for the local count, these
-coefficients have the constants of the real Gaussian coefficients above.
+\begin{table}[!ht]
+\centering
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}
+>{\raggedright\arraybackslash}p{0.69\textwidth}@{}}
+\toprule
+Input & Value\\
+\midrule
+Logarithmic moments $(C,\beta)$ & $(C_B,6)$, with
+ $C_B=2\{C_*+\max(\tfrac12\log2,\log B)+1\}$\\
+Energy & $E=\{V\ge1/2\}$, $B_E=B^2$,
+ $p_H=\exp[-N/(2B^4e^{6K})]$\\
+Occupation constant & $H_{K,B}=(1+B^3)H_K$\\
+Derivative and mesh & $S_{K,B}=BS_K$, $D'_{K,B}=B^2D'_K$,
+ $\mathcal B_{K,B}=B^3\mathcal B_K$, $c_{K,B}=c_K/B^2$; $\lambda_K$ and
+ $\mathcal T_K$ unchanged\\
+Tail amplitude & $Ba$, with $a=15e^{2(K+2)}\sqrt{m_j\log N}$\\
+Local count & $A_B=\max(1,2048\pi B^2/c_{\rm HW})$,
+ $C_{1,B}(K+2)=(4A_B+4(K+2)+4+\log B)/\log2$,
+ exceptional probability $N^{-3}+\exp[-(N+1)/(2B^4)]$\\
+Small derivatives & $V_{K,B}$, $C_{K,B}$, $Z_{K,B}$, $Z'_{K,B}$: the
+ formulas for $V_K$, $C_K$, $Z_K$, $Z'_K$ with these constants and
+ $C_{1,B}(K+2)$\\
+Thresholds & $A_B\log N/N\le1$, $N\ge e^2$, and the enlarged thresholds
+ below\\
+\bottomrule
+\end{tabular}
+\caption{Constants for a bounded centrally symmetric distribution with
+$\mathbb E|\xi_0|^2=1$ and $|\xi_0|\le B$.}
+\label{tab:law-bounded}
+\end{table}
 
 \paragraph{Centrally symmetric bounded coefficients.}
 Assume that the coefficient distribution is nondegenerate and centrally
 symmetric, as defined in Section~\ref{par:central-symmetry}.
 We normalize $\mathbb E|\xi_0|^2=1$ and assume $|\xi_0|\le B$, so that
 $B\ge1$.
-We use $V$, $E=\{V\ge1/2\}$, $J_N$ and
-$C_B=2\{C_*+\max(\tfrac12\log2,\log B)+1\}$ as in
-Proposition~\ref{prop:coefficient-transfer} and its proof.
-Set
-\begin{align*}
- H_{K,B}&=(1+B^3)H_K,&S_{K,B}&=BS_K,&D'_{K,B}&=B^2D'_K,\\
- \mathcal B_{K,B}&=B^3\mathcal B_K,&c_{K,B}&=c_K/B^2,&B_E&=B^2.
-\end{align*}
-For these coefficients the tail amplitude is $Ba$, where
-$a=15e^{2(K+2)}\sqrt{m_j\log N}$ is the tail amplitude of
-Section~\ref{app:const-tails} with $K+2$ in place of $K$, and we use the
-same $\lambda_K$ and $\mathcal T_K$.
-The local-count constants are those of
-Lemma~\ref{lem:local-counts-bounded} with $K+2$ in place of $K$,
-\[
- A_B=\max(1,2048\pi B^2/c_{\rm HW}),\qquad
- C_{1,B}(K+2)=\frac{4A_B+4(K+2)+4+\log B}{\log2},
-\]
-and since the conditional trace event adds $\exp[-(N+1)/(2B^4)]$, the
-local-count exceptional probability is $N^{-3}+\exp[-(N+1)/(2B^4)]$.
-We define $V_{K,B}$ and $C_{K,B}$ by the formulas for $V_K$ and $C_K$,
-with these constants and with the local-count constant $C_{1,B}(K+2)$.
+We use $V$, $E=\{V\ge1/2\}$, $J_N$ and $C_B$ as in
+Proposition~\ref{prop:coefficient-transfer} and its proof, and the
+constants of Table~\ref{tab:law-bounded}, where $a$ is the tail
+amplitude of Step~1 of Section~\ref{sec:layer3}.
+The local-count constant is that of Lemma~\ref{lem:local-counts-bounded}
+with $K+2$ in place of $K$, and the conditional trace event adds
+$\exp[-(N+1)/(2B^4)]$ to its exceptional probability.
 Since $\mathcal B_{K,B}=B^3\mathcal B_K$, $2/\lambda_K=160e^{4K}$,
 $(160e^{4K})^{3/2}=160^{3/2}e^{6K}$, $80e^{4K}/\lambda_K=6400e^{8K}$,
-$D'_{K,B}=B^2D'_K$, $(D'_K)^2=2^{36}(K+1)^2S_K^4$, $S_K^4=10^8e^{4K+16}$
-and $16\cdot2^{36}=2^{40}$,
+$D'_{K,B}=B^2D'_K$, $(D'_K)^2=2^{36}(K+1)^2S_K^4$ and
+$S_K^4=10^8e^{4K+16}$, and since $D'_{K,B}c_{K,B}=D'_Kc_K$ and
+$D'_{K,B}\mathcal B_{K,B}=B^5D'_K\mathcal B_K$,
 \begin{align*}
  V_{K,B}&=50+3\mathcal B_{K,B}+\mathcal T_K
  =50+6000B^3e^{3K}(2/\lambda_K)^{3/2}+\frac{80e^{4K}}{\lambda_K}\\
  &=50+6000\cdot160^{3/2}B^3e^{9K}+6400e^{8K},\\
- C_{K,B}&=16C_{1,B}(K+2)^2V_{K,B}(D'_{K,B})^2
- =16B^4C_{1,B}(K+2)^2V_{K,B}(D'_K)^2\\
- &=2^{40}\cdot10^8B^4(K+1)^2e^{4K+16}C_{1,B}(K+2)^2V_{K,B}.
+ C_{K,B}&=V_{K,B}(D'_{K,B})^2=B^4V_{K,B}(D'_K)^2\\
+ &=2^{36}\cdot10^8B^4(K+1)^2e^{4K+16}V_{K,B},\\
+ Z_{K,B}&=C_{1,B}(K+2)(1+D'_{K,B}c_{K,B})=C_{1,B}(K+2)(1+D'_Kc_K),\\
+ Z'_{K,B}&=C_{1,B}(K+2)(40+D'_{K,B}\mathcal B_{K,B})
+ =C_{1,B}(K+2)(40+B^5D'_K\mathcal B_K).
 \end{align*}
-For the restricted logarithmic hypothesis we use
-\[
- (C,\beta)=(C_B,6),\qquad
- p_H=\exp[-N/(2B^4e^{6K})].
-\]
 For the occupation bounds, the constant $c_B$ of the proof of
 Proposition~\ref{prop:coefficient-transfer} satisfies, as in
-Section~\ref{app:const-log} and with $B\ge1$ in the last step,
+Section~\ref{app:const-log} with the factor $B^3$ on the first term only
+and with $B\ge1$ in the last step,
 \[
  c_B=(42\cdot4^{1/4}+16)\cdot46B^3e^{9K}+320e^{8K}
  <3469B^3e^{9K}+44e^{9K}<4000B^3e^{9K}.
@@ -902,15 +804,15 @@ Proposition~\ref{prop:coefficient-transfer} and since $V\le B^2$.
 With $B_E/2+1=B^2/2+1$ and $4T^2=(\log N)^2/256$, its error is
 \begin{align*}
  \varepsilon_{K,B}^*(N)
- &=N^{-1/32}(\log N)^7+2H_{K,B}TN^{-1/2}\\
- &\quad +(4eC_B)^6\sqrt{2+H_{K,B}}\,N^{-1/32}(\log N)^7
+ &=N^{-1/16}(\log N)^7+2H_{K,B}TN^{-1/2}\\
+ &\quad +e^{1/2}(4eC_B)^6(2N^{-1/16}+H_{K,B}N^{-1/2})(\log N)^7
  +(B^2/2+1)N^{-1/16},
 \end{align*}
 and it gives
 \begin{align*}
  &\Prob\{|J_N(r)-\log\sigma_N(r)+\gamma/2|>\varepsilon_{K,B}^*(N)\}
  \le H_{K,B}N^{-3/8}+N^{-12}\\
- &\qquad+4H_{K,B}T^2N^{-7/16}(\log N)^{-14}
+ &\qquad+\frac{H_{K,B}}{256}N^{-3/8}(\log N)^{-12}
  +\exp[-N/(2B^4e^{6K})],
 \end{align*}
 where the last term is the probability of $E^c$ from
@@ -918,28 +820,23 @@ where the last term is the probability of $E^c$ from
 As in the real Gaussian case, $\varepsilon_{K,B}^*(N)$ and the right-hand
 side of the last display replace $\varepsilon_K^*(N)$ and $p_K^*(N)$ at
 each radius.
-Similarly, the small-derivative exceptional probability, which replaces
-the right-hand side of \eqref{eq:layer2-bad}, is
-\[
- N^{-3}+\exp[-(N+1)/(2B^4)]+N^{-10}+C_{K,B}N^{-3/8}(\log N)^4.
-\]
+Similarly, by the proof of Proposition~\ref{prop:coefficient-transfer}
+with the deviation $t=NL^{-4}$, the bound \eqref{eq:layer2-bad} is
+replaced by
+\begin{multline*}
+ \Prob\{B_{K,N}>Z_{K,B}NL^{-4}\log N+Z'_{K,B}N^{1/2}L^2(\log N)^2\}\\
+ \le N^{-3}+\exp[-(N+1)/(2B^4)]+N^{-10}+C_{K,B}N^{-5/16}(\log N)^2.
+\end{multline*}
 We require $A_B\log N/N\le1$ and $N\ge e^2$, and all previous thresholds
 with the enlarged constants.
-Since $D'_{K,B}c_{K,B}=D'_Kc_K$, $D'_{K,B}\mathcal B_{K,B}=B^5D'_K\mathcal B_K$
-and $S_{K,B}\cdot Ba=B^2S_Ka$, these are
+Since $S_{K,B}\cdot Ba=B^2S_Ka$, these are
 \begin{align*}
- &N\ge H_{K,B}^4=(1+B^3)^4H_K^4,\qquad N\ge(6400e^{8K})^2,\\
- &N\ge2K,\qquad N\ge2(1+2K)e^{4K},\qquad \varepsilon_{K,B}^*(N)+D_K/N\le K/16,\\
- &D'_K\{c_KNL^{-4}+B^5\mathcal B_KN^{1/2}L^2\log N\}
-  \le\frac{N^{31/32}}{4C_{1,B}(K+2)\log N},\\
- &40C_{1,B}(K+2)\sqrt N\log N\le N^{31/32}/2,\\
- &2BaL/N^{3/2}\le1/N,\qquad
+ &N\ge(6400e^{8K})^2,\qquad N\ge2K,\\
+ &4BaL/N^{3/2}\le1/N,\qquad
   4B^2S_KaL^2N^{-1/2}\sqrt{\log N}\le1,
 \end{align*}
 together with the thresholds $N\ge\max\{2,(K+1)/3\}$, $j\ge60$ and
 $N\ge\max\{4,K+2\}$, which do not change.
-In $X_0$, $H_K$ and $C_1(K+2)$ become $H_{K,B}$ and $C_{1,B}(K+2)$, and
-$D'_K\mathcal B_K$ becomes $B^5D'_K\mathcal B_K$.
 These inequalities hold eventually for each fixed distribution, with
 cutoffs that depend on $B$.
 
@@ -947,20 +844,17 @@ If $\Prob(\xi_0=0)>0$, the trailing-zero allowance $\lceil D\log N\rceil$,
 with $D>4/|\log\Prob(\xi_0=0)|$, and the bound
 $N^{-D|\log\Prob(\xi_0=0)|}$ on the probability of its exceptional event
 at each degree are those of the proof of
-Corollary~\ref{thm:stronglaw} for the other distributions in
-Section~\ref{sec:layer2-models}, which also treats the initial zero
-multiplicity and the actual degrees in Theorem~\ref{thm:T4}.
+Theorem~\ref{thm:radial-profile} and Corollary~\ref{thm:stronglaw} for
+other distributions in Section~\ref{sec:layer2-models}, which also
+treats the initial zero multiplicity and the actual degrees in
+Corollary~\ref{cor:T4-two-radii}.
 
 \subsection{Bounds for a growing annulus}\label{app:growing-annulus}
 In this subsection we compute the constants of the proof in
-Section~\ref{sec:log-rate}.
-We write each constant as a number independent of $K$, times powers of
-$K+1$ and a factor $e^{bK}$, and then bound $e^{bK}$ by $N^{b/1000}$ at
-the width $K=K_N$.
-For the logarithmic rate, we set $K=K_N$, where
-$K_N=\lfloor(\log N)/1000\rfloor$ is the width of
-Section~\ref{sec:log-rate}, with $N=j^8$ and $L=N^{1/64}$ as before,
-and use the local-count and tail lemmas with $K+2$ in place of $K$.
+Section~\ref{sec:log-rate}, at the width $K=K_N$, where
+$K_N=\lfloor(\log N)/128-\log\log N\rfloor$ is the width of that
+section, with $N=j^8$ and $L=N^{1/64}$ as before, and with the
+local-count and tail lemmas at the width $K+2$.
 The following bounds hold whenever the displayed deterministic conditions
 hold.
 Set
@@ -969,21 +863,26 @@ Set
  B_0&=2000\cdot160^{3/2},&V_0&=50+3B_0+6400,&
  Q_0&=\frac{9\cdot80^2}{1024S_0^2},\\
  A&=\max(1,1024\pi/c_{\rm HW}),&C_{10}&=(4A+12)/\log2,&
- C_{\rm bad}&=16C_{10}^2V_0D_0^2.
+ C_{\rm bad}&=V_0D_0^2,\\
+ Z_0&=C_{10}(1+D_0Q_0),&Z'_0&=C_{10}(40+D_0B_0),&
+ E_0&=E_1+E_2H_0,
 \end{align*}
+where $E_1$ and $E_2$ are the absolute constants of
+\eqref{eq:layer2-log-split}.
 These constants are independent of $K,N$.
 By the definitions we have, for $K\ge0$,
 \begin{align*}
  H_K&=H_0e^{20K},&S_K&=S_0e^K,&D'_K&=D_0(K+1)e^{2K},\\
  \mathcal B_K&=B_0e^{9K},&\mathcal T_K&=6400e^{8K},&V_K&\le V_0e^{9K},\\
  c_K&=Q_0e^{6K},&C_1(K+2)&\le C_{10}(K+1),&
- C_K&\le C_{\rm bad}(K+1)^4e^{13K}.
+ C_K&\le C_{\rm bad}(K+1)^2e^{13K},\\
+ Z_K&\le Z_0(K+1)^2e^{8K},&Z'_K&\le Z'_0(K+1)^2e^{11K}.
 \end{align*}
 Indeed, the first three hold since $H_K=10^8e^{20}e^{20K}$,
 $S_K=100e^4e^K$ and $D'_K=2^{18}(K+1)S_K^2=2^{18}S_0^2(K+1)e^{2K}$. For the
 others we use $1/\lambda_K=80e^{4K}$, so that $2/\lambda_K=160e^{4K}$ and
 $\mathcal T_K=80e^{4K}\cdot80e^{4K}=6400e^{8K}$, and, for the bounds,
-$e^{8K}\le e^{9K}$, $1\le e^{9K}$, $4K\le(4A+12)K$ and
+$e^{8K}\le e^{9K}$, $1\le(K+1)e^{bK}$, $4K\le(4A+12)K$ and
 $C_1(K+2)=(4A+4(K+2)+4)/\log2$:
 \begin{align*}
  \mathcal B_K&=2000e^{3K}(160e^{4K})^{3/2}=2000\cdot160^{3/2}e^{9K}
@@ -992,71 +891,92 @@ $C_1(K+2)=(4A+4(K+2)+4)/\log2$:
  c_K&=\frac{9\cdot80^2e^{8K}}{1024S_0^2e^{2K}}=Q_0e^{6K},\\
  C_1(K+2)&=\frac{4A+4K+12}{\log2}
  \le\frac{(4A+12)(K+1)}{\log2}=C_{10}(K+1),\\
- C_K&=16C_1(K+2)^2V_K(D'_K)^2
- \le16C_{10}^2(K+1)^2\cdot V_0e^{9K}\cdot D_0^2(K+1)^2e^{4K}\\
- &=C_{\rm bad}(K+1)^4e^{13K}.
-\end{align*}
-Set
-\[
- E_0=1+(4eC_*)^6\sqrt{2+H_0}+H_0/16+3/2.
-\]
-At $K=K_N$ we have $K\le(\log N)/1000$, and hence
-$e^{bK}\le e^{(b/1000)\log N}=N^{b/1000}$ for $b\ge0$.
-Using this at $K=K_N$, we get for $N\ge e$
-\begin{align}
- \varepsilon_K^*(N)&\le E_0N^{-17/800}(\log N)^7,\nonumber\\
- D_K/N&\le10(K+1)^2N^{-249/250},\nonumber\\
- p_K^*(N)&\le H_0N^{-71/200}+N^{-12}
- +\frac{H_0}{256}N^{-167/400}(\log N)^{-12},\nonumber\\
- C_KN^{-3/8}(\log N)^4
- &\le C_{\rm bad}(K+1)^4N^{-181/500}(\log N)^4.
-                                                        \label{eq:E2-majorants}
-\end{align}
-By the bound on $e^{bK}$ with $b=20$ and $b=10$, and $2\le2e^{20K}$,
-\begin{align*}
- H_K&=H_0e^{20K}\le H_0N^{1/50},\\
- \sqrt{2+H_K}&\le\sqrt{(2+H_0)e^{20K}}=\sqrt{2+H_0}\,e^{10K}
- \le\sqrt{2+H_0}\,N^{1/100}.
-\end{align*}
-We substitute these bounds into $\varepsilon_K^*(N)$, whose second term
-is $(H_K/16)N^{-1/2}\log N$, with $1/50-1/2=-12/25$ and
-$1/100-1/32=-17/800$. Then the bounds
-$N^{-1/32},N^{-12/25},N^{-1/16}\le N^{-17/800}$ and
-$1\le\log N\le(\log N)^7$ for $N\ge e$ give the first line of
-\eqref{eq:E2-majorants}:
-\begin{align*}
- \varepsilon_K^*(N)
- &\le N^{-1/32}(\log N)^7+\frac{H_0}{16}N^{-12/25}\log N\\
- &\quad+(4eC_*)^6\sqrt{2+H_0}\,N^{-17/800}(\log N)^7+\tfrac32N^{-1/16}
- \le E_0N^{-17/800}(\log N)^7.
-\end{align*}
-The second line follows from
-$D_K/N=10(K+1)^2e^{4K}N^{-1}\le10(K+1)^2N^{1/250-1}=10(K+1)^2N^{-249/250}$.
-Since $4T^2=(\log N)^2/256$ and $H_K\le H_0N^{1/50}$, with
-$1/50-3/8=-71/200$ and $1/50-7/16=-167/400$, the third line follows from
-\begin{align*}
- p_K^*(N)&=H_KN^{-3/8}+N^{-12}+\frac{H_K}{256}N^{-7/16}(\log N)^{-12}\\
- &\le H_0N^{1/50-3/8}+N^{-12}
- +\frac{H_0}{256}N^{1/50-7/16}(\log N)^{-12}\\
- &=H_0N^{-71/200}+N^{-12}+\frac{H_0}{256}N^{-167/400}(\log N)^{-12}.
-\end{align*}
-Finally, by the bound on $C_K$ above, the bound on $e^{bK}$ with $b=13$
-and $13/1000-3/8=-181/500$, the fourth line follows from
-\begin{align*}
- &C_KN^{-3/8}(\log N)^4
- \le C_{\rm bad}(K+1)^4e^{13K}N^{-3/8}(\log N)^4\\
- &\quad\le C_{\rm bad}(K+1)^4N^{13/1000-3/8}(\log N)^4
- =C_{\rm bad}(K+1)^4N^{-181/500}(\log N)^4.
+ C_K&=V_K(D'_K)^2
+ \le V_0e^{9K}\cdot D_0^2(K+1)^2e^{4K}
+ =C_{\rm bad}(K+1)^2e^{13K},\\
+ Z_K&=C_1(K+2)(1+D'_Kc_K)
+ \le C_{10}(K+1)\{1+D_0Q_0(K+1)e^{8K}\}\\
+ &\le Z_0(K+1)^2e^{8K},\\
+ Z'_K&=C_1(K+2)(40+D'_K\mathcal B_K)
+ \le C_{10}(K+1)\{40+D_0B_0(K+1)e^{11K}\}\\
+ &\le Z'_0(K+1)^2e^{11K}.
 \end{align*}
 
+These are the forms $C_0(K+1)^pe^{bK}$ of
+Table~\ref{tab:named-constants}, and the following lemma evaluates such
+a form at $K=K_N$.
+
+\begin{lemma}[Constants at the growing width]\label{lem:growing-width}
+Let $N\ge e$ and $K_N\ge0$, and let $X_K\le C_0(K+1)^pe^{bK}$ with
+$C_0\ge0$, $p\ge0$ and $b\ge0$. Then
+\[
+ X_{K_N}\le C_0(K_N+1)^pN^{b/128}(\log N)^{-b},
+\]
+and if moreover $K_N+1\le\log N$, then
+$X_{K_N}\le C_0(\log N)^pN^{b/128}(\log N)^{-b}$.
+\end{lemma}
+
+\begin{proof}
+By the floor, $K_N\le(\log N)/128-\log\log N$, and hence, since $b\ge0$
+and $\log N\ge1$,
+\[
+ e^{bK_N}\le N^{b/128}(\log N)^{-b}\le N^{b/128},\qquad b\ge0.
+\]
+This gives the first bound, and the second follows since
+$0<K_N+1\le\log N$ and $p\ge0$.
+\end{proof}
+
+By Lemma~\ref{lem:growing-width} with the forms above, keeping the
+factor $(K+1)^p$ and, only for $Z_K$, the factor $(\log N)^{-8}$, we get
+for $N\ge e$
+\begin{align}
+ \varepsilon_K^*(N)&\le E_0N^{-1/16}(\log N)^7,\nonumber\\
+ D_K/N&\le10(K+1)^2N^{-31/32},\nonumber\\
+ p_K^*(N)&\le H_0N^{-7/32}+N^{-12}
+ +\frac{H_0}{256}N^{-7/32}(\log N)^{-12},\nonumber\\
+ C_KN^{-5/16}(\log N)^2
+ &\le C_{\rm bad}(K+1)^2N^{-27/128}(\log N)^2,\nonumber\\
+ Z_KN^{-1/16}\log N
+ &\le Z_0(K+1)^2(\log N)^{-7},\nonumber\\
+ Z'_KN^{-15/32}(\log N)^2
+ &\le Z'_0(K+1)^2N^{-49/128}(\log N)^2.
+                                                        \label{eq:E2-majorants}
+\end{align}
+By Lemma~\ref{lem:growing-width} with $b=20$, we have
+$H_K=H_0e^{20K}\le H_0N^{5/32}$, and $5/32-1/2=-11/32$ and
+$5/32-3/8=-7/32$. By \eqref{eq:layer2-log-split} and
+$N^{-11/32}\le N^{-1/16}$, the first line follows from
+\[
+ \varepsilon_K^*(N)
+ \le E_1N^{-1/16}(\log N)^7+E_2H_0N^{-11/32}(\log N)^7
+ \le E_0N^{-1/16}(\log N)^7.
+\]
+The second line follows from
+$D_K/N=10(K+1)^2e^{4K}N^{-1}\le10(K+1)^2N^{1/32-1}=10(K+1)^2N^{-31/32}$.
+Since $4T^2=(\log N)^2/256$, the third line follows from
+\begin{align*}
+ p_K^*(N)&=H_KN^{-3/8}+N^{-12}
+ +\frac{H_K}{256}N^{-3/8}(\log N)^{-12}\\
+ &\le H_0N^{-7/32}+N^{-12}
+ +\frac{H_0}{256}N^{-7/32}(\log N)^{-12}.
+\end{align*}
+By the bounds on $C_K$, $Z_K$ and $Z'_K$ above, and
+Lemma~\ref{lem:growing-width} with $b=13$, $b=8$ and $b=11$, the last
+three lines follow from $13/128-5/16=-27/128$,
+$e^{8K}N^{-1/16}\le(\log N)^{-8}$ and $11/128-15/32=-49/128$.
+
+The caps on $K/\log N$ in Table~\ref{tab:rate-width} are $\beta/b$ in
+its first part and $(\beta-1/8)/b$ in its second, where $b$ is the
+exponent of the named constant of the row in
+Table~\ref{tab:named-constants}, plus $2$ for the factor
+$e^{2(K+2)}=e^4e^{2K}$ of $a$ in the two rows with $a$, and $b=16$ for
+$(6400e^{8K})^2$.
+
 Each ratio in Table~\ref{tab:growing-annulus} tends to zero, and the
-indicated condition holds once the ratio is at most one, where for the
-two mean terms we require that their sum be at most one.
-Indeed, at $K=K_N$ every ratio other than $2K/N$ and the fourth one is a
-constant times powers of $K_N+1\le\log N$ and of $\log N$, times a
-negative power of $N$. Also $2K_N/N\le2(\log N)/N$, and, once $K_N\ge2$,
-the fourth ratio is at most $8$ times its bracket, which tends to zero
-for the same reason. These rates are compared in
+indicated condition holds once the ratio is at most one.
+Indeed, at $K=K_N$ every ratio other than $2K/N$ is a constant times
+powers of $K_N+1\le\log N$ and of $\log N$, times a negative power of
+$N$, and $2K_N/N\le2(\log N)/N$. These rates are compared in
 Section~\ref{sec:log-rate}.
 \begin{table}[!htbp]
 \centering
@@ -1065,129 +985,104 @@ Section~\ref{sec:log-rate}.
 \toprule
 Condition & Sufficient ratio bound\\
 \midrule
-$H_K^4\le N$ & $H_0^4N^{-23/25}$\\
-$(6400e^{8K})^2\le N$ & $6400^2N^{-123/125}$\\
-$2K\le N$, $2(1+2K)e^{4K}\le N$
- & $2K/N$, $2(1+2K)N^{-249/250}$\\
-$\varepsilon_K^*(N)+D_K/N\le K/16$
- & $16[E_0N^{-17/800}(\log N)^7+10(K+1)^2N^{-249/250}]/K$\\
-First term of the mesh mean threshold
- & $4C_{10}D_0Q_0(K+1)^2(\log N)N^{-93/4000}$\\
-Second term of the mesh mean threshold
- & $4C_{10}D_0B_0(K+1)^2(\log N)^2N^{-853/2000}$\\
-Excluded-sector root threshold
- & $80C_{10}(K+1)(\log N)N^{-15/32}$\\
+$(160e^{8K})^2\le N$, $(6400e^{8K})^2\le N$ & $6400^2N^{-7/8}$\\
+$2K\le N$ & $2K/N$\\
 Taylor localization inequality
- & $180S_0e^4(\log N)N^{-113/4000}$\\
+ & $180S_0e^4(\log N)N^{-1/128}$\\
 $2a/d_0<N^{-65/64}$
- & $90e^4\sqrt{\log N}\,N^{-117/4000}$\\
+ & $90e^4\sqrt{\log N}\,N^{-1/64}$\\
 \bottomrule
 \end{tabular}
 \caption{Sufficient ratio bounds for the degree conditions at the width
 $K=K_N$.}
 \label{tab:growing-annulus}
 \end{table}
-We require the last ratio to be strictly below one, which also implies
-$2a/d_0\le1/N$, since then $2a/d_0<N^{-65/64}\le N^{-1}$.
+We require the last ratio to be strictly below one. The condition
+$4a/d_0\le1/N$ follows from the Taylor localization inequality, as shown
+after \eqref{eq:localization-thresholds}.
 
 We obtain the ratios of the table by dividing each condition by its
-right-hand side and substituting the bounds above. For the first three
-rows, by the bound on $e^{bK}$ with $b=80$, $16$ and $4$,
-\begin{align*}
- \frac{H_K^4}N&=H_0^4e^{80K}N^{-1}\le H_0^4N^{2/25-1}=H_0^4N^{-23/25},\\
- \frac{(6400e^{8K})^2}N&=6400^2e^{16K}N^{-1}\le6400^2N^{2/125-1}
- =6400^2N^{-123/125},\\
- \frac{2(1+2K)e^{4K}}N&\le2(1+2K)N^{1/250-1}=2(1+2K)N^{-249/250}.
-\end{align*}
-For the fourth row we divide $\varepsilon_K^*(N)+D_K/N$ by $K/16$ and use
-the first two lines of \eqref{eq:E2-majorants}.
-We multiply the mesh mean threshold of
-Section~\ref{app:const-small-derivatives} by
-$4C_1(K+2)(\log N)N^{-31/32}$, and use $L^{-4}=N^{-1/16}$,
-$L^2=N^{1/32}$, $C_1(K+2)\le C_{10}(K+1)$,
-$D'_Kc_K=D_0Q_0(K+1)e^{8K}$, $D'_K\mathcal B_K=D_0B_0(K+1)e^{11K}$,
-$1-1/16-31/32=-1/32$ and $1/2+1/32-31/32=-7/16$. Its two terms then
-satisfy
-\begin{align*}
- &4C_1(K+2)D'_Kc_K(\log N)N^{1-1/16-31/32}\\
- &\qquad\le4C_{10}D_0Q_0(K+1)^2e^{8K}(\log N)N^{-1/32},\\
- &4C_1(K+2)D'_K\mathcal B_K(\log N)^2N^{1/2+1/32-31/32}\\
- &\qquad\le4C_{10}D_0B_0(K+1)^2e^{11K}(\log N)^2N^{-7/16},
-\end{align*}
-and the bound on $e^{bK}$ with $b=8$ and $b=11$, with
-$1/125-1/32=-93/4000$ and $11/1000-7/16=-853/2000$, gives the entries of
-the table.
-For the excluded-sector root threshold, the ratio
-$80C_1(K+2)\,x\,e^{-15x/32}$ of Section~\ref{app:const-small-derivatives},
-with $x=\log N$, is at most $80C_{10}(K+1)(\log N)N^{-15/32}$.
-The last two rows, for the Taylor localization inequality
-$4S_KaL^2N^{-1/2}\sqrt{\log N}\le1$ of
-Section~\ref{app:const-localization}, which is $4M_2a\le d_0^2$, and for
+right-hand side and substituting the bounds above. For the first row,
+since $160<6400$ and by Lemma~\ref{lem:growing-width} with $b=16$,
+\[
+ \frac{(6400e^{8K})^2}N=6400^2e^{16K}N^{-1}\le6400^2N^{1/8-1}
+ =6400^2N^{-7/8}.
+\]
+The last two rows, for the inequality
+$4S_KaL^2N^{-1/2}\sqrt{\log N}\le1$ of Taylor localization in
+\eqref{eq:localization-thresholds}, which is $4M_2a\le d_0^2$, and for
 the strict band $N^{65/64}\cdot2a/d_0<1$, are computed in the proof of
 Theorem~\ref{thm:log-rate} from \eqref{eq:unit-radius} and
-\eqref{eq:unit-parameters}, with $180S_0e^4=18000e^8$,
-$7/16+1/32-1/2=-1/32$, $3/1000-1/32=-113/4000$, $7/16-15/32=-1/32$ and
-$2/1000-1/32=-117/4000$. They use the bounds $m_j\le9N^{7/8}$ and
-$a\le45e^{2(K+2)}N^{7/16}\sqrt{\log N}=45e^4e^{2K}N^{7/16}\sqrt{\log N}$
-of \eqref{eq:unit-block-length} and \eqref{eq:unit-amplitude}.
+\eqref{eq:unit-parameters}, with $180S_0e^4=18000e^8$ and the
+exponents $7/16+1/32-1/2=-1/32$, $3/128-1/32=-1/128$,
+$7/16-15/32=-1/32$ and $2/128-1/32=-1/64$. They use the bound
+$m_j\le9N^{7/8}$ of \eqref{eq:unit-block-length} and the bound
+$a\le45e^4e^{2K}N^{7/16}\sqrt{\log N}$ of \eqref{eq:unit-amplitude},
+where $e^{2(K+2)}=e^4e^{2K}$.
+The small-derivative lemma adds no ratio to the table, since its
+thresholds are $N\ge(6400e^{8K})^2$, those of
+Lemma~\ref{lem:local-counts} and \eqref{eq:localization-thresholds}.
 
 We also impose
 \[
  j\ge60,\qquad K\ge2,\qquad A\log N/N\le1,\qquad N\ge K+2.
 \]
 These conditions are eventual.
-Beyond a fixed cutoff, the profile and thin-band radii belong to their
+Beyond a fixed cutoff, the secant and probe radii belong to their
 required annuli.
-In this way we obtain all local-count, covariance, mean, sector, tail,
-localization and radial cutoffs used in the proof.
+In this way we obtain all local-count, covariance, tail, localization
+and radial cutoffs used in the proof.
 
-For a growing annulus, the sparse unit-circle error is at most
-$2N^{-1/64}+4\varepsilon_2^*(N)N^{1/64}$, and the crossing count is at
-most $2N$ times this bound, by \eqref{eq:block-center-crossings}, whose
-five radii are taken at the fixed width $2$.
-By the block bound \eqref{eq:unit-block} of Step~4 of
-Section~\ref{sec:unit-circle}, the two bounds of
-\eqref{eq:block-center-crossings}, and \eqref{eq:block-unselected} at
-$K=K_N$ divided by $N$, the bound that we use for the logarithmic rate
-is, for $N\le n\le N+m_j$,
+The proof in Section~\ref{sec:log-rate} bounds the number $U_N$ of
+unselected roots at $K=K_N$, in place of \eqref{eq:block-unselected}, by
+\begin{equation}
+ U_N\le N\Bigl[\frac1{K-1}+4\Bigl(\varepsilon_K^*(N)+\frac{D_K}N\Bigr)\Bigr]
+ +Z_KN^{15/16}\log N+Z'_KN^{17/32}(\log N)^2,
+ \label{eq:rate-unselected}
+\end{equation}
+outside the four radial events at the radii $1\pm(K_N-1)/N$ and
+$1\pm K_N/N$ and the event of \eqref{eq:layer2-bad}.
+Its probes are those of \eqref{eq:block-center-crossings}, at the fixed
+width $2$, so that the probe error at the unit circle is at most
+$\delta_2^*(N)$ and the crossing count at most $2\delta_2^*(N)N$.
+By \eqref{eq:unit-block} at $x=0$, with $\delta_2^*(N)$ in place of
+$\varepsilon_N$ as in Section~\ref{app:block-bounds}, and
+\eqref{eq:rate-unselected} divided by $N$, the bound that we
+use for the logarithmic rate is, for $N\le n\le N+m_j$,
 \begin{align}
  \left|\frac{\nu_n(1)}n-\frac12\right|
- &\le\left|\frac{\nu_N(1)}N-\frac12\right|
-       +\frac{c_N+U_N}{N}+\frac{3m_j}{2N}\nonumber\\
- &\le3\bigl(2N^{-1/64}+4\varepsilon_2^*(N)N^{1/64}\bigr)
-       +\frac{U_N}N+\frac{3m_j}{2N}\nonumber\\
- &\le3\bigl(2N^{-1/64}+4\varepsilon_2^*(N)N^{1/64}\bigr)+N^{-1/32}
-       +\frac{2\log2}{K_N}\nonumber\\
- &\quad+\frac8{K_N}(\varepsilon_{K_N}^*(N)+D_{K_N}/N)+\frac{3m_j}{2N}.
+ &\le3\delta_2^*(N)+\frac{U_N}N+\frac{2m_j}{N}\nonumber\\
+ &\le3\Bigl(2N^{-1/64}+\frac2N
+   +4\Bigl(\varepsilon_2^*(N)+\frac{D_2}N\Bigr)N^{1/64}\Bigr)
+   +\frac1{K_N-1}\nonumber\\
+ &\quad+4\Bigl(\varepsilon_{K_N}^*(N)+\frac{D_{K_N}}N\Bigr)
+   +Z_{K_N}N^{-1/16}\log N\nonumber\\
+ &\quad+Z'_{K_N}N^{-15/32}(\log N)^2+\frac{2m_j}{N}.
  \label{eq:E2-final}
 \end{align}
-Here $\varepsilon_{K_N}^*(N)$, $H_{K_N}=10^8e^{20(K_N+1)}$ and
-$D_{K_N}=10(K_N+1)^2e^{4K_N}$ are $\varepsilon_K^*(N)$, $H_K$ and $D_K$
-at $K=K_N$.
+Here $\varepsilon_{K_N}^*(N)$, $H_{K_N}=10^8e^{20(K_N+1)}$,
+$D_{K_N}=10(K_N+1)^2e^{4K_N}$, $Z_{K_N}$ and $Z'_{K_N}$ are
+$\varepsilon_K^*(N)$, $H_K$, $D_K$, $Z_K$ and $Z'_K$ at $K=K_N$, and
+$D_2=90e^8$.
 For this bound, the exceptional probability is \eqref{eq:block-failure}
-with $K=K_N$ and $R=2$, where
-$C_{K_N}=16C_1(K_N+2)^2V_{K_N}(D'_{K_N})^2$ and $p_{K_N}^*(N)$ is the
-function $p_K^*(N)$ at $K=K_N$. By the third and fourth lines of
-\eqref{eq:E2-majorants}, with $4\cdot H_0/256=H_0/64$, its terms
-$4p_{K_N}^*(N)+C_{K_N}N^{-3/8}(\log N)^4$ are bounded as in the proof of
+with $K=K_N$, $R=2$ and $x=0$, where $C_{K_N}=V_{K_N}(D'_{K_N})^2$ and
+$p_{K_N}^*(N)$ is the function $p_K^*(N)$ at $K=K_N$. By the third and
+fourth lines of \eqref{eq:E2-majorants}, with $4H_0/256=H_0/64$, its terms
+$4p_{K_N}^*(N)+C_{K_N}N^{-5/16}(\log N)^2$ are bounded as in the proof of
 Theorem~\ref{thm:log-rate}.
-It follows from the majorants in \eqref{eq:E2-majorants} that every term
-in \eqref{eq:E2-final} other than $2\log2/K_N$ is $o(1/\log N)$, as in
-Section~\ref{sec:log-rate}, since $K_N/\log N\to1/1000$ and
+By Lemma~\ref{lem:growing-width}, through \eqref{eq:E2-majorants}, every
+term in \eqref{eq:E2-final} other than $1/(K_N-1)$ is $o(1/\log N)$, as
+in Section~\ref{sec:log-rate}, since $K_N+1\le\log N$ and
 $m_j/N\le9N^{-1/8}$.
 
 \subsection{Nearby circles}\label{app:const-nearby}
 Finally, we compute the constants of the proof of
 Corollary~\ref{cor:crossings} in Section~\ref{sec:nearby-circles}.
-The good annular roots counted there lie in a thin band about the unit
-circle that contains both circles, and the five-radius estimate at an
-exponent $\kappa_*<\kappa$ counts the roots of that band.
 For a target exponent $\kappa>0$, we choose a wider band with
 \[
  0<\kappa_*<\min(\kappa,1/64),
 \]
-as does the choice $\kappa_*=\min(\kappa/2,1/128)$ in the proof of
-Corollary~\ref{cor:crossings}.
+as does the choice $\kappa_*=\min(\kappa/2,1/128)$ in that proof.
 Then the band $||z|-1|<N^{-1-\kappa_*}$ contains the circles
 $|z|=1\pm N^{-1-\kappa}$, and $\kappa_*$ lies in the range
 $0<\kappa\le1/64$ of the thin-band estimate of
@@ -1196,11 +1091,10 @@ We impose
 \[
  N^{-1-\kappa}+2a/d_0<N^{-1-\kappa_*},
 \]
-where $2a/d_0$ is the localization radius of
-Section~\ref{app:const-localization}.
-A good annular root whose localization disk meets one of the circles
-$|z|=1\pm N^{-1-\kappa}$ satisfies $||\alpha|-1|\le N^{-1-\kappa}+2a/d_0$,
-so this condition places it in the band $||\alpha|-1|<N^{-1-\kappa_*}$.
+where $2a/d_0$ is the radius of the selected disks of Step~2 of
+Section~\ref{sec:layer3}. As in the proof of
+Corollary~\ref{cor:crossings}, this condition places every good annular
+root whose disk meets one of the circles in the band.
 By the form of \eqref{eq:radial-count-near-unit} at $K=2$ in
 Section~\ref{app:const-radial}, with $\kappa_*$ in place of $\kappa$,
 \[
@@ -1210,4 +1104,5 @@ Section~\ref{app:const-radial}, with $\kappa_*$ in place of $\kappa$,
 outside probability $5p_2^*(N)$.
 Since $p_2^*(N)$ does not depend on the thin-band exponent, the
 exceptional probability of the block is \eqref{eq:block-failure} with
-$R=2$.
+$R=2$, where the term $5p_2^*(N)$ now bounds these five thin-band events
+in place of the five probe events.

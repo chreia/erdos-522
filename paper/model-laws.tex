@@ -1,119 +1,140 @@
-\begin{proof}[Proof of Corollary~\ref{thm:stronglaw} for the other distributions]
+\begin{proof}[Proof of Theorem~\ref{thm:radial-profile} and Corollary~\ref{thm:stronglaw} for other distributions]
 Multiplying every coefficient by a nonzero constant does not change the
-zeros of $f_n$, and a nondegenerate centrally symmetric distribution has
-positive second moment, since it is not concentrated at zero. We may
-therefore assume $\mathbb E|\xi_0|^2=1$ for a bounded distribution, as in
-Proposition~\ref{prop:coefficient-transfer}, and this holds for the other
-three distributions.
-We follow the proof for Rademacher coefficients in
-Section~\ref{sec:unit-circle} step by step, with the estimates of
-Proposition~\ref{prop:coefficient-transfer} instead of those of
-Sections~\ref{sec:concentration} and~\ref{sec:local-roots}, and we write
-out every step in which a constant, a degree or an exceptional
-probability changes.
-By Proposition~\ref{prop:coefficient-transfer}, the occupation,
-logarithmic, energy, annular mesh, local-count and maximal-tail estimates
-hold, the logarithmic estimate on the energy event of
-that proposition when the coefficient distribution requires it, and the
-additional exceptional probabilities are
-exponential in $N$ or explicitly summable.
-Since $\mathbb E|\xi_0|^2=1$, the normalization
-$\sigma_N(r)^2=\sum_{k=0}^Nr^{2k}$ is that of the sign case, so that, as
-in Proposition~\ref{prop:profiles}, the variance profile is
+zeros of $f_n$. A nondegenerate centrally symmetric distribution is not
+concentrated at zero, so it has positive second moment, and we may assume
+$\mathbb E|\xi_0|^2=1$ for a bounded distribution, as in
+Proposition~\ref{prop:coefficient-transfer}; the other three
+distributions satisfy it already.
+By that proposition, each of the four distributions satisfies (H1)--(H5).
+We show that the proof of Section~\ref{sec:layer3} applies to any
+sequence of independent coefficients with a common law that satisfies
+$\mathbb E|\xi_0|^2=1$ and (H1)--(H5), writing out every step in which a
+constant, a degree or an exceptional probability changes.
+Constants $C(K)$ may now depend on the coefficient law.
+Since $\mathbb E|\xi_0|^2=1$, we have
+$\sigma_N(r)^2=\sum_{k=0}^Nr^{2k}$ as for signs, and, as in
+Proposition~\ref{prop:profiles}, the variance profile is
 \[
- F(x)=\frac12\log\int_0^1e^{2xt}\dd t,\qquad F'(0)=\frac12,
+ F(x)=\frac12\log\int_0^1e^{2xt}\dd t,\qquad F'=\Phi,
 \]
-and Lemma~\ref{lem:profile-rate} applies unchanged.
-Together with the matching argument of Section~\ref{sec:unit-circle},
-these estimates yield the conclusion for nonzero coefficients.
-In what follows, let $\Pi_K(N)$ be the right-hand side of the
-concentration bound of Proposition~\ref{prop:coefficient-transfer}
-without its term $\Prob(E^c)$, with the constants of the distribution, and
-allow $C(K)$ to depend on the distribution.
+and Lemma~\ref{lem:profile-rate} applies unchanged. The other
+deterministic results used there (Lemmas~\ref{lem:annular-mass},
+\ref{lem:local-radial-secant} and~\ref{lem:isolation-interface},
+Theorem~\ref{thm:T4} and Corollary~\ref{cor:T4-two-radii}) do not involve
+the coefficient law.
+
+For $K\ge2$, let $H(K)$ be the constant of (H3), and let
+\[
+ \Pi_K(N)=H(K)N^{-3/8}+N^{-12}+\frac{H(K)}{256}N^{-3/8}(\log N)^{-12}
+\]
+be the probability bound of Lemma~\ref{lem:clipping} without its term
+$\Prob(E^c)$. By (H3) and (H4), Lemma~\ref{lem:clipping} applies at every
+radius $r\in[1-K/N,1+K/N]$, with the event $E_r$ of (H4), and gives
+\begin{equation}
+ \Prob\{|J_N(r)-\log\sigma_N(r)+\gamma/2|>C(K)N^{-1/16}(\log N)^7\}
+ \le\Pi_K(N)+\Prob(E_r^c),
+ \label{eq:model-log-concentration}
+\end{equation}
+where $C(K)$ is the bound on the error $\varepsilon$ of that lemma.
+This is \eqref{eq:sign-log-concentration} with the additional term
+$\Prob(E_r^c)$. Outside its exceptional event, $J_N(r)$ is finite, so
+$f_N\not\equiv0$.
 
 \emph{Step 1.}
-Proposition~\ref{prop:coefficient-transfer} implies that
-Lemmas~\ref{lem:second-derivative} and~\ref{lem:tails} hold for Steinhaus
-and Gaussian coefficients with the same constants, for Gaussian
-coefficients on the envelope event $\max_{k\le2N}|\xi_k|\le N$.
-Hence $\rho$, $a$, $M_2$ and $d_0$ and the bounds
-\eqref{eq:unit-block-length}--\eqref{eq:unit-parameters} are unchanged.
-For bounded coefficients, the proof of
-Proposition~\ref{prop:coefficient-transfer} yields the tail amplitude
-$Ba$, with $K+2$ in place of $K$ and $m_{\max}=m_j$, and the
-second-derivative bound $BM_2$.
+Let $B_0\ge1$ be the amplitude factor of (H2).
+We replace the tail amplitude $a$ and the second-derivative bound $M_2$
+of Step~1 of Section~\ref{sec:layer3} by $B_0a$ and $B_0M_2$, which (H2)
+provides, with $K+2$ in place of $K$ for the tails, and we keep $\rho$,
+$d_0$, $L$ and $h$.
 Since \eqref{eq:unit-block-length} does not involve the coefficients,
-\eqref{eq:unit-amplitude}--\eqref{eq:unit-parameters} become
-\begin{align*}
- Ba&\le45Be^{2(K+2)}N^{7/16}\sqrt{\log N},\\
- \frac{2Ba}{d_0}&\le90Be^{2(K+2)}N^{-67/64}\sqrt{\log N},\\
- \frac{2NBa}{d_0}&\le90Be^{2(K+2)}N^{-3/64}\sqrt{\log N},\\
- \frac{4(BM_2)(Ba)}{d_0^2}
- &\le180\cdot100B^2e^{K+4}e^{2(K+2)}N^{-1/32}\log N,
-\end{align*}
-which are those bounds multiplied by $B$, $B$, $B$ and $B^2$.
-The right-hand sides of the last two lines tend to zero, so that
-$2Ba/d_0\le1/N$ and $4(BM_2)(Ba)\le d_0^2$ for all $N$ large enough,
-depending on $K$ and $B$.
+the bounds of that step become those of the table: the sign-case bounds
+times $B_0$, except for $B_0^2$ in the fourth row and the unchanged term
+$9|x|N^{-7/64}$.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Quantity & Bound for the law & For signs ($B_0=1$)\\
+\midrule
+$B_0a$ & $45B_0e^{2(K+2)}N^{7/16}\sqrt{\log N}$
+ & \eqref{eq:unit-amplitude}\\
+$2B_0a/d_0$ & $90B_0e^{2(K+2)}N^{-67/64}\sqrt{\log N}$
+ & \eqref{eq:unit-radius}\\
+$4NB_0a/d_0$ & $180B_0e^{2(K+2)}N^{-3/64}\sqrt{\log N}$
+ & \eqref{eq:unit-radius-scaled}\\
+$4(B_0M_2)(B_0a)/d_0^2$
+ & $180\cdot100B_0^2e^{K+4}e^{2(K+2)}N^{-1/32}\log N$
+ & \eqref{eq:unit-parameters}\\
+$\dfrac Nh\Bigl(\dfrac{2B_0a}{d_0}+\dfrac{|x|m_j}{N^2}\Bigr)$
+ & $90B_0e^{2(K+2)}N^{-1/32}\sqrt{\log N}+9|x|N^{-7/64}$
+ & \eqref{eq:unit-radius-ratio}\\
+\addlinespace
+\bottomrule
+\end{tabular}
+\end{center}
+The bounds in the last three rows tend to zero, so the conditions of
+Table~\ref{tab:unit-conditions}, with $B_0a$ and $B_0M_2$ in place of $a$
+and $M_2$, hold for all $N$ large enough, depending on $K$, $x$ and
+$B_0$.
+For Steinhaus and Gaussian coefficients $B_0=1$, and these parameters and
+bounds are unchanged.
 
 \emph{Step 2.}
-For Steinhaus and Gaussian coefficients this step is the same as before,
-since $a$, $M_2$ and $d_0$ are unchanged.
-For bounded coefficients, we apply Lemma~\ref{lem:isolation-interface} to
-each good annular root $\alpha$, with $P=f_N$, the amplitude $Ba$,
-$|f_N'(\alpha)|\ge d_0$ and $|f_N''|\le BM_2$ on the disk of radius
-$2Ba/d_0$ about $\alpha$.
-This disk lies in $|z|\le1+(K+1)/N$, since $2Ba/d_0\le1/N$, and we have
-$4(BM_2)(Ba)\le d_0^2$ by Step~1.
-The lemma then shows that the disk contains exactly one zero and that
-$|f_N|\ge3Ba/2$ on its boundary, and we choose the common regular level in
-$(Ba,3Ba/2)$.
+Outside the exceptional events of the second-derivative bound in (H2), we
+have $|f_N''|\le B_0M_2$ on $|z|\le1+(K+1)/N$. This disk contains the
+closed disk of radius $4B_0a/d_0$ about every annular root, since
+$4B_0a/d_0\le1/N$ by Step~1.
+Lemma~\ref{lem:isolation-interface}, applied to the good annular roots
+with $P=f_N$, the common amplitude $B_0a$, $|f_N'(\alpha)|\ge d_0$ and
+$4(B_0M_2)(B_0a)\le d_0^2$, shows that the selected disks, now of
+radius $2B_0a/d_0$, are pairwise disjoint, that each of them contains
+exactly one zero, and that $|f_N|\ge3B_0a/2$ on their boundaries.
 
 \emph{Step 3.}
-The proof of Corollary~\ref{cor:radial-probability} relies on
-the deterministic Lemmas~\ref{lem:annular-mass} and~\ref{lem:thin-band},
-which require a nonzero polynomial of degree at most $N$.
-For Steinhaus coefficients $f_N(0)=\xi_0\ne0$, and for Gaussian
-coefficients $f_N(0)=\xi_0\ne0$ almost surely.
-For bounded coefficients, $f_N\equiv0$ implies $V=0$ at every radius, so
-that the zero polynomial lies in the energy exception $E^c$.
-It follows that, with the concentration bound of
-Proposition~\ref{prop:coefficient-transfer} instead of
-Theorem~\ref{thm:sign-logarithms}, the corollary holds for each distribution, with
-its constants, outside four events at the width $K$ and five events at the
-width $2$, of probabilities at most $\Pi_K(N)+\Prob(E^c)$ and
-$\Pi_2(N)+\Prob(E^c)$, with $\Prob(E^c)$ at the widths $K$ and $2$.
-Using the bound \eqref{eq:gauss-small-derivatives} or
-\eqref{eq:bounded-small-derivatives} on $\Prob\{B_{K,N}>N^{31/32}\}$ from
-the proof of Proposition~\ref{prop:coefficient-transfer} instead of
-Lemma~\ref{lem:small-derivatives} (for Steinhaus coefficients
-\eqref{eq:annular-small-derivatives} still holds), we obtain
-\eqref{eq:unit-unselected} with the constant $C(K)$ of the distribution.
-For bounded coefficients, the crossing bound \eqref{eq:unit-crossings}
-needs $2Ba/d_0<N^{-65/64}$ instead of $2a/d_0<N^{-65/64}$, and by Step~1
-we have
-\[
- N^{65/64}\,\frac{2Ba}{d_0}
- \le90Be^{2(K+2)}N^{-67/64+1+1/64}\sqrt{\log N}
- =90Be^{2(K+2)}N^{-1/32}\sqrt{\log N}.
-\]
-This tends to zero, as \eqref{eq:unit-radius-ratio} does.
-The bound on $c_N/N$ and the case $q=0$ of \eqref{eq:unit-thin-band}
-then hold with the constant $C(2)$ of the distribution.
+The proof of Corollary~\ref{cor:radial-probability} applies the
+deterministic Lemma~\ref{lem:annular-mass}, which requires a nonzero
+polynomial of degree at most $N$, outside the exceptional events of
+Theorem~\ref{thm:sign-logarithms} at four radii.
+With \eqref{eq:model-log-concentration} in place of that theorem, and
+since $f_N\not\equiv0$ outside these events,
+\eqref{eq:sign-annular-mass} holds with the constant $C(K)$ of the
+distribution, outside four events of probabilities at most
+$\Pi_K(N)+\Prob(E_r^c)$, one at each radius $r$ of that lemma.
+By (H5), outside the exceptional events of (H1), with $K+2$ in place of
+$K$, and of the second-derivative bound in (H2), and outside a further
+event of probability at most $C(K)N^{-5/16}(\log N)^2$, we have
+$B_{K,N}\le C(K)NL^{-4}\log N$.
+Hence \eqref{eq:unit-unselected} holds with the constant $C(K)$ of the
+distribution.
 
 \emph{Step 4.}
-As in Step~4 of Section~\ref{sec:unit-circle}, outside one maximal tail
-event we have $|f_n-f_N|<a$, or $|f_n-f_N|<Ba$ for bounded coefficients,
-on every selected boundary.
-Theorem~\ref{thm:T4} needs nonzero polynomials, and outside the events of
-Step~3 we have $f_N\not\equiv0$, which implies
-$f_n\not\equiv0$, since its first $N+1$ coefficients are those of $f_N$.
-If $\Prob(\xi_0=0)=0$, every coefficient is nonzero almost surely, so
-that $\deg f_n=n$ and $\deg f_N=N$, and Step~4 holds as before, with
-\eqref{eq:unit-block}.
+At the five radii $r_q$ of Step~4, of width $R$,
+\eqref{eq:model-log-concentration} with $R$ in place of $K$ replaces
+Theorem~\ref{thm:sign-logarithms}, so that \eqref{eq:moving-probes},
+\eqref{eq:moving-secant} and \eqref{eq:moving-band} hold with the constant
+$C(R)$ of the distribution, outside five events of probabilities at most
+$\Pi_R(N)+\Prob(E_{r_q}^c)$, where $\Pi_R(N)$ is $\Pi_K(N)$ with $R$ in
+place of $K$.
+The band condition now involves the radius $2B_0a/d_0$ of the selected
+disks, and it holds by the last bound of Step~1. Hence the number
+$c(r_N,1+x/n)$ of selected disks whose closures meet the closed annulus
+between the two target circles is again at most $2\varepsilon_NN$.
 
-Suppose now that $\Prob(\xi_0=0)>0$.
-Then the zero-polynomial event is contained in the amplitude exception.
+\emph{Step 5.}
+By (H2), with $K+2$ in place of $K$ and $m_{\max}=m_j$, outside one
+maximal-tail event we have $|f_n-f_N|<B_0a$ on $|z|\le\rho$ for all
+$N<n\le N+m_j$, while $|f_N|\ge3B_0a/2$ on the boundaries of the selected
+disks by Step~2.
+Theorem~\ref{thm:T4} needs nonzero polynomials. Outside the events of
+Step~3 we have $f_N\not\equiv0$, and hence $f_n\not\equiv0$, since the
+first $N+1$ coefficients of $f_n$ are those of $f_N$.
+If $\Prob(\xi_0=0)=0$, every coefficient is nonzero almost surely, so
+$\deg f_n=n$ and $\deg f_N=N$, and \eqref{eq:unit-block} holds as
+before.
+
+Suppose now that $\Prob(\xi_0=0)>0$, which, of the four distributions,
+only a bounded one allows.
 Since the probabilities of the trailing-run events below are summable
 along $N=j^8$ once $8D|\log\Prob(\xi_0=0)|>1$, any
 $D>1/(8|\log\Prob(\xi_0=0)|)$ would do.
@@ -135,130 +156,76 @@ so that, for every $N\le n\le N+m_j$,
 \end{align*}
 where $0\le$ holds since the prefix degrees are nondecreasing, and the
 limit follows from $n-N\le m_j$ and \eqref{eq:unit-block-length}.
-Thus the actual-degree term in Theorem~\ref{thm:T4}, divided by $N$,
-tends to zero.
-Since each selected domain contains exactly one root of $f_N$ and $U_N$
+Thus the actual-degree term in Corollary~\ref{cor:T4-two-radii}, divided
+by $N$, tends to zero.
+Since each selected disk contains exactly one root of $f_N$ and $U_N$
 counts the other roots of $f_N$, we still have $\deg f_N-s=U_N$, although
 $\deg f_N$ may now be smaller than $N$.
-Hence, by Theorem~\ref{thm:T4} and the degree bound above, for
-$N\le n\le N+m_j$ we have
+Hence, by Corollary~\ref{cor:T4-two-radii}, Step~4 and the degree bound
+above, for $N\le n\le N+m_j$ we have
 \begin{align*}
- |\nu_n(1)-\nu_N(1)|
- &\le c_N+(\deg f_N-s)+\max(0,\deg f_n-\deg f_N)\\
- &\le c_N+U_N+m_j+\lceil D\log N\rceil,\\
- \left|\frac{\nu_n(1)}n-\frac12\right|
- &\le\left|\frac{\nu_N(1)}N-\frac12\right|
-       +\frac{c_N+U_N}{N}+\frac{3m_j}{2N}
-       +\frac{\lceil D\log N\rceil}N,
+ &|\nu_n(1+x/n)-\nu_N(r_N)|\\
+ &\qquad\le c(r_N,1+x/n)+(\deg f_N-s)+\max(0,\deg f_n-\deg f_N)\\
+ &\qquad\le2\varepsilon_NN+U_N+m_j+\lceil D\log N\rceil,
 \end{align*}
-where the third line follows from the second as in the chain of
-\eqref{eq:unit-block}, with the second line in place of the matching bound
-there and $\lceil D\log N\rceil/n\le\lceil D\log N\rceil/N$.
+and the three-term split of \eqref{eq:unit-block}, with this bound in
+place of the matching bound there, gives
+\begin{equation}
+ \left|\frac{\nu_n(1+x/n)}n-\Phi(x)\right|
+ \le3\varepsilon_N+\frac{U_N}N+\frac{2m_j}N+\frac{\lceil D\log N\rceil}N.
+ \label{eq:model-block}
+\end{equation}
 The initial zero multiplicity, the index of the first nonzero
 coefficient, is finite almost surely, since the coefficients are
-independent and $\Prob(\xi_0\ne0)>0$, and so, divided by $N$, it tends to
-zero, and the bound on $U_N/N$ already counts these zeros at the origin,
-since they are unselected roots.
+independent and $\Prob(\xi_0\ne0)>0$. Divided by $N$, it tends to zero,
+and the bound on $U_N/N$ already counts these zeros at the origin as
+unselected roots.
 There are only finitely many zero polynomials, and their counts do not
 affect the limit.
 
-\emph{Step 5.}
-We now also include in the event $E_{K,j}$ the energy exceptions at the
-four radii of the width $K$ and at the five radii of the width $2$, the
-additional local-count exception and, for Gaussian coefficients, the
-complement of the envelope event, which the derivative and tail bounds
-share.
-For bounded distributions with an atom at zero we also include the trailing-run
-event.
-For Steinhaus coefficients \eqref{eq:unit-failure} still holds.
-For Gaussian coefficients we have, for all large $j$,
-\begin{align*}
- \Prob(E_{K,j})
- &\le4\Pi_K(N)+5\Pi_2(N)+N^{-3}+2N^{-10}+C(K)N^{-3/8}(\log N)^4\\
- &\quad+4e^{-3N/(32e^{6K})}+5e^{-3N/(32e^{12})}+e^{-3(N+1)/32}
- +2(2N+1)e^{-N^2/2}.
-\end{align*}
-Similarly, for bounded coefficients we have, for all large $j$,
-\begin{align*}
- \Prob(E_{K,j})
- &\le4\Pi_K(N)+5\Pi_2(N)+N^{-3}+2N^{-10}+C(K)N^{-3/8}(\log N)^4\\
- &\quad+4e^{-N/(2B^4e^{6K})}+5e^{-N/(2B^4e^{12})}+e^{-(N+1)/(2B^4)}
- +N^{-D|\log\Prob(\xi_0=0)|},
-\end{align*}
-where the last term is present only if $\Prob(\xi_0=0)>0$.
-In both bounds, the first two exponential terms are the energy
-exceptions of Proposition~\ref{prop:coefficient-transfer} at the widths
-$K$ and $2$, and the third is the additional exception of
-Lemma~\ref{lem:local-counts-gauss} or~\ref{lem:local-counts-bounded}.
-At $N=j^8$ the terms of \eqref{eq:unit-failure} are summable as in
-Step~5 of Section~\ref{sec:unit-circle}, the exponential terms by
-\eqref{eq:model-summable}, and the trailing-run term by the sum above.
-Hence the Borel--Cantelli argument of Step~5 applies, with the additional
-term $\lceil D\log N\rceil/N\to0$ in the final bound when
-$\Prob(\xi_0=0)>0$.
-\end{proof}
-
-\begin{proof}[Proof of Theorem~\ref{thm:radial-profile} for the other distributions]
-We follow the proof in Section~\ref{sec:moving-radii} for Rademacher
-coefficients step by step, with the normalization
-$\mathbb E|\xi_0|^2=1$ and the changes written out in the proof of
-Corollary~\ref{thm:stronglaw} above.
-Let $\Pi_K(N)$ be as in that proof, and let $\Pi_R(N)$ be
-$\Pi_K(N)$ with $R$ in place of $K$.
-Fix $K,R,x$.
-We use the logarithmic, mesh, local-count and tail estimates from
-Section~\ref{sec:layer2-models}, and for Gaussian and bounded distributions the
-probabilities of the additional exceptional events are exponential in $N$.
-As in that proof, the variance profile is unchanged.
-The concentration bound of Proposition~\ref{prop:coefficient-transfer}
-at the five radii $r_q$ of width $R$ shows that \eqref{eq:moving-probes},
-\eqref{eq:moving-secant} and \eqref{eq:moving-band} hold with the constant
-$C(R)$ of the distribution, outside five events of probabilities at most
-$\Pi_R(N)+\Prob(E^c)$, with $\Prob(E^c)$ at the width $R$.
-The selected domains are the same as in Steps~1 and~2 of that proof.
-For bounded coefficients, the band condition involves $2Ba/d_0$ instead of
-$2a/d_0$, and, as in Section~\ref{sec:moving-radii}, we have
-\begin{align*}
- \frac Nh\left(\frac{2Ba}{d_0}+\frac{|x|m_j}{N^2}\right)
- &\le90Be^{2(K+2)}N^{-67/64+65/64}\sqrt{\log N}+9|x|N^{7/8-2+65/64}\\
- &=90Be^{2(K+2)}N^{-1/32}\sqrt{\log N}+9|x|N^{-7/64},
-\end{align*}
-which tends to zero.
-
-If $\Prob(\xi_0=0)\in(0,1)$, we take $D$ and the trailing-run event as in
-that proof.
-Outside that event, the degree correction $\max(0,\deg Q-\deg P)$ in
-Corollary~\ref{cor:T4-two-radii} is bounded by
-$m_j+\lceil D\log N\rceil$, and the extra term divided by $N$ tends to
-zero.
-Indeed, the three-term bound of Section~\ref{sec:moving-radii} becomes
-\begin{align*}
- \left|\frac{\nu_n(1+x/n)}n-\Phi(x)\right|
- &\le\varepsilon_N
-  +\frac{2\varepsilon_NN+U_N+m_j+\lceil D\log N\rceil}N+\frac{m_j}N\\
- &=3\varepsilon_N+\frac{U_N}N+\frac{2m_j}N+\frac{\lceil D\log N\rceil}N.
-\end{align*}
-For Gaussian coefficients we have, for all large $j$,
+\emph{Step 6.}
+We now also include in the event $E_{K,R,x,j}$:
+\begin{itemize}
+\item the energy exceptions $E_r^c$ of (H4) at the four radii of the
+ width $K$ and at the five radii of the width $R$;
+\item the additional exceptional events of (H1), with $K+2$ in place of
+ $K$, and of (H2), which the derivative, tail and small-derivative bounds
+ share;
+\item if $\Prob(\xi_0=0)>0$, the trailing-run event.
+\end{itemize}
+Then $\Prob(E_{K,R,x,j})$ is at most the right-hand side of
+\eqref{eq:unit-failure}, with the constants of the distribution, plus
+these additional probabilities, which are summable along $N=j^8$ by
+(H1), (H2), (H4) and the sum above.
+For Steinhaus coefficients there are no additional events, and
+\eqref{eq:unit-failure} holds as it stands.
+For Gaussian coefficients, by Proposition~\ref{prop:coefficient-transfer}
+and Table~\ref{tab:model-inputs}, we have, for all large $j$,
 \begin{align*}
  \Prob(E_{K,R,x,j})
- &\le4\Pi_K(N)+5\Pi_R(N)+N^{-3}+2N^{-10}+C(K)N^{-3/8}(\log N)^4\\
+ &\le4\Pi_K(N)+5\Pi_R(N)+N^{-3}+2N^{-10}+C(K)N^{-5/16}(\log N)^2\\
  &\quad+4e^{-3N/(32e^{6K})}+5e^{-3N/(32e^{6R})}+e^{-3(N+1)/32}
  +2(2N+1)e^{-N^2/2},
 \end{align*}
 and for bounded coefficients,
 \begin{align*}
  \Prob(E_{K,R,x,j})
- &\le4\Pi_K(N)+5\Pi_R(N)+N^{-3}+2N^{-10}+C(K)N^{-3/8}(\log N)^4\\
+ &\le4\Pi_K(N)+5\Pi_R(N)+N^{-3}+2N^{-10}+C(K)N^{-5/16}(\log N)^2\\
  &\quad+4e^{-N/(2B^4e^{6K})}+5e^{-N/(2B^4e^{6R})}+e^{-(N+1)/(2B^4)}
  +N^{-D|\log\Prob(\xi_0=0)|},
 \end{align*}
 where the last term is present only if $\Prob(\xi_0=0)>0$.
-These bounds are obtained from those of Step~5 in that proof by
-replacing the five thin-band terms at the width $2$ with the five logarithmic terms
-at the width $R$, as \eqref{eq:moving-failure} replaces
-\eqref{eq:unit-failure}.
-For Steinhaus coefficients \eqref{eq:moving-failure} still holds.
-As in that proof, these bounds are summable along $N=j^8$.
-The conclusion now follows from the fixed-$K$ intersection and the
-rational-$x$ argument of Section~\ref{sec:moving-radii}.
+In both bounds, the first two exponential terms are the energy
+exceptions of Proposition~\ref{prop:coefficient-transfer} at the widths
+$K$ and $R$, and the third is the additional exception of
+Lemma~\ref{lem:local-counts-gauss} or~\ref{lem:local-counts-bounded}.
+At $N=j^8$ the terms of \eqref{eq:unit-failure} are summable as in
+Step~6 of Section~\ref{sec:layer3}, the exponential terms by
+\eqref{eq:model-summable}, and the trailing-run term by the sum above.
+Hence the Borel--Cantelli argument and the limit $K\to\infty$ of Step~6
+apply, with the additional term $\lceil D\log N\rceil/N\to0$ of
+\eqref{eq:model-block} when $\Prob(\xi_0=0)>0$, and Step~7 gives
+Theorem~\ref{thm:radial-profile}.
+Corollary~\ref{thm:stronglaw} is its case $x=0$, as in
+Section~\ref{sec:layer3}.
 \end{proof}

@@ -108,22 +108,4 @@ theorem tendsto_log_mul_realPowerBlockLength_div {q : ℝ} (hq : 1 < q) :
         ring
   · interval_cases j <;> simp [realPowerDegree, Real.zero_rpow (by linarith : q ≠ 0)]
 
-/-- The growing annular width has its exact logarithmic asymptotic scale. -/
-theorem tendsto_logarithmicAnnularWidth_div_log :
-    Tendsto (fun N : ℕ => logarithmicAnnularWidth N / Real.log N) atTop (𝓝 (1 / 1000)) := by
-  have ht := (Real.tendsto_log_atTop.comp (tendsto_natCast_atTop_atTop (R := ℝ))).atTop_div_const
-    (by norm_num : (0 : ℝ) < 1000)
-  have h := (tendsto_nat_floor_div_atTop.comp ht).div_const 1000
-  norm_num only [one_div] at h ⊢
-  convert h using 1
-  ext N
-  dsimp [logarithmicAnnularWidth]
-  ring
-
-/-- The reciprocal width carries the coefficient `1000` in the logarithmic rate. -/
-theorem tendsto_log_div_logarithmicAnnularWidth :
-    Tendsto (fun N : ℕ => Real.log N / logarithmicAnnularWidth N) atTop (𝓝 1000) := by
-  have h := tendsto_logarithmicAnnularWidth_div_log.inv₀ (by norm_num : (1 / 1000 : ℝ) ≠ 0)
-  simpa only [inv_div, one_div, inv_inv] using h
-
 end Erdos522

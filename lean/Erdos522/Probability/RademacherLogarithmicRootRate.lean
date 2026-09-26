@@ -12,8 +12,8 @@ import Erdos522.Stability.NormalizedRootMatching
 # The logarithmic almost-sure root-count rate
 
 Shrinking Jensen probes control the matching window, while logarithmically
-growing annuli contain all but `2 log 2 / K` of the root mass. Root matching
-and exact block normalization retain the limiting constant `2000 log 2`.
+growing annuli contain all but `1 / (K - 1)` of the root mass. Root matching
+and exact block normalization retain the limiting constant `128`.
 -/
 
 noncomputable section
@@ -52,10 +52,9 @@ theorem exists_ae_logarithmic_root_rate_envelope :
   have houter : |(closedZeroCount P (1 + w) : ℝ) / N - 1 / 2| ≤ thinRadialError H N :=
     hjthin (1 + w) (by change |1 + w - 1| ≤ w; rw [add_sub_cancel_left, abs_of_nonneg hw])
   have hbound := normalized_root_count_error_of_matching P Q hn hw hcenter hinner houter (hjmatch m hm 1)
-  have hpower : (N : ℝ) ^ (31 / 32 : ℝ) / N = (N : ℝ) ^ (-(1 / 32 : ℝ)) := by
-    rw [← Real.rpow_sub_one hNr.ne']
-    congr 1
-    norm_num
+  have hpower : logarithmicCountThreshold N / N = 1 / (Real.log N) ^ 2 := by
+    unfold logarithmicCountThreshold
+    field_simp
   have hmass' : (zeroCountIn P {z | |‖z‖ - 1| ≤ K / N}ᶜ : ℝ) / N ≤ growingAnnularMassEnvelope B N := hjmass
   have hm' : (m : ℝ) / N ≤ (realPowerBlockLength 8 j : ℝ) / N :=
     div_le_div_of_nonneg_right (by exact_mod_cast hm) hNr.le
@@ -66,14 +65,14 @@ theorem exists_ae_logarithmic_root_rate_envelope :
   norm_num at hbound
   dsimp only [N, P, K] at hmass'
   dsimp only [N] at *
-  simp only [mul_div_assoc] at hbound ⊢
+  simp only [mul_div_assoc, one_div] at hbound ⊢
   linarith
 
 /-- The almost-sure root fraction converges at the explicit logarithmic upper rate. -/
 theorem ae_rademacher_logarithmic_root_rate :
     ∀ᵐ ω ∂rademacherSequenceMeasure,
       limsup (fun n : ℕ => Real.log n * |rademacherRadialFraction ω n 1 - 1 / 2|) atTop ≤
-        2000 * Real.log 2 := by
+        128 := by
   obtain ⟨H, B, _, hB, hbound⟩ := exists_ae_logarithmic_root_rate_envelope
   filter_upwards [hbound] with ω hω
   apply limsup_logarithmic_rate_of_block_bounds

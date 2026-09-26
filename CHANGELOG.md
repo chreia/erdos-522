@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.1.0 (2026-09-25)
+
+- **Theorem 1.3.** The constant of the almost-sure rate is lowered from $2000\log2$ to $128$: almost surely, $\limsup_n(\log n)|\nu_n(1)/n-1/2|\le128$. The proof takes the annular width $K_N=\lfloor\log N/128-\log\log N\rfloor$ and the secant radii of Lemma 2.4 with $\eta=1/K_N$. The Lean theorems `ae_rademacher_logarithmic_root_rate` and `ae_rademacher_logarithmic_root_rate_eventually` state the new constant.
+- **Proofs.** Section 6 proves Theorem 1.1 once, and Corollary 1.2 is its case $x=0$, in the paper and in Lean. The matching step uses disjoint disks about roots with a large derivative (Lemma 5.4), as the formalization does. Theorem B.1 bounds the clipping error through Hölder's inequality, which improves the exponents of Theorem 3.1 and Lemma 4.5, and a new Lean module proves this form. Section 7 is one proof under the hypotheses (H1)–(H5).
+- **Presentation.** The paper is shorter (145 pages): parameter tables at the start of the proofs of Theorems 1.1 and 1.3, a reader's guide, rotation and reflection notation for the covariance matrices, tables for the hypotheses (H1)–(H5) and for the constants of Appendix A, and a short Section 10 on numerical methods. The log–log fits formerly in Section 10 are in `numerics/publication/STATISTICS.md`.
+- **DOI.** The paper has the DOI [10.5281/zenodo.22970145](https://doi.org/10.5281/zenodo.22970145).
+
 ## v1.0.0 (2026-09-25)
 
 Initial release.

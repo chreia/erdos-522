@@ -1,22 +1,24 @@
 \section{Jensen's formula and the variance profile}\label{sec:radial}
 
-We first consider the polynomials $f_N(z)=\sum_{k=0}^N\epsilon_kz^k$ with
-random signs. Recall that $\mathrm d\mu(\theta)=\mathrm d\theta/(2\pi)$, and set
+By Jensen's formula, the number of roots in a disk is the slope of the
+angular logarithm $J_N(e^t)$, a convex function of $t$, so bounds on
+$J_N$ at four radii bound the roots outside an annulus. Replacing $J_N$
+by its Gaussian value, which Proposition~\ref{prop:profiles} computes,
+gives the limiting fraction. Let $f_N(z)=\sum_{k=0}^N\epsilon_kz^k$, and
+set
 \[
  \sigma_N(r)^2=\sum_{k=0}^Nr^{2k},\qquad
  J_N(r)=\int_{\mathbb T}\log|f_N(re^{i\theta})|\dd\mu(\theta).
 \]
-The results of this section are deterministic: they hold for every
-nonzero polynomial $f_N$ of degree at most $N$, and the randomness of the
-coefficients enters only through the concentration estimates of
-Section~\ref{sec:concentration}.
-We write $\gamma$ for Euler's constant.
+The results of this section hold for every nonzero polynomial $f_N$ of
+degree at most $N$; randomness enters only through
+Section~\ref{sec:concentration}. We write $\gamma$ for Euler's constant.
 
 \begin{lemma}[Four-radius bound for radial mass]\label{thm:T2}
 Let $f_N$ be a nonzero polynomial of degree at most $N$, and fix $K>0$,
-$N>K$. We set
+$0<\eta<1$ and $N>K$. We set
 \[
- (x_1,x_2,x_3,x_4)=(-K,-K/2,K/2,K),\qquad r_i=1+x_i/N.
+ (x_1,x_2,x_3,x_4)=(-K,-(1-\eta)K,(1-\eta)K,K),\qquad r_i=1+x_i/N.
 \]
 Let $\sigma_N(r)>0$ be a normalization, and suppose that at each of these
 four radii
@@ -38,11 +40,11 @@ converges to $F(x)$ uniformly on $[-K,K]$.
 Then the limiting upper bound for
 $\#\{\alpha:f_N(\alpha)=0,\ ||\alpha|-1|>K/N\}/N$ is
 \begin{equation}
- 1+\frac2K\{F(-K/2)-F(-K)-F(K)+F(K/2)\}. \label{eq:T2-limit}
+ 1+\frac1{\eta K}\{F(-(1-\eta)K)-F(-K)-F(K)+F((1-\eta)K)\}. \label{eq:T2-limit}
 \end{equation}
 \end{lemma}
 
-Here the centering $-\gamma/2$ is $\E\log|G|$, where $G$ has density
+We call $r_1,\dots,r_4$ the secant radii. Here the centering $-\gamma/2$ is $\E\log|G|$, where $G$ has density
 $\pi^{-1}e^{-|z|^2}$ on $\C$, and it is the same at all four radii.
 If the four bounds \eqref{eq:four-radius-log-errors} hold outside four
 exceptional events, then \eqref{eq:T2-exact} holds outside their union,
@@ -51,11 +53,10 @@ The limiting bound \eqref{eq:T2-limit} holds for every sample sequence on
 which the four bounds hold for all sufficiently large degrees.
 
 \begin{proof}
-We will bound the numbers of roots in $\{|z|<r_1\}$ and in
-$\{|z|>r_4\}$ in terms of the slopes of two secants of the convex function
-$t\mapsto J_N(e^t)$, and then replace $J_N$ by $\log\sigma_N$ using
-\eqref{eq:four-radius-log-errors}.
-We write $f_N(z)=a\prod_{j=1}^{\deg f_N}(z-\alpha_j)$.
+We bound the roots in $\{|z|<r_1\}$ and in $\{|z|>r_4\}$ by the slopes
+of two secants of the convex function $t\mapsto J_N(e^t)$, and then
+replace $J_N$ by $\log\sigma_N$ using \eqref{eq:four-radius-log-errors}.
+Write $f_N(z)=a\prod_{j=1}^{\deg f_N}(z-\alpha_j)$.
 By Jensen's formula \cite[\S3.61]{Titchmarsh1939} for one factor,
 $\int_{\mathbb T}\log|e^te^{i\theta}-\alpha|\dd\mu(\theta)=\max(t,\log|\alpha|)$
 for $\alpha\ne0$, and the integral is $t$ for $\alpha=0$, so that
@@ -63,12 +64,10 @@ for $\alpha\ne0$, and the integral is $t$ for $\alpha=0$, so that
  J_N(e^t)=\log|a|+\sum_{j=1}^{\deg f_N}\max(t,\log|\alpha_j|),
  \qquad t\in\mathbb R,
 \]
-where a term with $\alpha_j=0$ is read as $t$. Since the term of
-$\alpha_j$ has right derivative $1$ in $t$ if $|\alpha_j|\le e^t$, and $0$
-otherwise, the function $t\mapsto J_N(e^t)$ is convex, and its right
-derivative is $\nu_N(e^t)$.
-Since this function is also piecewise linear, it is the integral of its
-right derivative, and after the substitution $r=e^s$ we obtain
+where a term with $\alpha_j=0$ is read as $t$. The term of $\alpha_j$ has
+right derivative $1$ if $|\alpha_j|\le e^t$ and $0$ otherwise, so
+$t\mapsto J_N(e^t)$ is convex and piecewise linear with right derivative
+$\nu_N(e^t)$. Integrating it and substituting $r=e^s$, we get
 \begin{equation}
  J_N(e^{t'})-J_N(e^t)=\int_t^{t'}\nu_N(e^s)\dd s
  =\int_{e^t}^{e^{t'}}\frac{\nu_N(r)}r\dd r,\qquad t<t'.
@@ -94,10 +93,9 @@ differences, we have
  &\geq\log\sigma_N(r_4)-\log\sigma_N(r_3)-\varepsilon_3-\varepsilon_4.
 \end{align*}
 
-Let $m$ be the number of roots with $||\alpha|-1|>K/N$.
-There are at most $\nu_N(r_1)$ roots in the inner tail $\{|z|<r_1\}$ and
-exactly $\deg f_N-\nu_N(r_4)$ roots in the outer tail
-$\{|z|>r_4\}$, and hence, by the last two displays,
+Let $m$ be the number of roots with $||\alpha|-1|>K/N$. At most
+$\nu_N(r_1)$ of them lie in $\{|z|<r_1\}$ and exactly
+$\deg f_N-\nu_N(r_4)$ in $\{|z|>r_4\}$, so by the last two displays
 \begin{align*}
  \frac mN
  &\leq\frac{\nu_N(r_1)}N+\frac{\deg f_N-\nu_N(r_4)}N
@@ -110,28 +108,28 @@ $\{|z|>r_4\}$, and hence, by the last two displays,
 \end{align*}
 This proves \eqref{eq:T2-exact}.
 
-For the limit, let $c$ be the deterministic centering of the hypothesis,
-which does not depend on $x$, and let $F_N(x)=\log\sigma_N(1+x/N)-c$, so
-that $\log\sigma_N(r_i)=F_N(x_i)+c$. We have
+For the limit, let $c$ be the centering of the hypothesis and
+$F_N(x)=\log\sigma_N(1+x/N)-c$, so that $\log\sigma_N(r_i)=F_N(x_i)+c$.
+Then
 \begin{align*}
- N\log(r_2/r_1)&=\int_{-K}^{-K/2}\frac{\mathrm dx}{1+x/N}\longrightarrow K/2,\\
- N\log(r_4/r_3)&=\int_{K/2}^{K}\frac{\mathrm dx}{1+x/N}\longrightarrow K/2.
+ N\log(r_2/r_1)&=\int_{-K}^{-(1-\eta)K}\frac{\mathrm dx}{1+x/N}\longrightarrow\eta K,\\
+ N\log(r_4/r_3)&=\int_{(1-\eta)K}^{K}\frac{\mathrm dx}{1+x/N}\longrightarrow\eta K.
 \end{align*}
-Since $c$ cancels in the differences, the right-hand side of
-\eqref{eq:T2-exact} is the expression in the first line below, and since
-$\deg f_N/N\to1$, $\varepsilon_i\to0$ and $F_N(x_i)\to F(x_i)$, we
-obtain
+Since $c$ cancels in differences, the right-hand side of
+\eqref{eq:T2-exact} is the first line below, and since $\deg f_N/N\to1$,
+$\varepsilon_i\to0$ and $F_N(x_i)\to F(x_i)$,
 \begin{align*}
  &\frac{\deg f_N}N
-   +\frac{F_N(-K/2)-F_N(-K)+\varepsilon_1+\varepsilon_2}{N\log(r_2/r_1)}
- -\frac{F_N(K)-F_N(K/2)-\varepsilon_3-\varepsilon_4}{N\log(r_4/r_3)}\\
- &\qquad\longrightarrow1+\frac{F(-K/2)-F(-K)}{K/2}-\frac{F(K)-F(K/2)}{K/2}\\
- &\qquad=1+\frac2K\{F(-K/2)-F(-K)-F(K)+F(K/2)\},
+   +\frac{F_N(x_2)-F_N(x_1)+\varepsilon_1+\varepsilon_2}{N\log(r_2/r_1)}
+ -\frac{F_N(x_4)-F_N(x_3)-\varepsilon_3-\varepsilon_4}{N\log(r_4/r_3)}\\
+ &\qquad\longrightarrow1+\frac{F(x_2)-F(x_1)}{\eta K}-\frac{F(x_4)-F(x_3)}{\eta K},
 \end{align*}
 so that the limit superior of $m/N$ is at most \eqref{eq:T2-limit}.
 \end{proof}
 
 Figure~\ref{fig:jensen-secants} shows these secants for one sequence at $N=10^5$.
+Section~\ref{sec:log-rate} lets $\eta$ tend to zero with $N$, and all
+other uses take $\eta=1/2$.
 
 \input{figures/jensen-secants}
 
@@ -145,7 +143,14 @@ uniformly on compact intervals of $x$. The profile satisfies
 \[
  F'(x)=\Phi(x),\qquad F(x)=x+F(-x),\qquad F'(0)=\tfrac12.
 \]
-The bound in \eqref{eq:T2-limit} is
+For $0<\eta<1$, the bound in \eqref{eq:T2-limit} is
+\begin{equation}
+ \frac2{\eta K}\{F(-(1-\eta)K)-F(-K)\}
+ =\frac1{\eta K}\log\frac{1-e^{-2(1-\eta)K}}{(1-\eta)(1-e^{-2K})}
+ \le\frac1{\eta K}\log\frac1{1-\eta},
+ \label{eq:profile-eta-bound}
+\end{equation}
+which at $\eta=1/2$ is
 \[
  \frac2K\log\frac{2}{1+e^{-K}}\leq\frac{2\log2}{K}.
 \]
@@ -196,29 +201,55 @@ Differentiating the positive integral under the integral sign, we have
  =\Phi(x),
 \]
 and in particular $F'(0)=\int_0^1t\dd t=\frac12$.
+Thus $\Phi(x)$ is the mean of $t$ under the probability density
+proportional to $e^{2xt}$ on $[0,1]$, so that $0\le\Phi\le1$, and
+differentiating this mean under the integral sign we get
+\begin{align}
+ \Phi'(x)
+ &=\frac{\mathrm d}{\mathrm dx}\,\frac{\int_0^1te^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}
+ =\frac{\int_0^12t^2e^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}
+  -\frac{\int_0^1te^{2xt}\dd t\int_0^12te^{2xt}\dd t}{\bigl(\int_0^1e^{2xt}\dd t\bigr)^2}\nonumber\\
+ &=2\bigg(\frac{\int_0^1t^2e^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}
+  -\Big(\frac{\int_0^1te^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}\Big)^2\bigg)
+ =2\operatorname{Var}_x(t)\ge0,\label{eq:Phi-variance}
+\end{align}
+where $\operatorname{Var}_x(t)$ is the variance of $t$ under the same
+density.
 The change of variables $t\mapsto1-t$ gives the symmetry
 \[
  F(x)=\frac12\log\int_0^1e^{2x(1-t)}\dd t
  =\frac12\log\Big(e^{2x}\int_0^1e^{-2xt}\dd t\Big)
  =x+F(-x).
 \]
-By integration we also obtain
+By integration we also obtain, for $y>0$, $\int_0^1e^{-2yt}\dd t=(1-e^{-2y})/(2y)$, and hence
 \begin{align*}
- F(-K/2)-F(-K)
- &=\frac12\log\frac{\int_0^1e^{-Kt}\dd t}{\int_0^1e^{-2Kt}\dd t}
- =\frac12\log\frac{(1-e^{-K})/K}{(1-e^{-2K})/(2K)}\\
- &=\frac12\log\frac{2(1-e^{-K})}{(1-e^{-K})(1+e^{-K})}
+ F(-(1-\eta)K)-F(-K)
+ &=\frac12\log\frac{(1-e^{-2(1-\eta)K})/(2(1-\eta)K)}{(1-e^{-2K})/(2K)}\\
+ &=\frac12\log\frac{1-e^{-2(1-\eta)K}}{(1-\eta)(1-e^{-2K})}
+ \le\frac12\log\frac1{1-\eta},
+\end{align*}
+since $1-e^{-2(1-\eta)K}\le1-e^{-2K}$. At $\eta=1/2$ the expression
+before the inequality is
+\[
+ F(-K/2)-F(-K)=\frac12\log\frac{2(1-e^{-K})}{1-e^{-2K}}
  =\frac12\log\frac2{1+e^{-K}}.
-\end{align*}
-Using $F(x)=x+F(-x)$ at $x=K$ and $x=K/2$ in \eqref{eq:T2-limit}, we get
+\]
+By $F(x)=x+F(-x)$ at $x=K$ and at $x=(1-\eta)K$,
 \begin{align*}
- &1+\frac2K\{F(-K/2)-F(-K)-F(K)+F(K/2)\}\\
- &\qquad=1+\frac2K\Big\{F(-K/2)-F(-K)-\big(K+F(-K)\big)
-   +\Big(\frac K2+F(-K/2)\Big)\Big\}\\
- &\qquad=\frac4K\{F(-K/2)-F(-K)\}
- =\frac2K\log\frac2{1+e^{-K}}
- \leq\frac{2\log2}{K}.
+ F(K)-F((1-\eta)K)&=K+F(-K)-(1-\eta)K-F(-(1-\eta)K)\\
+ &=\eta K+F(-K)-F(-(1-\eta)K),
 \end{align*}
+and substituting this into \eqref{eq:T2-limit} we get
+\begin{align*}
+ &1+\frac1{\eta K}\{F(-(1-\eta)K)-F(-K)-F(K)+F((1-\eta)K)\}\\
+ &\qquad=1+\frac1{\eta K}\{2F(-(1-\eta)K)-2F(-K)-\eta K\}\\
+ &\qquad=\frac2{\eta K}\{F(-(1-\eta)K)-F(-K)\},
+\end{align*}
+which is \eqref{eq:profile-eta-bound} by the evaluation of
+$F(-(1-\eta)K)-F(-K)$ above, and at $\eta=1/2$ is
+\[
+ \frac2K\log\frac2{1+e^{-K}}\le\frac{2\log2}K.
+\]
 \end{proof}
 
 This proof also yields a rate of convergence in the profile limit.

@@ -1,5 +1,12 @@
 \section{General concentration and counting estimates}
 \label{sec:general-estimates}\label{sec:layer1}
+This appendix proves the general estimates that the main text applies
+with its own constants: concentration of the angular logarithm for
+general random coefficients, a deterministic local secant bound for
+radial counts, a second-moment count of roots with a small derivative,
+and the passage from a sparse subsequence of degrees to all degrees. The tools are
+clipping with Chebyshev's inequality, Jensen's formula, Taylor's theorem
+on a mesh, and the Borel--Cantelli lemma.
 
 Let $(a_k)_{k\geq0}$ be a sequence of random complex coefficients on one
 probability space, and put
@@ -42,7 +49,7 @@ all $s,t\geq0$,
 \]
 \end{namedhypothesis}
 In the two-point bound we compare with a pair of independent standard
-complex Gaussians, and if the normal approximation yields a correlated
+complex Gaussians. If the normal approximation yields a correlated
 Gaussian pair, then $\delta_2$ includes the error of the comparison with
 this independent pair.
 
@@ -95,7 +102,7 @@ and the energy bound \eqref{eq:angular-energy-tail}. We set
 For all $T>0$, $u>0$, $b>0$, $q\geq1$, and $\lambda>1$, we set
 \begin{align}
  \eta_{\log}={}&u+2Td_1+\lambda(2Cq)^\beta
-        \sqrt{e^{-2T}+d_1+b}
+        \bigl(e^{-2T}+d_1+b\bigr)^{1-1/(2q)}
         +(B_E/2+1)e^{-2T}, \label{eq:T1-error}\\
  p_{\rm fail}={}&v/b^2+\lambda^{-2q}+4T^2v/u^2+p_E+p_H. \label{eq:T1-failure}
 \end{align}
@@ -114,12 +121,13 @@ $\int_{\mathbb T}|X|^2\dd\mu\leq B_E$ on $E_H$, then $p_E+p_H$ in
 \end{theorem}
 
 \begin{proof}
-The idea is to clip the logarithm at $\pm T$, to estimate the mean and
-the variance of the clipped integral by the occupation bounds, and to
-control the lower tail that the clipping removes by the logarithmic
-moments and the occupation bound at $e^{-T}$, and the upper tail by the
-energy bound. Table~\ref{tab:T1-events} lists the five exceptional events,
-one for each term of \eqref{eq:T1-failure}.
+The idea is to clip the logarithm at $\pm T$ and to bound the mean and
+the variance of the clipped integral by the occupation bounds. The
+logarithmic moments and the occupation bound at $e^{-T}$ control the
+clipped lower tail, through H\"older's inequality, and the energy bound
+the upper tail.
+Table~\ref{tab:T1-events} lists the five exceptional events, one for
+each term of \eqref{eq:T1-failure}.
 
 We set
 $A_t=\int_{\mathbb T}\boldsymbol1_{\{|X(\theta)|\leq t\}}\dd\mu(\theta)$.
@@ -185,27 +193,18 @@ We call the event $\{A_{e^{-T}}>e^{-2T}+d_1+b\}$ the Chebyshev event for
 $A_{e^{-T}}$.
 
 On $E_H$, we set
-$U=\int_{\mathbb T}|\log|X(\theta)||^2\dd\mu(\theta)$.
-By Jensen's inequality and \eqref{eq:event-log-moment-bound} with $p=2q$,
-we have
-\begin{align*}
- U^q
- &=\left(\int_{\mathbb T}|\log|X(\theta)||^2\dd\mu(\theta)\right)^q
- \leq\int_{\mathbb T}|\log|X(\theta)||^{2q}\dd\mu(\theta),\\
- \E[\boldsymbol1_{E_H}U^q]
- &\leq\E\left[\boldsymbol1_{E_H}
-       \int_{\mathbb T}|\log|X(\theta)||^{2q}\dd\mu(\theta)\right]
- \leq(2Cq)^{2\beta q}.
-\end{align*}
-Applying Markov's inequality to $U^q$ on $E_H$, we get
+$W=\int_{\mathbb T}|\log|X(\theta)||^{2q}\dd\mu(\theta)$.
+By \eqref{eq:event-log-moment-bound} with $p=2q$, we have
+$\E[\boldsymbol1_{E_H}W]\leq(2Cq)^{2\beta q}$, and applying Markov's
+inequality to $W$ on $E_H$, we get
 \[
- \Prob\{\omega\in E_H:U>\lambda^2(2Cq)^{2\beta}\}
- \leq\frac{\E[\boldsymbol1_{E_H}U^q]}
+ \Prob\{\omega\in E_H:W>\lambda^{2q}(2Cq)^{2\beta q}\}
+ \leq\frac{\E[\boldsymbol1_{E_H}W]}
               {\lambda^{2q}(2Cq)^{2\beta q}}
  \leq\frac{(2Cq)^{2\beta q}}{\lambda^{2q}(2Cq)^{2\beta q}}
  =\lambda^{-2q}.
 \]
-We call the event on the left the Markov event for $U$.
+We call the event on the left the Markov event for $W$.
 
 We now truncate the logarithm and set
 $\ell_T(z)=\max(-T,\min(T,\log|z|))$ and
@@ -263,16 +262,16 @@ Applying Chebyshev's inequality again, we get
 We call the event on the left the Chebyshev event for $L_T$.
 
 On $E_H$, outside the Chebyshev event for $A_{e^{-T}}$ and the Markov
-event for $U$, by the Cauchy--Schwarz inequality we bound the negative
-truncation error by
+event for $W$, by H\"older's inequality with the exponents $2q$ and
+$2q/(2q-1)$ we bound the negative truncation error by
 \begin{align*}
  \int_{\{|X|<e^{-T}\}}(-\log|X|-T)\dd\mu
  &\leq\int_{\{|X|<e^{-T}\}}|\log|X||\dd\mu\\
- &\leq\left(\int_{\mathbb T}|\log|X||^2\dd\mu\right)^{1/2}
+ &\leq\left(\int_{\mathbb T}|\log|X||^{2q}\dd\mu\right)^{1/(2q)}
        \left(\int_{\mathbb T}
-         \boldsymbol1_{\{|X|<e^{-T}\}}\dd\mu\right)^{1/2}\\
- &\leq\sqrt{UA_{e^{-T}}}
- \leq\lambda(2Cq)^\beta\sqrt{e^{-2T}+d_1+b}.
+         \boldsymbol1_{\{|X|<e^{-T}\}}\dd\mu\right)^{1-1/(2q)}\\
+ &\leq W^{1/(2q)}A_{e^{-T}}^{1-1/(2q)}
+ \leq\lambda(2Cq)^\beta\bigl(e^{-2T}+d_1+b\bigr)^{1-1/(2q)}.
 \end{align*}
 On the energy event $\{\int_{\mathbb T}|X|^2\dd\mu\leq B_E\}$, by
 Tonelli's theorem applied to
@@ -290,21 +289,23 @@ For the Gaussian tails,
 $\int_T^\infty\Prob(|G|<e^{-\tau})\dd\tau$ and
 $\int_T^\infty\Prob(|G|>e^\tau)\dd\tau$ are at most
 $\frac12e^{-2T}$ by \eqref{eq:gaussian-log-tails}.
-On $E_H$, outside the Markov event for $U$, the integral
+On $E_H$, outside the Markov event for $W$, the integral
 $\int_{\mathbb T}\log|X|\dd\mu$ is finite, since
-$\int_{\mathbb T}|\log|X||^2\dd\mu=U\leq\lambda^2(2Cq)^{2\beta}$. Since
+$\int_{\mathbb T}|\log|X||^{2q}\dd\mu=W\leq\lambda^{2q}(2Cq)^{2\beta q}$
+and $2q\ge1$. Since
 \[
  |\ell_T(z)-\log|z||=(-\log|z|-T)_++(\log|z|-T)_+,
 \]
 on $E_H$ and on the energy event, outside the Chebyshev event for
-$A_{e^{-T}}$ and the Markov event for $U$, it follows from the layer-cake
+$A_{e^{-T}}$ and the Markov event for $W$, it follows from the layer-cake
 identity, the two truncation bounds and the two Gaussian tail bounds that
 \begin{align*}
  \left|\int_{\mathbb T}\log|X|\dd\mu-L_T\right|
  &\leq\int_{\mathbb T}|\log|X|-\ell_T(X)|\dd\mu\\
  &=\int_{\{|X|<e^{-T}\}}(-\log|X|-T)\dd\mu
       +\int_{\{|X|>e^T\}}(\log|X|-T)\dd\mu\\
- &\leq\lambda(2Cq)^\beta\sqrt{e^{-2T}+d_1+b}+\frac{B_E}2e^{-2T},\\
+ &\leq\lambda(2Cq)^\beta\bigl(e^{-2T}+d_1+b\bigr)^{1-1/(2q)}
+       +\frac{B_E}2e^{-2T},\\
  |\E\ell_T(G)-\E\log|G||
  &\leq\E|\ell_T(G)-\log|G||
  =\E(-\log|G|-T)_++\E(\log|G|-T)_+\\
@@ -320,8 +321,9 @@ identity, the two truncation bounds and the two Gaussian tail bounds that
 Exceptional event & Defined by & Probability at most\\
 \midrule
 Chebyshev event for $A_{e^{-T}}$ & $A_{e^{-T}}>e^{-2T}+d_1+b$ & $v/b^2$\\
-Markov event for $U$ & $\omega\in E_H$, $U>\lambda^2(2Cq)^{2\beta}$
- & $\lambda^{-2q}$\\
+Markov event for $W$
+ & \begin{tabular}[t]{@{}l@{}}$\omega\in E_H$,\\
+   $W>\lambda^{2q}(2Cq)^{2\beta q}$\end{tabular} & $\lambda^{-2q}$\\
 Chebyshev event for $L_T$ & $|L_T-\E L_T|>u$ & $4T^2v/u^2$\\
 Complement of the energy event & $\int_{\mathbb T}|X|^2\dd\mu>B_E$
  & $p_E$\\
@@ -342,14 +344,14 @@ and the bounds on $|L_T-\E L_T|$ and $|\E L_T-\E\ell_T(G)|$, we have
        +|L_T-\E L_T|\\
  &\qquad+|\E L_T-\E\ell_T(G)|
        +|\E\ell_T(G)-\E\log|G||\\
- &\qquad\leq\lambda(2Cq)^\beta\sqrt{e^{-2T}+d_1+b}+\frac{B_E}2e^{-2T}
-       +u+2Td_1+e^{-2T}
+ &\qquad\leq\lambda(2Cq)^\beta\bigl(e^{-2T}+d_1+b\bigr)^{1-1/(2q)}
+       +\frac{B_E}2e^{-2T}+u+2Td_1+e^{-2T}
  =\eta_{\log}.
 \end{align*}
 Under \eqref{eq:exact-angular-energy} and \eqref{eq:log-moment-bound} the
 last two events are absent. If $\int_{\mathbb T}|X|^2\dd\mu\leq B_E$ on $E_H$,
-then the complement of the energy event is contained in $E_H^c$, so that
-the last two events have probability at most $\Prob(E_H^c)$ together,
+then the complement of the energy event is contained in $E_H^c$. The
+last two events then have probability at most $\Prob(E_H^c)$ together,
 which proves the second variant in the statement. By \eqref{eq:event-log-moment-bound},
 the logarithmic integral is finite almost surely on $E_H$, even for
 polynomials with roots on the integration circle.
@@ -358,44 +360,46 @@ Since $|G|^2$ has the exponential distribution with mean one,
 \end{proof}
 
 \begin{remark}[Polynomial choices of parameters]\label{rem:T1-powers}
-If $d_1\leq D N^{-a}$ and $v\leq V N^{-a}$, choose
-$T=t\log N$, $b=N^{-2t}$, $u=N^{-w}$, and $q=c\log N\geq1$.
+As in Proposition~\ref{prop:sparse-exponents}, let $d_1\leq DN^{-1/2}$,
+$v\leq VN^{-1/2}$, $\beta=6$, $T=t\log N$, $b=N^{-2t}$, $u=N^{-t}$,
+$q=6\log N\geq1$ and $\lambda=e$, so $\lambda(2Cq)^6=e(12C\log N)^6$.
 Under \eqref{eq:log-moment-bound} and \eqref{eq:exact-angular-energy},
-we may take $p_H=0$, $B_E=1$ and $p_E=0$. With $\lambda=e$, so that
-$\lambda(2Cq)^\beta=e(2Cc\log N)^\beta$, the terms of
-\eqref{eq:T1-error} and \eqref{eq:T1-failure}, other than $u=N^{-w}$ and
-$p_E=p_H=0$, satisfy
+take $p_H=0$, $B_E=1$ and $p_E=0$. Then the terms of \eqref{eq:T1-error}
+and \eqref{eq:T1-failure}, other than $u$ and $p_E=p_H=0$, satisfy
 \begin{align*}
- 2Td_1&\leq2t(\log N)DN^{-a},\qquad
+ 2Td_1&\leq2t(\log N)DN^{-1/2},\qquad
  (B_E/2+1)e^{-2T}=\tfrac32N^{-2t},\\
- e^{-2T}+d_1+b&\leq N^{-2t}+DN^{-a}+N^{-2t}=2N^{-2t}+DN^{-a},\\
- v/b^2&\leq VN^{-a}/N^{-4t}=VN^{4t-a},\qquad
- \lambda^{-2q}=e^{-2c\log N}=N^{-2c},\\
- 4T^2v/u^2&\leq4t^2(\log N)^2VN^{-a}/N^{-2w}=4t^2V(\log N)^2N^{2w-a}.
+ e^{-2T}+d_1+b&\leq N^{-2t}+DN^{-1/2}+N^{-2t}=2N^{-2t}+DN^{-1/2},\\
+ v/b^2&\leq VN^{-1/2}/N^{-4t}=VN^{4t-1/2},\qquad
+ \lambda^{-2q}=e^{-12\log N}=N^{-12},\\
+ 4T^2v/u^2&\leq4t^2(\log N)^2VN^{-1/2}/N^{-2t}=4t^2V(\log N)^2N^{2t-1/2}.
 \end{align*}
+Since $2N^{-2t}+DN^{-1/2}\le1$ for large $N$ and $1-1/(2q)\ge1/2$, the
+power in \eqref{eq:T1-error} is then at most the square root of its base.
 By substituting these bounds, we get
 \[
- \eta_{\log}\leq N^{-w}+2tD(\log N)N^{-a}
-  +e(2Cc\log N)^\beta\sqrt{2N^{-2t}+DN^{-a}}
+ \eta_{\log}\leq N^{-t}+2tD(\log N)N^{-1/2}
+  +e(12C\log N)^6\sqrt{2N^{-2t}+DN^{-1/2}}
   +\tfrac32N^{-2t},
 \]
 \[
- p_{\rm fail}\leq VN^{4t-a}+N^{-2c}
-       +4t^2V(\log N)^2N^{2w-a}.
+ p_{\rm fail}\leq VN^{4t-1/2}+N^{-12}
+       +4t^2V(\log N)^2N^{2t-1/2}.
 \]
-The failure terms tend to zero when $4t<a$ and $2w<a$.
+The failure terms tend to zero when $4t<1/2$.
 For $N=j^s$, the three failure terms are
 \[
- Vj^{-s(a-4t)},\qquad j^{-2cs},\qquad
- 4t^2Vs^2(\log j)^2j^{-s(a-2w)},
+ Vj^{-s(1/2-4t)},\qquad j^{-12s},\qquad
+ 4t^2Vs^2(\log j)^2j^{-s(1/2-2t)},
 \]
 and they are summable if
 \[
- s(a-4t)>1,\qquad 2cs>1,\qquad s(a-2w)>1.
+ s(\tfrac12-4t)>1,\qquad 12s>1,\qquad s(\tfrac12-2t)>1.
 \]
-In particular, take $a=1/2$, $t=w=1/32$, $c=6$, $\beta=6$ and $s=8$.
-Then $s(a-4t)=8(\frac12-\frac18)=3$, $2cs=2\cdot6\cdot8=96$ and
-$s(a-2w)=8(\frac12-\frac1{16})=\frac72$ all exceed one, and for $N\geq e$,
+In particular, take $t=1/32$ and $s=8$.
+Then $s(\frac12-4t)=8(\frac12-\frac18)=3$, $12s=96$ and
+$s(\frac12-2t)=8(\frac12-\frac1{16})=\frac72$ all exceed one, and for $N\geq e$
+with $2N^{-1/16}+DN^{-1/2}\le1$,
 \begin{align*}
  \eta_{\log}
  &\leq N^{-1/32}+\frac D{16}(\log N)N^{-1/2}
@@ -404,21 +408,25 @@ $s(a-2w)=8(\frac12-\frac1{16})=\frac72$ all exceed one, and for $N\geq e$,
  &\leq\Bigl(\frac52+\frac D{16}+e(12C)^6\sqrt{2+D}\Bigr)
        N^{-1/32}(\log N)^6,
 \end{align*}
-by the bound on $\eta_{\log}$ above with $2tD=D/16$, $2Cc=12C$,
-$2t=1/16$ and $w=1/32$, and by $\log N\geq1$ and
+by the bound on $\eta_{\log}$ above with $2tD=D/16$, $2t=1/16$ and
+$u=N^{-1/32}$, and by $\log N\geq1$ and
 $N^{-1/2}\leq N^{-1/16}\leq N^{-1/32}$.
-So we get an error bounded by the above constant times
-$N^{-1/32}(\log N)^6$ and a summable failure on $j^8$. For large enough
-degree the error is at most $N^{-1/32}(\log N)^7$, with a deterministic
-threshold depending on the fixed constant: it suffices that $\log N$ is at
-least the above constant. We use the moments of the angular
-logarithmic norm in \eqref{eq:log-moment-bound}.
-The proof of Lemma~\ref{lem:clipping} takes instead
-$u=N^{-1/32}(\log N)^7$, $q=\lceil\log N\rceil$ and
-$\lambda=(2e\log N/q)^6\log N\ge e^6\log N$,
-for which $\lambda(2Cq)^6=(4eC)^6(\log N)^7$ and
-$\lambda^{-2q}\le N^{-12}$. The choice $q=6\log N$, $\lambda=e$ above
-gives the same failure bound $N^{-2c}=N^{-12}$ with
+The failure is summable on $j^8$, and the error is at most
+$N^{-1/32}(\log N)^7$ once $\log N$ is at least the above constant, a
+deterministic threshold.
+
+Lemma~\ref{lem:clipping} instead keeps the power $1-1/(2q)$, with
+$q=\lceil\log N\rceil$ and
+$\lambda=(2e\log N/q)^6\log N\ge e^6\log N$.
+Then $\lambda(2Cq)^6=(4eC)^6(\log N)^7$,
+$\lambda^{-2q}\le N^{-12}$ and $x^{1-1/(2q)}\le e^{1/2}x$ for
+$x\ge N^{-1}$. The lower tail is then of order $N^{-2t}(\log N)^7$ rather
+than $N^{-t}(\log N)^6$, which allows the deviation
+$u=N^{-2t}(\log N)^7$. That lemma takes $t=1/32$, the clipping level
+$(\log N)/32$, so that the error is of order $N^{-1/16}(\log N)^7$ and
+the three failure terms are of order $N^{-3/8}$, $N^{-12}$ and
+$N^{-3/8}(\log N)^{-12}$. The choice $q=6\log N$, $\lambda=e$ above
+gives the same failure bound $N^{-12}$ with
 $\lambda(2Cq)^6=e(12C\log N)^6$. The extra factor $\log N$ in $\lambda$
 is the difference between the exponents $7$ and $6$.
 \end{remark}
@@ -452,12 +460,11 @@ deterministic $|x|\leq h$.
 
 \begin{proof}
 By Jensen's formula, $\nu_N(r)/N$ lies between two secant slopes of
-$J_N$ in the variable $N\log\rho$, one on each side of $r$, and the idea
-is to replace $J_N$ by $F$ at the three probe points, up to a constant
-which cancels, and then to compare the secant slopes of $F$ with $F'(x)$.
-This leads to three errors, which come from the curvature of $F$, the
-change of the denominators, and the deviations of $J_N$ from $F$ at the
-probe points.
+$J_N$ in the variable $N\log\rho$, one on each side of $r$. The idea is
+to replace $J_N$ by $F$ at the three points, up to a constant which
+cancels, and then to compare the secant slopes of $F$ with $F'(x)$.
+The three errors come from the curvature of $F$, the change of the
+denominators, and the deviations of $J_N$ from $F$ at the three points.
 
 Let $r=1+x/N$ and set
 \[
@@ -533,12 +540,11 @@ For $y=x-h,x,x+h$, which lie in $[-K,K]$, we have
  &\quad=\bigl\{J_N(1+y/N)-\log\sigma_N(1+y/N)-\E\log|G|\bigr\}
         +\bigl\{F_N(y)-F(y)\bigr\}.
 \end{align*}
-The constant $\E\log|G|+c$ does not depend on $y$, so that it cancels from
-each secant, and outside the exceptional event at $y$ the first brace is
-at most $\eta_{\log}$ in absolute value and the second is at most
-$\varepsilon$. Since
-$r\pm h/N=1+(x\pm h)/N$, by subtracting the identity at two neighboring
-probe points we obtain
+The constant $\E\log|G|+c$ does not depend on $y$, so it cancels from
+each secant. Outside the exceptional event at $y$, the first brace is at
+most $\eta_{\log}$ in absolute value and the second at most
+$\varepsilon$. Since $r\pm h/N=1+(x\pm h)/N$, subtracting the identity
+at two neighboring points gives
 \begin{align*}
  \bigl|J_N(r+h/N)-J_N(r)-\bigl(F(x+h)-F(x)\bigr)\bigr|
  &\leq2(\eta_{\log}+\varepsilon),\\
@@ -662,12 +668,12 @@ variance, which the jet approximation controls. We then bound $B_N$ by
 Chebyshev's inequality and the cell bound.
 
 Let $\alpha$ be a root in $B_N$ outside the excluded sectors, and let
-$z_i$ be its assigned mesh point. On the derivative event
-$\{\sup_D|f_N''|\leq M_2\}$, since $f_N(\alpha)=0$,
-$|f_N'(\alpha)|<N^{3/2}/L$, $|z_i-\alpha|\leq\tau$, and the segment
+$z_i$ be its assigned mesh point. Then $f_N(\alpha)=0$,
+$|f_N'(\alpha)|<N^{3/2}/L$ and $|z_i-\alpha|\leq\tau$, and the segment
 $[\alpha,z_i]$ lies in $D$ by the
-\hyperref[hyp:mesh]{mesh and local multiplicity} bounds, it follows from
-Taylor's theorem with integral remainder along the segment that
+\hyperref[hyp:mesh]{mesh and local multiplicity} bounds. On the
+derivative event $\{\sup_D|f_N''|\leq M_2\}$, Taylor's theorem with
+integral remainder along the segment gives
 \begin{align*}
  |f_N(z_i)|
  &=\left|f_N'(\alpha)(z_i-\alpha)
@@ -753,10 +759,10 @@ On the two geometric good events, each cell receives at most $q_0$
 roots, and the excluded sectors contain at most $b_0$ roots. On these
 events and on the derivative event, by the first part of the proof every
 counted root outside the excluded sectors is assigned to a retained point
-$z_i$ at which $E_i$ occurs, and the cell bound of the
-\hyperref[hyp:mesh]{mesh hypothesis}, applied to the cell of $z_i$, which
-contains the roots assigned to $z_i$, shows that at most $q_0$ roots are
-assigned to each such point. Hence $B_N\leq b_0+q_0Z$, so that
+$z_i$ at which $E_i$ occurs. The cell of $z_i$ contains the roots
+assigned to $z_i$, so the cell bound of the
+\hyperref[hyp:mesh]{mesh hypothesis} allows at most $q_0$ of them.
+Hence $B_N\leq b_0+q_0Z$, so that
 $B_N>b_0+q_0(\mu_*+t)$ implies $Z>\mu_*+t$ outside the geometric and
 derivative exceptional events, and
 \[
@@ -906,6 +912,12 @@ Since $1-d=31/32$, once the two thresholds hold, we obtain
 $B_N\leq N^{31/32}$ outside an event of probability at most
 $p_0+p_2+16C_0^2D^2VN^{-3/8}(\log N)^4$.
 \end{proof}
+
+In the proof of Lemma~\ref{lem:small-derivatives} we instead take
+$t=NL^{-4}$ in \eqref{eq:T3-general}, of the order of the leading term of
+\eqref{eq:T3-mean}. This needs no mean threshold, and it gives the
+smaller count $C(K)NL^{-4}\log N$ with the failure term
+$C(K)N^{-5/16}(\log N)^2$.
 
 \subsection[From a sparse subsequence of degrees to the full sequence]{From a sparse subsequence of degrees\\to the full sequence}
 

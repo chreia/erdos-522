@@ -4,7 +4,7 @@ For one infinite sequence of random signs, the polynomials $f_n(z)=\varepsilon_0
 
 [![Lean CI](https://github.com/chreia/erdos-522/actions/workflows/lean.yml/badge.svg)](https://github.com/chreia/erdos-522/actions/workflows/lean.yml) [![License](https://img.shields.io/badge/license-Apache%202.0%20%7C%20CC%20BY%204.0-blue)](#license) [![Lean](https://img.shields.io/badge/Lean-v4.34.0-blue)](lean/lean-toolchain) [![Paper](https://img.shields.io/badge/paper-PDF-b31b1b)](Erdos522.pdf)
 
-Sebastien Kawada, MIT CSAIL. Version 1.0.0, September 2026.
+Sebastien Kawada, MIT CSAIL. Version 1.1.0, September 2026.
 
 ## Main results
 
@@ -29,12 +29,24 @@ The same laws hold for Steinhaus, standard real Gaussian, standard complex Gauss
 **Theorem 1.3 (rate).** For random signs, almost surely
 
 ```math
-\limsup_{n\to\infty}\,(\log n)\left|\frac{\nu_n(1)}{n}-\frac12\right|\le 2000\log 2 .
+\limsup_{n\to\infty}\,(\log n)\left|\frac{\nu_n(1)}{n}-\frac12\right|\le 128 .
 ```
 
 <p align="center"><img src="figures/zero-density.png" width="760" alt="Density of the zeros near the unit circle"></p>
 
 **Figure 1.** Density of the zeros of 77 random Littlewood polynomials of degree $10^5$ near the unit circle (left), and its angular average with the limiting density $\Phi'$ (right).
+
+## Proof outline
+
+The paper first proves the laws along the degrees $N=j^8$, where the Borel–Cantelli lemma applies, and then extends them to every degree $n$ between $j^8$ and $(j+1)^8$ with Rouché's theorem, after showing that few zeros near the unit circle have a small derivative.
+
+<p align="center"><img src="figures/proof-map.png" width="720" alt="Structure of the proof"></p>
+
+**Figure 2.** Structure of the proof. Arrows point from inputs to the steps that use them.
+
+<p align="center"><img src="figures/phase-portrait.png" width="760" alt="Phase portrait of f_1000 near e^{i pi/3}"></p>
+
+**Figure 8.** Phase portrait of $f_{1000}$ near $e^{i\pi/3}$ for one sequence of signs. All hues meet at each zero. Near a zero with a large derivative the small level curves are nearly circles, like the boundaries of the disjoint disks about the selected roots in Lemma 5.4.
 
 ## Quick start
 
@@ -73,11 +85,15 @@ For almost every sequence of fair coin tosses $\omega$, the number of zeros of $
 
 </details>
 
+<p align="center"><img src="figures/lean-map.png" width="640" alt="Modules of the Lean formalization"></p>
+
+**Modules of the formalization.** Mathlib and two vendored libraries supply the general theory. Each lower box names a result of the paper and the module of its declaration, and `Erdos522.All` imports every one of them for the kernel replay.
+
 ## Repository
 
 | Path | Contents |
 |---|---|
-| [`Erdos522.pdf`](Erdos522.pdf) | the paper, 151 pages |
+| [`Erdos522.pdf`](Erdos522.pdf) | the paper, 145 pages |
 | [`paper/`](paper) | its LaTeX source, bibliography and figures |
 | [`lean/`](lean) | the Lean formalization, with the declaration of each result in [`lean/README.md`](lean/README.md) and a comparison with the paper in [`lean/CORRESPONDENCE.md`](lean/CORRESPONDENCE.md) |
 | [`lean/checks/MainTheorems.lean`](lean/checks/MainTheorems.lean) | the axiom check of the 45 main theorems |
@@ -92,7 +108,8 @@ For almost every sequence of fair coin tosses $\omega$, the number of zeros of $
   title  = {Almost-Sure Radial Laws for Nested Random Polynomials and {Erd\H{o}s} Problem \#522},
   year   = {2026},
   month  = sep,
-  note   = {Version 1.0.0, with a Lean formalization},
+  note   = {Version 1.1.0, with a Lean formalization},
+  doi    = {10.5281/zenodo.22970145},
   url    = {https://github.com/chreia/erdos-522}
 }
 ```

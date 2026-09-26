@@ -3,8 +3,8 @@ Theorem~\ref{thm:radial-profile} and Corollary~\ref{thm:stronglaw} for all
 coefficient distributions considered, Theorem~\ref{thm:log-rate}, and the
 results of Section~\ref{sec:extensions} are formalized in
 Lean~4~\cite{LeanFour2021} with Mathlib~\cite{Mathlib2020} (Lean
-\texttt{v4.34.0}, Mathlib commit \texttt{5ed2965}), in release~1.0.0
-of~\cite{FormalCompanion2026} (Lean sources \path{swh:1:dir:383ccdcc9544c05b9f977e4d6e61a026014648a2}).
+\texttt{v4.34.0}, Mathlib commit \texttt{5ed2965}), in release~1.1.0
+of~\cite{FormalCompanion2026} (Lean sources \path{swh:1:dir:c99b4d21420e01e2905fd093f3333dc2377ee298}).
 The formalization also uses the Hanson--Wright inequality from
 SLT~\cite{SLTLean} and Bentkus's normal approximation~\cite{Bentkus2005}
 from ProbabilityApproximation~\cite{ProbabilityApproximationLean}.
@@ -24,7 +24,7 @@ Theorem~\ref{thm:log-rate} & \texttt{ae\_rademacher\_logarithmic\_root\_rate\_ev
 \end{tabular}
 \end{center}
 Theorem~\ref{thm:log-rate} is formalized in the equivalent form ``for every
-$c > 2000\log 2$, eventually $(\log n)\,|\nu_n(1)/n - 1/2| \le c$'', and
+$c > 128$, eventually $(\log n)\,|\nu_n(1)/n - 1/2| \le c$'', and
 the radial laws for all degrees, obtained through the degrees
 $\lfloor j^q\rfloor$ of Proposition~\ref{prop:sparse-exponents}, are
 formalized at each fixed $x$. The other formal statements coincide with,

@@ -1,64 +1,43 @@
-\section{Numerical observations}\label{sec:numerics}
-In this section we consider radial counts, logarithmic integrals,
-derivative sizes, and perturbations of nested polynomials.
+\section{Numerical methods}\label{sec:numerics}
+The figures show the radial law and the steps of its proof at finite
+degrees, for nested sequences of random signs. This section records how
+the roots and statistics behind them were computed, and how sensitive
+they are to numerical error.
 The limits that hold with probability one follow from the proofs in the
 previous sections, and these proofs do not use the computations below.
-The figures describe measurements at finite degrees, and the fitted slopes
-describe only the measured range.
-The residuals and grid comparisons quantify numerical sensitivity rather
-than interval certification.
 
 We use 100 independent sequences of random signs at the degrees
 $N=1000$, $3000$, $10000$, $30000$ and $100000$, and the block length is
 $\lfloor N^{7/8}\rfloor$.
-Table~\ref{tab:numerical-coverage} contains the numbers of root samples that
-were completed at the collection cutoff, and we retained every completed
-base sample, independently of its root counts.
-For 78 sequences at $N=1000$ we computed all of the 421 intermediate
-polynomials, while at the larger degrees there are 3, 3, 2, and 0
-completed three-point blocks, respectively.
-Two further midpoint measurements belong to blocks that were not completed.
+We use the 77 sequences whose roots were computed at all five base
+degrees, all 421 intermediate degrees for 78 sequences at $N=1000$, and
+the endpoint samples listed in Table~\ref{tab:numerical-coverage}.
 
 \begin{table}[htbp]
 \centering
-\begin{tabular}{rrrr}
+\begin{tabular}{rrr}
 \toprule
-$N$ & Base samples & Endpoint samples & Maximum base residual\\
+$N$ & Base samples & Endpoint samples\\
 \midrule
-$1000$ & 92 & 78 & $1.79711\times10^{-15}$\\
-$3000$ & 92 & 58 & $3.46309\times10^{-15}$\\
-$10000$ & 92 & 57 & $6.89178\times10^{-15}$\\
-$30000$ & 91 & 53 & $1.20336\times10^{-14}$\\
-$100000$ & 77 & 27 & $2.11195\times10^{-14}$\\
+$1000$ & 92 & 78\\
+$3000$ & 92 & 58\\
+$10000$ & 92 & 57\\
+$30000$ & 91 & 53\\
+$100000$ & 77 & 27\\
 \bottomrule
 \end{tabular}
-\caption{Completed base and endpoint samples.
-The endpoint is $N+\lfloor N^{7/8}\rfloor$.
-The $N=1000$ samples include every intermediate degree.
-The last column gives the maximum normalized residual at each base degree.}
+\caption{Completed base samples and endpoint samples, at the degree
+$N+\lfloor N^{7/8}\rfloor$. The $N=1000$ samples include every
+intermediate degree.}
 \label{tab:numerical-coverage}
 \end{table}
 
-For the base sample and the retained block measurements, we apply three
-Newton refinements to the output of MPSolve's secular isolation.
-By independent Horner evaluation we get the residual
-$|f_N(z)|/\sum_{k=0}^N|z|^k$. For $|z|>1$ we evaluate the reciprocal
-polynomial, which yields the same quotient with controlled numerical
-magnitude.
-Over all base samples the maximum normalized residual is below
-$3\times10^{-14}$, and Table~\ref{tab:numerical-coverage} gives this
-maximum at each base degree.
-
-For Figure~\ref{fig:root-matching} we use the degree-1000 coordinates
-unchanged, and we compute the roots of the two additional prefixes, at
-degrees 1210 and 1421, with a balanced real companion-matrix eigensolver.
-We then refine these roots by Newton steps that reduce the
-residual.
-With an independent 60-digit evaluation at every stored coordinate we
-obtain the maximum normalized residuals $3.170\times10^{-15}$,
-$3.824\times10^{-15}$ and $4.317\times10^{-15}$ at degrees 1000, 1210,
-and 1421, respectively.
-In all three cases the coefficient vector is the same saved sequence.
+The roots were computed with MPSolve~\cite{BiniRobol2014}, or, at the
+degrees 1210 and 1421 of Figure~\ref{fig:root-matching}, with a
+companion-matrix eigensolver, and then refined by Newton's method.
+The residuals were checked by independent evaluation, and the normalized
+residual $|f_N(z)|/\sum_{k=0}^N|z|^k$ is below $3\times10^{-14}$ at every
+degree.
 
 We determine the roots at $1$ and $-1$, with their multiplicities, by exact
 integer division.
@@ -74,116 +53,19 @@ Thus the largest unnormalized sensitivity intervals have widths $0,0,2,4,14$.
 
 We compute the angular occupations and the logarithmic integral on a
 shifted FFT grid.
-A doubled grid yields 5500 comparisons over 100 seeds, five degrees, and
-eleven radii, and the largest changes in absolute value are
-$3.599\times10^{-4}$ for the logarithmic average and
-$1.840\times10^{-3}$ for occupation.
-Percentile bootstrap intervals resample whole sequences, and in particular
-each resample retains the nesting across degrees.
-If a logarithmic fit omits zero observations, then its interval is
-conditional on the positive observations that are retained.
+Doubling the grid changes the logarithmic average by at most
+$4\times10^{-4}$ and the occupation by at most $2\times10^{-3}$.
 
-\paragraph{Radial mass and logarithmic concentration.}
-We compare the empirical profile
-$\widehat\Phi_N(x)=\nu_N(1+x/N)/N$ of Figure~\ref{fig:radial-profile}
-with $\Phi(x)$, and the outside-annulus count with $2\log2/K$ and with
-\[
- 1-\{\Phi(K)-\Phi(-K)\}
- =\frac1K-\frac{2}{e^{2K}-1},
- \qquad K=2,4,8,16,32.
-\]
-We also compare the occupation means with $1-e^{-t^2}$, and we fit the
-variance of occupation and the centered logarithmic mean square over the
-available degrees (Table~\ref{tab:numerical-slopes}).
+The profile and root-count comparisons use the 77 sequences above, and
+the angular comparisons use all 100.
+The residuals and grid comparisons quantify numerical sensitivity rather
+than interval certification.
+The bands and intervals in the figures are pointwise 95\% percentile
+intervals from 2000 bootstrap draws of whole sequences.
+Figure~\ref{fig:radial-profile} compares the empirical profile
+$\widehat\Phi_N(x)=\nu_N(1+x/N)/N$ with $\Phi(x)$.
+Log--log fits for each statistic, which describe only the measured range,
+are in \path{numerics/publication/STATISTICS.md} of the
+repository~\cite{FormalCompanion2026}.
 
 \input{figures/radial-profile}
-
-For the profile and root-count comparisons we use the 77 sequences that
-were completed at all five base degrees, while the angular comparisons use
-all 100 sequences.
-The bootstrap uses 2000 whole-sequence draws, with seed 522987, and the
-bands and intervals are pointwise 95\% percentile intervals.
-Representative log--log fits are given in
-Table~\ref{tab:numerical-slopes}.
-
-\begin{table}[htbp]
-\centering
-\begin{tabular}{lrr}
-\toprule
-Statistic & Slope & 95\% interval\\
-\midrule
-$\operatorname{Var}A_1$ at $r=1$ & $-1.053$ & $[-1.130,-0.980]$\\
-Centered log-integral mean square at $r=1$ & $-0.975$ & $[-1.052,-0.903]$\\
-Annular small-derivative fraction versus $L$ & $-2.293$ & $[-2.301,-2.285]$\\
-Global small-derivative fraction versus $L$ & $-0.687$ & $[-0.688,-0.686]$\\
-Larger-degree endpoint change & $0.878$ & $[0.873,0.883]$\\
-Endpoint change after removing degree drift & $0.460$ & $[0.364,0.559]$\\
-\bottomrule
-\end{tabular}
-\caption{Log--log fits across the measured degrees or thresholds.
-The first two rows use the doubled angular grids and five base degrees.
-The derivative rows use $N=10^5$ and $L=2,4,8,16$.
-The endpoint rows use 27 common sequences at the four larger base degrees.
-Every bootstrap draw is retained for these six fits.}
-\label{tab:numerical-slopes}
-\end{table}
-
-\paragraph{Small derivatives.}
-In the threshold comparison we use $L=2,4,8,16$ in the $K=2$ annulus and
-include the two thin sectors around the real axis, while larger thresholds and
-retained-angle counts provide supplementary comparisons.
-We compare the finite-range slope with the small-threshold power $-4$, and
-the global counts show the effect of the annular restriction.
-At $N=10^5$, the supplementary retained-angle fit over $L=16,32,64,128$
-has slope $-3.852$ and interval $[-4.476,-3.450]$, which omits 96 of the
-2000 resamples with a zero statistic.
-Over the primary threshold range the slope is close to $-2.3$.
-
-For the Gaussian local comparison, we set
-\[
- I(x)=\int_0^1e^{2xt}\dd t,
- \qquad B(x)=\int_0^1t e^{2xt}\dd t,
- \qquad V(x)=\int_0^1t^2e^{2xt}\dd t-\frac{B(x)^2}{I(x)}.
-\]
-The Gaussian calculation then integrates
-\[
- \frac{2V(x)}{I(x)}
- \left\{1-\left(1+\frac{L^{-2}}{V(x)}\right)
-                  e^{-L^{-2}/V(x)}\right\}
-\]
-over the annulus, for comparison with the data for polynomials with random
-signs.
-
-\paragraph{Localization.}
-The measured amplitude is
-$a=15e^4\sqrt{\lfloor N^{7/8}\rfloor\log N}$, which is that of
-Lemma~\ref{lem:tails} with $2$ in place of $K$.
-We use the two adaptive radii $2a/|f_N'(\alpha)|$ and
-$2aL/|f_N'(\alpha)|$, and the uniform radius $2aL/N^{3/2}$.
-For containment in the auxiliary $K=2$ annulus of the proof we use that
-lemma with $4$ in place of $K$, and at the same block length its amplitude and
-radii are then $e^4$ times larger.
-
-\paragraph{Degree blocks.}
-At $N=1000$ the maxima use every intermediate polynomial in each of the
-78 complete blocks, while at the larger degrees we obtain endpoint changes
-from the endpoint samples.
-From the midpoint samples we also obtain three-point maxima.
-Within the count sensitivity above, the endpoint and three-point maxima are
-lower bounds for the full-block maximum.
-We measure both the uncentered changes and the changes after subtracting
-the degree drift.
-
-The centered logarithmic mean square is that of
-$\widehat I_N(1+x/N)+\gamma/2$, where $\widehat I_N(r)$ is the
-average of $\log|f_N/\sigma_N(r)|$ over the shifted FFT grid on $|z|=r$,
-which approximates $J_N(r)-\log\sigma_N(r)$.
-For the endpoint changes we use 27 common sequences at the larger degrees
-and 78 complete blocks at $N=1000$.
-For the radius $2a/|f_N'(\alpha)|$ above and each $L$, we take its median
-over the roots with
-$\bigl||\alpha|-1\bigr|\le2/N$ and $|f_N'(\alpha)|\ge N^{3/2}/L$, and we
-average these medians over 77 common samples.
-These averages lie between $3.8\times10^3/N$ and $7.9\times10^3/N$, and
-every finite-constant disk that we recorded contains more than one computed
-root.

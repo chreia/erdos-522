@@ -6,6 +6,7 @@ Authors: Sebastien Kawada
 
 import Erdos522.Probability.RademacherZeroDistribution
 import Erdos522.Probability.RadialProfile
+import Erdos522.Probability.LogarithmicConcentrationHolder
 import Erdos522.Probability.LogMoments.UniformLogarithmicMoments
 import Erdos522.Probability.IndependentCoefficientRadialLaws
 import Erdos522.Probability.RademacherLogarithmicRootRate

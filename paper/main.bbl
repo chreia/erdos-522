@@ -15,6 +15,12 @@ Vidmantas Bentkus.
 \newblock
   \href{https://doi.org/10.1137/S0040585X97981123}{doi:10.1137/S0040585X97981123}.
 
+\bibitem{BiniRobol2014}
+Dario~A. Bini and Leonardo Robol.
+\newblock Solving secular and polynomial equations: A multiprecision algorithm.
+\newblock {\em Journal of Computational and Applied Mathematics}, 272:276--292,
+  2014.
+
 \bibitem{Erdos522Problem}
 Thomas Bloom.
 \newblock {Erd\H{o}s Problems}: Problem 522.
@@ -96,7 +102,7 @@ Jean-Pierre Kahane.
 Sebastien Kawada.
 \newblock Almost-sure radial laws for nested random polynomials and {Erd\H{o}s}
   problem \#522: {Lean} formalization.
-\newblock Version 1.0.0, September 2026.
+\newblock Version 1.1.0, September 2026.
 \newblock \url{https://github.com/chreia/erdos-522}.
 
 \bibitem{Kesten1970}

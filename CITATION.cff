@@ -1,7 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "Almost-Sure Radial Laws for Nested Random Polynomials and Erdős Problem #522"
-version: 1.0.0
+version: 1.1.0
+doi: 10.5281/zenodo.22970145
 date-released: 2026-09-25
 # The code is under Apache 2.0. The paper (Erdos522.pdf, paper/) is under CC BY 4.0; see README.md.
 license: Apache-2.0
@@ -37,4 +38,5 @@ preferred-citation:
       affiliation: "MIT CSAIL"
   year: 2026
   month: 9
-  url: "https://github.com/chreia/erdos-522"
+  doi: 10.5281/zenodo.22970145
+  url: "https://doi.org/10.5281/zenodo.22970145"

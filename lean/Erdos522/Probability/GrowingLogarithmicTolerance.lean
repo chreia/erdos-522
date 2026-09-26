@@ -9,8 +9,10 @@ import Erdos522.Limits.LogarithmicAnnularScales
 /-!
 # Vanishing logarithmic error at growing annular width
 
-The occupation coefficient grows as `exp(9K)`. At logarithmic width this
-still leaves a positive degree-power margin after the thin-band rescaling.
+The occupation coefficient grows as `exp(9K)`. The finite clipping threshold
+at height `(1/32) log N` keeps this coefficient on the powers `N^(-1/2)` and
+`N^(-1/4)` only, so the logarithmic error vanishes even after multiplication
+by `log N` at logarithmic width.
 -/
 
 noncomputable section
@@ -18,88 +20,138 @@ open Filter
 open scoped Topology
 namespace Erdos522
 
-/-- A fixed coefficient controlling the logarithmic tolerance at every width. -/
-def growingLogarithmicToleranceConstant (A H : ℝ) : ℝ :=
-  5 / 2 + H / 16 + Real.exp 1 * (12 * A) ^ 6 * (2 + H)
+/-- The logarithmic tolerance at growing width. The occupation constant `H`
+multiplies only the negative powers `N^(-1/2)` and `N^(-1/4)`. -/
+def growingLogarithmicTolerance (A H : ℝ) (N : ℕ) : ℝ :=
+  (N : ℝ) ^ (-(1 / 32 : ℝ)) + Real.log N / 16 * H * (N : ℝ) ^ (-(1 / 2 : ℝ)) +
+    powerLogarithmicMomentCutoff A N *
+      (Real.sqrt 2 * (N : ℝ) ^ (-(1 / 32 : ℝ)) + Real.sqrt H * (N : ℝ) ^ (-(1 / 4 : ℝ))) +
+    (3 / 2 : ℝ) * (N : ℝ) ^ (-(1 / 16 : ℝ))
 
-/-- The finite logarithmic error retains its width dependence explicitly. -/
-theorem logarithmicPowerTolerance_width_le {N : ℕ} (hlog : 1 ≤ Real.log N)
+/-- The finite clipping threshold at height `(1/32) log N` lies below the
+growing-width tolerance. -/
+theorem growing_logarithmic_threshold_le {N : ℕ} (hN : 1 ≤ N) (A : ℝ) {H : ℝ} (hH : 0 ≤ H) :
+    (N : ℝ) ^ (-(1 / 32 : ℝ)) + 2 * ((1 / 32 : ℝ) * Real.log N) * (H / Real.sqrt N) +
+      powerLogarithmicMomentCutoff A N * Real.sqrt
+        (Real.exp (-2 * ((1 / 32 : ℝ) * Real.log N)) + H / Real.sqrt N +
+          (N : ℝ) ^ (-2 * (1 / 32 : ℝ))) +
+      (3 / 2 : ℝ) * Real.exp (-2 * ((1 / 32 : ℝ) * Real.log N)) ≤
+    growingLogarithmicTolerance A H N := by
+  have hn : (0 : ℝ) < N := by exact_mod_cast (show 0 < N by omega)
+  have hexp : Real.exp (-2 * ((1 / 32 : ℝ) * Real.log N)) = (N : ℝ) ^ (-(1 / 16 : ℝ)) := by
+    rw [power_logarithmic_clipping_exp hn]
+    norm_num
+  have hb : (N : ℝ) ^ (-2 * (1 / 32 : ℝ)) = (N : ℝ) ^ (-(1 / 16 : ℝ)) := by norm_num
+  have hd : H / Real.sqrt N = H * (N : ℝ) ^ (-(1 / 2 : ℝ)) := by
+    rw [Real.sqrt_eq_rpow, Real.rpow_neg hn.le, div_eq_mul_inv]
+  have hsqrt₁ : Real.sqrt (2 * (N : ℝ) ^ (-(1 / 16 : ℝ))) =
+      Real.sqrt 2 * (N : ℝ) ^ (-(1 / 32 : ℝ)) := by
+    rw [Real.sqrt_mul (by norm_num), Real.sqrt_eq_rpow ((N : ℝ) ^ _), ← Real.rpow_mul hn.le]
+    norm_num
+  have hsqrt₂ : Real.sqrt (H * (N : ℝ) ^ (-(1 / 2 : ℝ))) =
+      Real.sqrt H * (N : ℝ) ^ (-(1 / 4 : ℝ)) := by
+    rw [Real.sqrt_mul hH, Real.sqrt_eq_rpow ((N : ℝ) ^ _), ← Real.rpow_mul hn.le]
+    norm_num
+  have hsplit : Real.sqrt (2 * (N : ℝ) ^ (-(1 / 16 : ℝ)) + H * (N : ℝ) ^ (-(1 / 2 : ℝ))) ≤
+      Real.sqrt (2 * (N : ℝ) ^ (-(1 / 16 : ℝ))) + Real.sqrt (H * (N : ℝ) ^ (-(1 / 2 : ℝ))) := by
+    have hx : 0 ≤ 2 * (N : ℝ) ^ (-(1 / 16 : ℝ)) := by positivity
+    have hy : 0 ≤ H * (N : ℝ) ^ (-(1 / 2 : ℝ)) := by positivity
+    apply Real.sqrt_le_iff.mpr ⟨by positivity, ?_⟩
+    nlinarith [Real.sq_sqrt hx, Real.sq_sqrt hy, Real.sqrt_nonneg (2 * (N : ℝ) ^ (-(1 / 16 : ℝ))),
+      Real.sqrt_nonneg (H * (N : ℝ) ^ (-(1 / 2 : ℝ)))]
+  have hD : 0 ≤ powerLogarithmicMomentCutoff A N := by
+    unfold powerLogarithmicMomentCutoff
+    positivity
+  rw [hexp, hb, hd, show (N : ℝ) ^ (-(1 / 16 : ℝ)) + H * (N : ℝ) ^ (-(1 / 2 : ℝ)) +
+    (N : ℝ) ^ (-(1 / 16 : ℝ)) = 2 * (N : ℝ) ^ (-(1 / 16 : ℝ)) + H * (N : ℝ) ^ (-(1 / 2 : ℝ)) by ring]
+  have hmoment := mul_le_mul_of_nonneg_left (hsplit.trans_eq (by rw [hsqrt₁, hsqrt₂])) hD
+  unfold growingLogarithmicTolerance
+  nlinarith only [hmoment]
+
+/-- Explicit bound for the logarithmically rescaled tolerance at growing width. -/
+theorem log_mul_growingLogarithmicTolerance_le {N : ℕ} (hlog : 1 ≤ Real.log N)
     {B : ℝ} (hB : 0 < B) (A : ℝ) :
-    logarithmicPowerTolerance (1 / 32) A (rademacherOccupationConstant B (logarithmicAnnularWidth N)) N ≤
-      growingLogarithmicToleranceConstant A (rademacherOccupationConstant B 0) *
-        Real.exp (9 * logarithmicAnnularWidth N) * (Real.log N) ^ 6 / (N : ℝ) ^ (1 / 32 : ℝ) := by
-  let H := rademacherOccupationConstant B 0
+    Real.log N * growingLogarithmicTolerance A
+      (rademacherOccupationConstant B (logarithmicAnnularWidth N)) N ≤
+    (Real.log N) ^ 1 / (N : ℝ) ^ (1 / 32 : ℝ) +
+      rademacherOccupationConstant B 0 / 16 *
+        (Real.exp (9 * logarithmicAnnularWidth N) * (Real.log N) ^ 2 / (N : ℝ) ^ (1 / 2 : ℝ)) +
+      Real.exp 1 * (12 * A) ^ 6 * Real.sqrt 2 * ((Real.log N) ^ 7 / (N : ℝ) ^ (1 / 32 : ℝ)) +
+      Real.exp 1 * (12 * A) ^ 6 * Real.sqrt (rademacherOccupationConstant B 0) *
+        (Real.exp (9 / 2 * logarithmicAnnularWidth N) * (Real.log N) ^ 7 /
+          (N : ℝ) ^ (1 / 4 : ℝ)) +
+      3 / 2 * ((Real.log N) ^ 1 / (N : ℝ) ^ (1 / 16 : ℝ)) := by
   let K := logarithmicAnnularWidth N
-  have hH : 0 < H := rademacherOccupationConstant_pos B 0
-  have hK : 0 ≤ K := logarithmicAnnularWidth_nonneg N
+  let H₀ := rademacherOccupationConstant B 0
   have hn1 : (1 : ℝ) < N := (Real.log_pos_iff (Nat.cast_nonneg N)).mp (by linarith)
   have hn : (0 : ℝ) < N := by linarith
-  have he : 1 ≤ Real.exp (9 * K) := Real.one_le_exp_iff.mpr (by positivity)
-  have hocc := rademacherOccupationConstant_le_exp hB hK
-  have hsqrt : Real.sqrt (2 + rademacherOccupationConstant B K) ≤ (2 + H) * Real.exp (9 * K) := by
-    have hp := rademacherOccupationConstant_pos B K
+  have hl : 0 ≤ Real.log N := by linarith
+  have hH₀ : 0 < H₀ := rademacherOccupationConstant_pos B 0
+  have hH : 0 ≤ rademacherOccupationConstant B K := (rademacherOccupationConstant_pos B K).le
+  have hocc : rademacherOccupationConstant B K ≤ H₀ * Real.exp (9 * K) :=
+    rademacherOccupationConstant_le_exp hB (logarithmicAnnularWidth_nonneg N)
+  have hsqrt : Real.sqrt (rademacherOccupationConstant B K) ≤
+      Real.sqrt H₀ * Real.exp (9 / 2 * K) := by
     calc
-      _ ≤ 2 + rademacherOccupationConstant B K := (Real.sqrt_le_iff.mpr ⟨by linarith, by nlinarith⟩)
-      _ ≤ _ := by dsimp [H] at *; nlinarith
-  have hl₁ : Real.log N ≤ (Real.log N) ^ 6 := by
-    simpa only [pow_one] using pow_le_pow_right₀ hlog (show 1 ≤ 6 by norm_num)
-  have hl₀ : 1 ≤ (Real.log N) ^ 6 := one_le_pow₀ hlog
-  have hconst : 5 / 2 ≤ (5 / 2 : ℝ) * Real.exp (9 * K) * (Real.log N) ^ 6 := by
-    nlinarith [mul_le_mul_of_nonneg_left hl₀ (show 0 ≤ Real.exp (9 * K) by positivity)]
-  have hlinear : 2 * (1 / 32 : ℝ) * rademacherOccupationConstant B K * Real.log N ≤
-      H / 16 * Real.exp (9 * K) * (Real.log N) ^ 6 := by
-    calc
-      _ ≤ 2 * (1 / 32 : ℝ) * (H * Real.exp (9 * K)) * (Real.log N) ^ 6 := by gcongr
-      _ = _ := by ring
-  have hmoment : powerLogarithmicMomentCutoff A N * Real.sqrt (2 + rademacherOccupationConstant B K) ≤
-      Real.exp 1 * (12 * A) ^ 6 * (2 + H) * Real.exp (9 * K) * (Real.log N) ^ 6 := by
-    unfold powerLogarithmicMomentCutoff
-    calc
-      _ ≤ Real.exp 1 * (12 * A * Real.log N) ^ 6 * ((2 + H) * Real.exp (9 * K)) := by gcongr
-      _ = _ := by rw [mul_pow]; ring
-  unfold logarithmicPowerTolerance growingLogarithmicToleranceConstant
-  rw [Real.rpow_neg hn.le]
+      _ ≤ Real.sqrt (H₀ * Real.exp (9 * K)) := Real.sqrt_le_sqrt hocc
+      _ = _ := by
+        rw [Real.sqrt_mul hH₀.le, ← Real.exp_half]
+        congr 2
+        ring
+  have hp (b : ℝ) : (N : ℝ) ^ (-b) = 1 / (N : ℝ) ^ b := by
+    rw [Real.rpow_neg hn.le, one_div]
+  unfold growingLogarithmicTolerance powerLogarithmicMomentCutoff
+  rw [hp, hp, hp, hp]
+  have h₁ : Real.log N * (Real.log N / 16 * rademacherOccupationConstant B K * (1 / (N : ℝ) ^ (1 / 2 : ℝ))) ≤
+      Real.log N * (Real.log N / 16 * (H₀ * Real.exp (9 * K)) * (1 / (N : ℝ) ^ (1 / 2 : ℝ))) := by
+    gcongr
+  have h₂ : Real.log N * (Real.exp 1 * (12 * A * Real.log N) ^ 6 *
+      (Real.sqrt (rademacherOccupationConstant B K) * (1 / (N : ℝ) ^ (1 / 4 : ℝ)))) ≤
+      Real.log N * (Real.exp 1 * (12 * A * Real.log N) ^ 6 *
+        (Real.sqrt H₀ * Real.exp (9 / 2 * K) * (1 / (N : ℝ) ^ (1 / 4 : ℝ)))) := by
+    gcongr
   calc
-    _ ≤ ((N : ℝ) ^ (1 / 32 : ℝ))⁻¹ *
-        ((5 / 2 : ℝ) * Real.exp (9 * K) * (Real.log N) ^ 6 +
-          H / 16 * Real.exp (9 * K) * (Real.log N) ^ 6 +
-          Real.exp 1 * (12 * A) ^ 6 * (2 + H) * Real.exp (9 * K) * (Real.log N) ^ 6) := by
-      exact mul_le_mul_of_nonneg_left (add_le_add (add_le_add hconst hlinear) hmoment) (by positivity)
-    _ = _ := by dsimp [H, K]; ring
+    _ = Real.log N * (1 / (N : ℝ) ^ (1 / 32 : ℝ)) +
+        Real.log N * (Real.log N / 16 * rademacherOccupationConstant B K *
+          (1 / (N : ℝ) ^ (1 / 2 : ℝ))) +
+        Real.log N * (Real.exp 1 * (12 * A * Real.log N) ^ 6 *
+          (Real.sqrt 2 * (1 / (N : ℝ) ^ (1 / 32 : ℝ)))) +
+        Real.log N * (Real.exp 1 * (12 * A * Real.log N) ^ 6 *
+          (Real.sqrt (rademacherOccupationConstant B K) * (1 / (N : ℝ) ^ (1 / 4 : ℝ)))) +
+        Real.log N * (3 / 2 * (1 / (N : ℝ) ^ (1 / 16 : ℝ))) := by ring
+    _ ≤ Real.log N * (1 / (N : ℝ) ^ (1 / 32 : ℝ)) +
+        Real.log N * (Real.log N / 16 * (H₀ * Real.exp (9 * K)) * (1 / (N : ℝ) ^ (1 / 2 : ℝ))) +
+        Real.log N * (Real.exp 1 * (12 * A * Real.log N) ^ 6 *
+          (Real.sqrt 2 * (1 / (N : ℝ) ^ (1 / 32 : ℝ)))) +
+        Real.log N * (Real.exp 1 * (12 * A * Real.log N) ^ 6 *
+          (Real.sqrt H₀ * Real.exp (9 / 2 * K) * (1 / (N : ℝ) ^ (1 / 4 : ℝ)))) +
+        Real.log N * (3 / 2 * (1 / (N : ℝ) ^ (1 / 16 : ℝ))) := by linarith
+    _ = _ := by dsimp only [K, H₀]; ring
 
-/-- Even after multiplication by `N^κ` and any fixed logarithmic power, the
-growing-annulus tolerance vanishes whenever `κ < 89/4000`. -/
-theorem tendsto_scaled_growingLogarithmicTolerance {B κ : ℝ} (hB : 0 < B)
-    (hκ : κ < 89 / 4000) (A : ℝ) (m : ℕ) :
-    Tendsto (fun N : ℕ => (N : ℝ) ^ κ * (Real.log N) ^ m *
-      logarithmicPowerTolerance (1 / 32) A (rademacherOccupationConstant B (logarithmicAnnularWidth N)) N)
-      atTop (𝓝 0) := by
-  let C := growingLogarithmicToleranceConstant A (rademacherOccupationConstant B 0)
-  have h := (tendsto_logarithmicAnnularWidth_factor (a := 9) (b := 1 / 32 - κ)
-    (by norm_num) (by linarith) 0 (m + 6)).const_mul C
-  simp only [pow_zero, one_mul, mul_zero] at h
-  apply squeeze_zero' _ _ h
+/-- The growing-width tolerance vanishes after multiplication by `log N`. -/
+theorem tendsto_log_mul_growingLogarithmicTolerance {B : ℝ} (hB : 0 < B) (A : ℝ) :
+    Tendsto (fun N : ℕ => Real.log N * growingLogarithmicTolerance A
+      (rademacherOccupationConstant B (logarithmicAnnularWidth N)) N) atTop (𝓝 0) := by
+  have h₁ := tendsto_log_pow_div_nat_rpow 1 (by norm_num : (0 : ℝ) < 1 / 32)
+  have h₂ := (tendsto_logarithmicAnnularWidth_factor (a := 9) (b := 1 / 2)
+    (by norm_num) (by norm_num) 0 2).const_mul (rademacherOccupationConstant B 0 / 16)
+  have h₃ := (tendsto_log_pow_div_nat_rpow 7 (by norm_num : (0 : ℝ) < 1 / 32)).const_mul
+    (Real.exp 1 * (12 * A) ^ 6 * Real.sqrt 2)
+  have h₄ := (tendsto_logarithmicAnnularWidth_factor (a := 9 / 2) (b := 1 / 4)
+    (by norm_num) (by norm_num) 0 7).const_mul
+      (Real.exp 1 * (12 * A) ^ 6 * Real.sqrt (rademacherOccupationConstant B 0))
+  have h₅ := (tendsto_log_pow_div_nat_rpow 1 (by norm_num : (0 : ℝ) < 1 / 16)).const_mul (3 / 2 : ℝ)
+  have ht := (((h₁.add h₂).add h₃).add h₄).add h₅
+  simp only [pow_zero, one_mul, mul_zero, add_zero] at ht
+  apply squeeze_zero' _ _ ht
   · filter_upwards [(Real.tendsto_log_atTop.comp
       (tendsto_natCast_atTop_atTop (R := ℝ))).eventually_ge_atTop 1] with N hN
     have hl : 0 ≤ Real.log N := (show 1 ≤ Real.log N from hN).trans' zero_le_one
     have hp := rademacherOccupationConstant_pos B (logarithmicAnnularWidth N)
-    unfold logarithmicPowerTolerance powerLogarithmicMomentCutoff
+    unfold growingLogarithmicTolerance powerLogarithmicMomentCutoff
     positivity
   · filter_upwards [(Real.tendsto_log_atTop.comp
       (tendsto_natCast_atTop_atTop (R := ℝ))).eventually_ge_atTop 1] with N hN
-    have hl : 1 ≤ Real.log N := hN
-    have hn1 : (1 : ℝ) < N := (Real.log_pos_iff (Nat.cast_nonneg N)).mp (by linarith)
-    have hn : (0 : ℝ) < N := by linarith
-    calc
-      _ ≤ (N : ℝ) ^ κ * (Real.log N) ^ m *
-          (C * Real.exp (9 * logarithmicAnnularWidth N) * (Real.log N) ^ 6 / (N : ℝ) ^ (1 / 32 : ℝ)) := by
-        apply mul_le_mul_of_nonneg_left (logarithmicPowerTolerance_width_le hl hB A)
-        positivity
-      _ = C * (Real.exp (9 * logarithmicAnnularWidth N) * (Real.log N) ^ (m + 6) /
-          (N : ℝ) ^ (1 / 32 - κ)) := by
-        rw [pow_add, Real.rpow_sub hn]
-        ring_nf
-        simp only [inv_inv]
-        ring
+    exact log_mul_growingLogarithmicTolerance_le hN hB A
 
 end Erdos522

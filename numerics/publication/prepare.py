@@ -183,7 +183,7 @@ def prepare():
     metadata['figures']={
         'radial-profile':{'data':['data/radial-profile.csv','data/sequence-statistics.npz'],'cohort':'common_root_seeds','bands':'pointwise 95% bootstrap in panels a and b only','single_sequence_panel':{'seed':522000,'degrees':d['N'].tolist(),'scaled_radii':321,'window':[-16,16],'quantity':'empirical radial profile minus Phi'}},
         'annulus':{'data':['data/annulus.csv'],'cohort':'common_root_seeds'},
-        'small-derivative':{'data':['data/small-derivative.csv','data/bootstrap-fits.json'],'cohort':'common_root_seeds'},
+        'small-derivative':{'data':['data/small-derivative.csv'],'cohort':'common_root_seeds'},
         'root-matching':{'data':['matching.npz','matching.json'],'seed':522000,'degrees':[1000,1210,1421],'displayed_links':'Independent base-to-final minimum-distance assignment only. Middle-degree roots shown without trajectory lines.','count_panel':'nu_(1000+m)(1)-nu_1000(1)-m/2 at all 422 degrees, 0<=m<=421'}}
     metadata['section_10_diagnostics']={'data':['data/diagnostic-scaling.csv','data/occupation-means.csv','data/logarithmic-means.csv','data/blob.csv'],'cohorts':['fft_seeds','common_endpoint_seeds','fullblock_seeds','common_root_seeds'],'blob_aggregation':'Mean across sequences of the median radius among that sequence’s good annular roots.'}
     write_json(HERE/'metadata.json',metadata)

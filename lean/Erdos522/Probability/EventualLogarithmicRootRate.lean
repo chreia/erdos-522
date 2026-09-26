@@ -12,10 +12,10 @@ import Erdos522.Probability.RademacherLogarithmicRootRate
 `Erdos522.ae_rademacher_logarithmic_root_rate` bounds a real `limsup`. Mathlib
 assigns the value `0` to the real `limsup` of a sequence that is not bounded
 above, so that inequality alone does not exclude an unbounded sequence. The
-theorems below state the rate directly: for every constant `c > 2000 log 2`,
+theorems below state the rate directly: for every constant `c > 128`,
 eventually `log n * |ν_n(1) / n - 1/2| ≤ c`. In particular the sequence is
 eventually bounded above, and its `limsup` in the extended reals is at most
-`2000 log 2`.
+`128`.
 -/
 
 noncomputable section
@@ -55,10 +55,10 @@ theorem eventually_logarithmic_rate_of_block_bounds {N : ℕ → ℕ} {d e : ℕ
   filter_upwards [hupper, (ht.comp hi).eventually_le_const hc] with n h1 h2
   exact h1.trans h2
 
-/-- Almost surely, for every `c > 2000 log 2`, the logarithmically scaled deviation
+/-- Almost surely, for every `c > 128`, the logarithmically scaled deviation
 of the unit-disk root fraction from one half is eventually at most `c`. -/
 theorem ae_rademacher_logarithmic_root_rate_eventually :
-    ∀ᵐ ω ∂rademacherSequenceMeasure, ∀ c : ℝ, 2000 * Real.log 2 < c →
+    ∀ᵐ ω ∂rademacherSequenceMeasure, ∀ c : ℝ, 128 < c →
       ∀ᶠ n : ℕ in atTop, Real.log n * |rademacherRadialFraction ω n 1 - 1 / 2| ≤ c := by
   obtain ⟨H, B, _, hB, hbound⟩ := exists_ae_logarithmic_root_rate_envelope
   filter_upwards [hbound] with ω hω

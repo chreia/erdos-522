@@ -1,24 +1,87 @@
 \section{Other coefficient distributions}
 \label{sec:layer2-models}\label{par:central-symmetry}
-We now take one sequence of iid coefficients with one of the
-distributions below, use the same sequence at every degree, and write
+The radial law extends to Steinhaus, real and complex Gaussian, and
+nondegenerate bounded centrally symmetric coefficients. Besides the degrees of the
+prefixes, the proof of Section~\ref{sec:layer3} uses the coefficients
+only through five inputs, which we state as hypotheses (H1)--(H5) on the
+coefficient law. We verify them for each law in
+Proposition~\ref{prop:coefficient-transfer} and prove
+Theorem~\ref{thm:radial-profile} and Corollary~\ref{thm:stronglaw} under
+them at the end of the section.
+
+We take one sequence of iid coefficients with one of these laws, use it
+at every degree, and write
 \[
  f_N(z)=\sum_{k=0}^N\xi_kz^k,\qquad
  \sigma_N(r)^2=\mathbb E|\xi_0|^2\sum_{k=0}^Nr^{2k},
 \]
-and, as in Section~\ref{sec:concentration},
-$X_r(\theta)=f_N(re^{i\theta})/\sigma_N(r)$.
+and $X_r(\theta)=f_N(re^{i\theta})/\sigma_N(r)$, as in
+Section~\ref{sec:concentration}.
 In the three classes for which we prove a root law, the coefficients have
 mean zero and positive second moment.
-We define the logarithmic integral $J_N$ and the closed-disk zero count
-as before.
+The logarithmic integral $J_N$ and the closed-disk zero count are
+defined as before.
 
-We first bound the local zero counts.
-Steinhaus and bounded centrally symmetric coefficients have the law
-of independent signs times bounded amplitudes, so that
-Lemma~\ref{lem:local-counts-general} applies to them, while
-Gaussian amplitudes are unbounded, and we treat them separately in
-Lemma~\ref{lem:local-counts-gauss}.
+\begin{namedhypothesis}[Hypotheses (H1)--(H5)]\phantomsection\label{hyp:models}
+Let the $\xi_k$ be independent with a common law, normalized by
+$\mathbb E|\xi_0|^2=1$, let $L=N^{1/64}$, and let $X_r$, $A_t$, $B_{K,N}$
+and the tails of Lemma~\ref{lem:tails} be defined as in
+Sections~\ref{sec:concentration} and~\ref{sec:local-roots}, with the
+$\xi_k$ in place of the signs.
+For every $K\ge2$ there are constants and numbers $\pi_K(N)$ with
+$\sum_j\pi_K(j^8)<\infty$ such that, for all sufficiently large $N$ and
+uniformly for $r\in[1-K/N,1+K/N]$, the following hold.
+{\small
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.14\textwidth}
+ >{\raggedright\arraybackslash}p{0.61\textwidth}
+ >{\raggedright\arraybackslash}p{0.17\textwidth}@{}}
+\toprule
+Hypothesis & Content & Where used below\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+(H1) Local counts & Except on an event of probability at most
+ $N^{-3}+\pi_K(N)$, every disk $\{z:|z-z_0|\le2K/N\}$ with
+ $||z_0|-1|\le1/N$ contains at most $C_1'(K)\log N$ zeros of $f_N$.
+ & Steps~3 and~6\\
+(H2) Derivative and tails & For an amplitude factor $B_0\ge1$ that
+ does not depend on $K$, outside an event of probability at most
+ $\pi_K(N)$, the conclusions of Lemmas~\ref{lem:second-derivative}
+ and~\ref{lem:tails} hold with their bounds multiplied by $B_0$, each
+ outside a further event of probability at most $N^{-10}$.
+ & Steps~1--6\\
+(H3) Occupation & For all $t\ge0$, we have
+ $|\mathbb EA_t-F_G(t)|\le H(K)N^{-1/2}$ and
+ $\operatorname{Var}(A_t)\le H(K)N^{-1/2}$.
+ & \eqref{eq:model-log-concentration}, Steps~3 and~4\\
+(H4) Moments and energy & There are constants $C(K)$ and $B_E(K)$
+ and an event $E_r$ with $\Prob(E_r^c)\le\pi_K(N)$ such that
+ $\int_{E_r}\int|\log|X_r||^p\dd\mu\dd\Prob\le(C(K)p)^{6p}$ for $p\ge1$,
+ and $\int|X_r|^2\dd\mu\le B_E(K)$ on $E_r$.
+ & \eqref{eq:model-log-concentration}, Steps~3, 4 and~6\\
+(H5) Small derivatives & Outside the exceptional events of (H1),
+ with $K+2$ in place of $K$, and of the second-derivative bound in (H2),
+ and outside a further event of probability at most
+ $C(K)N^{-5/16}(\log N)^2$, we have $B_{K,N}\le C(K)NL^{-4}\log N$.
+ & Step~3\\
+\end{longtable}}
+\end{namedhypothesis}
+
+For signs, all with $\pi_K(N)=0$, (H1) is Lemma~\ref{lem:local-counts},
+(H2) holds with $B_0=1$ by Lemmas~\ref{lem:second-derivative}
+and~\ref{lem:tails}, (H3) is \eqref{eq:occupation-bounds}, (H4) holds
+with $E_r=\Omega$ by \eqref{eq:layer2-nns} and \eqref{eq:layer2-energy},
+and (H5) is the proof of Lemma~\ref{lem:small-derivatives}, in the form
+\eqref{eq:layer2-bad}.
+The hypotheses (H3) and (H4) are those of Lemma~\ref{lem:clipping}.
+
+We first bound the local zero counts, which gives (H1).
+Steinhaus and bounded centrally symmetric coefficients are independent
+signs times bounded amplitudes, so Lemma~\ref{lem:local-counts-general}
+applies to them. Gaussian amplitudes are unbounded, and
+Lemma~\ref{lem:local-counts-gauss} treats them separately.
 
 \begin{lemma}[Local zero counts for Steinhaus coefficients]
 \label{lem:local-counts-steinhaus}
@@ -37,8 +100,8 @@ contains at most $C_1(K)\log N$ zeros of $f_N$.
 \end{lemma}
 
 \begin{proof}
-The idea is to write each coefficient as a sign times a point of a fixed
-semicircle and to apply Lemma~\ref{lem:local-counts-general}.
+We write each coefficient as a sign times a point of a fixed semicircle
+and apply Lemma~\ref{lem:local-counts-general}.
 The event in the lemma depends only on the law of
 $(\xi_0,\dots,\xi_N)$.
 Let the $Z_k$ be uniform on a fixed semicircle, independent of each other
@@ -46,10 +109,9 @@ and of the signs.
 Since $-e^{i\varphi}=e^{i(\varphi+\pi)}$, the products $\epsilon_kZ_k$
 are independent and uniform on the unit circle, so we may take
 $\xi_k=\epsilon_kZ_k$.
-Since $|Z_k|=1$ and $\sum_{k=0}^N|Z_k|^2=N+1$, we may apply
-Lemma~\ref{lem:local-counts-general} with $a_k=Z_k$, $B=1$,
-$\eta=1$ and $\mathcal E=\Omega$.
-Then $P_N=f_N$, and, since $\log1=0$, the constants of that lemma are
+Since $|Z_k|=1$ and $\sum_{k=0}^N|Z_k|^2=N+1$, we may take $a_k=Z_k$,
+$B=1$, $\eta=1$ and $\mathcal E=\Omega$ in that lemma.
+Then $P_N=f_N$, and, since $\log1=0$, its constants are
 \begin{align*}
  A(1,1)&=\max(1,1024\pi/c_{\rm HW})=A,\qquad t_N(1,1)=t_N,\\
  C_1(K,1,1)&=\frac{4A+4K+4}{\log2}=C_1(K).
@@ -83,10 +145,9 @@ contains at most $C_{1,B}(K)\log N$ zeros of $f_N$.
 \end{lemma}
 
 \begin{proof}
-The idea is to write each coefficient as a sign times an independent copy
-of itself, to bound the probability that the amplitudes have small total
-energy, and to apply Lemma~\ref{lem:local-counts-general} with
-$\eta=\tfrac12$.
+We write each coefficient as a sign times an independent copy of itself,
+bound the probability that the amplitudes have small total energy, and
+apply Lemma~\ref{lem:local-counts-general} with $\eta=\tfrac12$.
 The event in the lemma depends only on the law of
 $(\xi_0,\dots,\xi_N)$.
 Let $a_0,\dots,a_N$ be independent with the coefficient distribution, and
@@ -95,20 +156,19 @@ By symmetry,
 $\operatorname{Law}(\epsilon_ka_k)
  =\tfrac12\operatorname{Law}(a_k)+\tfrac12\operatorname{Law}(-a_k)
  =\operatorname{Law}(\xi_k)$,
-and the products are independent, so that we may take
-$\xi_k=\epsilon_ka_k$.
+and the products are independent, so we may take $\xi_k=\epsilon_ka_k$.
 Let $\mathcal E=\{\sum_{k=0}^N|a_k|^2\ge(N+1)/2\}$.
-Since $|a_k|^2\in[0,B^2]$ and $\mathbb E|a_k|^2=1$, it follows from
-Hoeffding's inequality \cite[Theorem~2]{Hoeffding1963} for the $N+1$
-variables $|a_k|^2$ at the deviation $(N+1)/2$ that
+Since $|a_k|^2\in[0,B^2]$ and $\mathbb E|a_k|^2=1$, Hoeffding's
+inequality \cite[Theorem~2]{Hoeffding1963} for the $N+1$ variables
+$|a_k|^2$ at the deviation $(N+1)/2$ gives
 \begin{align*}
  \Prob(\mathcal E^c)
  &=\Prob\left\{\sum_{k=0}^N(|a_k|^2-1)<-\frac{N+1}2\right\}\\
  &\le\exp\left[-\frac{2((N+1)/2)^2}{(N+1)B^4}\right]
  =\exp\left[-\frac{N+1}{2B^4}\right].
 \end{align*}
-We apply Lemma~\ref{lem:local-counts-general} with these $a_k$, this
-$B$, $\eta=\tfrac12$ and this event $\mathcal E$.
+We apply Lemma~\ref{lem:local-counts-general} with these $a_k$, $B$
+and $\mathcal E$, and $\eta=\tfrac12$.
 Then $P_N=f_N$, and the constants of that lemma are
 \begin{align*}
  A(B,\tfrac12)&=\max\left(1,\frac{1024\pi B^2}{c_{\rm HW}/2}\right)
@@ -116,8 +176,8 @@ Then $P_N=f_N$, and the constants of that lemma are
  t_N(B,\tfrac12)&=\frac{A_B\log N}N=t_{N,B},\\
  C_1(K,B,\tfrac12)&=\frac{4A_B+4K+4+\log B}{\log2}=C_{1,B}(K).
 \end{align*}
-It follows that the probability that $\mathcal E$ occurs and some disk
-contains more than $C_{1,B}(K)\log N$ zeros is at most $N^{-3}$.
+Hence the probability that $\mathcal E$ occurs and some disk contains
+more than $C_{1,B}(K)\log N$ zeros is at most $N^{-3}$.
 Adding $\Prob(\mathcal E^c)$ proves the lemma.
 \end{proof}
 
@@ -141,10 +201,9 @@ contains at most $C_{1,G}(K)\log N$ zeros of $f_N$.
 \end{lemma}
 
 \begin{proof}
-Since the Gaussian amplitudes are unbounded,
-Lemma~\ref{lem:local-counts-general} does not apply, but its proof still
-works once $|f_N|$ is bounded outside an event of exponentially small
-probability.
+Lemma~\ref{lem:local-counts-general} does not apply to unbounded
+amplitudes, but its proof works once $|f_N|$ is bounded outside an event
+of exponentially small probability.
 Let $J$, the arcs $I$ and the real Gram matrix $A_I$ be those of the
 proof of Lemma~\ref{lem:local-counts-general} with $a_k=1$, $B=1$ and
 $\eta=1$, so that $J\le8N$,
@@ -208,18 +267,18 @@ $(\Re v,\Im v)$ and $(-\Im v,\Re v)$ are eigenvectors of $\widetilde M$
 with eigenvalue $\lambda_\ell/2$, and for an orthonormal eigenbasis of $M$
 these $2N+2$ real vectors are orthonormal.
 Hence each $\lambda_\ell/2$ occurs twice as an eigenvalue of
-$\widetilde M$, so that, since $\lambda_\ell^2\le\lambda_\ell$ for
-$\lambda_\ell\in[0,1]$, we have
-$\widetilde M\ge0$, $\operatorname{tr}\widetilde M=\operatorname{tr}M$,
+$\widetilde M$. Since $\lambda_\ell^2\le\lambda_\ell$ for
+$\lambda_\ell\in[0,1]$, it follows that $\widetilde M\ge0$,
+$\operatorname{tr}\widetilde M=\operatorname{tr}M$,
 $\|\widetilde M\|\le\frac12$ and
 $\|\widetilde M\|_{\rm HS}^2
  =\frac12\sum_\ell\lambda_\ell^2\le\operatorname{tr}M/2$.
 In particular $\mathbb EQ_I=\operatorname{tr}\widetilde M=\operatorname{tr}M$,
 since the $2N+2$ coordinates of $(g,h)$ are independent standard Gaussians.
 As in the real case, the $g_k$ and $h_k$ have moment $\psi_2$ norm at
-most two, so that the Hanson--Wright inequality at deviation
-$\operatorname{tr}M/2$ and the bounds on $\|\widetilde M\|_{\rm HS}^2$
-and $\|\widetilde M\|$ give, for each arc,
+most two, so the Hanson--Wright inequality at deviation
+$\operatorname{tr}M/2$ and the bounds on $\widetilde M$ give, for each
+arc,
 \begin{align*}
  \Prob\{Q_I<\operatorname{tr}M/2\}
  &\le2\exp\left[-c_{\rm HW}\min\left\{
@@ -300,8 +359,8 @@ $|f_N|$ above, we have
  \le C_{1,G}(K)\log N.
 \end{align*}
 The middle step is the last display of that proof at $B=\eta=1$, whose
-maximum bound $(N+1)e^{2NR}$ lacks the factor $\sqrt2$, which adds
-$\log\sqrt2/\log2=\tfrac12$, and the last step holds since
+maximum bound $(N+1)e^{2NR}$ lacks the factor $\sqrt2$; this factor adds
+$\log\sqrt2/\log2=\tfrac12$. The last step holds since
 $\tfrac12\le(2/\log2)\log N$ for $N\ge2$.
 \end{proof}
 
@@ -317,6 +376,8 @@ For the bounded distribution, normalize
 \[
  \mathbb E|\xi_0|^2=1,\qquad |\xi_0|\le B,\qquad B\ge1.
 \]
+The distribution satisfies (H1)--(H5), with the amplitude factor $B_0=B$
+for the bounded distribution and $B_0=1$ for the others.
 The occupation and jet estimates of
 Sections~\ref{sec:concentration} and~\ref{sec:local-roots},
 and the local-count, derivative and maximal-tail estimates, hold with
@@ -361,31 +422,39 @@ The corresponding energy exceptions satisfy
 In particular, for all sufficiently large $N$,
 \begin{align*}
  &\Prob\!\left\{|J_N(r)-\log\sigma_N(r)+\gamma/2|
-       >C(K)N^{-1/32}(\log N)^7\right\}\\
+       >C(K)N^{-1/16}(\log N)^7\right\}\\
  &\quad\le C(K)N^{-3/8}+N^{-12}
-       +C(K)N^{-7/16}(\log N)^{-12}+\Prob(E^c).
+       +C(K)N^{-3/8}(\log N)^{-12}+\Prob(E^c).
 \end{align*}
 Here the constant $C(K)$ and the degree cutoff may depend on the
 coefficient distribution.
 \end{proposition}
 
 \begin{proof}
-The idea is to check, for each distribution, the inputs of
-Sections~\ref{sec:concentration} and~\ref{sec:local-roots}, and to redo
-every computation in which an input changes, applying
+The idea is to check the inputs of Sections~\ref{sec:concentration}
+and~\ref{sec:local-roots} for each distribution, to redo every
+computation in which an input changes, and to apply
 Lemma~\ref{lem:clipping} for the logarithmic concentration.
+For each distribution, (H1) is the local-count lemma above, (H2)
+follows from the tail bounds at the samples in the proofs of
+Lemmas~\ref{lem:second-derivative} and~\ref{lem:tails}, (H3) is the
+occupation bound, (H4) is the moment and energy bound on $E$ in the
+statement, and (H5) follows from the proof of
+Lemma~\ref{lem:small-derivatives} with these inputs and the jet bounds.
 Table~\ref{tab:model-inputs} collects the inputs that change.
-The one- and two-point bounds of
-Section~\ref{sec:h1-rademacher}, and the jet bounds in the proof of
-Lemma~\ref{lem:small-derivatives}, use the coefficients only through the
-independence and centering of the summands, their covariance matrices and
-their third moments, and the proof of
-Theorem~\ref{thm:sign-logarithms} uses them only through
-\eqref{eq:occupation-bounds}, \eqref{eq:layer2-nns} and
-\eqref{eq:layer2-energy}.
-In the proofs of Lemmas~\ref{lem:second-derivative} and~\ref{lem:tails},
-the coefficients enter through a tail bound at each sample and a
-deterministic bound on a derivative.
+The coefficients enter the proofs for signs only as follows.
+\begin{itemize}
+\item The one- and two-point bounds of Section~\ref{sec:h1-rademacher}
+ and the jet bounds in the proof of Lemma~\ref{lem:small-derivatives}:
+ through the independence and centering of the summands, their
+ covariance matrices and their third moments.
+\item The proof of Theorem~\ref{thm:sign-logarithms}: through
+ \eqref{eq:occupation-bounds}, \eqref{eq:layer2-nns} and
+ \eqref{eq:layer2-energy}.
+\item The proofs of Lemmas~\ref{lem:second-derivative}
+ and~\ref{lem:tails}: through a tail bound at each sample and a
+ deterministic bound on a derivative.
+\end{itemize}
 Since $\mathbb E|\xi_0|^2=1$, the normalization $\sigma_N(r)$ and the
 radial bounds \eqref{eq:radial-bounds} are those of the sign case.
 
@@ -410,74 +479,83 @@ Occupation, mean & signs & $2+320e^{8K}$ & $2+c_B$
  & \eqref{eq:occupation-bounds}\\
 Occupation, variance & signs & $14+960e^{8K}$ & $14+3c_B$
  & \eqref{eq:occupation-bounds}\\
-$\Prob\{B_{K,N}>N^{31/32}\}$ & \eqref{eq:annular-small-derivatives}
+Small derivatives & \eqref{eq:annular-small-derivatives}
  & \eqref{eq:gauss-small-derivatives} & \eqref{eq:bounded-small-derivatives}
  & Lemma~\ref{lem:small-derivatives}\\
 \bottomrule
 \end{tabular}
 \caption{The inputs of the proof of
-Proposition~\ref{prop:coefficient-transfer} that depend on the
-coefficient distribution, with the sign-case result that each row
-transfers. The Gaussian column covers the real and the complex case,
-``signs'' means the value of the sign case, the occupation constants
-multiply $N^{-1/2}$, and the bounds on $f_N''$ and on the tails fail with
-probability at most $N^{-10}$ each, for Gaussian coefficients on the
-envelope event $\max_{k\le2N}|\xi_k|\le N$.}
+Proposition~\ref{prop:coefficient-transfer} that depend on the law, with
+the sign-case result each row transfers: the first two rows give (H1),
+the next two (H2), the occupation rows (H3) and the last row (H5).
+``Signs'' means the sign-case value, the Gaussian column covers the real
+and complex cases, the occupation constants multiply $N^{-1/2}$, and the
+bounds on $f_N''$ and on the tails fail with probability at most
+$N^{-10}$ each, for Gaussian coefficients on the envelope event
+$\max_{k\le2N}|\xi_k|\le N$.}
 \label{tab:model-inputs}
 \end{table}
+
+\medskip
+\noindent\emph{Covariances.}
+For $c\in\mathbb C$ let $M(c)$ be the real $2\times2$ matrix of the
+multiplication by $c$, so that, in the notation of
+\eqref{eq:rotation-reflection}, $M(e^{i\psi})=R(\psi)$ and
+$F(\psi)=M(e^{i\psi})F(0)$.
+Let $Q$ be the covariance matrix of $(\Re\xi_0,\Im\xi_0)$, and let
+$\zeta=\mathbb E\xi_0^2$.
+Since $\operatorname{tr}Q=\mathbb E|\xi_0|^2=1$,
+$\mathbb E(\Re\xi_0)^2-\mathbb E(\Im\xi_0)^2=\Re\zeta$ and
+$2\mathbb E[\Re\xi_0\Im\xi_0]=\Im\zeta$, we have the first identity below.
+The real vector of $\xi_0e^{ia}$ is $R(a)(\Re\xi_0,\Im\xi_0)^T$, and
+$M(\zeta)$ commutes with $R(a)$. Hence $R(a)R(b)^T=R(a-b)$ and
+$R(a)F(0)R(b)^T=F(a+b)$ give the cross covariance of the real vectors of
+$\xi_0e^{ia}$ and $\xi_0e^{ib}$:
+\begin{equation}
+ Q=\tfrac12I_2+\tfrac12M(\zeta)F(0),\qquad
+ R(a)QR(b)^T=\tfrac12R(a-b)+\tfrac12M(\zeta)F(a+b).
+ \label{eq:law-covariance}
+\end{equation}
+The laws have the following $Q$ and $\zeta$, where the real laws are
+the real Gaussian law and the real bounded laws, with signs as their
+Rademacher case.
+\begin{center}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Law & $Q$ & $\zeta$ & Since\\
+\midrule
+Steinhaus & $\tfrac12I_2$ & $0$
+ & $\xi_0=e^{i\omega}$, and $2\omega$ is uniform modulo $2\pi$\\
+Real & $\operatorname{diag}(1,0)$ & $1$
+ & $\Im\xi_0=0$\\
+Complex Gaussian & $\tfrac12I_2$ & $0$
+ & $\Re\xi_0$, $\Im\xi_0$ are independent, of variance $\tfrac12$\\
+Bounded & $\tfrac12I_2+\tfrac12M(\zeta)F(0)$ & $\mathbb E\xi_0^2$
+ & \eqref{eq:law-covariance}, with $|\zeta|\le1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For signs, $\zeta=1$, and \eqref{eq:law-covariance} summed over $k$
+gives the matrices $V$ of Section~\ref{sec:h1-rademacher}.
 
 \medskip
 \noindent\emph{Steinhaus coefficients.}
 Let $\xi_k$ be independent uniform points on the unit circle, and write
 $\xi_k=e^{i\omega_k}$, with independent $\omega_k$ uniform on
 $[0,2\pi)$.
-Then $\mathbb E\xi_k=0$, $|\xi_k|^2=1$ and $\mathbb E|\xi_k|^3=1$.
-To show that the one-point covariance is exactly circular, and that
-\eqref{eq:layer2-abel} controls the two-point covariance kernel,
-fix angles $\theta,\phi$ and an index $k$.
-Since $2\omega_k$ is uniform modulo $2\pi$, the variables
-$\cos(2\omega_k+k(\theta+\phi))$ and $\sin(2\omega_k+k(\theta+\phi))$
-have mean zero.
-Therefore, by the product-to-sum identities, we have
-\begin{align*}
- \mathbb E[\cos(\omega_k+k\theta)\cos(\omega_k+k\phi)]
- &=\tfrac12\mathbb E[\cos(k(\theta-\phi))+\cos(2\omega_k+k(\theta+\phi))]\\
- &=\tfrac12\cos(k(\theta-\phi)),\\
- \mathbb E[\sin(\omega_k+k\theta)\sin(\omega_k+k\phi)]
- &=\tfrac12\mathbb E[\cos(k(\theta-\phi))-\cos(2\omega_k+k(\theta+\phi))]\\
- &=\tfrac12\cos(k(\theta-\phi)),\\
- \mathbb E[\sin(\omega_k+k\theta)\cos(\omega_k+k\phi)]
- &=\tfrac12\mathbb E[\sin(k(\theta-\phi))+\sin(2\omega_k+k(\theta+\phi))]\\
- &=\tfrac12\sin(k(\theta-\phi)),\\
- \mathbb E[\cos(\omega_k+k\theta)\sin(\omega_k+k\phi)]
- &=\tfrac12\mathbb E[\sin(2\omega_k+k(\theta+\phi))-\sin(k(\theta-\phi))]\\
- &=-\tfrac12\sin(k(\theta-\phi)).
-\end{align*}
-Since $\Re(\xi_ke^{ik\theta})=\cos(\omega_k+k\theta)$ and
-$\Im(\xi_ke^{ik\theta})=\sin(\omega_k+k\theta)$, the four lines are
-\begin{equation}
- \begin{aligned}
- \mathbb E[\Re(\xi_ke^{ik\theta})\Re(\xi_ke^{ik\phi})]
- &=\mathbb E[\Im(\xi_ke^{ik\theta})\Im(\xi_ke^{ik\phi})]
- =\tfrac12\cos(k(\theta-\phi)),\\
- \mathbb E[\Im(\xi_ke^{ik\theta})\Re(\xi_ke^{ik\phi})]
- &=-\mathbb E[\Re(\xi_ke^{ik\theta})\Im(\xi_ke^{ik\phi})]
- =\tfrac12\sin(k(\theta-\phi)).
- \end{aligned}\label{eq:circular-moments}
-\end{equation}
-
+Then $\mathbb E\xi_k=0$, $|\xi_k|^2=1$ and $\mathbb E|\xi_k|^3=1$, and
+$Q=\tfrac12I_2$ and $\zeta=0$.
 Let $z=re^{i\theta}$ and $w=se^{i\phi}$, with $r,s\in[1-K/N,1+K/N]$.
 Since the $\xi_k$ are independent and centered, multiplying
-\eqref{eq:circular-moments} by $(rs)^k/(\sigma_N(r)\sigma_N(s))$ and
-summing over $k$ shows, since $\sum_kr^{2k}=\sigma_N(r)^2$, that the
-covariance matrix of $(\Re X_r(\theta),\Im X_r(\theta))$ is
-$\tfrac12I_2$, and that the cross covariance of
-$(\Re X_r(\theta),\Im X_r(\theta))$ and
+\eqref{eq:law-covariance} at $a=k\theta$, $b=k\phi$ by
+$(rs)^k/(\sigma_N(r)\sigma_N(s))$ and summing over $k$ shows, since
+$\sum_kr^{2k}=\sigma_N(r)^2$, that the covariance matrix of
+$(\Re X_r(\theta),\Im X_r(\theta))$ is $\tfrac12I_2$, and that the cross
+covariance of $(\Re X_r(\theta),\Im X_r(\theta))$ and
 $(\Re X_s(\phi),\Im X_s(\phi))$ is
 \[
- \frac1{2\sigma_N(r)\sigma_N(s)}\sum_{k=0}^N(rs)^k
- \begin{pmatrix}\cos(k(\theta-\phi))&-\sin(k(\theta-\phi))\\
- \sin(k(\theta-\phi))&\cos(k(\theta-\phi))\end{pmatrix}.
+ \frac1{2\sigma_N(r)\sigma_N(s)}\sum_{k=0}^N(rs)^kR(k(\theta-\phi)).
 \]
 Each entry of this matrix is, up to sign,
 $N/(2\sigma_N(r)\sigma_N(s))$ times the real or the imaginary part of the
@@ -492,9 +570,9 @@ For retained pairs, by \eqref{eq:layer2-abel} and the lower bound in
 \end{align*}
 Hence the covariance matrices of Section~\ref{sec:h1-rademacher}
 satisfy the entry bounds \eqref{eq:covariance-entries}, with the one-point
-error equal to zero, and the eigenvalue bound and the total variation
-bound \eqref{eq:tv-circular} of that section, which use the covariance
-only through these entry bounds, hold with the same constants.
+error equal to zero. The eigenvalue bound and the total variation bound
+\eqref{eq:tv-circular} of that section use the covariance only through
+these entry bounds, so they hold with the same constants.
 
 We apply Rai\v{c}'s theorem to independent centered real vectors obtained
 from each complex coefficient.
@@ -514,26 +592,24 @@ sum to that of the vector, and the squared norm of the $k$th summand is
 $r^{2k}/\sigma_N(r)^2+s^{2k}/\sigma_N(s)^2$, as for signs.
 After the whitening of Section~\ref{sec:h1-rademacher}, the sums of their
 third moments are therefore at most $46e^{9K}N^{-1/2}$ and, for one point,
-at most $16e^{9K}N^{-1/2}$, as computed there, so that the
-normal-approximation errors have the same bounds as for signs.
-It follows that \eqref{eq:point-bounds} and the occupation bounds
-\eqref{eq:occupation-bounds} hold for Steinhaus coefficients, with the
-constants of the sign case.
+at most $16e^{9K}N^{-1/2}$, as computed there.
+Hence the normal-approximation errors have the bounds of the sign case,
+and \eqref{eq:point-bounds} and \eqref{eq:occupation-bounds} hold for
+Steinhaus coefficients with the same constants.
 
 For the jets in the proof of Lemma~\ref{lem:small-derivatives}, we have
 $W_l(z)=N^{-1/2}\sum_{k=0}^N\xi_k(k/N)^lz^k$ for $l\in\{0,1\}$.
-Multiplying \eqref{eq:circular-moments} by $(k/N)^{l+m}(rs)^k/N$ and
-summing over $k$ shows that the cross covariance of
-$(\Re W_l(z),\Im W_l(z))$ and $(\Re W_m(w),\Im W_m(w))$ is
+Multiplying \eqref{eq:law-covariance} at $a=k\theta$, $b=k\phi$ by
+$(k/N)^{l+m}(rs)^k/N$ and summing over $k$ shows that the cross
+covariance of $(\Re W_l(z),\allowbreak\Im W_l(z))$ and
+$(\Re W_m(w),\allowbreak\Im W_m(w))$ is
 \[
- \frac1{2N}\sum_{k=0}^N(rs)^k\Bigl(\frac kN\Bigr)^{l+m}
- \begin{pmatrix}\cos(k(\theta-\phi))&-\sin(k(\theta-\phi))\\
- \sin(k(\theta-\phi))&\cos(k(\theta-\phi))\end{pmatrix},
+ \frac1{2N}\sum_{k=0}^N(rs)^k\Bigl(\frac kN\Bigr)^{l+m}R(k(\theta-\phi)),
  \qquad l,m\in\{0,1\}.
 \]
-For $w=z$ this shows that the covariance matrix of $W(z)$ is the
+For $w=z$, the covariance matrix of $W(z)$ is therefore the
 nonoscillatory matrix of that proof, with no oscillatory part.
-Its least eigenvalue is therefore at least $e^{-4K}/32$, which is larger
+Its least eigenvalue is at least $e^{-4K}/32$, which is larger
 than the bound $e^{-4K}/80$ of \eqref{eq:jet-eigenvalue} used there.
 For a retained pair, every entry of the cross covariance of $W(z)$ and
 $W(w)$ is, up to sign, half the real or the imaginary part of
@@ -541,26 +617,24 @@ $N^{-1}\sum_{k=0}^N(rs)^k(k/N)^\beta e^{ik(\theta-\phi)}$, with
 $\beta=l+m\in\{0,1,2\}$, which by \eqref{eq:layer2-abel} is at most
 $5e^{4K}N^{-1/2}\le10e^{4K}N^{-1/2}$ in absolute value, the
 bound used there.
-Moreover, the summands of $(W(z),W(w))$ are independent and centered,
-and the squared norm of the $k$th summand is
-$(r^{2k}+s^{2k})(1+(k/N)^2)/N$, as for signs.
-Therefore the Rai\v{c}, small-ball and entropy steps of that proof hold
-with the same constants.
+The summands of $(W(z),W(w))$ are independent and centered, and the
+squared norm of the $k$th summand is $(r^{2k}+s^{2k})(1+(k/N)^2)/N$, as
+for signs. Hence the Rai\v{c}, small-ball and interpolation steps of that
+proof hold with the same constants.
 
-For complex numbers $c_k$, the variables $\Re(\xi_kc_k)$ are
-independent and centered, with $|\Re(\xi_kc_k)|\le|c_k|$, so that, by
-Hoeffding's inequality \cite[Theorem~2]{Hoeffding1963} for both tails,
-for every level $u>0$,
+For complex numbers $c_k$, the variables $\Re(\xi_kc_k)$ are independent
+and centered, with $|\Re(\xi_kc_k)|\le|c_k|$. Hence, by Hoeffding's
+inequality \cite[Theorem~2]{Hoeffding1963} for both tails, for $u>0$,
 \[
  \Prob\Bigl\{\Bigl|\Re\sum_k\xi_kc_k\Bigr|\ge u\Bigr\}
  \le2\exp\Bigl[-\frac{u^2}{2\sum_k|c_k|^2}\Bigr],
 \]
-and the same bound holds for the imaginary part, since also
+and the same bound holds for the imaginary part, since
 $|\Im(\xi_kc_k)|\le|c_k|$.
 This is the bound used in the proofs of Lemmas~\ref{lem:second-derivative}
 and~\ref{lem:tails}, whose deterministic bounds use only $|\xi_k|\le1$.
-Hence these lemmas hold for Steinhaus coefficients, with the same
-constants and exceptional probabilities.
+Hence these lemmas hold for Steinhaus coefficients with the same
+constants and exceptional probabilities, which is (H2) with $B_0=1$.
 
 Write $\xi_k=\epsilon_kZ_k$ as in the proof of
 Lemma~\ref{lem:local-counts-steinhaus}, and
@@ -578,13 +652,13 @@ $\mathbb E\int|\log|X_r||^p\dd\mu
  =\mathbb E_Z[\mathbb E_\epsilon\int|\log|X_r||^p\dd\mu]
  \le(C_*p)^{6p}$.
 
-For the local count we use Lemma~\ref{lem:local-counts-steinhaus}
+For the local count (H1) we use Lemma~\ref{lem:local-counts-steinhaus}
 (Table~\ref{tab:model-inputs}).
 In the proof of Lemma~\ref{lem:small-derivatives}, the coefficients enter
 only through this local count, Lemma~\ref{lem:second-derivative}, the
-covariances and the summand norms, which hold here with the same
-constants, so that \eqref{eq:annular-small-derivatives} holds for
-Steinhaus coefficients.
+covariances and the summand norms. These hold here with the same
+constants, so \eqref{eq:annular-small-derivatives} holds for Steinhaus
+coefficients, which is (H5).
 By Parseval's identity and $|\xi_k|=1$,
 $\int|X_r|^2\dd\mu=\sigma_N(r)^{-2}\sum_k|\xi_k|^2r^{2k}=1$ for every
 realization, which is \eqref{eq:layer2-energy}.
@@ -593,6 +667,8 @@ With \eqref{eq:occupation-bounds}, \eqref{eq:layer2-nns} and
 applies word for word, and we obtain \eqref{eq:sign-log-concentration}
 with the same constants, which is the concentration bound of the
 proposition, with $E=\Omega$ and $\Prob(E^c)=0$.
+In particular, (H3) and (H4) hold with the constants of the sign case
+and $E_r=\Omega$.
 
 \medskip
 \noindent\emph{Real Gaussian coefficients.}
@@ -601,9 +677,9 @@ The real vector $(\Re X_r(\theta),\Im X_r(\theta))$ and the
 real vector with the coordinates $\Re X_r(\theta)$, $\Im X_r(\theta)$,
 $\Re X_s(\phi)$ and $\Im X_s(\phi)$ are the
 sums over $k$ of $g_k$ times the deterministic summands of
-Section~\ref{sec:h1-rademacher}, and $\mathbb Eg_k=0$ and
-$\mathbb Eg_jg_k=\mathbf 1\{j=k\}$, as for signs, so that these vectors
-have the laws of $G_\Sigma$ for the covariance matrices $\Sigma$ of that
+Section~\ref{sec:h1-rademacher}. Since $\mathbb Eg_k=0$ and
+$\mathbb Eg_jg_k=\mathbf 1\{j=k\}$, as for signs, these vectors have the
+laws of $G_\Sigma$ for the covariance matrices $\Sigma$ of that
 section.
 Hence the normal approximation is exact, and only the total variation
 bound \eqref{eq:tv-circular} of that section remains.
@@ -642,22 +718,23 @@ uniformly for $t\ge0$,
 where the last line uses the first two and
 $0\le\mathbb EA_t+F_G(t)\le2$.
 These are the occupation bounds \eqref{eq:occupation-bounds} for real
-Gaussian coefficients.
+Gaussian coefficients, which give (H3).
 
 The vector $(W(z),W(w))$ is the sum over $k$ of $g_k$ times the
-deterministic summands in the proof of Lemma~\ref{lem:small-derivatives},
-so that it has the law of $G_{\Sigma_{z,w}}$, where
-$\Sigma_{z,w}$ is its
+deterministic summands in the proof of Lemma~\ref{lem:small-derivatives}.
+Hence it has the law of $G_{\Sigma_{z,w}}$, where $\Sigma_{z,w}$ is its
 covariance matrix (the matrix $\Sigma$ of that proof), and $W(z)$ has the
-law of $G_{\Sigma_z}$, where $\Sigma_z$ is the covariance matrix of $W(z)$
-(the matrix $A_z$ of that proof).
+law of $G_{\Sigma_z}$, where $\Sigma_z$ is the matrix $A_z$ of that
+proof.
 Hence the covariance bounds of that proof hold, and its Rai\v{c} steps
 are exact.
 Let $D'\subset\mathbb R^4$ be the product of the two disks of radii
-$C(K)N^{-1/32}/\sqrt{\log N}$ and $3N^{-1/64}$ that defines the test
-\eqref{eq:annular-mesh-test}, where $N^{1/64}$ is the parameter $L$ of
-that proof. Bounding the density of $G_{\Sigma_z}$ and the volume of
-$D'$ as in that proof, with
+$C(K)N^{-1/32}/\sqrt{\log N}$ and $3N^{-1/64}$, the bounds
+\eqref{eq:annular-mesh-test} on the thresholds $u$ and $v_0$, where
+$N^{1/64}$ is the parameter $L$ of that proof, so that $D'$ contains the
+product of disks $U$ of that proof. Bounding the density of
+$G_{\Sigma_z}$ and the volume of $D'$ as in the proof of
+Theorem~\ref{thm:T3}, with
 $(\det\Sigma_z)^{-1/2}\le(e^{-4K}/80)^{-2}=6400e^{8K}$ by
 \eqref{eq:jet-eigenvalue}, we get
 \begin{align*}
@@ -739,10 +816,10 @@ we have, for $0\le\lambda\le(8w_{\max})^{-1}$,
  =\sum_k\{-\lambda w_k-\tfrac12\log(1-2\lambda w_k)\}
  \le2\lambda^2\sum_kw_k^2.
 \]
-In the exponential Markov inequality we choose $\lambda=(8w_{\max})^{-1}$,
-the largest admissible value, which is the best one, since the exponent
+In the exponential Markov inequality we choose the largest admissible
+value $\lambda=(8w_{\max})^{-1}$. It is the best one: the exponent
 $-\lambda+2\lambda^2w_{\max}$ below has derivative $-1+4\lambda w_{\max}<0$
-for $0\le\lambda<(4w_{\max})^{-1}$, and so decreases on the admissible range.
+for $0\le\lambda<(4w_{\max})^{-1}$, so it decreases on the admissible range.
 Then, since $\sum_kw_k^2\le w_{\max}\sum_kw_k=w_{\max}$,
 \begin{equation}
  \begin{aligned}
@@ -755,7 +832,7 @@ Then, since $\sum_kw_k^2\le w_{\max}\sum_kw_k=w_{\max}$,
  \end{aligned}                                      \label{eq:layer2-gaussianenergy}
 \end{equation}
 Laurent and Massart \cite{LaurentMassart2000} give sharper tail bounds
-for such weighted sums of squared Gaussians, but this bound suffices here.
+for such sums.
 
 By \eqref{eq:layer2-gaussianlog},
 $\mathbb E\int|\log|X_r||^p\dd\mu\le(16p)^p\le(16p)^{6p}$ for $p\ge1$,
@@ -768,12 +845,14 @@ energy event $E=\{V\le2\}$, with
  H=14+960e^{8K},\qquad C=16,\qquad B_E=2,
 \]
 so that $4eC=64e$ and $B_E/2+1=2$.
-Its error is at most $C(K)N^{-1/32}(\log N)^7$, and its probability
+Its error is at most $C(K)N^{-1/16}(\log N)^7$, and its probability
 bound, with $\Prob(E^c)=\Prob(V>2)$ bounded in
 \eqref{eq:layer2-gaussianenergy}, is the concentration bound of the
 proposition.
+The moment bound on $E$, the energy bound $V\le2$ on $E$ and
+\eqref{eq:layer2-gaussianenergy} are (H4), with $E_r=\{V\le2\}$.
 
-For the local count we use the real case of
+For the local count (H1) we use the real case of
 Lemma~\ref{lem:local-counts-gauss} (Table~\ref{tab:model-inputs}).
 For real numbers $c_k$, the sum $Y=\sum_kc_kg_k$ is a centered real
 Gaussian of variance $v=\sum_kc_k^2$.
@@ -849,7 +928,8 @@ $(2N^4\cdot N)(4N^{-25})=8N^{-20}\le N^{-10}$.
 We conclude that, on the event $\max_{k\le2N}|g_k|\le N$, the bounds of
 Lemmas~\ref{lem:second-derivative} and~\ref{lem:tails} hold for real
 Gaussian coefficients with the same constants, each outside an event of
-probability at most $N^{-10}$.
+probability at most $N^{-10}$, which is (H2) with $B_0=1$ and the
+additional probability $2(2N+1)e^{-N^2/2}$ of the envelope event.
 
 In the proof of Lemma~\ref{lem:small-derivatives}, the cell assignment
 and the sector cover now use the local count of
@@ -859,19 +939,22 @@ From them we obtain
  B_{K,N}\le C_{1,G}(K+2)(\log N)\cdot\#\{\text{successful tests}\}
  +40C_{1,G}(K+2)\sqrt N\log N,
 \]
-where the successful tests are the retained mesh points at which
-\eqref{eq:annular-mesh-test} holds, and we take $Q=N^{31/32}/(2C_{1,G}(K+2)\log N)$ there.
-With the jet bounds above, the mean and variance bounds and the Chebyshev
-chain of that proof hold with its constants $C(K)$, which now also depend
-on $C_{1,G}(K+2)$.
+where the successful tests are the retained mesh points $z_i$ at which
+the event $E_i$ of Theorem~\ref{thm:T3} occurs, and we take $t=NL^{-4}$
+there, as in that proof.
+Since the normal approximation is exact and the total variation bound
+above holds for every product of disks, the application of
+Theorem~\ref{thm:T3} in that proof holds with $\delta=\delta_*=0$ and its
+constants $C(K)$, which now also depend on $C_{1,G}(K+2)$.
 Adding the exceptional probabilities of the local count, of the
 derivative bound and of the event $\max_{k\le2N}|g_k|\le N$, we get
 \begin{multline}
- \Prob\{B_{K,N}>N^{31/32}\}\\
+ \Prob\{B_{K,N}>C(K)NL^{-4}\log N\}\\
  \le N^{-3}+e^{-3(N+1)/32}+N^{-10}+2(2N+1)e^{-N^2/2}
- +C(K)N^{-3/8}(\log N)^4.
+ +C(K)N^{-5/16}(\log N)^2,
  \label{eq:gauss-small-derivatives}
 \end{multline}
+which is (H5).
 Since Gaussian coefficients are nonzero almost surely, every prefix has
 degree exactly $N$, and $f_N(0)=g_0\ne0$.
 
@@ -882,41 +965,24 @@ $\xi_k=(g_k+ih_k)/\sqrt2$, where all $g_k,h_k$ are independent standard
 real Gaussians.
 We have $\mathbb E|\xi_k|^2=1$, and $|\xi_k|^2$ has the exponential
 distribution with mean one.
-Since
-$\Re(\xi_ke^{ik\theta})=(g_k\cos(k\theta)-h_k\sin(k\theta))/\sqrt2$ and
-$\Im(\xi_ke^{ik\theta})=(g_k\sin(k\theta)+h_k\cos(k\theta))/\sqrt2$, and
-since $\mathbb Eg_k^2=\mathbb Eh_k^2=1$ and $\mathbb Eg_kh_k=0$, we get
-\begin{align*}
- \mathbb E[\Re(\xi_ke^{ik\theta})\Re(\xi_ke^{ik\phi})]
- &=\tfrac12\{\cos(k\theta)\cos(k\phi)+\sin(k\theta)\sin(k\phi)\}
- =\tfrac12\cos(k(\theta-\phi)),\\
- \mathbb E[\Im(\xi_ke^{ik\theta})\Im(\xi_ke^{ik\phi})]
- &=\tfrac12\{\sin(k\theta)\sin(k\phi)+\cos(k\theta)\cos(k\phi)\}
- =\tfrac12\cos(k(\theta-\phi)),\\
- \mathbb E[\Im(\xi_ke^{ik\theta})\Re(\xi_ke^{ik\phi})]
- &=\tfrac12\{\sin(k\theta)\cos(k\phi)-\cos(k\theta)\sin(k\phi)\}
- =\tfrac12\sin(k(\theta-\phi)),\\
- \mathbb E[\Re(\xi_ke^{ik\theta})\Im(\xi_ke^{ik\phi})]
- &=\tfrac12\{\cos(k\theta)\sin(k\phi)-\sin(k\theta)\cos(k\phi)\}
- =-\tfrac12\sin(k(\theta-\phi)),
-\end{align*}
-which is \eqref{eq:circular-moments}.
-Since the covariance matrices of the real vectors of
+By the table of covariances, $Q=\tfrac12I_2$ and $\zeta=0$, as for
+Steinhaus coefficients.
+The covariance matrices of the real vectors of
 Section~\ref{sec:h1-rademacher} and of the proof of
 Lemma~\ref{lem:small-derivatives} are computed from
-\eqref{eq:circular-moments} and the independence of the coefficients
-alone, they are those of the Steinhaus case, and they satisfy the entry
-and eigenvalue bounds shown there.
-These vectors are linear images of
-$(g_0,\dots,g_N,h_0,\dots,h_N)$, and hence centered Gaussian vectors, so
-that the normal approximation is again exact.
-Since the chain \eqref{eq:gaussian-point-bounds} and the occupation
-bounds after it use $\Sigma$ only through the norm bound
-$40e^{8K}N^{-1/2}$, they hold word for word.
+\eqref{eq:law-covariance} and the independence of the coefficients
+alone. Hence they are those of the Steinhaus case, and they satisfy the
+entry and eigenvalue bounds shown there.
+These vectors are linear images of $(g_0,\dots,g_N,h_0,\dots,h_N)$, and
+hence centered Gaussian vectors, so the normal approximation is again
+exact.
+The chain \eqref{eq:gaussian-point-bounds} and the occupation bounds
+after it use $\Sigma$ only through the norm bound $40e^{8K}N^{-1/2}$, so
+they hold word for word.
 In the real Gaussian case, the jet bounds use only the least eigenvalue
 $e^{-4K}/80$ of \eqref{eq:jet-eigenvalue} and the total variation bound
-\eqref{eq:jet-tv} in the proof of Lemma~\ref{lem:small-derivatives}, and
-so they also hold word for word.
+\eqref{eq:jet-tv} in the proof of Lemma~\ref{lem:small-derivatives}, so
+they also hold word for word.
 
 For nonnegative weights with $\sum_kw_k=1$, let $w_{\max}=\max_kw_k$ as
 before.
@@ -1003,20 +1069,21 @@ Since the occupation bounds, the moment bound $(16p)^p$ and the bound
 constants of the real case, Lemma~\ref{lem:clipping} applies with the
 parameters of the real case and gives the same exceptional
 probabilities.
+Hence (H1)--(H5) hold with the constants of the real case.
 
 \medskip
 \noindent\emph{Centrally symmetric bounded coefficients.}
 Recall that a real or complex coefficient distribution is centrally
 symmetric if $\operatorname{Law}(\xi)=\operatorname{Law}(-\xi)$, and
 nondegenerate if it is not a point mass. A centrally symmetric point mass
-sits at zero, so that a centrally symmetric distribution is nondegenerate
+sits at zero, so a centrally symmetric distribution is nondegenerate
 exactly when $\Prob(|\xi|>0)>0$, which for a bounded distribution is
 equivalent to $\mathbb E|\xi|^2>0$.
 We first bound the covariances and the third moments, then the
 derivatives and tails, and then the logarithmic estimates, which use the
 occupation bounds.
-For complex coefficients, symmetry implies that $\mathbb E\xi=0$.
-Let $\zeta=\mathbb E\xi^2$, so that
+For complex coefficients, symmetry implies that $\mathbb E\xi=0$, and
+$\zeta=\mathbb E\xi^2$ satisfies
 $|\zeta|=|\mathbb E\xi^2|\le\mathbb E|\xi|^2=1$.
 For $z=re^{i\theta}$ and $w=se^{i\phi}$, the ordinary and unconjugated
 covariance kernels are
@@ -1035,14 +1102,11 @@ In real coordinates their cross covariance is
  \Im(\mathcal P(z,w)+\mathcal K(z,w))&\Re(\mathcal K(z,w)-\mathcal P(z,w))
  \end{pmatrix}.
 \]
-Indeed, with $X_r(\theta)=x_1+ix_2$ and $X_s(\phi)=y_1+iy_2$, where
-$x_1,x_2,y_1,y_2$ are real, expanding the products gives
-\begin{align*}
- \mathcal K(z,w)&=\mathbb E[x_1y_1+x_2y_2]+i\,\mathbb E[x_2y_1-x_1y_2],\\
- \mathcal P(z,w)&=\mathbb E[x_1y_1-x_2y_2]+i\,\mathbb E[x_1y_2+x_2y_1],
-\end{align*}
-and adding and subtracting the real parts, and the imaginary parts, gives
-the entries of the matrix above.
+Indeed, summing \eqref{eq:law-covariance} over $k$ as for Steinhaus
+coefficients gives
+$\tfrac12M(\mathcal K(z,w))+\tfrac12M(\mathcal P(z,w))F(0)$, since
+$R(\psi)=M(e^{i\psi})$ and $F(\psi)=M(e^{i\psi})F(0)$, and this is the
+matrix above.
 For $w=z$ we have $\mathcal K(z,z)=1$, since
 $\sum_kr^{2k}=\sigma_N(r)^2$, so that the covariance matrix of
 $(\Re X_r(\theta),\Im X_r(\theta))$ is
@@ -1121,7 +1185,7 @@ These summands are independent and centered, their covariance matrices sum
 to that of the vector, and the norm of the $k$th summand is $|\xi_k|$
 times the value for signs, since $|\xi_ke^{ik\theta}|=|\xi_k|$.
 By the entry bounds, the eigenvalues of the covariance matrix $\Sigma$
-are at least $1/4$, as in Section~\ref{sec:h1-rademacher}, so that
+are at least $1/4$, as in Section~\ref{sec:h1-rademacher}, so
 $\|\Sigma^{-1/2}\|\le2$.
 Therefore the whitened $k$th summand has norm at most
 $2\sqrt2|\xi_k|e^{3K}N^{-1/2}$, and the third-moment sum in Rai\v{c}'s
@@ -1140,8 +1204,8 @@ whitening is then $|\xi_k|^2r^{2k}/\sigma_N(r)^2\le|\xi_k|^2e^{6K}/N$, and
  =(N+1)\,\mathbb E|\xi_0|^3\,8e^{9K}N^{-3/2}
  \le16B^3e^{9K}N^{-1/2}.
 \]
-Hence, for retained angles and pairs, by the triangle inequality,
-Rai\v{c}'s theorem and the total variation bound we have, as in
+For retained angles and pairs, the triangle inequality, Rai\v{c}'s
+theorem and the total variation bound therefore give, as in
 \eqref{eq:point-bounds},
 \begin{align*}
  &\bigl|\Prob\{|X_r(\theta)|\le t,|X_s(\phi)|\le t'\}
@@ -1160,16 +1224,16 @@ so that the above two-point bound, and the smaller one-point bound, are
 at most $c_BN^{-1/2}$.
 The derivation of \eqref{eq:occupation-bounds} from
 \eqref{eq:point-bounds}, written out above for real Gaussian
-coefficients, with the removed angles and pairs contributing
-$2N^{-1/2}$ and $10N^{-1/2}$, gives, uniformly for $t\ge0$,
+coefficients, gives, uniformly for $t\ge0$,
 \begin{align*}
  |\mathbb EA_t-F_G(t)|&\le(2+c_B)N^{-1/2},\\
  |\mathbb EA_t^2-F_G(t)^2|&\le(10+c_B)N^{-1/2},\\
  \operatorname{Var}(A_t)
  &\le|\mathbb EA_t^2-F_G(t)^2|+2|\mathbb EA_t-F_G(t)|\\
  &\le(10+c_B)N^{-1/2}+2(2+c_B)N^{-1/2}
- =(14+3c_B)N^{-1/2}.
+ =(14+3c_B)N^{-1/2},
 \end{align*}
+which give (H3).
 In the proof of Lemma~\ref{lem:small-derivatives}, the $k$th summand of
 $(W(z),W(w))$ has $|\xi_k|$ times the norm of the $k$th summand for
 signs, and $\|\Sigma_{z,w}^{-1/2}\|\le(160e^{4K})^{1/2}$, since the least
@@ -1220,22 +1284,22 @@ nonempty tail has probability at most $8N^{-21}\le N^{-10}$.
 Similarly, the deterministic bound on the derivatives of the tails gains
 the factor $B$, so that the interpolation error is at most
 $4\pi Bm_{\max}e^{2K}/N^2<5Be^{2K}\sqrt{m_{\max}\log N}$.
-Hence
+Hence, outside an event of probability at most $N^{-10}$,
 $\max_{N<n\le N+m_{\max}}\sup_{|z|\le\rho}|\sum_{k=N+1}^n\xi_kz^k|
- <15Be^{2K}\sqrt{m_{\max}\log N}$
-outside an event of probability at most $N^{-10}$.
+ <15Be^{2K}\sqrt{m_{\max}\log N}$.
+This is (H2) with $B_0=B$.
 The derivative and tail constants depend on $B$ as in
 Section~\ref{sec:model-constants}.
 
 With these bounds, the proof of Lemma~\ref{lem:small-derivatives}
 applies with constants depending on $K$ and $B$.
 Its second-derivative bound is now $M_BN^{5/2}\sqrt{\log N}$, with
-$M_B=100Be^{K+4}$, and its Taylor bounds require that the mesh constant
-of that proof, here $\eta\le1$, satisfy $M_B\eta\le1/2$, so that the
-spacing is $h=\eta/(NL\sqrt{\log N})$ as there.
+$M_B=100Be^{K+4}$. The bounds \eqref{eq:annular-mesh-test} require that
+the mesh constant of that proof, here $\eta\le1$, satisfy
+$M_B\eta\le1/2$, and the spacing is $h=\eta/(NL\sqrt{\log N})$ as there.
 For an annular root $\alpha$ with $|f_N'(\alpha)|<N^{3/2}/L$, outside the
 two real sectors, and its assigned mesh point $z$, Taylor's theorem at
-$\alpha$, as in that proof, with $|z-\alpha|\le h$, $|z|\le2$ and the
+$\alpha$, as in the proof of Theorem~\ref{thm:T3}, with $|z-\alpha|\le h$, $|z|\le2$ and the
 bound $M_BN^{5/2}\sqrt{\log N}$ on $|f_N''|$, gives
 \begin{align*}
  \frac{|f_N(z)|}{\sqrt N}
@@ -1248,9 +1312,13 @@ bound $M_BN^{5/2}\sqrt{\log N}$ on $|f_N''|$, gives
 \end{align*}
 since $Nh=\eta/(L\sqrt{\log N})$, $\eta+M_B\eta^2/2\le5\eta/4\le M_B$ and
 $M_B\eta\le1/2$.
-It follows that a root produces the test \eqref{eq:annular-mesh-test} with
-$u_B=M_B/(L^2\sqrt{\log N})$ in place of its value threshold and the same
-derivative threshold $3/L$.
+It follows that the thresholds $u$ and $v_0$ of Theorem~\ref{thm:T3},
+with $M_2=M_BN^{5/2}\sqrt{\log N}$, satisfy \eqref{eq:annular-mesh-test}
+with $u_B=M_B/(L^2\sqrt{\log N})$ in place of its bound on $u$ and the
+same bound $3/L$ on $v_0$.
+As for real Gaussian coefficients, the successful tests are the retained
+mesh points $z_i$ at which the event $E_i$ of Theorem~\ref{thm:T3}
+occurs.
 By the mesh count of that proof, there are at most
 $53(K+1)\eta^{-2}NL^2\log N=C(K,B)N^{33/32}\log N$ points, since
 $L^2=N^{1/32}$.
@@ -1258,7 +1326,7 @@ With the eigenvalue bounds of that proof and its two Rai\v{c} bounds
 multiplied by at most $B^3$, as shown above, the chain
 \eqref{eq:annular-jet-small-ball} becomes
 \begin{align*}
- \Prob\{\text{the test holds at }z\}
+ \Prob(E_i)
  &\le\frac{u_B^2(3/L)^2}{4(e^{-4K}/80)^2}
    +2000B^3e^{3K}(160e^{4K})^{3/2}N^{-1/2}\\
  &=\frac{9\cdot80^2e^{8K}M_B^2}4\cdot\frac{L^{-6}}{\log N}
@@ -1267,14 +1335,15 @@ multiplied by at most $B^3$, as shown above, the chain
 \end{align*}
 where the first step collects the four-dimensional Rai\v{c} bound and the
 density and volume bounds of that chain, with $2/(e^{-4K}/80)=160e^{4K}$.
-For a separated pair, the three-term bound for the covariance of the two
-test indicators in that proof holds with its two Rai\v{c} terms
-multiplied by at most $B^3$ and with the total variation bound
-\eqref{eq:jet-tv} unchanged, so that this covariance is at most
-$C(K,B)N^{-1/2}$.
+For a separated pair, the bound $\delta_*+\chi+2\delta$ on the covariance
+of the indicators of $E_i$ and $E_j$ in the proof of Theorem~\ref{thm:T3} holds
+with its Rai\v{c} terms $\delta_*$ and $\delta$ multiplied by at most
+$B^3$ and with the total variation bound $\chi$ of \eqref{eq:jet-tv}
+unchanged, so that this covariance is at most $C(K,B)N^{-1/2}$.
 Let $m_B\le C(K,B)NL^2\log N$ be the number of retained mesh points and
 $S$ the number of successful tests.
-Then, by the mean and variance calculations of that proof, we have
+Then, by the mean and variance bounds in the proof of
+Theorem~\ref{thm:T3}, we have
 \begin{align*}
  \mathbb ES
  &\le m_B\left\{\frac{C(K,B)L^{-6}}{\log N}+C(K,B)N^{-1/2}\right\}
@@ -1286,43 +1355,43 @@ Then, by the mean and variance calculations of that proof, we have
 where the variance bound counts the covariances of the at most
 $10m_B^2N^{-1/2}$ ordered pairs in the removed bands as one and
 the others as $C(K,B)N^{-1/2}$.
-For the local count we use Lemma~\ref{lem:local-counts-bounded}, with
-$K+2$ in place of $K$, so that
+For the local count (H1) we use Lemma~\ref{lem:local-counts-bounded},
+with $K+2$ in place of $K$, so that, on the local-count and derivative
+events,
 \[
- B_{K,N}\le C_{1,B}(K+2)(\log N)\cdot\#\{\text{successful tests}\}
- +40C_{1,B}(K+2)\sqrt N\log N,
+ B_{K,N}\le C_{1,B}(K+2)(\log N)\,S+40C_{1,B}(K+2)\sqrt N\log N.
 \]
-and we take $Q=N^{31/32}/(2C_{1,B}(K+2)\log N)$.
-With $L=N^{1/64}$, the substitution of that proof yields
+As in the proof of Lemma~\ref{lem:small-derivatives}, we take the
+deviation $t=NL^{-4}$. Since $L=N^{1/64}$, we have $\sqrt N\le NL^{-4}$
+and $N^{1/2}L^2\log N\le NL^{-4}$ for $N\ge2$, so that
+$\mathbb ES+t\le C(K,B)NL^{-4}$, and hence, on these events,
+$S\le\mathbb ES+t$ implies
 \begin{align*}
- \frac{\mathbb ES}Q&\le C(K,B)\{N^{-1/32}\log N+N^{-7/16}(\log N)^2\},\\
- \frac{40C_{1,B}(K+2)\sqrt N\log N}{N^{31/32}}&=40C_{1,B}(K+2)N^{-15/32}\log N,
+ B_{K,N}&\le C_{1,B}(K+2)(\log N)\,C(K,B)NL^{-4}
+ +40C_{1,B}(K+2)\sqrt N\log N\\
+ &\le C(K,B)NL^{-4}\log N.
 \end{align*}
-and both tend to zero, so that $\mathbb ES\le Q/2$ and the sector
-contribution is at most $N^{31/32}/2$ for all sufficiently large $N$,
-depending on $K$ and $B$.
-On the local-count and derivative events, $B_{K,N}>N^{31/32}$ then forces
-$S>Q$, and by Chebyshev's inequality at deviation $Q/2$ we have
+By Chebyshev's inequality at deviation $t$, and since $L^{12}=N^{3/16}$,
 \[
- \Prob\{S>Q\}
- \le\frac{4\operatorname{Var}S}{Q^2}
- \le C(K,B)\frac{N^{25/16}(\log N)^2}{N^{31/16}(\log N)^{-2}}
- =C(K,B)N^{-3/8}(\log N)^4,
+ \Prob\{S>\mathbb ES+t\}
+ \le\frac{\operatorname{Var}S}{t^2}
+ \le C(K,B)\frac{N^{3/2}L^4(\log N)^2}{N^2L^{-8}}
+ =C(K,B)N^{-5/16}(\log N)^2.
 \]
-since $\mathbb ES\le Q/2$.
 Adding the exceptional probabilities of
 Lemma~\ref{lem:local-counts-bounded} and of the above derivative bound,
 we obtain
 \begin{multline}
- \Prob\{B_{K,N}>N^{31/32}\}\\
- \le N^{-3}+\exp[-(N+1)/(2B^4)]+N^{-10}+C(K,B)N^{-3/8}(\log N)^4.
+ \Prob\{B_{K,N}>C(K,B)NL^{-4}\log N\}\\
+ \le N^{-3}+\exp[-(N+1)/(2B^4)]+N^{-10}+C(K,B)N^{-5/16}(\log N)^2,
  \label{eq:bounded-small-derivatives}
 \end{multline}
+which is (H5).
 
 Write $\xi_k=\epsilon_ka_k$ as in the proof of
-Lemma~\ref{lem:local-counts-bounded}, with independent signs and
-independent, possibly complex, amplitudes $a_k$ with the coefficient
-distribution, independent of the signs.
+Lemma~\ref{lem:local-counts-bounded}, with independent, possibly complex,
+amplitudes $a_k$ with the coefficient distribution, independent of the
+signs.
 Conditional on the amplitudes, with the weights
 $w_k=r^{2k}/\sigma_N(r)^2$ of the Gaussian case, by Parseval's identity
 and $|\xi_k|=|a_k|$ we have $V=\sum_{k=0}^Nw_k|a_k|^2$ and
@@ -1373,16 +1442,18 @@ $2+c_B<14+3c_B$, Lemma~\ref{lem:clipping} therefore applies on $E$, with
 \[
  H=14+3c_B,\qquad C=C_B,\qquad B_E=B^2.
 \]
-Its error is at most $C(K,B)N^{-1/32}(\log N)^7$, and its probability
+Its error is at most $C(K,B)N^{-1/16}(\log N)^7$, and its probability
 bound, with $\Prob(E^c)\le\exp[-N/(2B^4e^{6K})]$ by
 \eqref{eq:layer2-boundedenergy}, is the concentration bound of the
 proposition.
+The moment bound on $E$, the bound $V\le B^2$ and
+\eqref{eq:layer2-boundedenergy} are (H4), with $E_r=\{V\ge1/2\}$.
 The explicit bound is computed in Section~\ref{sec:model-constants}.
 
 \medskip
 \noindent\emph{Summability.}
 At $N=j^8$ the polynomial terms of the exceptional probabilities are
-summable, by the last column of Table~\ref{tab:probability-budget}.
+summable, by the last column of Table~\ref{tab:unit-events}.
 The remaining terms are
 \[
  e^{-3(N+1)/32},\quad e^{-3N/(32e^{6K})},\quad 2(2N+1)e^{-N^2/2},\quad

@@ -37,24 +37,24 @@ LANE = 0.12                     # distance from a box edge to a lane
 XL, XM, XR = 0.995, 2.855, 4.76    # equal gaps; a lane on each side, the same margin outside each lane
 
 # (key, column x, row, header, results, body), with results as (kind, label) pairs
-PROOF_C12 = [('Proof of Corollary', 'thm:stronglaw')]    # steps inside the proof of the unit-disk law, in Section 6.1
+PROOF_T11 = [('Proof of Theorem', 'thm:radial-profile')]    # steps inside the proof of the radial law, in Section 6
 SPEC = [
- ('G', XM, 0, 'Setup', PROOF_C12, r'$f_n(z)=\epsilon_0+\epsilon_1 z+\cdots+\epsilon_n z^n$' '\n' r'blocks $N=j^8\leq n<(j+1)^8$' '\n' r'fixed $K\geq 2$, band $N^{-65/64}$'),
+ ('G', XM, 0, 'Setup', PROOF_T11, r'$f_n(z)=\epsilon_0+\epsilon_1 z+\cdots+\epsilon_n z^n$' '\n' r'blocks $N=j^8\leq n<(j+1)^8$' '\n' r'fixed $x$ and $K\geq |x|+2$, band $N^{-65/64}$'),
  ('P', XL, 1, 'Variance profile', [('Proposition', 'prop:profiles'), ('Lemma', 'lem:profile-rate')], r'$\log\sigma_N(1+x/N)-\frac{1}{2}\log N$' '\n' r"$\to F(x)$ with $F'=\Phi$"),
  ('A', XM, 1, 'Angular logarithm', [('Theorem', 'thm:sign-logarithms')], r'$J_N(r)=\log\sigma_N(r)-\gamma/2$' '\n' r'$+\,o(1)$ for $|r-1|\leq K/N$'),
  ('C', XR, 1, 'Derivative and tail bounds', [('Lemma', 'lem:second-derivative'), ('Lemma', 'lem:tails')], 'Hoeffding on a mesh' '\n' r'$|f_N^{\prime\prime}|\leq C(K)N^{5/2}\sqrt{\log N}$' '\n' r'$|f_n-f_N|<a$ on the block'),
- ('B', XL, 2, 'Small derivatives', [('Lemma', 'lem:small-derivatives')], 'second moment on a mesh' '\n' r'$\#\{|f_N^{\prime}(\alpha)|<N^{3/2-1/64}\}$' '\n' r'$\leq N^{31/32}$ in the annulus'),
- ('J', XM, 2, 'Annular mass', [('Corollary', 'cor:radial-probability')], 'Jensen secants give' '\n' r'$\#\{||\alpha|-1|>K/N\}$' '\n' r'$\leq N\,(2\log 2/K+o(1))$' '\n' r'and $\nu_N(1\pm N^{-65/64})\sim N/2$'),
- ('L', XR, 2, 'Sublevel domains', [('Lemma', 'lem:isolation-interface')], r'if $|f_N^{\prime}(\alpha)|\geq d_0$, then $\alpha$' '\n' r'is alone in a domain $D$' '\n' r'within $2a/d_0$ of $\alpha$,' '\n' r'disjoint, $|f_N|>a$ on $\partial D$'),
- ('U', XL, 3, 'Unselected roots', PROOF_C12, r'outside $||z|-1|\leq K/N$' '\n' r'or with small $|f_N^{\prime}|$' '\n' r'$U_N\leq N\,(2\log 2/K+o(1))$'),
- ('Cn', XM, 3, 'Boundary domains', PROOF_C12, r'$c_N=o(N)$ domains' '\n' r'meet $|z|=1$, as' '\n' r'$2a/d_0<N^{-65/64}$'),
- ('M', XR, 3, 'Root matching', [('Theorem', 'thm:T4')], "Rouché's theorem gives" '\n' r'$|\nu_n(1)-\nu_N(1)|$' '\n' r'$\leq c_N+U_N+m_j$'),
- ('RT', XL, 4, 'Logarithmic rate', [('Theorem', 'thm:log-rate')], r'take $K_N=\lfloor\log N/1000\rfloor$' '\n' r'$(\log n)\,|\nu_n(1)/n-1/2|$' '\n' r'$\leq 2000\log 2+o(1)$'),
- ('BC', XM, 4, 'Borel–Cantelli', PROOF_C12, r'summable over $N=j^8$' '\n' r'$\limsup\,|\nu_n(1)/n-1/2|$' '\n' r'$\leq 2\log 2/K$ almost surely'),
- ('X', XR, 4, 'Coefficient transfer', [('Proposition', 'prop:coefficient-transfer')], 'logarithmic, local-count,' '\n' 'derivative and tail bounds' '\n' 'for other distributions'),
- ('T8', XL, 5, 'Radial law', [('Theorem', 'thm:radial-profile')], r'$\nu_n(1+x/n)/n\to\Phi(x)$' '\n' 'almost surely, uniformly' '\n' r'for $x$ in compact sets'),
- ('T6', XM, 5, 'Unit-disk law', [('Corollary', 'thm:stronglaw')], r'Erdős #522, as $K\to\infty$' '\n' r'$\nu_n(1)/n\to 1/2$' '\n' 'almost surely'),
- ('CM', XR, 5, 'Other distributions', [('Theorem', 'thm:radial-profile'), ('Corollary', 'thm:stronglaw')], 'same law for Steinhaus,' '\n' 'Gaussian, and bounded' '\n' 'symmetric coefficients'),
+ ('B', XL, 2, 'Small derivatives', [('Lemma', 'lem:small-derivatives')], 'second moment on a mesh' '\n' r'$\#\{|f_N^{\prime}(\alpha)|<N^{3/2-1/64}\}$' '\n' r'$\leq C(K)N^{15/16}\log N$'),
+ ('J', XM, 2, 'Annular mass', [('Corollary', 'cor:radial-probability'), ('Lemma', 'lem:local-radial-secant')], 'Jensen secants give' '\n' r'$\#\{||\alpha|-1|>K/N\}$' '\n' r'$\leq N\,(2\log 2/K+o(1))$' '\n' r'and $\nu_N(1+y/N)\sim N\Phi(y)$'),
+ ('L', XR, 2, 'Disjoint disks', [('Lemma', 'lem:isolation-interface')], r'if $|f_N^{\prime}(\alpha)|\geq d_0$, then $\alpha$' '\n' r'is alone in the disk $D$' '\n' r'of radius $2a/d_0$ about it,' '\n' r'disjoint, $|f_N|>a$ on $\partial D$'),
+ ('U', XL, 3, 'Unselected roots', PROOF_T11, r'outside $||z|-1|\leq K/N$' '\n' r'or with small $|f_N^{\prime}|$' '\n' r'$U_N\leq N\,(2\log 2/K+o(1))$'),
+ ('Cn', XM, 3, 'Boundary disks', PROOF_T11, r'$c_N=o(N)$ disks meet' '\n' r'the target circles, as' '\n' r'$2a/d_0<N^{-65/64}$'),
+ ('M', XR, 3, 'Root matching', [('Theorem', 'thm:T4')], "Rouché's theorem gives" '\n' r'$|\nu_n(1+x/n)-\nu_N(1+x/N)|$' '\n' r'$\leq c_N+U_N+m_j$'),
+ ('RT', XL, 4, 'Logarithmic rate', [('Theorem', 'thm:log-rate')], r'take $K_N\approx\log N/128$' '\n' r'$(\log n)\,|\nu_n(1)/n-1/2|$' '\n' r'$\leq 128+o(1)$'),
+ ('BC', XM, 4, 'Borel–Cantelli', PROOF_T11, r'summable over $N=j^8$, a.s.' '\n' r'$\limsup|\nu_n(1+x/n)/n$' '\n' r'$-\,\Phi(x)|\leq 2\log 2/K$'),
+ ('X', XR, 4, 'Hypotheses (H1)–(H5)', [('Proposition', 'prop:coefficient-transfer')], 'logarithmic, local-count,' '\n' 'derivative and tail bounds' '\n' 'for other distributions'),
+ ('T8', XL, 5, 'Radial law', [('Theorem', 'thm:radial-profile')], r'as $K\to\infty$, almost surely' '\n' r'$\nu_n(1+x/n)/n\to\Phi(x)$' '\n' r'uniformly on compact sets'),
+ ('T6', XM, 5, 'Unit-disk law', [('Corollary', 'thm:stronglaw')], r'Erdős #522, the case $x=0$' '\n' r'$\nu_n(1)/n\to 1/2$' '\n' 'almost surely'),
+ ('CM', XR, 5, 'Other distributions', [('Theorem', 'thm:radial-profile'), ('Corollary', 'thm:stronglaw')], 'the same proof under' '\n' '(H1)–(H5): Steinhaus,' '\n' 'Gaussian, bounded' '\n' 'symmetric coefficients'),
 ]
 FINAL = {'T8', 'T6', 'CM'}      # the three results, drawn alike
 
@@ -165,13 +165,12 @@ def lane(a, b, right):
     codes = [MPath.MOVETO, MPath.LINETO, MPath.CURVE3, MPath.CURVE3, MPath.LINETO, MPath.CURVE3, MPath.CURVE3]
     ax.add_patch(PathPatch(MPath(P, codes), fc='none', ec=INK, lw=LW_ARR, zorder=2, capstyle='butt'))
     arrow(P[-1], (e1, B['y']))
-lane('C', 'M', right=True)      # around the sublevel domains
+lane('C', 'M', right=True)      # around the disjoint disks
 lane('P', 'T8', right=False)    # the profile is also the limit in the radial law
 down('U', 'BC', fa=0.45, fb=-0.45)
 down('Cn', 'BC')
 down('M', 'BC', fa=-0.45, fb=0.45)
 down('BC', 'T8', fa=-0.45, fb=0.45)
-down('BC', 'T6')
 down('BC', 'CM', fa=0.45, fb=-0.45)
 down('X', 'CM')
 def side(a, b):
@@ -179,5 +178,6 @@ def side(a, b):
     if B['x'] > A['x']: arrow((A['r'], A['y']), (B['l'], B['y']))
     else: arrow((A['l'], A['y']), (B['r'], B['y']))
 side('BC', 'RT')
+side('T8', 'T6')                # the unit-disk law is the case x=0
 
 fig.savefig(OUT / 'proof-map.pdf')

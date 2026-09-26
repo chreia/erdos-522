@@ -1,5 +1,15 @@
 \section{Local zeros and small derivatives}
 \label{sec:local-roots}
+Besides the logarithmic concentration, the proof of the radial law uses
+four estimates near the unit circle: local zero counts, a bound on
+$f_N''$, few annular zeros with a small derivative, and a uniform bound on
+appended tails. The zero counts come
+from Jensen's formula at a point where $|f_N|$ is large, which the
+Hanson--Wright inequality provides on each arc of a fine grid. The zeros
+with a small derivative are detected on a mesh by
+Theorem~\ref{thm:T3}, using Gaussian approximations of the jet
+$(f_N,zf_N')$.
+
 \subsection{Local zero counts}\label{sec:local-root-count}
 We will use the Hanson--Wright inequality of Rudelson--Vershynin
 \cite[Theorem 1.1]{RudelsonVershynin2013}: if $\xi$ is a random vector
@@ -24,8 +34,8 @@ a real $(N+1)\times(N+1)$ matrix $M$ and $t>0$,
  \label{eq:HW-signs}
 \end{equation}
 
-We first bound the local zero counts when the coefficients are independent
-signs times bounded amplitudes, and then we specialize this bound to signs.
+We first treat independent signs times bounded amplitudes, and then
+specialize to signs.
 
 \begin{lemma}[Local zero counts for bounded amplitudes]
 \label{lem:local-counts-general}
@@ -81,8 +91,8 @@ identity on the whole circle, we have
  \le\int\left|\sum_{k=0}^Nx_ka_ke^{ik\theta}\right|^2\dd\mu(\theta)\\
  &=\sum_{k=0}^Nx_k^2|a_k|^2\le B^2\|x\|^2.
 \end{align*}
-It follows that the eigenvalues of the real symmetric matrix $A_I$ lie in
-$[0,B^2]$, and since they are nonnegative, we have
+Hence the eigenvalues of the real symmetric matrix $A_I$ lie in
+$[0,B^2]$, and since they are nonnegative,
 \begin{gather*}
  \|A_I\|\le B^2,\qquad
  \|A_I\|_{\rm HS}^2\le\|A_I\|\operatorname{tr}A_I\le B^2\operatorname{tr}A_I,\\
@@ -121,8 +131,8 @@ By the union bound over the at most $8N$ arcs, we get
  \text{ for some arc }I\}
  \le(8N)(2N^{-16})=16N^{-15}\le N^{-3}.
 \]
-Taking the expectation over $a_0,\dots,a_N$ on $\mathcal E$, we see that
-the probability that $\mathcal E$ occurs and some arc has
+After the expectation over $a_0,\dots,a_N$ on $\mathcal E$, the
+probability that $\mathcal E$ occurs and some arc has
 $Q_I<\tfrac12\operatorname{tr}A_I$ is at most $N^{-3}$.
 
 It remains to bound the number of zeros when $\mathcal E$ occurs and
@@ -174,9 +184,8 @@ $\tfrac12\log(2/\eta)\le\tfrac12\log4=\log2$ for $\eta\ge\tfrac12$, and
 $\log B+\log2+4K+2\le(4K+3+\log B)\log N$, which holds for
 $\log N\ge1$ since $\log B\ge0$ and $\log2<1$.
 Since the containment is strict, this count includes the zeros on the
-boundary of the target disk, and since the angular cover is finite and
-does not depend on $z_0$, the bound holds for every admissible center
-$z_0$ at once.
+boundary of the target disk. The angular cover is finite and does not
+depend on $z_0$, so the bound holds for every admissible center at once.
 \end{proof}
 
 \begin{lemma}[Local zero counts]\label{lem:local-counts}
@@ -188,7 +197,7 @@ Except on an event of probability at most $N^{-3}$, every disk
 contains at most $C(K)\log N$ zeros of $f_N$.
 \end{lemma}
 
-The local-count constant is computed in Section~\ref{app:const-local}.
+Appendix~\ref{sec:constants} lists the local-count constant.
 
 \begin{proof}
 We apply Lemma~\ref{lem:local-counts-general} with $a_k=1$ for every $k$,
@@ -200,7 +209,7 @@ Then $P_N=f_N$, and since $\log1=0$, the constants of that lemma are
  t_N(1,1)=\frac{A\log N}N=t_N,\\
  C_1(K,1,1)&=\frac{4A+4K+4}{\log2}=C_1(K),
 \end{align*}
-which are the constants of Section~\ref{app:const-local}.
+which are the constants of Appendix~\ref{sec:constants}.
 The conditions $N\ge e$ and $t_N\le1$ hold for all sufficiently large
 $N$, since $t_N\to0$.
 This proves the lemma with $C(K)=C_1(K)$.
@@ -269,9 +278,9 @@ Moreover, we have the deterministic bound
  &\le N^3\cdot N\cdot\Bigl(1+\frac{K+1}N\Bigr)^N
  \le e^{K+1}N^4.
 \end{align*}
-Integrating $f_N'''$ along the arc from a point of the circle to its
-nearest sample, we see from this bound that the interpolation error is at
-most $4\pi e^{K+1}N$, which is less than $b/2$ for every $N\ge2$, that is,
+Integrated along the arc from a point of the circle to its nearest
+sample, $f_N'''$ gives an interpolation error of at most
+$4\pi e^{K+1}N$, which is less than $b/2$ for every $N\ge2$:
 \begin{align*}
  \frac{4\pi}{N^3}\sup_{|z|\le1+(K+1)/N}|f_N'''(z)|
  &\le\frac{4\pi}{N^3}e^{K+1}N^4
@@ -292,13 +301,14 @@ $|z|\le1+(K+1)/N$. This proves \eqref{eq:sign-second-derivative} with the
 constant $100e^{K+4}$.
 \end{proof}
 
-We will use the following inequalities for the block diagonal comparison
-of the paired jet covariance in the proof of
-Lemma~\ref{lem:small-derivatives}.
-Devroye, Mehrabian and Reddad \cite{DevroyeMehrabianReddad2018} give
-upper and lower bounds that match up to constant factors for the total
-variation distance between Gaussians with equal means, and we need only
-an upper bound.
+The following lemma compares two centered Gaussian laws through
+relative entropy. Devroye, Mehrabian and Reddad
+\cite{DevroyeMehrabianReddad2018} give upper and lower bounds on the total
+variation distance between Gaussians with equal means that match up to
+constant factors; we need only an upper bound. For the block diagonal
+comparison of the paired jet covariance in the proof of
+Lemma~\ref{lem:small-derivatives}, the interpolation bound
+\eqref{eq:tv-circular} gives one more directly.
 
 \begin{lemma}[An entropy comparison]\label{lem:entropy}
 Let $p,q$ be probability densities, with $p$ absolutely continuous with
@@ -370,31 +380,34 @@ and hence, by the first inequality,
 Let $B_{K,N}$ count the roots $\alpha$ of $f_N$ with $||\alpha|-1|\le K/N$
 and $|f_N'(\alpha)|<N^{3/2}/L$. For all sufficiently large $N$,
 \[
- \Prob\{B_{K,N}>N^{31/32}\}\le N^{-3}+N^{-10}+C(K)N^{-3/8}(\log N)^4.
+ \Prob\{B_{K,N}>C(K)NL^{-4}\log N\}
+ \le N^{-3}+N^{-10}+C(K)N^{-5/16}(\log N)^2.
 \]
 \end{lemma}
 
-\begin{proof}
-The idea is to detect each annular root with a small derivative, outside
-two thin sectors around the real axis, at a nearby point of a fixed mesh
-at which both $f_N$ and $zf_N'$ are small. We bound the mean and the
-variance of the number of such mesh points by one- and two-point Gaussian
-approximations, and then the number of roots by Chebyshev's inequality and
-the local zero counts, which also bound the roots in the two sectors
-directly.
+Since $L=N^{1/64}$, the bound on $B_{K,N}$ is $C(K)N^{15/16}\log N$.
 
-By the Taylor bounds below, at a mesh point $z$ within $h$ of a root,
-$|f_N(z)|/\sqrt N$ is at most a constant times
-$Nh/L+N^2h^2\sqrt{\log N}$, and for the mean count below both terms must be
+\begin{proof}
+The idea is to apply Theorem~\ref{thm:T3}. Outside two thin sectors
+around the real axis, it detects each annular root with a small
+derivative at a nearby point of a fixed mesh at which both $f_N$ and
+$zf_N'$ are small, and it bounds the number of such mesh points by their
+mean and variance. We construct the mesh, verify the one- and two-point
+Gaussian approximations that the theorem requires, and bound the roots
+in the two sectors directly by the local zero counts.
+
+By the Taylor step in the proof of Theorem~\ref{thm:T3}, at a mesh point
+$z$ within $h$ of a root, $|f_N(z)|/\sqrt N$ is at most a constant times
+$Nh/L+N^2h^2\sqrt{\log N}$. For the mean count below, both terms must be
 at most a constant times $L^{-2}(\log N)^{-1/2}$, which holds when $h$ is
-at most a constant times $1/(NL\sqrt{\log N})$. Since a smaller $h$ would
-only increase the number of mesh points, we choose a deterministic mesh
-with spacing
+at most a constant times $1/(NL\sqrt{\log N})$. A smaller $h$ would only
+add mesh points, so we choose a deterministic mesh with spacing
 \[
  h=\frac{c}{NL\sqrt{\log N}},
 \]
-where $c>0$ is sufficiently small and depends only on $K$. The Taylor
-bounds below require $100e^{K+4}c\le1/2$, which also implies that $c\le1$.
+where $c>0$ is sufficiently small and depends only on $K$. The bounds
+\eqref{eq:annular-mesh-test} below require $100e^{K+4}c\le1/2$, which
+implies $c\le1$.
 The construction in
 Section~\ref{app:const-small-derivatives} takes $\lceil2K/(Nh)\rceil+1$
 rows, at equally spaced radii from $1-K/N$ to $1+K/N$, and on each row the
@@ -438,46 +451,30 @@ Moreover, since $h\le1/N\le N^{-1/2}$ for $c\le1$ and $N\ge e$, we have
 Thus every annular root $\alpha$ with
 $\operatorname{dist}(\arg\alpha,\pi\mathbb Z)\ge2N^{-1/2}$ has a retained
 mesh point within $h$.
+We write $z_1,\ldots,z_m$ for the retained mesh points, so that
+$m\le53(K+1)c^{-2}NL^2\log N$.
 
 Now let $\alpha$ be such a root with $|f_N'(\alpha)|<N^{3/2}/L$, and let
-$z$ be its assigned mesh point.
-Since $f_N(\alpha)=0$, by Taylor's theorem with integral remainder at
-$\alpha$ we have
-\begin{align*}
- \frac{|f_N(z)|}{\sqrt N}
- &=\frac1{\sqrt N}\left|f_N'(\alpha)(z-\alpha)
-   +(z-\alpha)^2\int_0^1(1-t)f_N''(\alpha+t(z-\alpha))\dd t\right|\\
- &\le\frac{|f_N'(\alpha)|h}{\sqrt N}
-       +\frac{\sup|f_N''|\,h^2}{2\sqrt N}
- \le\frac{Nh}{L}+\frac{C(K)}2N^2h^2\sqrt{\log N}\\
- &=\frac c{L^2\sqrt{\log N}}+\frac{C(K)c^2}{2L^2\sqrt{\log N}}
- \le\frac{C(K)}{L^2\sqrt{\log N}},
-\end{align*}
-where we used $|z-\alpha|\le h$, $|f_N'(\alpha)|<N^{3/2}/L$ and, on the
-event of Lemma~\ref{lem:second-derivative},
-\eqref{eq:sign-second-derivative} with $C(K)=100e^{K+4}$, and the last
-step holds with the same $C(K)$, since
-$c+C(K)c^2/2=c(1+C(K)c/2)\le5c/4\le C(K)$ by $C(K)c\le1/2$ and $c\le1$.
-Since $f_N'(z)=f_N'(\alpha)+(z-\alpha)\int_0^1f_N''(\alpha+t(z-\alpha))\dd t$
-and $|z|\le2$, we also have
-\[
- \frac{|zf_N'(z)|}{N^{3/2}}
- \le2\left(\frac{|f_N'(\alpha)|}{N^{3/2}}
-            +\frac{\sup|f_N''|\,h}{N^{3/2}}\right)
- \le\frac{2(1+C(K)c)}L
- \le\frac3L,
-\]
-since $C(K)c\le1/2$ and, by \eqref{eq:sign-second-derivative},
-$\sup|f_N''|\,h/N^{3/2}\le C(K)N^{5/2}\sqrt{\log N}\,h/N^{3/2}=C(K)c/L$.
-In both chains the supremum of the second derivative is taken over the
-disk $|\zeta|\le1+(K+1)/N$, which contains the segment from $\alpha$ to
-$z$, since $\alpha$ and $z$ lie in the convex disk $|\zeta|\le1+K/N$.
-Thus the root produces the test
+$z$ be its assigned mesh point. The segment from $\alpha$ to $z$ lies in
+the disk $D=\{|\zeta|\le1+(K+1)/N\}$, since $\alpha$ and $z$ lie in the
+convex disk $|\zeta|\le1+K/N$. By Lemma~\ref{lem:second-derivative},
+outside an event of probability at most $N^{-10}$ we have
+$\sup_D|f_N''|\le M_2=C(K)N^{5/2}\sqrt{\log N}$ with $C(K)=100e^{K+4}$.
+On this event, since $|z-\alpha|\le h$ and $|z|\le2$, the Taylor step in
+the proof of Theorem~\ref{thm:T3}, with $\tau=h$ and radius $2$, shows
+that $|f_N(z)|/\sqrt N\le u$ and $|zf_N'(z)|/N^{3/2}\le v_0$. Since
+$Nh=c/(L\sqrt{\log N})$ and $M_2h/N^{3/2}=C(K)c/L$, the thresholds of that
+theorem satisfy
 \begin{equation}
- |f_N(z)|/\sqrt N\le u=\frac{C(K)}{L^2\sqrt{\log N}},\qquad
- |zf_N'(z)|/N^{3/2}\le v=3/L.
+ u=\frac{Nh}L+\frac{C(K)}2N^2h^2\sqrt{\log N}\le\frac{C(K)}{L^2\sqrt{\log N}},
+ \qquad
+ v_0=\frac{2(1+C(K)c)}L\le\frac3L.
  \label{eq:annular-mesh-test}
 \end{equation}
+The first bound holds with the same $C(K)$, since
+$Nh/L+(C(K)/2)N^2h^2\sqrt{\log N}=(c+C(K)c^2/2)/(L^2\sqrt{\log N})$ and
+$c+C(K)c^2/2=c(1+C(K)c/2)\le5c/4\le C(K)$ by $C(K)c\le1/2$ and $c\le1$,
+and the second holds since $C(K)c\le1/2$.
 If a root $\alpha$ is assigned to a mesh point $z$, then, since
 $\bigl|z-z/|z|\bigr|=||z|-1|\le K/N$ and $h\le1/N$,
 \[
@@ -565,7 +562,7 @@ $r\in[1-K/N,1+K/N]$ and $N\ge2K$, we have
  \le e^{-4K}/320,
 \end{align*}
 where we keep the cruder constant $20e^{4K}$, from which the threshold is
-computed, and the last step holds if and only if
+computed. The last step holds if and only if
 $N^{1/2}\ge20\cdot320e^{8K}=6400e^{8K}$, that is, at the appendix threshold
 $N\ge(6400e^{8K})^2$.
 
@@ -737,10 +734,10 @@ have
  &\le16e^{3K}(2/\lambda)^{3/2}N^{-1/2}.
 \end{align*}
 Let $U\subset\mathbb R^4$ be the product of the disks
-$x_1^2+x_2^2\le u^2$ and $x_3^2+x_4^2\le v^2$, so that the test
-\eqref{eq:annular-mesh-test} at $z$ is the event $W(z)\in U$, and the tests
-at $z$ and $w$ together are the event $(W(z),W(w))\in U\times U$.
-The products of disks that define the tests are convex, and so are their
+$x_1^2+x_2^2\le u^2$ and $x_3^2+x_4^2\le v_0^2$, so that the event $E_i$
+of Theorem~\ref{thm:T3} at $z=z_i$ is $\{W(z)\in U\}$, and $E_i\cap E_j$
+is $\{(W(z),W(w))\in U\times U\}$ for $w=z_j$.
+The products of disks that define these events are convex, and so are their
 images under whitening. Since $\Sigma^{-1/2}(W(z),W(w))=\sum_kY_k$ and
 $\Sigma^{-1/2}G_\Sigma$ has the law of $G_8$, it follows from Rai\v{c}'s
 theorem, as stated in Section~\ref{sec:h1-rademacher}, with $d=8$ and the
@@ -753,9 +750,9 @@ convex set $\Sigma^{-1/2}(U\times U)$, that
  &\quad\le(87\cdot16)e^{3K}(2/\lambda)^{3/2}N^{-1/2}
  \le2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}.
 \end{align*}
-Similarly, the four-dimensional marginal, whose summands have smaller
-norms and whose covariance has least eigenvalue at least $\lambda$,
-satisfies the same bound. Indeed, $W(z)=\sum_k\epsilon_kb_k(z)$ has covariance $A_z$,
+The four-dimensional marginal, whose summands have smaller norms and
+whose covariance has least eigenvalue at least $\lambda$, satisfies the
+same bound. Indeed, $W(z)=\sum_k\epsilon_kb_k(z)$ has covariance $A_z$,
 $\|b_k(z)\|^2=r^{2k}(1+(k/N)^2)/N\le2e^{2K}/N$ and
 $\|A_z^{-1/2}\|\le\lambda^{-1/2}$. Therefore, by Rai\v{c}'s theorem
 with $d=4$, applied to the vectors $\epsilon_kA_z^{-1/2}b_k(z)$ and the
@@ -768,90 +765,41 @@ convex set $A_z^{-1/2}U$, we have
  &\quad\le152e^{3K}(2/\lambda)^{3/2}N^{-1/2}
  \le2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}.
 \end{align*}
-The density of $G_{A_z}$ is at most $(2\pi)^{-2}(\det A_z)^{-1/2}$, and
-$(\det A_z)^{-1/2}\le\lambda^{-2}$ since every eigenvalue of $A_z$ is at
-least $\lambda$. Moreover, the volume of $U$ is $\pi u^2\cdot\pi v^2$.
-Hence we obtain the one-point bound
+These Rai\v{c} bounds, and the interpolation bound below, hold for every
+product of disks, so that they apply to the events $E_i$.
+With $g_i=\Prob\{G_{A_{z_i}}\in U\}$, the density and volume bound
+$g_i\le u^2v_0^2/(4\lambda^2)$ in the proof of Theorem~\ref{thm:T3} and
+\eqref{eq:annular-mesh-test} give the one-point bound
 \begin{align}
- \Prob\{W(z)\in U\}
- &\le\Prob\{G_{A_z}\in U\}+2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}
+ \Prob(E_i)
+ &\le g_i+2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}\nonumber\\
+ &\le\frac{u^2v_0^2}{4\lambda^2}+2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}
  \nonumber\\
- &\le(2\pi)^{-2}(\det A_z)^{-1/2}\cdot\pi u^2\cdot\pi v^2
+ &\le\frac{9C(K)^2}{4\lambda^2}\cdot\frac{L^{-6}}{\log N}
    +2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}\nonumber\\
- &\le(2\pi)^{-2}\lambda^{-2}\cdot\pi^2u^2v^2
-   +2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}\nonumber\\
- &=\frac{u^2v^2}{4\lambda^2}+2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}
- \nonumber\\
- &=\frac{9C(K)^2}{4\lambda^2}\cdot\frac{L^{-6}}{\log N}
-   +2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}\nonumber\\
- &\le C(K)L^{-6}/\log N+C(K)N^{-1/2}.
+ &\le C(K)L^{-6}/\log N+C(K)N^{-1/2},
  \label{eq:annular-jet-small-ball}
 \end{align}
-Here the first step is the four-dimensional Rai\v{c} bound, and in the
-fifth we used $u^2v^2=9C(K)^2L^{-6}/\log N$, by
-\eqref{eq:annular-mesh-test}. The last step holds since
-$\lambda=e^{-4K}/80$ depends only on $K$.
+where the first step is the four-dimensional Rai\v{c} bound, and the last
+holds since $\lambda=e^{-4K}/80$ depends only on $K$.
 
 For a separated pair, we compare its Gaussian law with the product of the
-actual marginal Gaussian laws by relative entropy, which, by
-Lemma~\ref{lem:entropy}, depends on $\Sigma$ and $\Sigma_0$ only through
-the eigenvalues of the matrix $R$ below, and one norm bound on
-$\Sigma_0^{-1/2}(\Sigma-\Sigma_0)\Sigma_0^{-1/2}$ places these near one.
-We set
-\[
- R=\Sigma_0^{-1/2}\Sigma\Sigma_0^{-1/2},\qquad
- \delta=\frac{40e^{4K}}{\lambda\sqrt N}.
-\]
-The inverse square root acts separately on the two marginal
-blocks. The matrix $R$ minus the identity is
-$\Sigma_0^{-1/2}(\Sigma-\Sigma_0)\Sigma_0^{-1/2}$, and, since
-$\lambda_{\min}(\Sigma_0)\ge\lambda$ and
-$40e^{4K}N^{-1/2}\le\lambda/2$ for $N\ge(6400e^{8K})^2$,
-\begin{align*}
- \|\Sigma_0^{-1/2}(\Sigma-\Sigma_0)\Sigma_0^{-1/2}\|
- &\le\|\Sigma_0^{-1/2}\|^2\,\|\Sigma-\Sigma_0\|
- =\|\Sigma_0^{-1}\|\,\|\Sigma-\Sigma_0\|\\
- &\le\lambda^{-1}\cdot40e^{4K}N^{-1/2}
- =\delta
- \le\tfrac12.
-\end{align*}
-Since $R$ minus the identity is symmetric with norm at most
-$\delta\le\frac12$, every eigenvalue of $R$ lies in
-$[1-\delta,1+\delta]$. Hence Lemma~\ref{lem:entropy} applies in
-dimension $d=8$, where $(\sqrt d/2)\delta=\sqrt2\,\delta$, and gives
+actual marginal Gaussian laws by the interpolation bound
+\eqref{eq:tv-circular}, in the general form stated after it, with
+$\Sigma_0$ in place of $\tfrac12I_d$ and $d=8$.
+Since $\lambda_{\min}(\Sigma_0)\ge\lambda$ and
+$\|\Sigma-\Sigma_0\|\le40e^{4K}N^{-1/2}\le\lambda/2$ for
+$N\ge(6400e^{8K})^2$, every matrix $\Sigma_0+\tau(\Sigma-\Sigma_0)$,
+$0\le\tau\le1$, has least eigenvalue at least $\lambda/2$, and hence
 \begin{equation}
  \operatorname{TV}\bigl(G_\Sigma,G_{\Sigma_0}\bigr)
- \le\sqrt2\,\delta
+ \le\frac{\sqrt{16}}4\cdot\frac{\|\Sigma-\Sigma_0\|}{\lambda/2}
  \le\frac{80e^{4K}}{\lambda\sqrt N}
  \le C(K)N^{-1/2}.\label{eq:jet-tv}
 \end{equation}
 The Gaussian vector $G_{\Sigma_0}$ is a pair of independent vectors
 $G_{A_z}$ and $G_{A_w}$, and the two marginal covariances can differ.
 
-Let $I_z$ be the indicator of the two inequalities in
-\eqref{eq:annular-mesh-test}, that is, of the event $W(z)\in U$, let
-$p_z=\mathbb EI_z$, $g_z=\Prob\{G_{A_z}\in U\}$ and
-$g_{z,w}=\Prob\{G_\Sigma\in U\times U\}$.
-Combining the pair approximation with the two marginal approximations, we get
-\begin{align*}
- |\operatorname{Cov}(I_z,I_w)|
- &=|\mathbb E(I_zI_w)-p_zp_w|\\
- &\le|\mathbb E(I_zI_w)-g_{z,w}|+|g_{z,w}-g_zg_w|
-       +|g_zg_w-p_zp_w|\\
- &\le C(K)N^{-1/2}+80e^{4K}/(\lambda\sqrt N)
-       +|g_z-p_z|+|g_w-p_w|\\
- &\le C(K)N^{-1/2}.
-\end{align*}
-In the third line, the first term is bounded by the eight-dimensional
-Rai\v{c} bound, since $\mathbb E(I_zI_w)=\Prob\{(W(z),W(w))\in U\times U\}$,
-and the second by \eqref{eq:jet-tv}, since
-$g_zg_w=\Prob\{G_{\Sigma_0}\in U\times U\}$ by the independence of
-$G_{A_z}$ and $G_{A_w}$. For the third we used
-$|g_zg_w-p_zp_w|\le|g_z-p_z|g_w+p_z|g_w-p_w|\le|g_z-p_z|+|g_w-p_w|$,
-and then the four-dimensional Rai\v{c} bound.
-
-Let $z_1,\ldots,z_m$ be the retained mesh points, and let
-$Z=\sum_{\ell=1}^m I_{z_\ell}$ be the number of successful tests.
 For each retained mesh point $re^{i\theta}$, at most $10mN^{-1/2}$
 partners lie in the removed pair bands. Indeed, a mesh point
 $se^{i\phi}$ lies in a removed pair band of $re^{i\theta}$ when
@@ -871,22 +819,10 @@ $(1-N^{-1/2})\lceil8\pi/h\rceil\ge\tfrac12\lceil8\pi/h\rceil$ retained
 angles for $N\ge4$, and the whole mesh has at most $2m$ points. Summing over
 the rows, at most $N^{-1/2}\cdot2m\le10mN^{-1/2}$ partners of
 $re^{i\theta}$ lie in the removed pair bands.
-We bound their covariances by one, and the others by $C(K)N^{-1/2}$, and
-sum over all ordered pairs, including the diagonal, which lies in the band
-$\operatorname{dist}(\theta-\phi,2\pi\mathbb Z)<N^{-1/2}$. By
-\eqref{eq:annular-jet-small-ball} and $m\le C(K)NL^2\log N$, we get
-\begin{align*}
- \mathbb EZ
- &=\sum_{\ell=1}^m\Prob(I_{z_\ell}=1)
- \le m\left\{\frac{C(K)L^{-6}}{\log N}+C(K)N^{-1/2}\right\}\\
- &\le C(K)NL^2\log N\left\{\frac{L^{-6}}{\log N}+N^{-1/2}\right\}
- =C(K)\{NL^{-4}+N^{1/2}L^2\log N\},\\
- \operatorname{Var}Z
- &=\sum_{\ell,j=1}^m\operatorname{Cov}(I_{z_\ell},I_{z_j})
- \le10m^2N^{-1/2}+C(K)m^2N^{-1/2}\\
- &\le C(K)(NL^2\log N)^2N^{-1/2}
- =C(K)N^{3/2}L^4(\log N)^2.
-\end{align*}
+Together with the diagonal, which lies in the band
+$\operatorname{dist}(\theta-\phi,2\pi\mathbb Z)<N^{-1/2}$, at most
+$10m^2N^{-1/2}$ ordered pairs of retained mesh points lie in the removed
+pair bands.
 
 It remains to count the roots in the sectors
 $\operatorname{dist}(\arg z,\pi\mathbb Z)<2N^{-1/2}$, $||z|-1|\le K/N$.
@@ -903,76 +839,65 @@ the sectors, and on the common local-count event of
 Lemma~\ref{lem:local-counts}, with $K+2$ in place of $K$, each of them
 contains at most $C_1(K+2)\log N$ roots, so that there are at most
 $40C_1(K+2)\sqrt N\log N$ roots in their union.
-This cover can also be used for random endpoint coefficients, that is, when
-the constant and the leading coefficients of the polynomial are random and
-may be small, as for the coefficient distributions of
-Section~\ref{sec:layer2-models}, since it uses only the local zero count and
-no lower bound on these coefficients.
+The cover uses only the local zero count and no lower bound on the
+constant and leading coefficients, so it also applies when these are
+random and may be small, as for the laws of
+Section~\ref{sec:layer2-models}.
 
-Recall that $B_{K,N}$ counts the annular roots with derivative smaller
-than $N^{3/2}/L$. By the assignment and the sector cover, we have
+We now apply Theorem~\ref{thm:T3}, whose count $B_N$ is $B_{K,N}$. Its
+mesh hypothesis holds with the annulus $||z|-1|\le K/N$, radius $2$, $\tau=h$,
+the retained mesh points $z_1,\ldots,z_m$, the disk $D$ and $M_2$ above,
+$p_2=N^{-10}$, the cell bound $q_0=C_1(K+2)\log N$ and the sector bound
+$b_0=40C_1(K+2)\sqrt N\log N$, which hold on the common local-count event
+of Lemma~\ref{lem:local-counts}, with $K+2$ in place of $K$, so that
+$p_0=N^{-3}$. Its jet approximation holds with $H_i=G_{A_{z_i}}$, whose
+covariance has least eigenvalue at least $\lambda$ by
+\eqref{eq:jet-eigenvalue}, with
+$\delta=\delta_*=2000e^{3K}(2/\lambda)^{3/2}N^{-1/2}$ by the four- and
+eight-dimensional Rai\v{c} bounds, with $\chi=80e^{4K}/(\lambda\sqrt N)$
+by \eqref{eq:jet-tv}, since $g_ig_j=\Prob\{G_{\Sigma_0}\in U\times U\}$ by
+the independence of $G_{A_{z_i}}$ and $G_{A_{z_j}}$, and with
+$b_*=10N^{-1/2}$ by the count of pairs in the removed bands.
+By \eqref{eq:annular-jet-small-ball} and this bound on $m$, the
+quantities of the theorem satisfy
 \[
- B_{K,N}\le C_1(K+2)(\log N)Z+40C_1(K+2)\sqrt N\log N.
+ \mu_*\le C(K)\{NL^{-4}+N^{1/2}L^2\log N\},\qquad
+ V_*=b_*+\delta_*+\chi+2\delta\le C(K)N^{-1/2}.
 \]
-Indeed, on the local-count event of Lemma~\ref{lem:local-counts}, with $K+2$
-in place of $K$, and the derivative event of
-Lemma~\ref{lem:second-derivative}, a counted root in the sectors is one of
-the roots of the sector cover, and every other counted root is
-assigned to a retained mesh point $z_\ell$, which has $I_{z_\ell}=1$ by
-\eqref{eq:annular-mesh-test} and receives at most $C_1(K+2)\log N$
-roots.
-Let $Q=N^{31/32}/(2C_1(K+2)\log N)$.
-Substituting $L=N^{1/64}$ into the bounds on the mean and the variance, we
-obtain
+We take $t=NL^{-4}$, the leading term of the bound on $\mu_*$. Since
+$L=N^{1/64}$, we have $\sqrt N\le NL^{-4}$ and
+$N^{1/2}L^2\log N=N^{17/32}\log N\le N^{15/16}=NL^{-4}$ for $N\ge2$, the
+latter since $\log N\le N^{13/32}$, so that
 \begin{align*}
- \mathbb EZ
- &\le C(K)\{N^{1-4/64}+N^{1/2+2/64}\log N\}
- =C(K)\{N^{15/16}+N^{17/32}\log N\},\\
- \frac{\mathbb EZ}{Q}
- &\le C(K)\{N^{-1/32}\log N+N^{-7/16}(\log N)^2\},\\
- \operatorname{Var}Z
- &\le C(K)N^{3/2+4/64}(\log N)^2
- =C(K)N^{25/16}(\log N)^2,
+ b_0+q_0(\mu_*+t)
+ &\le C_1(K+2)(\log N)\bigl[40\sqrt N+NL^{-4}\\
+ &\qquad+C(K)\{NL^{-4}+N^{1/2}L^2\log N\}\bigr]\\
+ &\le C(K)NL^{-4}\log N,\\
+ \frac{m^2V_*}{t^2}
+ &\le C(K)N^2L^4(\log N)^2\cdot N^{-1/2}\cdot\frac{L^8}{N^2}
+ =C(K)N^{-1/2}L^{12}(\log N)^2\\
+ &=C(K)N^{-5/16}(\log N)^2.
 \end{align*}
-where the second line uses $1/Q=2C_1(K+2)(\log N)N^{-31/32}$.
-Since the right-hand side of the second line and
-$C(K)\sqrt N\log N/N^{31/32}=C(K)N^{-15/32}\log N$ tend to $0$ as
-$N\to\infty$, it follows that $\mathbb EZ\le Q/2$ and that the sector
-contribution is at most $N^{31/32}/2$ for all sufficiently large $N$.
-Therefore, on the local-count event of Lemma~\ref{lem:local-counts} and
-the derivative event of Lemma~\ref{lem:second-derivative},
-$B_{K,N}>N^{31/32}$ implies that $Z>Q$, since then
-$C_1(K+2)(\log N)Z>N^{31/32}/2$.
-By Chebyshev's inequality at deviation $Q/2$, and since
-$\mathbb EZ\le Q/2$, we have
-\begin{align*}
- \Prob\{Z>Q\}
- &\le\Prob\{|Z-\mathbb EZ|\ge Q/2\}
- \le\frac{4\operatorname{Var}Z}{Q^2}\\
- &\le C(K)\frac{N^{25/16}(\log N)^2}
-                  {N^{31/16}(\log N)^{-2}}
- =C(K)N^{-3/8}(\log N)^4.
-\end{align*}
-Adding the probabilities of the exceptional events of
-Lemmas~\ref{lem:local-counts} and~\ref{lem:second-derivative}, we get
+Therefore \eqref{eq:T3-general} gives
 \begin{equation}
- \Prob\{B_{K,N}>N^{31/32}\}
- \le N^{-3}+N^{-10}+C(K)N^{-3/8}(\log N)^4,
+ \Prob\{B_{K,N}>C(K)NL^{-4}\log N\}
+ \le N^{-3}+N^{-10}+C(K)N^{-5/16}(\log N)^2,
  \label{eq:annular-small-derivatives}
 \end{equation}
 whose three terms are the local-count exception of
 Lemma~\ref{lem:local-counts}, the derivative exception of
 Lemma~\ref{lem:second-derivative}, and the mesh-deviation exception.
-The inequalities that ensure the above two thresholds are given explicitly
-in Section~\ref{app:const-small-derivatives}.
+The explicit constants are given in
+Section~\ref{app:const-small-derivatives}.
 \end{proof}
 
 Figure~\ref{fig:small-derivative} shows the fraction of annular roots with
 a small derivative for fixed $L$, whereas the lemma takes $L=N^{1/64}$.
 Panel (a) compares the number of such zeros at $N=10^5$, in the annulus
-and among all zeros, divided by $N$, with the reference $L^{-4}$, which is
-the power of $L$ in the leading term of the bound
-$\mathbb EZ\le C(K)\{NL^{-4}+N^{1/2}L^2\log N\}$ above.
+and among all zeros, divided by $N$, with $L^{-4}$. This is the power of
+$L$ in the bound $C(K)NL^{-4}\log N$ of the lemma and in the leading term
+of the bound on $\mu_*$, the mean number of mesh points that detect such
+zeros.
 
 \input{figures/small-derivative}
 
@@ -994,9 +919,8 @@ Outside an event of probability at most $N^{-10}$,
 \end{lemma}
 
 \begin{proof}
-As in the proof of Lemma~\ref{lem:second-derivative} for the second
-derivative, we combine Hoeffding's inequality at the samples of the circle
-$|z|=\rho$, a
+As in the proof of Lemma~\ref{lem:second-derivative}, we combine
+Hoeffding's inequality at the samples of the circle $|z|=\rho$, a
 deterministic bound on $g_m'$ between the samples, and the maximum
 principle, now with the constants of the tails.
 

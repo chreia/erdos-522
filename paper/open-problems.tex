@@ -1,5 +1,8 @@
 \section{Open problems}\label{sec:open-problems}
-The almost-sure radial law and its proof lead us to pose three problems.
+The proof uses the coefficient distribution only through (H1)--(H5),
+bounds its errors by low moments, and sees the zeros only at the scale
+$1/n$. This suggests three problems: the weakest moment condition, the
+size of the fluctuations, and the local statistics of the zeros.
 
 \begin{problem}[The moment threshold]\label{prob:threshold}
 Let $(\xi_k)_{k\ge0}$ be independent and identically distributed complex
@@ -10,8 +13,10 @@ Theorem~\ref{thm:radial-profile} hold whenever $\mathbb E|\xi_0|^2<\infty$?
 
 Theorem~\ref{thm:radial-profile} establishes the law for five families of
 coefficient distributions, and our proof uses the distribution only through
-the estimates of Table~\ref{tab:model-inputs} and
-Proposition~\ref{prop:coefficient-transfer}.
+the hypotheses (H1)--(H5) of Section~\ref{sec:layer2-models}, which hold
+for signs by Sections~\ref{sec:concentration} and~\ref{sec:local-roots}
+and which Proposition~\ref{prop:coefficient-transfer} verifies for the
+other four families.
 The second moment cannot be weakened.
 If $\xi_n\ne0$, Jensen's formula for $w^nf_n(1/w)$ on the circle
 $|w|=e^{1/n}$ and the concavity of the logarithm give

@@ -914,8 +914,7 @@
     "small-derivative": {
       "cohort": "common_root_seeds",
       "data": [
-        "data/small-derivative.csv",
-        "data/bootstrap-fits.json"
+        "data/small-derivative.csv"
       ]
     }
   },

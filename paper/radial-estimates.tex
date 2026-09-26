@@ -5,16 +5,24 @@ supplied by Theorem~\ref{thm:sign-logarithms} outside exceptional events
 with summable probabilities.
 
 \begin{lemma}[Annular mass]\label{lem:annular-mass}
-Let $K\ge2$ and $N\ge2K$, let $f_N$ be a nonzero polynomial of degree at
-most $N$, and let $r_i=1+x_i/N$ with
-$(x_1,x_2,x_3,x_4)=(-K,-K/2,K/2,K)$.
+Let $K>0$, $0<\eta<1$ and $N\ge2K$, let $f_N$ be a nonzero polynomial of
+degree at most $N$, and let $r_i=1+x_i/N$ with
+$(x_1,x_2,x_3,x_4)=(-K,-(1-\eta)K,(1-\eta)K,K)$.
 Let $\varepsilon,D\ge0$ be such that
 \begin{align*}
  \left|J_N(r_i)-\log\sigma_N(r_i)+\gamma/2\right|&\le\varepsilon,\\
  \left|\log\sigma_N(r_i)-\tfrac12\log N-F(x_i)\right|&\le D/N,
- \qquad i=1,2,3,4,
+ \qquad i=1,2,3,4.
 \end{align*}
-and $\varepsilon+D/N\le K/8$. Then
+Then
+\begin{align*}
+ &\frac{\#\{\alpha:f_N(\alpha)=0,\ ||\alpha|-1|>K/N\}}N\\
+ &\qquad\le\frac2{\eta K}\{F(-(1-\eta)K)-F(-K)\}
+   +\frac4{\eta K}\Big(\varepsilon+\frac DN\Big)\\
+ &\qquad\le\frac1{\eta K}\log\frac1{1-\eta}
+   +\frac4{\eta K}\Big(\varepsilon+\frac DN\Big).
+\end{align*}
+In particular, for $\eta=1/2$,
 \begin{align*}
  \frac{\#\{\alpha:f_N(\alpha)=0,\ ||\alpha|-1|>K/N\}}N
  &\le\frac2K\log\frac2{1+e^{-K}}+\frac8K\Big(\varepsilon+\frac DN\Big)\\
@@ -26,91 +34,70 @@ By Lemma~\ref{lem:profile-rate}, the second condition holds with
 $D=K^2+e^{4K}/2$.
 
 \begin{proof}
-We apply Lemma~\ref{thm:T2} with $\varepsilon_i=\varepsilon$, replace
-$\log\sigma_N(r_i)$ by $\frac12\log N+F(x_i)$, compare both denominators
-with $K/2$, and evaluate the leading term by the symmetry $F(x)=x+F(-x)$.
-Let $m$ be the number of roots with $||\alpha|-1|>K/N$, and let
-$\delta=2\varepsilon+2D/N$.
-By the second hypothesis, in which $\frac12\log N$ cancels in
-differences,
-\begin{align*}
- \log\sigma_N(r_2)-\log\sigma_N(r_1)&\le F(-K/2)-F(-K)+\frac{2D}N,\\
- \log\sigma_N(r_4)-\log\sigma_N(r_3)&\ge F(K)-F(K/2)-\frac{2D}N.
-\end{align*}
-Since $1/2\le1+x/N\le1$ for $-K\le x\le0$, because $N\ge2K$, and
+We divide the two secants of Lemma~\ref{thm:T2} by the linear spacing
+$\eta K$ in place of the logarithmic one, replace $J_N$ by
+$\frac12\log N+F$, and evaluate the leading term by
+Proposition~\ref{prop:profiles}.
+Let $m$ be the number of roots with $||\alpha|-1|>K/N$.
+Since $0<1+x/N\le1$ for $-K\le x\le0$, because $N>K$, and
 $1+x/N\ge1$ for $x\ge0$, the denominators satisfy
-\[
- N\log(r_2/r_1)=\int_{-K}^{-K/2}\frac{\mathrm dx}{1+x/N}\ge\frac K2,\qquad
- N\log(r_4/r_3)=\int_{K/2}^{K}\frac{\mathrm dx}{1+x/N}\le\frac K2.
-\]
-The numerators $F(-K/2)-F(-K)+\delta$ and $F(K)-F(K/2)-\delta$ in the
-chain below are nonnegative. Indeed, by Proposition~\ref{prop:profiles},
-$F'=\Phi$, and $\Phi(x)$ is the mean of $t$ under the probability density
-proportional to $e^{2xt}$ on $[0,1]$, so that $\Phi\ge0$. Differentiating
-this mean under the integral sign, we get
-\begin{align}
- \Phi'(x)
- &=\frac{\mathrm d}{\mathrm dx}\,\frac{\int_0^1te^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}
- =\frac{\int_0^12t^2e^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}
-  -\frac{\int_0^1te^{2xt}\dd t\int_0^12te^{2xt}\dd t}{\bigl(\int_0^1e^{2xt}\dd t\bigr)^2}\nonumber\\
- &=2\bigg(\frac{\int_0^1t^2e^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}
-  -\Big(\frac{\int_0^1te^{2xt}\dd t}{\int_0^1e^{2xt}\dd t}\Big)^2\bigg)
- =2\operatorname{Var}_x(t)\ge0,\label{eq:Phi-variance}
-\end{align}
-where $\operatorname{Var}_x(t)$ is the variance of $t$ under the same
-density. Thus $\Phi$ is nondecreasing, and $\Phi(0)=F'(0)=1/2$ by
-Proposition~\ref{prop:profiles}, so that, with
-$F(K)-F(K/2)=\int_{K/2}^K\Phi\ge\frac K2\Phi(0)$ and the hypothesis
-$\varepsilon+D/N\le K/8$,
-\[
- F(-K/2)-F(-K)\ge0,\qquad
- F(K)-F(K/2)\ge\frac K4\ge2\Big(\varepsilon+\frac DN\Big)=\delta.
-\]
-By \eqref{eq:T2-exact} with $\varepsilon_i=\varepsilon$, which applies
-since $N\ge2K>K$, by $\deg f_N\le N$, and by the above bounds on the
-differences of $\log\sigma_N$, on the denominators and on the numerators,
-we have
+\begin{align*}
+ N\log(r_2/r_1)&=\int_{-K}^{-(1-\eta)K}\frac{\mathrm dx}{1+x/N}\ge\eta K,\\
+ N\log(r_4/r_3)&=\int_{(1-\eta)K}^{K}\frac{\mathrm dx}{1+x/N}\le\eta K.
+\end{align*}
+By \eqref{eq:jensen-integral}, $J_N(r)$ is nondecreasing in $r$, so that
+the numerators $J_N(r_2)-J_N(r_1)$ and $J_N(r_4)-J_N(r_3)$ are
+nonnegative. By the two hypotheses, in which $\gamma/2$ and
+$\frac12\log N$ cancel in differences,
+\begin{align*}
+ J_N(r_2)-J_N(r_1)&\le F(x_2)-F(x_1)+2\Big(\varepsilon+\frac DN\Big),\\
+ J_N(r_4)-J_N(r_3)&\ge F(x_4)-F(x_3)-2\Big(\varepsilon+\frac DN\Big).
+\end{align*}
+By the second inequality of the bound on $m/N$ in the proof of
+Lemma~\ref{thm:T2}, $\deg f_N\le N$, the bounds on the denominators and
+the two bounds above, we have
 \begin{align*}
  \frac mN
- &\le\frac{\deg f_N}N
-   +\frac{\log\sigma_N(r_2)-\log\sigma_N(r_1)+2\varepsilon}{N\log(r_2/r_1)}
-   -\frac{\log\sigma_N(r_4)-\log\sigma_N(r_3)-2\varepsilon}{N\log(r_4/r_3)}\\
- &\le1+\frac{F(-K/2)-F(-K)+\delta}{N\log(r_2/r_1)}
-       -\frac{F(K)-F(K/2)-\delta}{N\log(r_4/r_3)}\\
- &\le1+\frac2K\{F(-K/2)-F(-K)+\delta\}
-       -\frac2K\{F(K)-F(K/2)-\delta\}\\
- &=1+\frac2K\{F(-K/2)-F(-K)-F(K)+F(K/2)\}+\frac{4\delta}K\\
- &=\frac4K\{F(-K/2)-F(-K)\}+\frac8K\Big(\varepsilon+\frac DN\Big)
- =\frac2K\log\frac2{1+e^{-K}}+\frac8K\Big(\varepsilon+\frac DN\Big)\\
- &\le\frac{2\log2}K+\frac8K\Big(\varepsilon+\frac DN\Big),
+ &\le1+\frac{J_N(r_2)-J_N(r_1)}{\eta K}-\frac{J_N(r_4)-J_N(r_3)}{\eta K}\\
+ &\le1+\frac1{\eta K}\{F(x_2)-F(x_1)-F(x_4)+F(x_3)\}
+ +\frac4{\eta K}\Big(\varepsilon+\frac DN\Big)\\
+ &=\frac2{\eta K}\{F(-(1-\eta)K)-F(-K)\}
+ +\frac4{\eta K}\Big(\varepsilon+\frac DN\Big),
 \end{align*}
-where the fifth line uses $F(x)=x+F(-x)$ and the evaluation of
-$F(-K/2)-F(-K)$ in the proof of Proposition~\ref{prop:profiles}.
+where the last line is the evaluation of \eqref{eq:T2-limit} in the proof
+of Proposition~\ref{prop:profiles}, and \eqref{eq:profile-eta-bound}
+bounds its first term.
 \end{proof}
 
 The two secants contribute equally to the leading term
-$\frac2K\log\frac2{1+e^{-K}}\le\frac{2\log2}K$ of
-Lemma~\ref{lem:annular-mass}, each at most $\log2/K$: the inner secant of
-Lemma~\ref{thm:T2} controls the roots in $|z|<1-K/N$, and the outer
-secant controls those in $|z|>1+K/N$.
-Indeed, by Lemma~\ref{lem:profile-rate} and $N\log(r_2/r_1)\to K/2$, the
-inner secant $(\log\sigma_N(r_2)-\log\sigma_N(r_1))/(N\log(r_2/r_1))$
-tends to
+$\frac2{\eta K}\{F(-(1-\eta)K)-F(-K)\}$ of
+Lemma~\ref{lem:annular-mass}: the inner secant of Lemma~\ref{thm:T2}
+controls the roots in $|z|<1-K/N$, and the outer secant controls those in
+$|z|>1+K/N$.
+By Lemma~\ref{lem:profile-rate} and $N\log(r_2/r_1)\to\eta K$, the inner
+secant $(\log\sigma_N(r_2)-\log\sigma_N(r_1))/(N\log(r_2/r_1))$ tends to
 \[
- \frac{2[F(-K/2)-F(-K)]}{K}
- =\frac1K\log\frac2{1+e^{-K}}\le\frac{\log2}{K},
+ \frac{F(-(1-\eta)K)-F(-K)}{\eta K}.
 \]
-by the evaluation of $F(-K/2)-F(-K)$ in the proof of
-Proposition~\ref{prop:profiles}.
 There are at most $N-\nu_N(r_4)$ roots in $|z|>1+K/N$, and
 $\nu_N(r_4)/N$ is at least the outer secant, as in the proof of
 Lemma~\ref{thm:T2}. By the same limits and the symmetry $F(x)=x+F(-x)$,
 $1$ minus the outer secant tends to
 \begin{align*}
- 1-\frac2K\{F(K)-F(K/2)\}
- &=1-\frac2K\Big\{\frac K2+F(-K)-F(-K/2)\Big\}\\
- &=\frac2K\{F(-K/2)-F(-K)\}.
+ 1-\frac{F(K)-F((1-\eta)K)}{\eta K}
+ &=1-\frac{\eta K+F(-K)-F(-(1-\eta)K)}{\eta K}\\
+ &=\frac{F(-(1-\eta)K)-F(-K)}{\eta K}.
 \end{align*}
+As $\eta\to0$ the leading term tends to the fraction of roots outside the
+annulus given by Theorem~\ref{thm:radial-profile}, since $F'=\Phi$ and
+$\Phi(x)+\Phi(-x)=1$:
+\[
+ \lim_{\eta\to0}\frac2{\eta K}\{F(-(1-\eta)K)-F(-K)\}
+ =2\Phi(-K)=1-\{\Phi(K)-\Phi(-K)\}.
+\]
+Its upper bound $\log(1/(1-\eta))/(\eta K)$ tends to $1/K$, and the value
+$\eta=1/2$ gives $2\log2/K$, which suffices when only $K\to\infty$
+matters.
 
 \begin{lemma}[Thin bands]\label{lem:thin-band}
 Fix $0<\kappa\le1/64$, let $N\ge4$, and let $f_N$

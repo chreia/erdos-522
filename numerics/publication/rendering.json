@@ -13,7 +13,7 @@
     "data/small-derivative-supplement.csv": "da08936ad3c2ab83b0c393a2b2905834d42811d22864e28b40cf0bc4e3e8a670",
     "data/small-derivative.csv": "2c70996ba3feeb48e4b9a1cd295c8b1e0b841c207e387b91ecc2bcdebfbe28ca",
     "matching.npz": "b83dbe87b0b9a4830947acaa823dda9331040463270bd89ab0bad09abcca2431",
-    "metadata.json": "092f4a709c3ed67039290b9b4000ca6a1b484d0b215e52a7df47cdfa6f50e11e"
+    "metadata.json": "3fb2b0ce9f60a6d231315f8fd25e615d5c4e59b7d2b202f72255bab44ed430cc"
   },
   "figures": {
     "annulus": {
@@ -57,14 +57,14 @@
   "outputs_sha256": {
     "annulus.pdf": "8f8acf3091589377fabb1384eeb6aba6dad4533e6986c0bb38e4a43f9ac6c008",
     "annulus.svg": "0640ff3a8a5f896374ff15af5af93100cc308e348fd850424ffdd922e0279b4a",
-    "radial-profile.pdf": "13c53009ac17c2fa896970b7299242d0856f6d74e44c142520850227c4ef8f86",
-    "radial-profile.svg": "effed7d4008e4544108fa5628cc267a8308c39526ae3a64ea80f217bc60fc1a4",
+    "radial-profile.pdf": "917141c418ecca395ffafd17870bf969cc38ce0f2062a6c33f16c63f74f0e3f6",
+    "radial-profile.svg": "dd15a2c07987966ac43a6f5a25d355a56d62a8beed89aee98d5766986793523a",
     "root-matching.pdf": "ea29de7032b886294c8958d4191c1721dc0dfa693169b2ae9d30d937d7fc26f8",
     "root-matching.svg": "43340231d0244f612eb60f72c7e3cd858f213f2aba502ad68a310c9973674dd9",
-    "small-derivative.pdf": "755e3126575ece954026b4552cb0bf6d9097ce91082a56ccb4b5a77fb5198084",
-    "small-derivative.svg": "672886f0bd2565d93ce26bf12c1b7a42967bd34d480c604d34359882b28c176b"
+    "small-derivative.pdf": "7135053ab0025bc597b491b59dd263588aa2111f1771191c75a1df77a036d47e",
+    "small-derivative.svg": "cb46a36c05c84653eba1ed3ad8b1baa85b87a938edcc7907d8d3e84dc0af101c"
   },
-  "source_sha256": "353cf5bd69832d1abb1ba4f8f689a63fb05e23e563f1351100e03376d30de626",
+  "source_sha256": "67a994702d5a0c337a36c77c1d946138fe7360599f323b312168abd5206b130e",
   "text_size_range_pt": [
     9,
     10

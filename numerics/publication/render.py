@@ -87,7 +87,6 @@ def save(fig,name):
     print(name,flush=True)
 
 
-FITS=json.loads((DATA/'bootstrap-fits.json').read_text())
 META=json.loads((HERE/'metadata.json').read_text())
 NS=[1000,3000,10000,30000,100000]
 NLABEL=[r'$10^3$',r'$3\times10^3$',r'$10^4$',r'$3\times10^4$',r'$10^5$']
@@ -124,7 +123,7 @@ def radial_profile():
     axes[2].ticklabel_format(axis='y',style='sci',scilimits=(-2,2),useMathText=True)
     panel(axes[0],'a','Mean empirical radial profile')
     panel(axes[1],'b','Mean finite-degree deviations')
-    panel(axes[2],'c','One fixed nested sequence (seed 522000)')
+    panel(axes[2],'c','One fixed nested sequence')
     for ax in axes:grid(ax)
     save(fig,'radial-profile')
 
@@ -164,9 +163,6 @@ def small_derivative():
     ax.set_xscale('log',base=2);ax.set_yscale('log');ax.set_xticks(ls,[str(L) for L in ls]);ax.set_ylim(8e-6,1.)
     ax.set_xlabel(r'Derivative threshold parameter $L$');ax.set_ylabel('Fraction with small derivative')
     ax.legend(frameon=False,loc='lower left',labelspacing=.3,fontsize=9)
-    f=FITS['annular_L_N100000']
-    ax.text(.98,.47,f"Annular slope {f['slope']:.2f}\n95% CI [{f['lower']:.2f}, {f['upper']:.2f}]",ha='right',va='top',transform=ax.transAxes,fontsize=9,
-        bbox={'facecolor':'white','edgecolor':'none','alpha':.95,'pad':2})
     panel(ax,'a',r'Finite thresholds at $N=10^5$');grid(ax)
     ax=axes[1]
     for j,L in enumerate(ls):
