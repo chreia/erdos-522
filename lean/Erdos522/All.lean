@@ -11,6 +11,7 @@ import Erdos522.Analysis.IntervalErrorBounds
 import Erdos522.Analysis.PolynomialCircleLevelSet
 import Erdos522.Probability.CircularGaussianValueLaw
 import Erdos522.Probability.RealPowerRadialProfile
+import Erdos522.Bridge.FormalConjectures
 
 /-!
 # The complete collection of radial and harmonic estimates

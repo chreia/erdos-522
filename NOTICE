@@ -24,4 +24,11 @@ It also includes a file adapted from:
   in lean/Erdos522/Stability/PolynomialRouche.lean
   (license in lean/third_party/hex-roots-mathlib/LICENSE)
 
+It also includes definitions and a statement copied from:
+
+  formal-conjectures, Copyright 2025 The Formal Conjectures Authors
+  https://github.com/google-deepmind/formal-conjectures
+  commit 2424bb480c590237ffbb2cc831ae4cb8977e045a
+  in lean/Erdos522/Bridge/FormalConjectures.lean
+
 Each of these files keeps its original copyright notice.

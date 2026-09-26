@@ -47,6 +47,8 @@ Each declaration states the result in its row, with four differences in form.
 
 The limiting profile is [`kacRadialProfile`](Erdos522/Analysis/RadialProfileRegularity.lean#L24), the derivative of $\frac12\log\int_0^1e^{2xt}\thinspace dt=\frac12\log\bigl((e^{2x}-1)/(2x)\bigr)$. The theorems [`kacRadialProfile_zero`](Erdos522/Analysis/RadialProfileRegularity.lean#L26) and [`kacRadialProfile_eq`](Erdos522/Analysis/KacRadialProfile.lean#L22) give its value $1/2$ at $x=0$ and its closed form $e^{2x}/(e^{2x}-1)-1/(2x)$ elsewhere. The file [CORRESPONDENCE.md](CORRESPONDENCE.md) compares the formal and informal proofs in detail, and explains how the proof of Theorem 1.3 reaches the constant $128$ with the annular width $\lfloor\log N/128-\log\log N\rfloor$.
 
+The file [`Erdos522/Bridge/FormalConjectures.lean`](Erdos522/Bridge/FormalConjectures.lean) proves the statement [`erdos_522`](Erdos522/Bridge/FormalConjectures.lean#L238) of [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures) (`FormalConjectures/ErdosProblems/522.lean`), with its definitions and statement copied verbatim, from `erdos_522_of_independent_coins`.
+
 ## Conventions
 
 - The polynomial `polynomialPrefix ξ c N` takes the coefficients with indices $0$ through $N$ from one infinite sequence, so that every degree is built from the same coefficients.
@@ -62,6 +64,7 @@ The limiting profile is [`kacRadialProfile`](Erdos522/Analysis/RadialProfileRegu
 | [`Erdos522/Probability`](Erdos522/Probability) | 279 | occupation, jets, logarithms, local counts, tails, and the main theorems |
 | [`Erdos522/Stability`](Erdos522/Stability) | 13 | Rouché's theorem, isolation of zeros and root matching |
 | [`Erdos522/Limits`](Erdos522/Limits) | 17 | blocks of degrees and the passage from sparse to all degrees |
+| [`Erdos522/Bridge`](Erdos522/Bridge) | 1 | the statement of Erdős #522 in google-deepmind/formal-conjectures |
 | [`checks`](checks) | 1 | the statements and axioms of the main theorems |
 | [`vendor`](vendor) | | two libraries by other authors, see below |
 | [`third_party`](third_party) | | the license of the adapted file `PolynomialRouche.lean`, see below |

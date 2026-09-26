@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **formal-conjectures.** `lean/Erdos522/Bridge/FormalConjectures.lean` proves the statement `Erdos522.erdos_522` of google-deepmind/formal-conjectures, with its definitions and statement copied verbatim, from `erdos_522_of_independent_coins`. `Erdos522.All` imports it, so the build and the kernel replay cover it.
+
 ## v1.1.0 (2026-09-25)
 
 - **Theorem 1.3.** The constant of the almost-sure rate is lowered from $2000\log2$ to $128$: almost surely, $\limsup_n(\log n)|\nu_n(1)/n-1/2|\le128$. The proof takes the annular width $K_N=\lfloor\log N/128-\log\log N\rfloor$ and the secant radii of Lemma 2.4 with $\eta=1/K_N$. The Lean theorems `ae_rademacher_logarithmic_root_rate` and `ae_rademacher_logarithmic_root_rate_eventually` state the new constant.
