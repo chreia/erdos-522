@@ -94,11 +94,27 @@ For almost every sequence of fair coin tosses $\omega$, the number of zeros of $
 | Path | Contents |
 |---|---|
 | [`Erdos522.pdf`](Erdos522.pdf) | the paper, 145 pages |
-| [`paper/`](paper) | its LaTeX source, bibliography and figures |
 | [`lean/`](lean) | the Lean formalization, with the declaration of each result in [`lean/README.md`](lean/README.md) and a comparison with the paper in [`lean/CORRESPONDENCE.md`](lean/CORRESPONDENCE.md) |
 | [`lean/checks/MainTheorems.lean`](lean/checks/MainTheorems.lean) | the axiom check of the 45 main theorems |
 | [`numerics/publication/`](numerics/publication) | scripts, seeds and summary data for the numerical figures and tables |
 | [`CHANGELOG.md`](CHANGELOG.md), [`CITATION.cff`](CITATION.cff) | release notes and citation metadata |
+
+## Formal Conjectures
+
+`lean/Erdos522/Bridge/FormalConjectures.lean` proves the statement `erdos_522` of
+[google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures),
+proposed as a formal proof link in PR [#6611](https://github.com/google-deepmind/formal-conjectures/pull/6611).
+
+## Related work
+
+- Yakir (2021) proved that the proportion of roots in the unit disk tends to 1/2 in probability.
+- Informal proofs of the almost-sure statement for random signs were posted on the
+  [erdosproblems.com forum](https://www.erdosproblems.com/forum/thread/522) in April 2026 by
+  P. Chojecki ([note](https://www.ulam.ai/research/erdos522-final.pdf)) and, independently, by
+  Y. Kwon and J. Zou ([repository](https://github.com/ykwon0407/erdos-521-522)).
+- Kenta Kitamura independently gave a Lean proof of the unit-disk law for ±1 and {0,1}
+  coefficients: [KitaKen1/erdos-522-strong-law](https://github.com/KitaKen1/erdos-522-strong-law),
+  proposed in Formal Conjectures PR [#6608](https://github.com/google-deepmind/formal-conjectures/pull/6608).
 
 ## Citation
 
@@ -116,6 +132,6 @@ For almost every sequence of fair coin tosses $\omega$, the number of zeros of $
 
 ## License
 
-The paper (`Erdos522.pdf`, and [`paper/`](paper) except the scripts in [`paper/figures/explanatory/src/`](paper/figures/explanatory/src)) and the figure PDFs in [`numerics/publication/figures/`](numerics/publication/figures) are licensed under [CC BY 4.0](paper/LICENSE). Everything else, including the Lean formalization and all scripts, is licensed under the [Apache License 2.0](LICENSE). The vendored Lean libraries keep their own notices, listed in [NOTICE](NOTICE).
+The paper (`Erdos522.pdf`) and the figure PDFs in [`numerics/publication/figures/`](numerics/publication/figures) are licensed under [CC BY 4.0](LICENSE-CC-BY-4.0). Everything else, including the Lean formalization and all scripts, is licensed under the [Apache License 2.0](LICENSE). The vendored Lean libraries keep their own notices, listed in [NOTICE](NOTICE).
 
 Correspondence: Sebastien Kawada, kawada@csail.mit.edu

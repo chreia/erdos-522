@@ -4,7 +4,7 @@ title: "Almost-Sure Radial Laws for Nested Random Polynomials and Erdős Problem
 version: 1.1.0
 doi: 10.5281/zenodo.22970145
 date-released: 2026-09-25
-# The code is under Apache 2.0. The paper (Erdos522.pdf, paper/) is under CC BY 4.0; see README.md.
+# The code is under Apache 2.0. The paper (Erdos522.pdf) is under CC BY 4.0; see README.md.
 license: Apache-2.0
 repository-code: "https://github.com/chreia/erdos-522"
 authors:
